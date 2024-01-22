@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from "react-icons/fa";
+import "./css/Interessi.css";
+import { Link } from "react-router-dom";
 
 const Interessi = () => {
   const [sezioneAttiva, setSezioneAttiva] = useState("aziende");
@@ -63,7 +65,7 @@ const Interessi = () => {
   };
 
   return (
-    <Container className="mt-3">
+    <Container className="mt-3 mb-3">
       <Card>
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
@@ -72,11 +74,13 @@ const Interessi = () => {
           <div className="d-flex flex-row mt-2">
             <a
               href="#aziende"
-              className="text-left"
+              className={`text-left ${
+                sezioneAttiva === "aziende" ? "active-link underline" : ""
+              }`}
               onClick={() => cambiaSezione("aziende")}
               style={{
                 marginRight: "10px",
-                color: "inherit",
+                color: sezioneAttiva === "aziende" ? "forestgreen" : "inherit",
                 textDecoration: "none",
               }}
             >
@@ -84,11 +88,14 @@ const Interessi = () => {
             </a>
             <a
               href="#newsletter"
-              className="text-left"
+              className={`text-left ${
+                sezioneAttiva === "newsletter" ? "active-link underline" : ""
+              }`}
               onClick={() => cambiaSezione("newsletter")}
               style={{
                 marginRight: "10px",
-                color: "inherit",
+                color:
+                  sezioneAttiva === "newsletter" ? "forestgreen" : "inherit",
                 textDecoration: "none",
               }}
             >
@@ -96,19 +103,32 @@ const Interessi = () => {
             </a>
             <a
               href="#scuole-universita"
-              className="text-left"
+              className={`text-left ${
+                sezioneAttiva === "scuole-universita"
+                  ? "active-link underline"
+                  : ""
+              }`}
               onClick={() => cambiaSezione("scuole-universita")}
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{
+                color:
+                  sezioneAttiva === "scuole-universita"
+                    ? "forestgreen"
+                    : "inherit",
+                textDecoration: "none",
+              }}
             >
               Scuole o Università
             </a>
           </div>
         </Card.Header>
-        <Card.Body>{renderContenutoSezione()}</Card.Body>
-        <Card.Footer className="bg-white">
-  {renderTestoFooter()} <FaArrowRight />
-</Card.Footer>
-
+        <Card.Body className="text-center">
+          {renderContenutoSezione()}
+        </Card.Body>
+        <Card.Footer className="bg-white text-center">
+          <Link to={`/risultati/${sezioneAttiva.toLowerCase()}`}>
+            {renderTestoFooter()} <FaArrowRight />
+          </Link>
+        </Card.Footer>
       </Card>
     </Container>
   );

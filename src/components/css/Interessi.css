@@ -1,4 +1,17 @@
-.link-attivo {
+.active-link {
     color: forestgreen;
-    text-decoration: underline;
+  }
+  
+  .active-link:hover {
+    text-decoration: none;
+  }
+  
+  .underline {
+    border-bottom: 0.3svh solid forestgreen;
+    padding-bottom: 2svh;
+    margin-bottom: -1.2svh;
+  }
+
+  .text-center {
+    text-align: center;
   }
