@@ -33,6 +33,7 @@ const UserProfile = () => {
 
     return (
         <div>
+            {/* 
             <h1>Profilo</h1>
             <p>Nome: {profile.name}</p>
             <p>Cognome: {profile.surname}</p>
@@ -42,6 +43,7 @@ const UserProfile = () => {
             <p>Titolo: {profile.title}</p>
             <p>Area: {profile.area}</p>
             {profile.image && <img src={profile.image} alt="Profilo" />}
+            */}
             <MainProfile data={profile} />
             <Activity data={profile} />
             <Formation data={profile}/>
