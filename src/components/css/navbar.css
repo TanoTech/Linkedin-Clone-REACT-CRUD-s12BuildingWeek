@@ -1,0 +1,46 @@
+.navbar-brand {
+    img {
+        width: 50px;
+    }
+}
+
+.nav-item {
+    div>img {
+        width: 60px;
+        margin: 1em;
+    }
+}
+
+.navIcon {
+    display: flex;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav-scroll{
+    border-right: 2px solid grey;
+}
+
+.navBtn {
+    background-color: transparent!important;
+    border: none!important;
+}
+
+button svg {
+    color: black;
+}
+
+.form-control {
+    border: none!important;
+    background-color: transparent!important;
+}
+
+.input-group {
+    background-color: rgb(235, 233, 233)!important;
+    border: black;
+}
