@@ -27,7 +27,7 @@ const NavbarTop = () => {
                     throw new Error('Errore nella ricerca');
                 }
                 const profiles = await response.json();
-                
+
                 const filteredProfiles = profiles.filter(profile =>
                     profile.name.toLowerCase().includes(searchTerm.toLowerCase())
                 );
