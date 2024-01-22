@@ -8,7 +8,7 @@ const NavbarTop = () => {
             e.preventDefault();
         };
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg"> 
             <Navbar.Brand href="#home"><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="" /></Navbar.Brand>
             <Form className="d-flex" onSubmit={handleSearch}>
                 <InputGroup>
@@ -21,7 +21,7 @@ const NavbarTop = () => {
                 </InputGroup>
             </Form>
             <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
+            <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                 <Nav navbarScroll>
                     <Nav.Link href="#"><FaHome className='navIcon' /><>Home</></Nav.Link>
                     <Nav.Link href="#"><FaNetworkWired className='navIcon'  /> <>Rete</> </Nav.Link>
