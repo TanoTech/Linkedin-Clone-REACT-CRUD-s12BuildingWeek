@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
-import './css/navbar.css'; 
+import './css/navbar.css';
 
 const NavbarTop = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -27,10 +27,17 @@ const NavbarTop = () => {
                     throw new Error('Errore nella ricerca');
                 }
                 const profiles = await response.json();
-                setSearchResults(profiles.slice(0, 10)); 
-                console.log(profiles)
+
+
+                const filteredProfiles = profiles.filter(profile =>
+                    profile.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                setSearchResults(filteredProfiles);
+                console.log(filteredProfiles)
             } catch (error) {
                 console.error('Errore: ', error);
+
             }
         };
 
