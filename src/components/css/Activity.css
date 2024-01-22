@@ -1,0 +1,41 @@
+*{
+    text-align: left;
+    margin-left: 0.2rem;
+}
+
+.followers{
+    cursor: pointer;
+}
+
+#activity{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.followers{
+    color: rgb(7, 88, 158);
+    font-weight: bold;
+}
+
+.penna{
+    font-size: 160%;
+    cursor: pointer;
+}
+.post-details{
+    font-size: 60%;
+    margin: 0;
+    color: #00000089;
+}
+.minutes{
+    color: #00000089;
+}
+.rounded, .like{
+    cursor: pointer;
+}
+.arrow{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.test{
+    font-size: 90%;
+}
