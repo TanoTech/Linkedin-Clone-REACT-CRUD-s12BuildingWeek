@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MainProfile from './MainProfile';
+import { Activity } from 'react-bootstrap-icons';
+import Formation from './Formation';
+import Interessi from './Interessi';
 
 const UserProfile = () => {
     const [profile, setProfile] = useState(null);
@@ -38,6 +42,10 @@ const UserProfile = () => {
             <p>Titolo: {profile.title}</p>
             <p>Area: {profile.area}</p>
             {profile.image && <img src={profile.image} alt="Profilo" />}
+            <MainProfile data={profile} />
+            <Activity  data={profile}/>
+            <Formation data={profile}/>
+            <Interessi data={profile}/>
         </div>
     );
 };
