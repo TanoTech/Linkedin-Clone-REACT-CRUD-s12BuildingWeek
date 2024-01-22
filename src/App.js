@@ -13,10 +13,6 @@ function App() {
     <div className="App">
       <NavbarTop />
       <UserProfile />
-      <MainProfile />
-      <Formation/>
-      <Activity />
-      <Interessi />
     </div>
 
   );
