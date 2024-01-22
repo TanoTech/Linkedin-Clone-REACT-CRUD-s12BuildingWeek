@@ -19,8 +19,8 @@ const UserProfile = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-
                 setProfile(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error('Errore nella richiesta:', error);
             }
@@ -33,19 +33,10 @@ const UserProfile = () => {
 
     return (
         <div>
-            <h1>Profilo</h1>
-            <p>Nome: {profile.name}</p>
-            <p>Cognome: {profile.surname}</p>
-            <p>Email: {profile.email}</p>
-            <p>Username: {profile.username}</p>
-            <p>Bio: {profile.bio}</p>
-            <p>Titolo: {profile.title}</p>
-            <p>Area: {profile.area}</p>
-            {profile.image && <img src={profile.image} alt="Profilo" />}
             <MainProfile data={profile} />
             <Activity data={profile} />
-            <Formation data={profile}/>
-            <Interessi data={profile}/>
+            <Formation />
+            <Interessi />
         </div>
     );
 };
