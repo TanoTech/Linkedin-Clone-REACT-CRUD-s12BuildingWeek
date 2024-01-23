@@ -10,21 +10,21 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-      <ProfileProvider>
-          <Router>
-              <div className="App">
-                  <NavbarTop />
-                  <Routes>
-                      <Route path="/" element={<UserProfile />} />
-                      <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
-                  </Routes>
-                  <MayKnow />
-                  <Footer />
-              </div>
-          </Router>
-      </ProfileProvider>
-  );
+    return (
+        <ProfileProvider>
+            <Router>
+                <div className="App">
+                    <NavbarTop />
+                    <Routes>
+                        <Route path="/user-profile" element={<UserProfile />} />
+                        <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
+                    </Routes>
+                    <MayKnow />
+                    <Footer />
+                </div>
+            </Router>
+        </ProfileProvider>
+    );
 }
 
 export default App;

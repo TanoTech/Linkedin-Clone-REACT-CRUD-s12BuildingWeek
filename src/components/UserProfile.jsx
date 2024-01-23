@@ -14,7 +14,7 @@ const UserProfile = () => {
         const fetchProfile = async () => {
             const endpoint = 'https://striveschool-api.herokuapp.com/api/profile/me';
             const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
-
+            
             try {
                 const response = await axios.get(endpoint, {
                     headers: {
