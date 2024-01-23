@@ -4,6 +4,11 @@ import { HiOutlinePencil } from 'react-icons/hi2';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import EmoticonPicker from '../components/Emoticons';
 import { FaRegClock } from "react-icons/fa6";
+import ImageUploader from '../components/ImageUploader';
+import { MdCalendarMonth } from "react-icons/md";
+import { BsBriefcase } from "react-icons/bs";
+import { IoMdPodium } from "react-icons/io";
+
 
 
 const Activity = ({ data }) => {
@@ -144,6 +149,13 @@ const Activity = ({ data }) => {
                 onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
               />
                <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
+
+               <div className='d-flex align-items-center logos'>
+                 <ImageUploader onSelectEmoticon={handleSelectEmoticon} />
+                 <MdCalendarMonth className=' me-3 fs-4' />
+                 <BsBriefcase className=' me-3 fs-4' />
+                 <IoMdPodium className=' fs-4'/>
+               </div>
             </Form.Group>
             <hr />
             
