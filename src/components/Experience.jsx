@@ -124,7 +124,7 @@ const Experience = ({ data }) => {
     };
 
     return (
-        <div>
+        <Container>
             <h1>Esperienze Lavorative</h1>
             <ul>
                 {experiences.map((experience) => (
@@ -138,7 +138,7 @@ const Experience = ({ data }) => {
                     </li>
                 ))}
             </ul>
-
+            
             <h2>Aggiungi una Nuova Esperienza</h2>
             <div>
                 <input type="text" name="role" placeholder="Ruolo" onChange={handleInputChange} value={newExperience.role} />
@@ -159,7 +159,7 @@ const Experience = ({ data }) => {
                 <input type="text" name="area" placeholder="Area" onChange={handleInputChange} value={newExperience.area} />
                 <button onClick={handleAddExperience}>Aggiungi</button>
             </div>
-        </div>
+        </Container>
     );
 };
 
