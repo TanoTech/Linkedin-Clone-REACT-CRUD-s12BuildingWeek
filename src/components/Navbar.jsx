@@ -90,7 +90,7 @@ const NavbarTop = () => {
                     <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className="d-inline-block align-top navIcon" alt="Profilo" /> Tu </span>} >
                         <div>
                             <div className='d-flex'>
-                                <div><img className='img-fluid' src={userProfileImg} alt="" /></div>
+                                <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
                                 <div>
                                     <p>{userProfileName}</p>
                                     <p>{userProfileTitle}</p>

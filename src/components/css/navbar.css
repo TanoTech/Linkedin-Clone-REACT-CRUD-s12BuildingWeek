@@ -70,7 +70,6 @@ button svg {
 .search-result-item:hover {
     background-color: #f5f5f5;
 }
-
-.dropdown-toggle::after {
-    display: none;
+.dropImg{
+    border-radius: 50%;
 }
