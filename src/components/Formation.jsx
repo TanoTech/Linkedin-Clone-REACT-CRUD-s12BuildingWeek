@@ -104,19 +104,17 @@ const Formation = () => {
           <Modal show={mostraForm} onHide={() => setMostraForm(false)}>
             <Modal.Header closeButton>
               <Modal.Title className="fs-6">
-                Aggiungi titolo di studio
+              Add education
               </Modal.Title>
             </Modal.Header>
             <Container id="CondivisioneModifiche">
               <Row>
                 <Col className="p-0 m-0">
-                  <h2 className="p-0 fs-6">Informa la rete</h2>
+                  <h2 className="p-0 fs-6">Notify network</h2>
                   <p className="m-0">
-                    Attiva l’opzione per informare la tua rete delle principali
-                    modifiche al profilo (ad esempio nuovi titoli di studio) e
-                    degli anniversari lavorativi. Scopri di più sulla
+                  Turn on to notify your network of key profile changes (such as new education) and work anniversaries. Learn more about
                     <span id="LinkCondivisioneModifiche">
-                      condivisione delle modifiche del profilo.
+                    sharing profile changes.
                     </span>
                   </p>
                 </Col>
@@ -130,48 +128,48 @@ const Formation = () => {
             <Modal.Body id="modal">
               <div className="p-4">
                 <Row className="pb-4">
-                  <label className="text-left">Scuola o università*</label>
+                  <label className="text-left">School*</label>
                   <input
                     type="text"
                     value={universita}
                     onChange={(e) => setUniversita(e.target.value)}
-                    placeholder="Esempio: Universita degli Studi di Salerno"
+                    placeholder="Ex: Universita degli Studi di Salerno"
                     className="InputForm"
                     required
                   />
                 </Row>
 
                 <Row className="pb-4">
-                  <label>Titolo di studio*</label>
+                  <label>Degree*</label>
                   <input
                     type="text"
                     value={titoloStudio}
                     onChange={(e) => setTitoloStudio(e.target.value)}
-                    placeholder="Esempio: Laurea"
+                    placeholder="Ex: Bachelor's"
                     className="InputForm"
                     required
                   />
                 </Row>
 
                 <Row className="pb-4">
-                  <label>Corso di studi*</label>
+                  <label>Field of study*</label>
                   <input
                     type="text"
                     value={corsoDiStudi}
                     onChange={(e) => setCorsoDiStudi(e.target.value)}
-                    placeholder="Esempio: Economia"
+                    placeholder="Ex: Business"
                     className="InputForm"
                     required
                   />
                 </Row>
 
                 <Container className="pb-4">
-                  <label>Data di inizio*</label>
+                  <label>Start date*</label>
                   <div className="d-flex justify-content-between m-0">
                     {/* Aggiungi un DropdownButton per il mese */}
                     <DropdownButton
                       className="DropdownButton "
-                      title={dataInizioMese || "Mese"}
+                      title={dataInizioMese || "Month"}
                       onSelect={(month) => setDataInizioMese(month)}
                     >
                       <Dropdown.Item eventKey="January">January</Dropdown.Item>
@@ -191,7 +189,7 @@ const Formation = () => {
                     {/* Aggiungi un DropdownButton per l'anno */}
                     <DropdownButton
                       className="DropdownButton"
-                      title={dataInizioAnno || "Anno"}
+                      title={dataInizioAnno || "Year"}
                       onSelect={(year) => setDataInizioAnno(year)}
                     >
                       <Dropdown.Item eventKey="2022">2024</Dropdown.Item>
@@ -224,7 +222,7 @@ const Formation = () => {
                 </Container>
 
                 <Container className="pb-4">
-                  <label>Data di fine (o prevista)*</label>
+                  <label>End date (or expected)*</label>
                   <div className="d-flex justify-content-between m-0">
                     <DropdownButton
                       className="DropdownButton"
@@ -280,7 +278,7 @@ const Formation = () => {
                 </Container>
 
                 <Row className="pb-4">
-                  <label>Votazione*</label>
+                  <label>Grade*</label>
                   <input
                     type="text"
                     value={votazione}
@@ -291,18 +289,18 @@ const Formation = () => {
                 </Row>
 
                 <Row className="pb-4">
-                  <label>Attività e associazioni</label>
+                  <label>Activities and societies</label>
                   <input
                     type="text"
                     value={attivitaAssociative}
                     onChange={(e) => setAttivitaAssociative(e.target.value)}
-                    placeholder="Esempio: pesca, pallavolo, immersione subacquee"
+                    placeholder="Ex: fishing, volleyball, scuba diving"
                     className="InputForm"
                   />
                 </Row>
 
                 <Row className="pb-4">
-                  <label>Descrizione</label>
+                  <label>Description</label>
                   <textarea
                     value={descrizione}
                     onChange={(e) => setDescrizione(e.target.value)}
