@@ -32,7 +32,6 @@ export const ProfileProvider = ({ children }) => {
             console.error('Errore: ', error);
         }
     }, []);
-
     const fetchUsers = useCallback(async () => {
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
