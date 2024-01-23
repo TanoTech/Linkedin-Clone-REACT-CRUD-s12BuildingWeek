@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
+import { FaArrowLeft } from "react-icons/fa";
 
 const DettaglioInteressi = () => {
   const location = useLocation();
-  const sezioneAttivaInURL = location.pathname.split("/")[2]; // Otteniamo la sezione dalla URL
+  const sezioneAttivaInURL = location.pathname.split("/")[2];
 
-  // Esempio di risultati (puoi sostituire questo con i tuoi dati reali)
   const risultatiPerAziende = [
     { id: 1, titolo: "Risultato A1" },
     { id: 2, titolo: "Risultato A2" },
@@ -46,29 +46,41 @@ const DettaglioInteressi = () => {
       <Card>
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
-            <h5 style={{ margin: "0" }}>Interessi</h5>
+            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              <FaArrowLeft /> Torna alla Home
+            </Link>
           </div>
           <div className="d-flex flex-row mt-2">
-            <Link to="/risultati/aziende" className={`text-left ${sezioneAttiva === "aziende" ? "active-link underline" : ""}`} onClick={() => handleCambiaSezione("aziende")} style={{textDecoration: "none", marginRight: "10px"}}>
+            <Link
+              to="/risultati/aziende"
+              className={`text-left ${sezioneAttiva === "aziende" ? "active-link underline" : "black-link"}`}
+              onClick={() => handleCambiaSezione("aziende")}
+              style={{ textDecoration: "none", marginRight: "10px" }}
+            >
               Aziende
             </Link>
-            <Link to="/risultati/newsletter" className={`text-left ${sezioneAttiva === "newsletter" ? "active-link underline" : ""}`} onClick={() => handleCambiaSezione("newsletter")} style={{textDecoration: "none", marginRight: "10px"}}>
+            <Link
+              to="/risultati/newsletter"
+              className={`text-left ${sezioneAttiva === "newsletter" ? "active-link underline" : "black-link"}`}
+              onClick={() => handleCambiaSezione("newsletter")}
+              style={{ textDecoration: "none", marginRight: "10px" }}
+            >
               Newsletter
             </Link>
-            <Link to="/risultati/scuole-universita" className={`text-left ${sezioneAttiva === "scuole-universita" ? "active-link underline" : ""}`} onClick={() => handleCambiaSezione("scuole-universita")} style={{textDecoration: "none", marginRight: "10px"}}>
+            <Link
+              to="/risultati/scuole-universita"
+              className={`text-left ${sezioneAttiva === "scuole-universita" ? "active-link underline" : "black-link"}`}
+              onClick={() => handleCambiaSezione("scuole-universita")}
+              style={{ textDecoration: "none", marginRight: "10px" }}
+            >
               Scuole o Università
             </Link>
           </div>
         </Card.Header>
         <Card.Body className="text-center">
-          <Row>
-            {renderRisultati().map((risultato) => (
-              <Col key={risultato.id}>
-                <p>{risultato.titolo}</p>
-                {/* Aggiungi qui altri dettagli del risultato */}
-              </Col>
-            ))}
-          </Row>
+          {renderRisultati().map((risultato) => (
+            <p key={risultato.id}>{risultato.titolo}</p>
+          ))}
         </Card.Body>
       </Card>
     </Container>

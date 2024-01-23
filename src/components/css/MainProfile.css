@@ -6,8 +6,20 @@
     left: 2em;
 }
 
+#profilePicModal {
+    width: 15em;
+    height: 15em;
+}
+
+.modalPic {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
 @media screen and (max-width: 576px) {
-    #profilePic{
+    #profilePic {
         width: 6em;
         height: 6em;
         top: -4em;

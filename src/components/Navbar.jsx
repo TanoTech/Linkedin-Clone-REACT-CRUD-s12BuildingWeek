@@ -1,11 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
+import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 import './css/navbar.css';
 
+
 const NavbarTop = () => {
+    const { profile } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+
+    const userProfileName = profile ? `${profile.name} ${profile.surname}` : 'Caricamento...';
+    const userProfileTitle = profile ? profile.title : '';
+    const userProfileImg = profile ? profile.image : '';
+
 
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
@@ -64,9 +73,9 @@ const NavbarTop = () => {
                 </InputGroup>
                 {searchResults.length > 0 && (
                     <div className="search-results-container">
-                        {searchResults.map((profile) => (
-                            <div key={profile._id} className="search-result-item">
-                                <img className='img-fluid' src={profile.image} alt='immagine profilo' />{profile.name} {profile.surname}
+                        {searchResults.map((otherProfile) => (
+                            <div key={otherProfile._id} className="search-result-item">
+                                <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />{otherProfile.name} {otherProfile.surname}
                             </div>
                         ))}
                     </div>
@@ -80,13 +89,13 @@ const NavbarTop = () => {
                     <Nav.Link href="#"><FaBriefcase className='navIcon' /> <>Lavoro</> </Nav.Link>
                     <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaggistica</></Nav.Link>
                     <Nav.Link href="#"><FaBell className='navIcon' /> <>Notifiche</> </Nav.Link>
-                    <NavDropdown title={<span className='d-flex flex-column'> <Image src="https://s3-eu-west-1.amazonaws.com/tpd/logos/62a6277627ee655c1226b624/0x0.png" roundedCircle width="30" height="30" className="d-inline-block align-top navIcon" alt="Profilo" /> Tu </span>} >
+                    <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className="d-inline-block align-top navIcon" alt="Profilo" /> Tu </span>} >
                         <div>
                             <div className='d-flex'>
-                                <div><img className='img-fluid' src="https://s3-eu-west-1.amazonaws.com/tpd/logos/62a6277627ee655c1226b624/0x0.png" alt="" /></div>
+                                <div><img className='img-fluid' src={userProfileImg} alt="" /></div>
                                 <div>
-                                    <p>Nome utente</p>
-                                    <p>Posizione attuale</p>
+                                    <p>{userProfileName}</p>
+                                    <p>{userProfileTitle}</p>
                                 </div>
                             </div>
                         </div>
