@@ -6,6 +6,8 @@
     left: 2em;
 }
 
+/* Modali */
+
 #profilePicModal {
     width: 15em;
     height: 15em;
@@ -17,6 +19,12 @@
     margin: 0 auto;
 }
 
+.modalIcons {
+    font-size: 130%;
+    cursor: pointer;
+}
+
+/* adatta la foto del profilo */
 
 @media screen and (max-width: 576px) {
     #profilePic {
