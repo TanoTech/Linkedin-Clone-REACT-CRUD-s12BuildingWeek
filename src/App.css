@@ -5,6 +5,8 @@
 @import './components/css/MainProfile.css';
 @import './components/css/MayKnow.css';
 @import './components/css/navbar.css';
+@import 'react-datepicker/dist/react-datepicker.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 main {
   display: flex;
