@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Container, Modal, Form, InputGroup, FormControl } from 'react-bootstrap';
+import { Row, Col, Button, Container, Modal, Form, } from 'react-bootstrap';
 import { HiOutlinePencil } from 'react-icons/hi2';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Activity.css';
+import EmoticonPicker from '../components/Emoticons';
 
-const Activity = () => {
+const Activity = ({ data }) => {
   const [postDetailsCounts, setPostDetailsCounts] = useState({
     post1: 0,
     post2: 0,
@@ -36,6 +37,9 @@ const Activity = () => {
   const handlePublishPost = () => {
     console.log('Dettagli del post:', postDetails);
     setShowModal(false);
+  };
+  const handleSelectEmoticon = (selectedEmoticon) => {
+    setPostDetails({ ...postDetails, text: postDetails.text + selectedEmoticon });
   };
 
   return (
@@ -117,27 +121,33 @@ const Activity = () => {
         </Row>
       </Container>
 
-      {/* Modale crea post */}
-      <Modal show={showModal} onHide={handleCloseModal}>
+       {/* Modale crea post */}
+       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>User</Modal.Title>
+          <Modal.Title className='fs-5'>
+            <img className='rounded-circle me-3' src={data.image} width={'13%'} alt={`${data.name} ${data.surname}`} />
+            {data.name} {data.surname}
+          </Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="postText">
               <Form.Control
                 as="textarea"
                 rows={5}
-                placeholder="Write your post here..."
+                placeholder="What would you like to talk about?"
                 value={postDetails.text}
                 onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
               />
+               <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
             </Form.Group>
-            <hr></hr>
+            <hr />
+            
             <div className='d-flex justify-content-end'>
-                <Button onClick={handlePublishPost}>
-                  Publish
-                </Button>
+              <Button onClick={handlePublishPost}>
+                Publish
+              </Button>
             </div>
           </Form>
         </Modal.Body>
