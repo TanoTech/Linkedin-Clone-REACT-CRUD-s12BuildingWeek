@@ -1,0 +1,69 @@
+.MayKnow {
+    width: 50%;
+}
+
+.MayKnowContent {
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 1.3em;
+    border-bottom: 1px solid lightgray;
+}
+
+.MayKnowTitle, .MayKnowName{
+    font-size: 1.2em;
+}
+
+.MayKnowTitle {
+    margin-bottom: 0;
+}
+
+.MayKnowImg {
+    width: 3.2em;
+    height: 3.2em;
+    border-radius: 100%;
+    margin-left: 0;
+    margin-right: 0.3em;
+}
+
+.MayKnowName {
+    margin-bottom: 0;
+}
+
+.MayKnowJob {
+    margin-bottom: 0.7em;
+    font-size: 0.9em;
+}
+
+.MayKnowBtn {
+    border-radius: 50px;
+    border: 2px solid #414141;
+    padding: 0 0.6em;
+    color: #414141;
+    background-color: initial;
+}
+
+.MayKnowBtn:hover {
+    border: 3px solid #414141;
+    box-sizing: border-box;
+    background-color: lightgrey;
+}
+
+.bi-person-fill-add {
+    margin-right: 0.2em;
+    font-size: 1.25em;
+}
+
+.MayKnowName, .MayKnowJob, .MayKnowImg {
+    cursor: pointer;
+}
+
+.MayKnowShow {
+    text-align: center;
+    color: #414141;
+    font-weight: 600;
+}
+
+.MayKnowShow:hover {
+    background-color: lightgrey;
+}
+
