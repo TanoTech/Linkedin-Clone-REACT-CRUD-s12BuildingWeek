@@ -124,10 +124,13 @@ const Interessi = () => {
           {renderContenutoSezione()}
         </Card.Body>
         <Card.Footer className="bg-white text-center">
-          <Link to={`/risultati/${sezioneAttiva.toLowerCase()}`}>
-            {renderTestoFooter()} <FaArrowRight />
-          </Link>
-        </Card.Footer>
+  <Link
+    to={`/risultati/${sezioneAttiva.toLowerCase()}`}
+    className="footer-link"
+  >
+    {renderTestoFooter()} <FaArrowRight />
+  </Link>
+</Card.Footer>
       </Card>
     </Container>
   );

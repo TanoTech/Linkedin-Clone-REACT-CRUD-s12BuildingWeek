@@ -23,3 +23,20 @@
   .black-link:hover {
     text-decoration: none;
   }
+
+  .grassetto {
+    font-weight: bold;
+  }
+
+  .footer-link {
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+    color: #000;
+  }
+  
+  .footer-link:visited {
+    color: #000;
+  }

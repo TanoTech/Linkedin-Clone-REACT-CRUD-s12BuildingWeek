@@ -22,7 +22,9 @@ const DettaglioInteressi = () => {
     { id: 2, titolo: "Risultato SU2" },
   ];
 
-  const [sezioneAttiva, setSezioneAttiva] = useState(sezioneAttivaInURL || "aziende");
+  const [sezioneAttiva, setSezioneAttiva] = useState(
+    sezioneAttivaInURL || "aziende"
+  );
 
   const handleCambiaSezione = (sezione) => {
     setSezioneAttiva(sezione);
@@ -46,14 +48,27 @@ const DettaglioInteressi = () => {
       <Card>
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
-            <Link to="/" style={{ color: "black", textDecoration: "none" }}>
-              <FaArrowLeft /> Torna alla Home
+            <Link
+              to="/"
+              style={{
+                color: "black",
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <FaArrowLeft style={{ marginRight: "10px" }} />
+              <span className="grassetto">Interessi</span>
             </Link>
           </div>
           <div className="d-flex flex-row mt-2">
             <Link
               to="/risultati/aziende"
-              className={`text-left ${sezioneAttiva === "aziende" ? "active-link underline" : "black-link"}`}
+              className={`text-left ${
+                sezioneAttiva === "aziende"
+                  ? "active-link underline"
+                  : "black-link"
+              }`}
               onClick={() => handleCambiaSezione("aziende")}
               style={{ textDecoration: "none", marginRight: "10px" }}
             >
@@ -61,7 +76,11 @@ const DettaglioInteressi = () => {
             </Link>
             <Link
               to="/risultati/newsletter"
-              className={`text-left ${sezioneAttiva === "newsletter" ? "active-link underline" : "black-link"}`}
+              className={`text-left ${
+                sezioneAttiva === "newsletter"
+                  ? "active-link underline"
+                  : "black-link"
+              }`}
               onClick={() => handleCambiaSezione("newsletter")}
               style={{ textDecoration: "none", marginRight: "10px" }}
             >
@@ -69,7 +88,11 @@ const DettaglioInteressi = () => {
             </Link>
             <Link
               to="/risultati/scuole-universita"
-              className={`text-left ${sezioneAttiva === "scuole-universita" ? "active-link underline" : "black-link"}`}
+              className={`text-left ${
+                sezioneAttiva === "scuole-universita"
+                  ? "active-link underline"
+                  : "black-link"
+              }`}
               onClick={() => handleCambiaSezione("scuole-universita")}
               style={{ textDecoration: "none", marginRight: "10px" }}
             >
