@@ -10,13 +10,11 @@ const NavbarTop = () => {
     const { profile } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : 'Caricamento...';
     const userProfileTitle = profile ? profile.title : '';
     const userProfileImg = profile ? profile.image : '';
 
-
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFmOTQyMmJkNWQxMjAwMTg5MGQ0M2QiLCJpYXQiOjE3MDYwMDU1MzksImV4cCI6MTcwNzIxNTEzOX0.FCMdZrjjRxkJ279ok18O8GpY0L5AughCi-lX6jUDQPg';
 
     useEffect(() => {
         if (!searchTerm.trim()) {
@@ -96,6 +94,7 @@ const NavbarTop = () => {
                                 <div>
                                     <p>{userProfileName}</p>
                                     <p>{userProfileTitle}</p>
+                                    <Link to='/user-profile'><Button className='btn btn-primary'>Visualizza profilo</Button></Link>
                                 </div>
                             </div>
                         </div>
