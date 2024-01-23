@@ -32,8 +32,9 @@
 }
 .minutes{
     color: #00000089;
+    font-size: 90%;
 }
-.rounded, .like{
+.rounded, .like, .clock{
     cursor: pointer;
 }
 .arrow{
@@ -45,4 +46,8 @@
 }
 .divider{
     color: #00000060;
+}
+.postModal{
+    font-size: 70%;
+    font-weight: 400;
 }
