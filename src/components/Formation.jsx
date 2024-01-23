@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 import { GoPencil } from "react-icons/go";
+import Form from "react-bootstrap/Form";
 import "./css/FormationStyle.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
   const [mostraForm, setMostraForm] = useState(false);
-
   const [universita, setUniversita] = useState("");
   const [titoloStudio, setTitoloStudio] = useState("");
   const [corsoDiStudi, setCorsoDiStudi] = useState("");
@@ -66,7 +68,11 @@ const Formation = () => {
         esperienzeFormazione.map((esperienza, index) => (
           <div id="Experience-Conteiner" className="d-flex" key={index}>
             <div>
-                <img src="https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188798/epicodeschool_logo?e=1714003200&v=beta&t=02cZOkAFfrcsqE3vMctwQcElNrMnInX4NwQFmaTF1M8" alt="logo" id="logo-formation" />
+              <img
+                src="https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188798/epicodeschool_logo?e=1714003200&v=beta&t=02cZOkAFfrcsqE3vMctwQcElNrMnInX4NwQFmaTF1M8"
+                alt="logo"
+                id="logo-formation"
+              />
             </div>
             <div>
               <h5 className="m-0 fs-4">{esperienza.universita}</h5>
@@ -77,7 +83,9 @@ const Formation = () => {
               <p className="m-0">{esperienza.corsoDiStudi}</p>
               <p className="m-0">{esperienza.votazione}</p>
               <p className="m-0">{esperienza.attivitaAssociative}</p>
-              <p className="experienceDivInfoLast m-0">{esperienza.descrizione}</p>
+              <p className="experienceDivInfoLast m-0">
+                {esperienza.descrizione}
+              </p>
             </div>
           </div>
         ))
@@ -87,47 +95,80 @@ const Formation = () => {
 
       {mostraForm && (
         <div id="modal-overlay">
-          <div id="modal" className="p-4">
-            <h2>Aggiungi titolo di studio</h2>
-              <div className="d-flex flex-column">
+          <div id="modal">
+            <Container className="d-flex justify-content-between">
+              <h2 className="p-3 m-0">Aggiungi titolo di studio</h2>
+              <button onClick={() => setMostraForm(false)} id="ExitForm">
+                <RxCross2 />
+              </button>
+            </Container>
+
+            <Container id="CondivisioneModifiche">
+              <Row>
+                <Col className="p-0 m-0">
+                  <h2 className="p-0">Informa la rete</h2>
+                  <p className="m-0">
+                    Attiva l’opzione per informare la tua rete delle principali
+                    modifiche al profilo (ad esempio nuovi titoli di studio) e
+                    degli anniversari lavorativi. Scopri di più sulla
+                    <span id="LinkCondivisioneModifiche">condivisione delle modifiche del profilo.</span>
+                  </p>
+                </Col>
+                <Col className="col-2 align-self-center p-0 m-0">
+                  <Form>
+                    <Form.Check
+                      type="switch"
+                      className="ms-3"
+                      id="MyToggle"
+                    />
+                  </Form>
+                </Col>
+              </Row>
+            </Container>
+
+            <div className="p-4">
+              <Row className="pb-4">
                 <label className="text-left">Scuola o università*</label>
                 <input
                   type="text"
                   value={universita}
                   onChange={(e) => setUniversita(e.target.value)}
+                  placeholder="Esempio: Universita degli Studi di Salerno"
                   className="InputForm"
                 />
-              </div>
+              </Row>
 
-              <div className="d-flex flex-column">
+              <Row className="pb-4">
                 <label>Titolo di studio*</label>
                 <input
                   type="text"
                   value={titoloStudio}
                   onChange={(e) => setTitoloStudio(e.target.value)}
+                  placeholder="Esempio: Laurea"
                   className="InputForm"
                 />
-              </div>
+              </Row>
 
-              <div className="d-flex flex-column">
-                <label >Corso di studi*</label>
+              <Row className="pb-4">
+                <label>Corso di studi*</label>
                 <input
                   type="text"
                   value={corsoDiStudi}
                   onChange={(e) => setCorsoDiStudi(e.target.value)}
+                  placeholder="Esempio: Economia"
                   className="InputForm"
                 />
-              </div>
+              </Row>
 
-              <div className="d-flex flex-column">
+              <Container className="pb-4">
                 <label>Data di inizio*</label>
-                <div className="d-flex">
+                <div className="d-flex justify-content-between m-0">
                   <input
                     type="text"
                     placeholder="Mese"
                     value={dataInizioMese}
                     onChange={(e) => setDataInizioMese(e.target.value)}
-                    className="InputForm"
+                    className="InputForm "
                   />
                   <input
                     type="text"
@@ -137,11 +178,11 @@ const Formation = () => {
                     className="InputForm"
                   />
                 </div>
-              </div>
+              </Container>
 
-              <div className="d-flex flex-column">
+              <Container className="pb-4">
                 <label>Data di fine (o prevista)*</label>
-                <div className="d-flex">
+                <div className="d-flex justify-content-between m-0">
                   <input
                     type="text"
                     placeholder="Mese"
@@ -157,9 +198,9 @@ const Formation = () => {
                     className="InputForm"
                   />
                 </div>
-              </div>
+              </Container>
 
-              <div className="d-flex flex-column">
+              <Row className="pb-4">
                 <label>Votazione*</label>
                 <input
                   type="text"
@@ -167,32 +208,33 @@ const Formation = () => {
                   onChange={(e) => setVotazione(e.target.value)}
                   className="InputForm"
                 />
-              </div>
+              </Row>
 
-              <div className="d-flex flex-column">
+              <Row className="pb-4">
                 <label>Attività e associazioni</label>
                 <input
                   type="text"
                   value={attivitaAssociative}
                   onChange={(e) => setAttivitaAssociative(e.target.value)}
+                  placeholder="Esempio: pesca, pallavolo, immersione subacquee"
                   className="InputForm"
                 />
-              </div>
+              </Row>
 
-              <div className="d-flex flex-column">
+              <Row className="pb-4">
                 <label>Descrizione*</label>
                 <textarea
                   value={descrizione}
                   onChange={(e) => setDescrizione(e.target.value)}
                   className="InputForm"
                 ></textarea>
-              </div>
+              </Row>
 
-              <div>
-                <button onClick={aggiungiEsperienzaFormazione}>Aggiungi</button>
-                <button onClick={() => setMostraForm(false)}>Annulla</button>
-              </div>
+              <Container>
+                <Button onClick={aggiungiEsperienzaFormazione}>Save</Button>
+              </Container>
             </div>
+          </div>
         </div>
       )}
     </div>

@@ -1,7 +1,4 @@
-html {
-    background-color: #F4F2EE;
-}
-
+/* CONTENITORE GENERALE */
 #SonContainer-Formation {
     width: auto;
     background-color: white;
@@ -31,7 +28,12 @@ html {
     border-radius: 30px;
 }
 
-  
+#logo-formation {
+    width: 2.8rem;
+}
+
+
+/* MODALE */
 #modal-overlay {
   position: fixed;
   top: 0;
@@ -45,23 +47,72 @@ html {
 }
 
 #modal {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative;
-  z-index: 1;
+width: 43rem;
+height: 47rem;
+ background-color: white;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ text-align: center;
+ position: relative;
+ overflow-y: auto;
 }
 
 #modal h2 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-align: left;
     padding: 1em;
     margin: 0;
   }
 
-#logo-formation {
-    width: 2.8rem;
+.InputForm {
+    border: black solid 1px;
+    border-radius: 4px;
+}
+
+.InputForm:hover {
+    border: black 2px solid;
+}
+
+#ExitForm {
+    background: none;
+    border: none;
+}
+
+#MidleOfTheForm {
+    overflow-y: auto;
+}
+
+#CondivisioneModifiche {
+    padding: 1rem 2rem;
+    background-color: #edf3f8;
+}
+
+#CondivisioneModifiche h2 {
+    font-size: 0.8rem;
+}
+
+#CondivisioneModifiche p {
+    color: rgb(0 0 0 / 60%);
+    font-size: 0.8rem;
+}
+
+#MyToggle {
+    width: 3.2rem !important;
+    height: 2rem !important;
+    border: 1px solid var(--transparent);
+}
+
+#MyToggle:hover {
+    cursor: pointer;
+}
+
+#LinkCondivisioneModifiche {
+    color: #0a66c2;
+}
+
+#LinkCondivisioneModifiche:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 

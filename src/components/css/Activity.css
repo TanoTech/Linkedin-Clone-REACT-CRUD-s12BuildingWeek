@@ -3,6 +3,10 @@
     margin-left: 0.2rem;
 }
 
+.containerActivity{
+    border: 1px rgba(0, 0, 0, 0.095) solid;
+}
+
 .followers{
     cursor: pointer;
 }
@@ -38,4 +42,7 @@
 }
 .test{
     font-size: 90%;
+}
+.divider{
+    color: #00000060;
 }
