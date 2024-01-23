@@ -8,18 +8,18 @@ const DettaglioInteressi = () => {
   const sezioneAttivaInURL = location.pathname.split("/")[2];
 
   const risultatiPerAziende = [
-    { id: 1, titolo: "Risultato A1" },
-    { id: 2, titolo: "Risultato A2" },
+    { id: 1, titolo: "Result A1" },
+    { id: 2, titolo: "Result A2" },
   ];
 
   const risultatiPerNewsletter = [
-    { id: 1, titolo: "Risultato N1" },
-    { id: 2, titolo: "Risultato N2" },
+    { id: 1, titolo: "Result N1" },
+    { id: 2, titolo: "Result N2" },
   ];
 
   const risultatiPerScuoleUniversita = [
-    { id: 1, titolo: "Risultato SU1" },
-    { id: 2, titolo: "Risultato SU2" },
+    { id: 1, titolo: "Result SU1" },
+    { id: 2, titolo: "Result SU2" },
   ];
 
   const [sezioneAttiva, setSezioneAttiva] = useState(
@@ -58,7 +58,7 @@ const DettaglioInteressi = () => {
               }}
             >
               <FaArrowLeft style={{ marginRight: "10px" }} />
-              <span className="grassetto">Interessi</span>
+              <span className="grassetto">Interests</span>
             </Link>
           </div>
           <div className="d-flex flex-row mt-2">
@@ -72,7 +72,7 @@ const DettaglioInteressi = () => {
               onClick={() => handleCambiaSezione("aziende")}
               style={{ textDecoration: "none", marginRight: "10px" }}
             >
-              Aziende
+              Companies
             </Link>
             <Link
               to="/risultati/newsletter"
@@ -96,7 +96,7 @@ const DettaglioInteressi = () => {
               onClick={() => handleCambiaSezione("scuole-universita")}
               style={{ textDecoration: "none", marginRight: "10px" }}
             >
-              Scuole o Università
+              Schools
             </Link>
           </div>
         </Card.Header>

@@ -55,38 +55,38 @@ const NavbarTop = () => {
             <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                 <Nav navbarScroll>
                     <Nav.Link href="#"><FaHome className='navIcon' /><>Home</></Nav.Link>
-                    <Nav.Link href="#"><FaNetworkWired className='navIcon' /> <>Rete</> </Nav.Link>
-                    <Nav.Link href="#"><FaBriefcase className='navIcon' /> <>Lavoro</> </Nav.Link>
-                    <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaggistica</></Nav.Link>
-                    <Nav.Link href="#"><FaBell className='navIcon' /> <>Notifiche</> </Nav.Link>
-                    <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className="d-inline-block align-top navIcon" alt="Profilo" /> Tu </span>} >
+                    <Nav.Link href="#"><FaNetworkWired className='navIcon' /> <>My Network</> </Nav.Link>
+                    <Nav.Link href="#"><FaBriefcase className='navIcon' /> <>Jobs</> </Nav.Link>
+                    <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaging</></Nav.Link>
+                    <Nav.Link href="#"><FaBell className='navIcon' /> <>Notifications</> </Nav.Link>
+                    <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className="d-inline-block align-top navIcon" alt="Profilo" /> Me </span>} >
                         <div>
                             <div className='d-flex'>
                                 <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
                                 <div>
                                     <p>{userProfileName}</p>
                                     <p>{userProfileTitle}</p>
-                                    <Link to='/user-profile'><Button className='btn btn-primary'>Visualizza profilo</Button></Link>
+                                    <Link to='/user-profile'><Button className='btn btn-primary'>View Profile</Button></Link>
                                 </div>
                             </div>
                         </div>
                         <NavDropdown.Divider />
                         <h6>Account</h6>
-                        <NavDropdown.Item>Prova premium per 0 EUR</NavDropdown.Item>
-                        <NavDropdown.Item>Impostazioni e privacy</NavDropdown.Item>
-                        <NavDropdown.Item>Guida</NavDropdown.Item>
-                        <NavDropdown.Item>Lingua</NavDropdown.Item>
+                        <NavDropdown.Item>Try Premium for free</NavDropdown.Item>
+                        <NavDropdown.Item>Settings & Privacy</NavDropdown.Item>
+                        <NavDropdown.Item>Help</NavDropdown.Item>
+                        <NavDropdown.Item>Language</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <h6>Gestisci</h6>
-                        <NavDropdown.Item>Post e attività</NavDropdown.Item>
-                        <NavDropdown.Item>Account per la pubblicazione di of...</NavDropdown.Item>
+                        <h6>Manage</h6>
+                        <NavDropdown.Item>Post & Activity</NavDropdown.Item>
+                        <NavDropdown.Item>Job Posting Account</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item>Esci</NavDropdown.Item>
+                        <NavDropdown.Item>Sign out</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-                <NavDropdown title={'Per le aziende'}>
+                <NavDropdown title={'For Business'}>
                 </NavDropdown>
-                <NavLink>Prova Premium per 0 EUR</NavLink>
+                <NavLink>Try Premium for free</NavLink>
             </Navbar.Collapse>
         </Navbar>
     );

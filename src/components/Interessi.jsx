@@ -16,10 +16,10 @@ const Interessi = () => {
         return (
           <Row>
             <Col>
-              <p>Contenuto 1 per Aziende...</p>
+              <p>Content for 1 Company...</p>
             </Col>
             <Col>
-              <p>Contenuto 2 per Aziende...</p>
+              <p>Content for 2 Companies...</p>
             </Col>
           </Row>
         );
@@ -27,10 +27,10 @@ const Interessi = () => {
         return (
           <Row>
             <Col>
-              <p>Contenuto 1 per Newsletter...</p>
+              <p>Content for 1 Newsletter...</p>
             </Col>
             <Col>
-              <p>Contenuto 2 per Newsletter...</p>
+              <p>Content for 2 Newsletters...</p>
             </Col>
           </Row>
         );
@@ -38,10 +38,10 @@ const Interessi = () => {
         return (
           <Row>
             <Col>
-              <p>Contenuto 1 per Scuole o Università...</p>
+              <p>Content for 1 School...</p>
             </Col>
             <Col>
-              <p>Contenuto 2 per Scuole o Università...</p>
+              <p>Content for 2 Schools...</p>
             </Col>
           </Row>
         );
@@ -53,11 +53,11 @@ const Interessi = () => {
   const renderTestoFooter = () => {
     switch (sezioneAttiva) {
       case "aziende":
-        return "Mostra tutte le Aziende";
+        return "Show all Companies";
       case "newsletter":
-        return "Mostra tutte le Newsletter";
+        return "Show all Newsletters";
       case "scuole-universita":
-        return "Mostra tutte le Scuole & Università";
+        return "Show all Schools";
       default:
         return null;
     }
@@ -68,7 +68,7 @@ const Interessi = () => {
       <Card>
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
-            <h5 style={{ margin: "0" }}>Interessi</h5>
+            <h5 style={{ margin: "0" }}>Interests</h5>
           </div>
           <div className="d-flex flex-row mt-2">
             <a
@@ -83,7 +83,7 @@ const Interessi = () => {
                 textDecoration: "none",
               }}
             >
-              Aziende
+             Companies
             </a>
             <a
               href="#newsletter"
@@ -116,7 +116,7 @@ const Interessi = () => {
                 textDecoration: "none",
               }}
             >
-              Scuole o Università
+              Schools
             </a>
           </div>
         </Card.Header>
