@@ -83,22 +83,31 @@ const MainProfile = ({ data }) => {
             </Container>
 
             {/* Modale su foto profilo */}
-            <Modal show={showModal} className="text-light" onHide={handleClose} dialogClassName="modalPic">
-                <Modal.Header closeButton style={{backgroundColor: '#333'}}>
-                    <Modal.Title>Profile photo</Modal.Title>
+            <Modal show={showModal} onHide={handleClose} dialogClassName="modalPic">
+                <Modal.Header closeButton>
+                    <Modal.Title >Profile photo</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{backgroundColor: '#333'}}>
+                <Modal.Body >
                     <div className="d-flex justify-content-center my-5">
                         <img src={data.image} alt="Profile picture" id="profilePicModal" className="profilePic rounded-circle" />
                     </div>
-                    <Button variant="outline-secondary" className="ps-3 pe-3 text-light border-light border-1 rounded-pill fw-bold ">Anyone</Button>
+                    <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold">Anyone</Button>
                 </Modal.Body>
-                <Modal.Footer>
-                    
+                <Modal.Footer className="d-flex justify-content-between">
+                    <div>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Edit
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Add Photo
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Frames
+                        </Button>
+                    </div>
                     <Button variant="secondary" onClick={handleClose}>
                         Chiudi
                     </Button>
-                    
                 </Modal.Footer>
             </Modal>
 
