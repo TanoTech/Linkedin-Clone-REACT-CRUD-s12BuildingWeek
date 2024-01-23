@@ -49,7 +49,7 @@ const DettaglioInteressi = () => {
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
             <Link
-              to="/"
+              to="/user-profile"
               style={{
                 color: "black",
                 textDecoration: "none",
