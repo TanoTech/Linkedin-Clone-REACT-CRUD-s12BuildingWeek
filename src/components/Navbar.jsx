@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 import './css/navbar.css';
 
-
 const NavbarTop = () => {
-    const { profile } = useContext(ProfileContext);
+    const { profile, performSearch } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const userProfileName = profile ? `${profile.name} ${profile.surname}` : 'Caricamento...';
+    const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
     const userProfileImg = profile ? profile.image : '';
-
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFmOTQyMmJkNWQxMjAwMTg5MGQ0M2QiLCJpYXQiOjE3MDYwMDU1MzksImV4cCI6MTcwNzIxNTEzOX0.FCMdZrjjRxkJ279ok18O8GpY0L5AughCi-lX6jUDQPg';
 
     useEffect(() => {
         if (!searchTerm.trim()) {
@@ -22,37 +19,12 @@ const NavbarTop = () => {
             return;
         }
 
-        const performSearch = async () => {
-            try {
-                const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/?search=${searchTerm}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-                if (!response.ok) {
-                    throw new Error('Errore nella ricerca');
-                }
-                const profiles = await response.json();
-
-                const filteredProfiles = profiles.filter(profile =>
-                    profile.name.toLowerCase().includes(searchTerm.toLowerCase())
-                );
-
-                setSearchResults(filteredProfiles);
-                console.log(filteredProfiles)
-            } catch (error) {
-                console.error('Errore: ', error);
-
-            }
-        };
-
         const timerId = setTimeout(() => {
-            performSearch();
+            performSearch(searchTerm);
         }, 500);
 
         return () => clearTimeout(timerId);
-    }, [searchTerm]);
+    }, [searchTerm, profile, performSearch]);
 
     return (
         <Navbar bg="light" expand="lg">
@@ -73,9 +45,10 @@ const NavbarTop = () => {
                     <div className="search-results-container">
                         {searchResults.map((otherProfile) => (
                             <div key={otherProfile._id} className="search-result-item">
-                                <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />{otherProfile.name} {otherProfile.surname}
+                                <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
+                                {otherProfile.name} {otherProfile.surname}
                             </div>
-                        ))}
+                        ))} 
                     </div>
                 )}
             </Form>
@@ -116,7 +89,6 @@ const NavbarTop = () => {
                 </NavDropdown>
                 <NavLink>Prova Premium per 0 EUR</NavLink>
             </Navbar.Collapse>
-
         </Navbar>
     );
 };
