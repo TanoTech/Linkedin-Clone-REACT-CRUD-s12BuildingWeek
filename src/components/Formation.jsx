@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form , Modal } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import { GoPencil } from "react-icons/go";
-import Form from "react-bootstrap/Form";
 import "./css/FormationStyle.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -94,16 +93,12 @@ const Formation = () => {
       )}
 
       {mostraForm && (
-        <div id="modal-overlay">
-          <div id="modal">
-            <Container className="d-flex justify-content-between">
-              <h2 className="p-3 m-0">Aggiungi titolo di studio</h2>
-              <button onClick={() => setMostraForm(false)} id="ExitForm">
-                <RxCross2 />
-              </button>
-            </Container>
-
-            <Container id="CondivisioneModifiche">
+        <Modal show={mostraForm} onHide={() => setMostraForm(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title className="fs-6">Aggiungi titolo di studio</Modal.Title>
+          </Modal.Header>
+          <Modal.Body id="modal">
+            <Container >
               <Row>
                 <Col className="p-0 m-0">
                   <h2 className="p-0">Informa la rete</h2>
@@ -135,6 +130,7 @@ const Formation = () => {
                   onChange={(e) => setUniversita(e.target.value)}
                   placeholder="Esempio: Universita degli Studi di Salerno"
                   className="InputForm"
+                  required
                 />
               </Row>
 
@@ -146,6 +142,7 @@ const Formation = () => {
                   onChange={(e) => setTitoloStudio(e.target.value)}
                   placeholder="Esempio: Laurea"
                   className="InputForm"
+                  required
                 />
               </Row>
 
@@ -157,6 +154,7 @@ const Formation = () => {
                   onChange={(e) => setCorsoDiStudi(e.target.value)}
                   placeholder="Esempio: Economia"
                   className="InputForm"
+                  required
                 />
               </Row>
 
@@ -169,6 +167,7 @@ const Formation = () => {
                     value={dataInizioMese}
                     onChange={(e) => setDataInizioMese(e.target.value)}
                     className="InputForm "
+                    required
                   />
                   <input
                     type="text"
@@ -189,6 +188,7 @@ const Formation = () => {
                     value={dataFineMese}
                     onChange={(e) => setDataFineMese(e.target.value)}
                     className="InputForm"
+                    required
                   />
                   <input
                     type="text"
@@ -196,6 +196,7 @@ const Formation = () => {
                     value={dataFineAnno}
                     onChange={(e) => setDataFineAnno(e.target.value)}
                     className="InputForm"
+                    required
                   />
                 </div>
               </Container>
@@ -207,6 +208,7 @@ const Formation = () => {
                   value={votazione}
                   onChange={(e) => setVotazione(e.target.value)}
                   className="InputForm"
+                  required
                 />
               </Row>
 
@@ -222,20 +224,19 @@ const Formation = () => {
               </Row>
 
               <Row className="pb-4">
-                <label>Descrizione*</label>
+                <label>Descrizione</label>
                 <textarea
                   value={descrizione}
                   onChange={(e) => setDescrizione(e.target.value)}
                   className="InputForm"
                 ></textarea>
               </Row>
-
-              <Container>
-                <Button onClick={aggiungiEsperienzaFormazione}>Save</Button>
-              </Container>
             </div>
-          </div>
-        </div>
+            </Modal.Body>
+            <Container className="p-3" id="ButtonConteiner">
+                <Button id="ButtonSave" onClick={aggiungiEsperienzaFormazione}>Save</Button>
+              </Container>
+        </Modal>
       )}
     </div>
   );
