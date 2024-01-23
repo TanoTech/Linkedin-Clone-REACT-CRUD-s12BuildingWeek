@@ -1,5 +1,10 @@
+html {
+  background-color: #F4F2EE;
+}
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -38,6 +43,3 @@
 }
 
 
-.card {
-  z-index: -1;
-}
