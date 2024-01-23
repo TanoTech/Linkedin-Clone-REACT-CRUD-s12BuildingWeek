@@ -14,13 +14,19 @@ function App() {
         <ProfileProvider>
             <Router>
                 <div className="App">
-                    <NavbarTop />
-                    <Routes>
-                        <Route path="/user-profile" element={<UserProfile />} />
-                        <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
-                    </Routes>
-                    <MayKnow />
-                    <Footer />
+                    <header>
+                        <NavbarTop />
+                    </header>
+                    <main>
+                        <Routes>
+                            <Route path="/user-profile" element={<UserProfile />} />
+                            <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
+                        </Routes>
+                        <MayKnow />
+                    </main>
+                    <footer>
+                        <Footer />
+                    </footer>
                 </div>
             </Router>
         </ProfileProvider>

@@ -7,11 +7,6 @@ html {
 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -40,4 +35,4 @@ html {
   to {
     transform: rotate(360deg);
   }
-
+}

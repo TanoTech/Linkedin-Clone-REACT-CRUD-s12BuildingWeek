@@ -7,6 +7,7 @@ const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFmOTQyMmJkNWQx
 export const ProfileProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
+    const [getAllPeople, setGetAllPeople] = useState ([]);
 
     const performSearch = useCallback(async (searchTerm) => {
         try {
@@ -32,8 +33,28 @@ export const ProfileProvider = ({ children }) => {
         }
     }, []);
 
+    const fetchUsers = useCallback(async () => {
+        try {
+            const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Errore nella ricerca');
+            }
+            const getAllPeople = await response.json();
+
+            setGetAllPeople(getAllPeople);
+            console.log(getAllPeople)
+        } catch (error) {
+            console.error('Errore: ', error);
+        }
+    }, []);
+
     return (
-        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch }}>
+        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers }}>
             {children}
         </ProfileContext.Provider>
     );
