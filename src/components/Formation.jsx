@@ -11,7 +11,8 @@ import {
 } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
-
+import "./css/FormationStyle.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
@@ -107,8 +108,9 @@ const Formation = () => {
                 Aggiungi titolo di studio
               </Modal.Title>
             </Modal.Header>
-            <Container id="CondivisioneModifiche">
-              <Row>
+            <Modal.Body id="modal">
+
+            <Row id="CondivisioneModifiche">
                 <Col className="p-0 m-0">
                   <h2 className="p-0 fs-6">Informa la rete</h2>
                   <p className="m-0">
@@ -126,8 +128,7 @@ const Formation = () => {
                   </Form>
                 </Col>
               </Row>
-            </Container>
-            <Modal.Body id="modal">
+              
               <div className="p-4">
                 <Row className="pb-4">
                   <label className="text-left">Scuola o università*</label>
@@ -136,7 +137,7 @@ const Formation = () => {
                     value={universita}
                     onChange={(e) => setUniversita(e.target.value)}
                     placeholder="Esempio: Universita degli Studi di Salerno"
-                    className="InputForm"
+                    className="MyInputForm"
                     required
                   />
                 </Row>
@@ -148,7 +149,7 @@ const Formation = () => {
                     value={titoloStudio}
                     onChange={(e) => setTitoloStudio(e.target.value)}
                     placeholder="Esempio: Laurea"
-                    className="InputForm"
+                    className="MyInputForm"
                     required
                   />
                 </Row>
@@ -160,7 +161,7 @@ const Formation = () => {
                     value={corsoDiStudi}
                     onChange={(e) => setCorsoDiStudi(e.target.value)}
                     placeholder="Esempio: Economia"
-                    className="InputForm"
+                    className="MyInputForm"
                     required
                   />
                 </Row>
@@ -170,7 +171,7 @@ const Formation = () => {
                   <div className="d-flex justify-content-between m-0">
                     {/* Aggiungi un DropdownButton per il mese */}
                     <DropdownButton
-                      className="DropdownButton "
+                       className="DropdownButton "
                       title={dataInizioMese || "Mese"}
                       onSelect={(month) => setDataInizioMese(month)}
                     >
@@ -227,7 +228,7 @@ const Formation = () => {
                   <label>Data di fine (o prevista)*</label>
                   <div className="d-flex justify-content-between m-0">
                     <DropdownButton
-                      className="DropdownButton"
+                       className="DropdownButton"
                       title={dataFineMese || "Mese"}
                       onSelect={(month) => setDataFineMese(month)}
                     >
@@ -246,7 +247,7 @@ const Formation = () => {
                     </DropdownButton>
 
                     <DropdownButton
-                      className="DropdownButton"
+                       className="DropdownButton"
                       title={dataFineAnno || "Anno"}
                       onSelect={(year) => setDataFineAnno(year)}
                     >
@@ -285,7 +286,7 @@ const Formation = () => {
                     type="text"
                     value={votazione}
                     onChange={(e) => setVotazione(e.target.value)}
-                    className="InputForm"
+                    className="MyInputForm"
                     required
                   />
                 </Row>
@@ -297,7 +298,7 @@ const Formation = () => {
                     value={attivitaAssociative}
                     onChange={(e) => setAttivitaAssociative(e.target.value)}
                     placeholder="Esempio: pesca, pallavolo, immersione subacquee"
-                    className="InputForm"
+                    className="MyInputForm"
                   />
                 </Row>
 
@@ -306,7 +307,7 @@ const Formation = () => {
                   <textarea
                     value={descrizione}
                     onChange={(e) => setDescrizione(e.target.value)}
-                    className="InputForm"
+                    className="MyInputForm"
                   ></textarea>
                 </Row>
               </div>

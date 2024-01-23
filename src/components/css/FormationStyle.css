@@ -49,18 +49,37 @@
     margin: 0;
 }
 
+.MyInputForm {
+    height: 2em;
+    padding: 1.1em;
+    border-radius: 0.4em;
+    border: black solid 1px;
+}
+
+.MyInputForm:hover {
+    border: black solid 1.2px;
+}
+
 .DropdownButton .dropdown-menu {
     max-height: 10rem;
     overflow-y: scroll;
 }
 
-.dropdown-toggle {
+.DropdownButton .dropdown-toggle {
+    height: 2em;
+    border: black solid 0.8px;
     color: rgb(104, 104, 104);;
     background: none !important;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 15rem;
+    border-radius: 0.4em;
+}
+
+.DropdownButton .dropdown-toggle:hover {
+    border: black solid 1.2px;
 }
 
 #CondivisioneModifiche {
