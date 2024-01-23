@@ -66,9 +66,9 @@ const Interessi = () => {
 
 
   return (
-    <Container className="mt-3 mb-3">
+    <Container className="my-4 p-0">
       <Card>
-        <Card.Header style={{ textAlign: 'left', background: 'white' }}>
+        <Card.Header className='bg-white' style={{ textAlign: 'left' }}>
           <div>
 
 

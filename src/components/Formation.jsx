@@ -13,7 +13,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
 import "./css/FormationStyle.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
@@ -77,8 +77,8 @@ const Formation = () => {
   };
 
   return (
-    <Container>
-      <div id="SonContainer-Formation" className="center">
+    <Container className="p-0 border border-solid rounded bg-white p-3">
+      <div id="SonContainer-Formation" className="rounded">
         <div className="d-flex justify-content-between">
           <h2 className="mb-4">Formation</h2>
           <div>
@@ -100,8 +100,8 @@ const Formation = () => {
                 />
               </div>
               <div>
-                <h5 className="m-0 fs-4">{esperienza.universita}</h5>
-                <h6 className="m-0 fw-400">{esperienza.titoloStudio}</h6>
+                <h2 className="m-0 fs-4 HoverBluScritte">{esperienza.universita}</h2>
+                <h3 className="m-0 fs-6">{esperienza.titoloStudio}</h3>
                 <p className="m-0 text-secondary">
                 {`${esperienza.dataInizioMese || ""} ${esperienza.dataInizioAnno}`} - {`${esperienza.dataFineMese || ""} ${esperienza.dataFineAnno}`}
                 </p>
@@ -335,7 +335,7 @@ const Formation = () => {
                     value={attivitaAssociative}
                     onChange={(e) => setAttivitaAssociative(e.target.value)}
                     placeholder="Ex: fishing, volleyball, scuba diving"
-                    className="InputForm"
+                    className="MyInputForm"
                     maxLength={500}
 
                   />
