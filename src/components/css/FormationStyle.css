@@ -34,11 +34,12 @@
 /* MODALE */
 
 #modal {
-    height: 32rem;
+    height: 43rem;
     border-radius: 10px;
     overflow-y: auto;
     overflow-x: hidden;
     font-size: 0.8rem;
+    padding: 0rem;
 }
 
 #modal h2 {
@@ -51,12 +52,12 @@
 .MyInputForm {
     height: 2em;
     padding: 1.1em;
-    border-radius: 0.4em;
+    border-radius: 0.2em;
     border: black solid 1px;
 }
 
 .MyInputForm:hover {
-    border: black solid 1.2px;
+    border: black solid 2px;
 }
 
 .DropdownButton .dropdown-menu {
@@ -73,12 +74,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 15rem;
-    border-radius: 0.4em;
+    width: 18.5rem;
+    border-radius: 0.2em;
 }
 
 .DropdownButton .dropdown-toggle:hover {
-    border: black solid 1.2px;
+    border: black solid 2px;
 }
 
 #CondivisioneModifiche {

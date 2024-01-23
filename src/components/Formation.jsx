@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -13,6 +13,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
 import "./css/FormationStyle.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
@@ -27,6 +28,22 @@ const Formation = () => {
   const [votazione, setVotazione] = useState("");
   const [attivitaAssociative, setAttivitaAssociative] = useState("");
   const [descrizione, setDescrizione] = useState("");
+
+  useEffect(() => {
+    const formazioniDiBase = Array.from({ length: 1 }, (_, index) => ({
+      universita: `Epicode`,
+      titoloStudio: "Full Stack Developer",
+      corsoDiStudi: `Full-Time`,
+      dataInizioMese: "January",
+      dataInizioAnno: "2023",
+      dataFineMese: "June",
+      dataFineAnno: "2023",
+      votazione: "30/30",
+      descrizione: `Esperinza di formazione full-time immerso nel mondo della programmazione`,
+    }));
+
+    setEsperienzeFormazione(formazioniDiBase);
+  }, []);
 
   const aggiungiEsperienzaFormazione = () => {
     const nuovaEsperienzaFormazione = {
@@ -74,7 +91,7 @@ const Formation = () => {
 
         {esperienzeFormazione.length > 0 ? (
           esperienzeFormazione.map((esperienza, index) => (
-            <div id="Experience-Conteiner" className="d-flex" key={index}>
+            <div id="Experience-Conteiner" className="d-flex mb-5" key={index}>
               <div>
                 <img
                   src="https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188798/epicodeschool_logo?e=1714003200&v=beta&t=02cZOkAFfrcsqE3vMctwQcElNrMnInX4NwQFmaTF1M8"
@@ -85,8 +102,8 @@ const Formation = () => {
               <div>
                 <h5 className="m-0 fs-4">{esperienza.universita}</h5>
                 <h6 className="m-0 fw-400">{esperienza.titoloStudio}</h6>
-                <p className="m-0">
-                  {esperienza.dataInizio} - {esperienza.dataFine}
+                <p className="m-0 text-secondary">
+                {`${esperienza.dataInizioMese || ""} ${esperienza.dataInizioAnno}`} - {`${esperienza.dataFineMese || ""} ${esperienza.dataFineAnno}`}
                 </p>
                 <p className="m-0">{esperienza.corsoDiStudi}</p>
                 <p className="m-0">{esperienza.votazione}</p>
@@ -109,8 +126,7 @@ const Formation = () => {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body id="modal">
-
-            <Row id="CondivisioneModifiche">
+              <Row id="CondivisioneModifiche">
                 <Col className="p-0 m-0">
                   <h2 className="p-0 fs-6">Notify network</h2>
                   <p className="m-0">
@@ -126,7 +142,7 @@ const Formation = () => {
                   </Form>
                 </Col>
               </Row>
-              
+
               <div className="p-4">
                 <Row className="pb-4">
                   <label className="text-left">School*</label>
@@ -168,27 +184,36 @@ const Formation = () => {
 
                 <Container className="pb-4">
                   <label>Start date*</label>
+
                   <div className="d-flex justify-content-between m-0">
-                    {/* Aggiungi un DropdownButton per il mese */}
                     <DropdownButton
 
                       className="DropdownButton "
                       title={dataInizioMese || "Month"}
 
+
                       onSelect={(month) => setDataInizioMese(month)}
                     >
                       <Dropdown.Item eventKey="January">January</Dropdown.Item>
-                      <Dropdown.Item eventKey="February">February</Dropdown.Item>
+                      <Dropdown.Item eventKey="February">
+                        February
+                      </Dropdown.Item>
                       <Dropdown.Item eventKey="March">March</Dropdown.Item>
                       <Dropdown.Item eventKey="April">April</Dropdown.Item>
                       <Dropdown.Item eventKey="May">May</Dropdown.Item>
                       <Dropdown.Item eventKey="June">June</Dropdown.Item>
                       <Dropdown.Item eventKey="July">July</Dropdown.Item>
                       <Dropdown.Item eventKey="August">August</Dropdown.Item>
-                      <Dropdown.Item eventKey="September">September</Dropdown.Item>
+                      <Dropdown.Item eventKey="September">
+                        September
+                      </Dropdown.Item>
                       <Dropdown.Item eventKey="October">October</Dropdown.Item>
-                      <Dropdown.Item eventKey="November">November</Dropdown.Item>
-                      <Dropdown.Item eventKey="December">December</Dropdown.Item>
+                      <Dropdown.Item eventKey="November">
+                        November
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="December">
+                        December
+                      </Dropdown.Item>
                     </DropdownButton>
 
                     {/* Aggiungi un DropdownButton per l'anno */}
@@ -226,30 +251,40 @@ const Formation = () => {
                   </div>
                 </Container>
 
+
                 <Container className="pb-4">
                   <label>End date (or expected)*</label>
+                  
                   <div className="d-flex justify-content-between m-0">
                     <DropdownButton
-                       className="DropdownButton"
+                      className="DropdownButton"
                       title={dataFineMese || "Mese"}
                       onSelect={(month) => setDataFineMese(month)}
                     >
                       <Dropdown.Item eventKey="January">January</Dropdown.Item>
-                      <Dropdown.Item eventKey="February">February</Dropdown.Item>
+                      <Dropdown.Item eventKey="February">
+                        February
+                      </Dropdown.Item>
                       <Dropdown.Item eventKey="March">March</Dropdown.Item>
                       <Dropdown.Item eventKey="April">April</Dropdown.Item>
                       <Dropdown.Item eventKey="May">May</Dropdown.Item>
                       <Dropdown.Item eventKey="June">June</Dropdown.Item>
                       <Dropdown.Item eventKey="July">July</Dropdown.Item>
                       <Dropdown.Item eventKey="August">August</Dropdown.Item>
-                      <Dropdown.Item eventKey="September">September</Dropdown.Item>
+                      <Dropdown.Item eventKey="September">
+                        September
+                      </Dropdown.Item>
                       <Dropdown.Item eventKey="October">October</Dropdown.Item>
-                      <Dropdown.Item eventKey="November">November</Dropdown.Item>
-                      <Dropdown.Item eventKey="December">December</Dropdown.Item>
+                      <Dropdown.Item eventKey="November">
+                        November
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="December">
+                        December
+                      </Dropdown.Item>
                     </DropdownButton>
 
                     <DropdownButton
-                       className="DropdownButton"
+                      className="DropdownButton"
                       title={dataFineAnno || "Anno"}
                       onSelect={(year) => setDataFineAnno(year)}
                     >
@@ -301,6 +336,7 @@ const Formation = () => {
                     onChange={(e) => setAttivitaAssociative(e.target.value)}
                     placeholder="Ex: fishing, volleyball, scuba diving"
                     className="InputForm"
+                    maxLength={500}
 
                   />
                 </Row>
@@ -311,6 +347,7 @@ const Formation = () => {
                     value={descrizione}
                     onChange={(e) => setDescrizione(e.target.value)}
                     className="MyInputForm"
+                    maxLength={100000}
                   ></textarea>
                 </Row>
               </div>
