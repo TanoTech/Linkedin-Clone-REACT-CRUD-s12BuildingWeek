@@ -17,12 +17,14 @@ function App() {
                     <header>
                         <NavbarTop />
                     </header>
-                    <main>
-                        <Routes>
-                            <Route path="/user-profile" element={<UserProfile />} />
-                            <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
-                        </Routes>
-                        <MayKnow />
+                    <main className="d-flex">
+                        <div>
+                            <Routes>
+                                <Route path="/user-profile" element={<UserProfile />} />
+                                <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
+                            </Routes>
+                        </div>
+                        <section> <MayKnow /></section>
                     </main>
                     <footer>
                         <Footer />
