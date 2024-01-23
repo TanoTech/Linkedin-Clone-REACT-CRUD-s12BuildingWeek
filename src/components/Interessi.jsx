@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { FaArrowRight } from "react-icons/fa";
-import "./css/Interessi.css";
 import { Link } from "react-router-dom";
 
 const Interessi = () => {

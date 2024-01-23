@@ -17,7 +17,7 @@ function App() {
                     <header>
                         <NavbarTop />
                     </header>
-                    <main className="d-flex">
+                    <main>
                         <div>
                             <Routes>
                                 <Route path="/user-profile" element={<UserProfile />} />

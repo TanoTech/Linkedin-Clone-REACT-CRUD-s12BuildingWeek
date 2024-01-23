@@ -1,6 +1,5 @@
 import { Container, Row, Col, Button, Modal, Accordion } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'; // fogli css di bootstrap da spostare in futuro
-import './css/MainProfile.css';
 import { HiOutlinePencil } from "react-icons/hi2";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa";

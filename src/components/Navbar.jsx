@@ -3,7 +3,6 @@ import { ProfileContext } from '../redux/contexts/ProfileContext';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
-import './css/navbar.css';
 
 const NavbarTop = () => {
     const { profile, performSearch } = useContext(ProfileContext);

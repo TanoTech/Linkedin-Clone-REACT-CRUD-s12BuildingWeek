@@ -11,8 +11,7 @@ import {
 } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
-import "./css/FormationStyle.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
@@ -171,7 +170,7 @@ const Formation = () => {
                   <div className="d-flex justify-content-between m-0">
                     {/* Aggiungi un DropdownButton per il mese */}
                     <DropdownButton
-                       className="DropdownButton "
+                      className="DropdownButton "
                       title={dataInizioMese || "Mese"}
                       onSelect={(month) => setDataInizioMese(month)}
                     >
@@ -228,7 +227,7 @@ const Formation = () => {
                   <label>Data di fine (o prevista)*</label>
                   <div className="d-flex justify-content-between m-0">
                     <DropdownButton
-                       className="DropdownButton"
+                      className="DropdownButton"
                       title={dataFineMese || "Mese"}
                       onSelect={(month) => setDataFineMese(month)}
                     >
@@ -247,7 +246,7 @@ const Formation = () => {
                     </DropdownButton>
 
                     <DropdownButton
-                       className="DropdownButton"
+                      className="DropdownButton"
                       title={dataFineAnno || "Anno"}
                       onSelect={(year) => setDataFineAnno(year)}
                     >

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext'; 
 import 'bootstrap-icons/font/bootstrap-icons.css'; 
 import { Container } from 'react-bootstrap';
-import './css/MayKnow.css';
+
 
 const MayKnow = () => {
     const { getAllPeople, fetchUsers } = useContext(ProfileContext);
@@ -27,7 +27,7 @@ const MayKnow = () => {
                 <div key={person._id} className='MayKnowContent'>
                     <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                     <div className='MayKnowColumn'>
-                        <h3 className='MayKnowName'>{person.name}</h3>
+                        <h3 className='MayKnowName'>{person.name}{person.surname}</h3>
                         <p className='MayKnowJob'>{person.title}</p>
                         <button className='MayKnowBtn'><i className="bi bi-person-plus-fill"></i>Connect</button>
                     </div>

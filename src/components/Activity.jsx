@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Row, Col, Button, Container, Modal, Form, ModalBody, } from 'react-bootstrap';
 import { HiOutlinePencil } from 'react-icons/hi2';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/Activity.css';
 import EmoticonPicker from '../components/Emoticons';
 import { FaRegClock } from "react-icons/fa6";
-import { HiOutlinePhoto } from "react-icons/hi2";
+
 
 const Activity = ({ data }) => {
   const [postDetailsCounts, setPostDetailsCounts] = useState({

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Container, Row, Col, Dropdown } from 'react-bootstrap';
-import './css/Footer.css';
 
 const Footer = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
