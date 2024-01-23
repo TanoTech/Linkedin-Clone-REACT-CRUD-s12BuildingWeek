@@ -10,7 +10,6 @@ header {
     z-index: 100;
 }
 
-
 .nav-item {
     div>img {
         width: 60px;
@@ -53,7 +52,6 @@ button svg {
 }
 
 .search-results-container {
-    position: relative;
     top: 100%; 
     left: 0;
     right: 0;
@@ -79,4 +77,8 @@ button svg {
 }
 .dropImg{
     border-radius: 50%;
+}
+
+a.dropdown-toggle.nav-link::after{
+    display: none !important;
 }
