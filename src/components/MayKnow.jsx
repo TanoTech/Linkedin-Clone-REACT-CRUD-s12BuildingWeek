@@ -29,7 +29,7 @@ const MayKnow = () => {
                     <div className='MayKnowColumn'>
                         <h3 className='MayKnowName'>{person.name}{person.surname}</h3>
                         <p className='MayKnowJob'>{person.title}</p>
-                        <button className='MayKnowBtn'><i className="bi bi-person-plus-fill"></i>Connect</button>
+                        <button className='MayKnowBtn'><i className="bi bi-person-plus-fill MayKnowIcon"></i>Connect</button>
                     </div>
                 </div>
             ))}

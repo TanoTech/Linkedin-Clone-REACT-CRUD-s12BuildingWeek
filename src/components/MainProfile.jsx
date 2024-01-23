@@ -1,9 +1,10 @@
-import { Container, Row, Col, Button, Modal, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Accordion, Dropdown, DropdownButton, Form } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'; // fogli css di bootstrap da spostare in futuro
 import { HiOutlinePencil } from "react-icons/hi2";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa";
 import { SlPicture } from "react-icons/sl";
+import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 
 const urlCopertina = 'https://media.licdn.com/dms/image/D4D16AQHXjrGnp73BDw/profile-displaybackgroundimage-shrink_350_1400/0/1703176761319?e=1711584000&v=beta&t=vSMa8fJw-CuYIZZ2daNp7bIpS1RqGN4PI9Z7JMrYz80' // test da rimuovere successivamente
@@ -22,6 +23,50 @@ const MainProfile = ({ data }) => {
     const handleShowModalProfile = () => setShowModalProfile(true); // apertura modale AddProfile
     const handleCloseModalProfile = () => setShowModalProfile(false); // chiusara modale AddProfile
 
+    const [showModalPhoto, setShowModalPhoto] = useState(false); // stato apertura/chiusura Modale AddPhoto
+    const handleShowModalPhoto = () => setShowModalPhoto(true); // apertura modale AddPhoto
+    const handleCloseModalPhoto = () => setShowModalPhoto(false); // chiusura modale AddPhoto
+
+    const [selectedPhoto, setSelectedPhoto] = useState(null); // stato della photo caricata
+    const handlePhotoChange = (e) => {
+        const photo = e.target.files[0];
+        setSelectedPhoto(photo)
+    } // funzione per settare l'immagine caricata
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
+
+    const handleUpload = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('name', data.name);
+            formData.append('surname', data.surname);
+            formData.append('email', data.email);
+            formData.append('username', data.username);
+            formData.append('bio', data.bio);
+            formData.append('title', data.title);
+            formData.append('area', data.area);
+            formData.append('image', selectedPhoto);
+
+            // PUT
+            const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: formData,
+            });
+
+            if (response.ok) {
+                console.log('Immagine caricata con successo');
+            } else {
+                console.error('Errore durante il caricamento dell\'immagine');
+            }
+        } catch (error) {
+            console.error('Errore durante la richiesta PUT:', error);
+        }
+    };
+
+
     return (
         <>
             <Container className="my-2">
@@ -34,13 +79,10 @@ const MainProfile = ({ data }) => {
 
                 </Row>
 
-
                 <div style={{ height: '0em' }}>
                     <img src={data.image} alt="Profile picture" id="profilePic" className="rounded-circle border border-light border-4" onClick={handleShowModalPic} /> {/* deve aprirsi un modale */}
 
                 </div>
-
-
 
                 <Container className="mt-0 p-3">
                     <div className="d-flex justify-content-end">
@@ -57,9 +99,35 @@ const MainProfile = ({ data }) => {
                             <Row className="my-3">
                                 <Col>
                                     <div className="d-flex">
-                                        <Button variant="primary" className="ps-3 pe-3 me-2 rounded-pill fw-bold">Open to</Button> {/* Deve aprire un dropdown menu */}
+
+                                        <DropdownButton variant="primary" className="me-2 rounded-pill fw-bold custom-dropdown-button" id="dropdown-basic-button" title="Open to">
+                                            <Dropdown.Item href="#/action-1">
+                                                <p className="mb-0 fw-bold">Hiring</p>
+                                                <p className="mb-0">share that you're hiring and attract qualified candidates</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">
+                                                <p className="mb-0 fw-bold">Providing services</p>
+                                                <p className="mb-0">Showcase services you offer so new clients can discover you</p>
+                                            </Dropdown.Item>
+                                        </DropdownButton>
+
                                         <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button> {/* deve aprirsi un modale */}
-                                        <Button variant="light" className="ps-3 pe-3 text-secondary border-secondary rounded-pill fw-bold ">More</Button> {/* Deve aprire un dropdown menu */}
+
+                                        <DropdownButton variant="primary" className="pe-3 me-2 rounded-pill fw-bold custom-dropdown-button" id="dropdown-basic-button" title="More">
+                                            <Dropdown.Item href="#/action-1">
+                                                <p className="mb-0">Send profile in a message</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">
+                                                <p className="mb-0">Save to Pdf</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3">
+                                                <p className="mb-0">Build a resume</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-4">
+                                                <p className="mb-0">About this profile</p>
+                                            </Dropdown.Item>
+                                        </DropdownButton>
+
                                     </div>
                                 </Col>
                             </Row>
@@ -95,7 +163,10 @@ const MainProfile = ({ data }) => {
                     <div className="d-flex justify-content-center my-5">
                         <img src={data.image} alt="Profile picture" id="profilePicModal" className="profilePic rounded-circle" />
                     </div>
-                    <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold">Anyone</Button>
+                    <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold">
+                        <FaEye className="modalIcons me-2" />
+                        Anyone
+                    </Button>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-between">
                     <div className="d-flex">
@@ -105,7 +176,7 @@ const MainProfile = ({ data }) => {
                             Edit
                         </Button>
 
-                        <Button variant="primary" className="d-flex flex-column align-items-center me-2">
+                        <Button variant="primary" className="d-flex flex-column align-items-center me-2" onClick={handleShowModalPhoto}>
                             <FaCamera className="modalIcons text-white" />
                             Add photo
                         </Button>
@@ -127,11 +198,12 @@ const MainProfile = ({ data }) => {
 
             {/* Modale Add to profile */}
             <Modal show={showModalProfile} onHide={handleCloseModalProfile}>
+
                 <Modal.Header closeButton>
                     <Modal.Title>Add to profile</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
 
+                <Modal.Body>
                     <Accordion defaultActiveKey="0" flush>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header><p className="fw-bold mb-0">Core</p></Accordion.Header>
@@ -188,9 +260,34 @@ const MainProfile = ({ data }) => {
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
-
                 </Modal.Body>
 
+            </Modal>
+
+            {/* Modale per la modifica della foto */}
+
+            <Modal show={showModalPhoto} onHide={handleCloseModalPhoto}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Change Photo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <Form encType='multipart/form-data'>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Choose a photo</Form.Label>
+                            <Form.Control type="file" name="" id="" onChange={handlePhotoChange} />
+                        </Form.Group>
+                    </Form>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModalPhoto}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleUpload}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
             </Modal>
 
         </>
