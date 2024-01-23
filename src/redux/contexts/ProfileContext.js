@@ -25,8 +25,8 @@ export const ProfileProvider = ({ children }) => {
             const filteredProfiles = profiles.filter(profile =>
                 profile.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
-
             setSearchResults(filteredProfiles);
+            console.log('questi sono i risultati di cosa cerchi')
             console.log(filteredProfiles)
         } catch (error) {
             console.error('Errore: ', error);
@@ -47,6 +47,7 @@ export const ProfileProvider = ({ children }) => {
             const getAllPeople = await response.json();
 
             setGetAllPeople(getAllPeople);
+            console.log('questi sono tutti gli utenti')
             console.log(getAllPeople)
         } catch (error) {
             console.error('Errore: ', error);

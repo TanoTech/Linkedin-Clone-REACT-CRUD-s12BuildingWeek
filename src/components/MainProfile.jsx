@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Modal, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Accordion, Dropdown, DropdownButton } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'; // fogli css di bootstrap da spostare in futuro
 import { HiOutlinePencil } from "react-icons/hi2";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -57,9 +57,35 @@ const MainProfile = ({ data }) => {
                             <Row className="my-3">
                                 <Col>
                                     <div className="d-flex">
-                                        <Button variant="primary" className="ps-3 pe-3 me-2 rounded-pill fw-bold">Open to</Button> {/* Deve aprire un dropdown menu */}
+
+                                        <DropdownButton variant="primary" className="me-2 rounded-pill fw-bold custom-dropdown-button" id="dropdown-basic-button" title="Open to">
+                                            <Dropdown.Item href="#/action-1">
+                                                <p className="mb-0 fw-bold">Hiring</p>
+                                                <p className="mb-0">share that you're hiring and attract qualified candidates</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">
+                                            <p className="mb-0 fw-bold">Providing services</p>
+                                            <p className="mb-0">Showcase services you offer so new clients can discover you</p>
+                                            </Dropdown.Item>
+                                        </DropdownButton>
+
                                         <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button> {/* deve aprirsi un modale */}
-                                        <Button variant="light" className="ps-3 pe-3 text-secondary border-secondary rounded-pill fw-bold ">More</Button> {/* Deve aprire un dropdown menu */}
+
+                                        <DropdownButton variant="primary" className="pe-3 me-2 rounded-pill fw-bold custom-dropdown-button" id="dropdown-basic-button" title="More">
+                                            <Dropdown.Item href="#/action-1">
+                                                <p className="mb-0">Send profile in a message</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">
+                                            <p className="mb-0">Save to Pdf</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3">
+                                            <p className="mb-0">Build a resume</p>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-4">
+                                            <p className="mb-0">About this profile</p>
+                                            </Dropdown.Item>
+                                        </DropdownButton>
+
                                     </div>
                                 </Col>
                             </Row>

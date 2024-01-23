@@ -11,7 +11,8 @@ import {
 } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
-
+import "./css/FormationStyle.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
@@ -107,8 +108,9 @@ const Formation = () => {
               Add education
               </Modal.Title>
             </Modal.Header>
-            <Container id="CondivisioneModifiche">
-              <Row>
+            <Modal.Body id="modal">
+
+            <Row id="CondivisioneModifiche">
                 <Col className="p-0 m-0">
                   <h2 className="p-0 fs-6">Notify network</h2>
                   <p className="m-0">
@@ -124,8 +126,7 @@ const Formation = () => {
                   </Form>
                 </Col>
               </Row>
-            </Container>
-            <Modal.Body id="modal">
+              
               <div className="p-4">
                 <Row className="pb-4">
                   <label className="text-left">School*</label>
@@ -147,6 +148,7 @@ const Formation = () => {
                     onChange={(e) => setTitoloStudio(e.target.value)}
                     placeholder="Ex: Bachelor's"
                     className="InputForm"
+
                     required
                   />
                 </Row>
@@ -159,6 +161,7 @@ const Formation = () => {
                     onChange={(e) => setCorsoDiStudi(e.target.value)}
                     placeholder="Ex: Business"
                     className="InputForm"
+
                     required
                   />
                 </Row>
@@ -168,8 +171,10 @@ const Formation = () => {
                   <div className="d-flex justify-content-between m-0">
                     {/* Aggiungi un DropdownButton per il mese */}
                     <DropdownButton
+
                       className="DropdownButton "
                       title={dataInizioMese || "Month"}
+
                       onSelect={(month) => setDataInizioMese(month)}
                     >
                       <Dropdown.Item eventKey="January">January</Dropdown.Item>
@@ -225,7 +230,7 @@ const Formation = () => {
                   <label>End date (or expected)*</label>
                   <div className="d-flex justify-content-between m-0">
                     <DropdownButton
-                      className="DropdownButton"
+                       className="DropdownButton"
                       title={dataFineMese || "Mese"}
                       onSelect={(month) => setDataFineMese(month)}
                     >
@@ -244,7 +249,7 @@ const Formation = () => {
                     </DropdownButton>
 
                     <DropdownButton
-                      className="DropdownButton"
+                       className="DropdownButton"
                       title={dataFineAnno || "Anno"}
                       onSelect={(year) => setDataFineAnno(year)}
                     >
@@ -283,7 +288,7 @@ const Formation = () => {
                     type="text"
                     value={votazione}
                     onChange={(e) => setVotazione(e.target.value)}
-                    className="InputForm"
+                    className="MyInputForm"
                     required
                   />
                 </Row>
@@ -296,6 +301,7 @@ const Formation = () => {
                     onChange={(e) => setAttivitaAssociative(e.target.value)}
                     placeholder="Ex: fishing, volleyball, scuba diving"
                     className="InputForm"
+
                   />
                 </Row>
 
@@ -304,7 +310,7 @@ const Formation = () => {
                   <textarea
                     value={descrizione}
                     onChange={(e) => setDescrizione(e.target.value)}
-                    className="InputForm"
+                    className="MyInputForm"
                   ></textarea>
                 </Row>
               </div>
