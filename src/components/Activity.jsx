@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Container, Modal, Form, } from 'react-bootstrap';
+import { Row, Col, Button, Container, Modal, Form, ModalBody, } from 'react-bootstrap';
 import { HiOutlinePencil } from 'react-icons/hi2';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Activity.css';
 import EmoticonPicker from '../components/Emoticons';
+import { FaRegClock } from "react-icons/fa6";
+import { HiOutlinePhoto } from "react-icons/hi2";
 
 const Activity = ({ data }) => {
   const [postDetailsCounts, setPostDetailsCounts] = useState({
@@ -63,7 +65,7 @@ const Activity = ({ data }) => {
           <Col>
             <p className="minutes">
               <span id="activity-user">
-                <strong>You</strong> have shared this post
+                <strong>{data.name} {data.surname} </strong> reposted this
               </span>{' '}
               • 2 min
             </p>
@@ -124,9 +126,12 @@ const Activity = ({ data }) => {
        {/* Modale crea post */}
        <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title className='fs-5'>
-            <img className='rounded-circle me-3' src={data.image} width={'13%'} alt={`${data.name} ${data.surname}`} />
-            {data.name} {data.surname}
+          <Modal.Title className='fs-5 d-flex'>
+            <img className='rounded-circle me-3' src={data.image} width={'13%'}/>
+            <div className='d-flex flex-column'>
+            {data.name} {data.surname} 
+            <p className='postModal'>Post to Anyone</p>
+            </div>
           </Modal.Title>
         </Modal.Header>
 
@@ -136,7 +141,7 @@ const Activity = ({ data }) => {
               <Form.Control
                 as="textarea"
                 rows={5}
-                placeholder="What would you like to talk about?"
+                placeholder="What do you want to talk about?"
                 value={postDetails.text}
                 onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
               />
@@ -144,9 +149,10 @@ const Activity = ({ data }) => {
             </Form.Group>
             <hr />
             
-            <div className='d-flex justify-content-end'>
-              <Button onClick={handlePublishPost}>
-                Publish
+            <div className='d-flex justify-content-end align-items-center'>
+              <FaRegClock className='clock fs-5 me-3'></FaRegClock>
+              <Button className='rounded-pill ps-3 pe-3' onClick={handlePublishPost}>
+                Post
               </Button>
             </div>
           </Form>
