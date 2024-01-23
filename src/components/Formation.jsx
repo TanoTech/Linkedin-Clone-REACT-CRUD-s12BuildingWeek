@@ -13,6 +13,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
 import "./css/FormationStyle.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 
 const Formation = () => {
   const [esperienzeFormazione, setEsperienzeFormazione] = useState([]);
