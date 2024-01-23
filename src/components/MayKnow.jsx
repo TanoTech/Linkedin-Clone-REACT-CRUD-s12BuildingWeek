@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ProfileContext } from '../redux/contexts/ProfileContext'; 
 import 'bootstrap-icons/font/bootstrap-icons.css'; 
-import './css/MayKnow.css';
+import { Container } from 'react-bootstrap';
+
 
 const MayKnow = () => {
-    const urlProfile = 'https://i.redd.it/4erhpdgw2wx81.png';
+    const { getAllPeople, fetchUsers } = useContext(ProfileContext);
+    const [randomPeople, setRandomPeople] = useState([]);
+
+    useEffect(() => {
+        fetchUsers();
+    }, [fetchUsers]);
+
+    useEffect(() => {
+        if (getAllPeople.length > 0) {
+            const shuffled = [...getAllPeople].sort(() => 0.5 - Math.random());
+            setRandomPeople(shuffled.slice(0, 6));
+        }
+    }, [getAllPeople]);
 
     return (
-        <div className='MayKnow'>
+        <Container className='MayKnow'>
             <h2 className='MayKnowTitle'>People you may know</h2>
 
-            <div className='MayKnowContent'>
-                <img className='MayKnowImg' src={urlProfile} alt="profile picture" />
-                <div className='MayKnowColumn'>
-                    <h3 className='MayKnowName'>Mario Draghi</h3>
-                    <p className='MayKnowJob'>Junior Frontend Developer</p>
-                    <button className='MayKnowBtn'><i className="bi bi-person-fill-add"></i>Connect</button>
+            {randomPeople.map(person => (
+                <div key={person._id} className='MayKnowContent'>
+                    <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
+                    <div className='MayKnowColumn'>
+                        <h3 className='MayKnowName'>{person.name}{person.surname}</h3>
+                        <p className='MayKnowJob'>{person.title}</p>
+                        <button className='MayKnowBtn'><i className="bi bi-person-plus-fill"></i>Connect</button>
+                    </div>
                 </div>
-            </div>
-            <div className='MayKnowContent'>
-                <img className='MayKnowImg' src={urlProfile} alt="profile picture" />
-                <div className='MayKnowColumn'>
-                    <h3 className='MayKnowName'>Mario Draghi</h3>
-                    <p className='MayKnowJob'>Junior Frontend Developer</p>
-                    <button className='MayKnowBtn'><i className="bi bi-person-fill-add"></i>Connect</button>
-                </div>
-            </div>
+            ))}
 
             <p className='MayKnowShow'>Show all</p>
-        </div>
+        </Container>
     );
 }
 
