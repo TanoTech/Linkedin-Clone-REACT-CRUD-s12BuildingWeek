@@ -49,8 +49,7 @@
     margin: 0;
 }
 
-
-.dropdown-menu{
+.DropdownButton .dropdown-menu {
     max-height: 10rem;
     overflow-y: scroll;
 }
