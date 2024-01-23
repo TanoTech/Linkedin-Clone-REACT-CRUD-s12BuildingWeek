@@ -53,7 +53,7 @@ const Formation = () => {
   };
 
   return (
-    <div id="SonContainer-Formation">
+    <div id="SonContainer-Formation" className="center">
       <div className="d-flex justify-content-between">
         <h2 className="mb-4">Formation</h2>
         <div>
