@@ -25,7 +25,7 @@ const MayKnow = () => {
 
             {randomPeople.map(person => (
                 <div key={person._id} className='MayKnowContent'>
-                    <img className='MayKnowImg' src={person.image} alt="profile picture" />
+                    <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                     <div className='MayKnowColumn'>
                         <h3 className='MayKnowName'>{person.name}</h3>
                         <p className='MayKnowJob'>{person.title}</p>
