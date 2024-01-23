@@ -24,6 +24,12 @@
     cursor: pointer;
 }
 
+/* Rimuove la freccetta dai dropdown menu */
+
+.dropdown-toggle::after{
+    display: none !important;
+}
+
 /* adatta la foto del profilo */
 
 @media screen and (max-width: 576px) {
