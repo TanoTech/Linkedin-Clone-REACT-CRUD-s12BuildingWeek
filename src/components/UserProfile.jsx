@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { ProfileContext } from '../redux/contexts/ProfileContext';
 import axios from 'axios';
 import MainProfile from './MainProfile';
 import Formation from './Formation';
 import Interessi from './Interessi';
 import Activity from './Activity';
+import { Spinner } from 'react-bootstrap';
 
 const UserProfile = () => {
-    const [profile, setProfile] = useState(null);
+    const { profile, setProfile} = useContext(ProfileContext);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -26,9 +28,9 @@ const UserProfile = () => {
             }
         };
         fetchProfile();
-    }, []);
+    }, [setProfile]);
     if (!profile) {
-        return <div>Caricamento del profilo...</div>;
+        return  <Spinner></Spinner>;
     }
 
     return (

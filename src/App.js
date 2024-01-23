@@ -5,22 +5,25 @@ import DettaglioInteressi from "./components/DettaglioInteressi";
 import MayKnow from './components/MayKnow';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ProfileProvider } from './redux/contexts/ProfileContext';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <NavbarTop />
-        <Routes>
-          <Route path="/" element={<UserProfile />} />
-          <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
-        </Routes>
-        <MayKnow />
-        <Footer />
-      </div>
-    </Router>
+      <ProfileProvider>
+          <Router>
+              <div className="App">
+                  <NavbarTop />
+                  <Routes>
+                      <Route path="/" element={<UserProfile />} />
+                      <Route path="/risultati/:sezione" element={<DettaglioInteressi />} />
+                  </Routes>
+                  <MayKnow />
+                  <Footer />
+              </div>
+          </Router>
+      </ProfileProvider>
   );
 }
 
