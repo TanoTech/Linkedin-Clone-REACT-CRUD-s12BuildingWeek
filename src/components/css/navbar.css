@@ -1,5 +1,8 @@
 .MyNavBar {
     height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-brand {
@@ -91,11 +94,26 @@ a.dropdown-toggle.nav-link::after{
 
 #MenuDropDown {
     width: 20rem;
+    
 }
 
 #PremiumLink {
     font-size: 0.75em;
-    margin: 0em 0em 1.3em 1.3em;
+    margin: 0em 0em 1.3em 2em;
     color: #915907;
     text-decoration: underline;
 }
+
+#PremiumLink:hover {
+    color: #6f4507;
+    
+}
+
+#Business {
+    color: rgb(0 0 0 / 65%);
+}
+
+#Business:hover {
+    color: rgb(0 0 0 / 100%);
+}
+
