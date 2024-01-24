@@ -1,40 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ProfileContext } from '../redux/contexts/ProfileContext'; 
+import { ProfileContext } from '../redux/contexts/ProfileContext';
 
 const Jobs = () => {
-    const { fetchJobs } = useContext(ProfileContext);
-    const [jobs, setJobs] = useState([]);
+    const { jobResults, fetchJobs } = useContext(ProfileContext);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchJobData = async () => {
-            try {
-                const jobData = await fetchJobs({ query: 'developer', limit: 10 });
-                if (jobData) {
-                    setJobs(jobData);
-                }
-            } catch (err) {
-                setError(err.message);
-            }
-        };
-        
-        fetchJobData();
+        fetchJobs({ query: 'developer', limit: 10 }).catch(err => {
+            setError(err.message);
+        });
     }, [fetchJobs]);
+
+    const jobs = jobResults;
 
     return (
         <div>
-            <h2>Offerte di lavoro</h2>
+            <h2>Jobs offers:</h2>
             {error && <p>Si è verificato un errore: {error}</p>}
-            <ul>
-                {jobs.map(job => (
-                    <li key={job.title}>
-                        <h3>{job.title}</h3>
-                        <p>{job.description}</p>
-                    </li>
-                ))}
-            </ul>
+            {!jobs.length ? <p>Caricamento in corso...</p> : (
+                <ul>
+                    {jobs.map(job => (
+                        <li key={job._id}> 
+                            <h3>{job.company_name}</h3>
+                            <p>{job.title}</p>
+                            <p>{job.job_type}</p>
+                            <div dangerouslySetInnerHTML={{ __html: job.description }} />
+                        </li>
+                    ))}
+                </ul>
+            )}
+            {!jobs.length && !error && <p>Nessuna offerta di lavoro trovata.</p>}
         </div>
     );
-};
+}
 
 export default Jobs;

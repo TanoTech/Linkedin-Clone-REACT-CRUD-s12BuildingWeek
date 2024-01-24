@@ -22,18 +22,16 @@ const MayKnow = () => {
     return (
         <Container className='SideSections bg-white mt-4 p-0 rounded border border-solid'>
             <h2 className='MayKnowTitle p-2'>People you may know</h2>
-
             {randomPeople.map(person => (
                 <div key={person._id} className='MayKnowContent px-3'>
                     <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                     <div className='MayKnowColumn'>
-                        <h3 className='MayKnowName HoverBluScritte'>{person.name}{person.surname}</h3>
+                        <h3 className='MayKnowName HoverBluScritte'>{person.name} {person.surname}</h3>
                         <p >{person.title}</p>
                         <button className='MayKnowBtn'><i className="bi bi-person-plus-fill MayKnowIcon"></i>Connect</button>
                     </div>
                 </div>
             ))}
-
             <Container className='p-2 fs-5 text-center ButtonSideSections'>Show all</Container>
         </Container>
     );
