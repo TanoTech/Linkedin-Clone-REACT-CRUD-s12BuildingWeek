@@ -28,7 +28,7 @@ const MayKnow = () => {
                     <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                     <div className='MayKnowColumn'>
                         <h3 className='MayKnowName HoverBluScritte'>{person.name}{person.surname}</h3>
-                        <p className='MayKnowJob'>{person.title}</p>
+                        <p >{person.title}</p>
                         <button className='MayKnowBtn'><i className="bi bi-person-plus-fill MayKnowIcon"></i>Connect</button>
                     </div>
                 </div>
