@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -20,134 +20,160 @@ const contenutiPerAziende = [
 ];
 
 const contenutiPerNewsletter = [
-  'Contenuto N1',
-  'Contenuto N2',
-  'Contenuto N3',
+    'Contenuto N1',
+    'Contenuto N2',
+    'Contenuto N3',
 ];
 
 const contenutiPerScuoleUniversita = [
     {
         id: 1,
-        logo: 'https://it.wikipedia.org/wiki/File:Logo_Politecnico_Milano.png',
+        logo: 'https://seeklogo.com/images/P/Politecnico_di_Milano-logo-CE81376DCF-seeklogo.com.png',
         nome: 'Politecnico di Milano',
         citta: 'Milano',
         follower: 50000,
       },
       {
         id: 2,
-        logo: 'URL_DEL_LOGO_SAPIENZA',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Stemma_sapienza.png',
         nome: 'Università La Sapienza di Roma',
         citta: 'Roma',
         follower: 45000,
       },
       {
         id: 3,
-        logo: 'URL_DEL_LOGO_OXFORD',
+        logo: 'https://www.svgrepo.com/show/74225/university-of-oxford-badge-logo.svg',
         nome: 'University of Oxford',
         citta: 'Oxford',
         follower: 80000,
       },
       {
         id: 4,
-        logo: 'URL_DEL_LOGO_CAMBRIDGE',
+        logo: 'https://www.logo.wine/a/logo/University_of_Cambridge/University_of_Cambridge-Logo.wine.svg',
         nome: 'University of Cambridge',
         citta: 'Cambridge',
         follower: 75000,
       },
       {
         id: 5,
-        logo: 'URL_DEL_LOGO_HARVARD',
+        logo: 'https://1000logos.net/wp-content/uploads/2017/02/Harvard-Logo.png',
         nome: 'Harvard University',
         citta: 'Cambridge, MA',
         follower: 90000,
       },
       {
         id: 6,
-        logo: 'URL_DEL_LOGO_ETH',
+        logo: 'https://ethz.ch/etc/designs/ethz/img/header/ethz_logo_black.svg',
         nome: 'ETH Zurich',
         citta: 'Zurigo',
         follower: 60000,
       },
       {
         id: 7,
-        logo: 'URL_DEL_LOGO_TUM',
+        logo: 'https://docenhance.eu/wordpress/wp-content/uploads/2020/07/TUM_Logo_extern_mt_EN_RGB_p.png',
         nome: 'Technical University of Munich (TUM)',
         citta: 'Monaco',
         follower: 55000,
       },
       {
         id: 8,
-        logo: 'URL_DEL_LOGO_UPS',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Logo_Universit%C3%A9_Paris-Saclay.svg/1024px-Logo_Universit%C3%A9_Paris-Saclay.svg.png',
         nome: 'Université Paris-Saclay',
         citta: 'Parigi',
         follower: 70000,
       },
       {
         id: 9,
-        logo: 'URL_DEL_LOGO_KTH',
+        logo: 'https://www.logotypes101.com/logos/932/4BDCBA5FAE7EF6FA23D793E1FACCFB99/KTH.png',
         nome: 'KTH Royal Institute of Technology',
         citta: 'Stoccolma',
         follower: 48000,
       },
       {
         id: 10,
-        logo: 'URL_DEL_LOGO_TUD',
+        logo: 'https://www.bestarchitecturemasters.com/wp-content/uploads/2020/03/logo-tu-dresden.jpg',
         nome: 'Technische Universität Dresden',
         citta: 'Dresda',
         follower: 52000,
       },
       {
         id: 11,
-        logo: 'URL_DEL_LOGO_EPFL',
+        logo: 'https://www.epfl.ch/wp/6/wp-content/themes/wp-theme-2018/assets/svg/epfl-logo.svg?refresh=now',
         nome: 'École Polytechnique Fédérale de Lausanne (EPFL)',
         citta: 'Losanna',
         follower: 58000,
       },
       {
         id: 12,
-        logo: 'URL_DEL_LOGO_UBC',
+        logo: 'https://www.abdn.ac.uk/img/450x/study/feature-images/UBC-logo-FL_rdax_450x254.png',
         nome: 'University of British Columbia',
         citta: 'Vancouver',
         follower: 67000,
       },
       {
         id: 13,
-        logo: 'URL_DEL_LOGO_TAU',
+        logo: 'https://cdn.freebiesupply.com/logos/large/2x/tel-aviv-university-logo-png-transparent.png',
         nome: 'Tel Aviv University',
         citta: 'Tel Aviv',
         follower: 51000,
       },
-  // ... altri dati per scuole e università
 ];
 
-const InteressiUtente = ({ sezioneAttiva }) => {
-  const selezionareContenutoCasuale = () => {
-    switch (sezioneAttiva) {
-      case 'aziende':
-        return contenutiPerAziende[getRandomInt(0, contenutiPerAziende.length - 1)];
-      case 'newsletter':
-        return contenutiPerNewsletter[getRandomInt(0, contenutiPerNewsletter.length - 1)];
-      case 'scuole-universita':
-        return contenutiPerScuoleUniversita[getRandomInt(0, contenutiPerScuoleUniversita.length - 1)];
-      default:
-        return null;
-    }
+const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
+    const [contenutoCasuale, setContenutoCasuale] = useState(null);
+  
+    useEffect(() => {
+      const selezionareContenutoCasuale = () => {
+        let nuovoContenutoCasuale;
+        switch (sezioneAttiva) {
+          case 'aziende':
+            nuovoContenutoCasuale = contenutiPerAziende[getRandomInt(0, contenutiPerAziende.length - 1)];
+            break;
+          case 'newsletter':
+            nuovoContenutoCasuale = contenutiPerNewsletter[getRandomInt(0, contenutiPerNewsletter.length - 1)];
+            break;
+          case 'scuole-universita':
+            nuovoContenutoCasuale = contenutiPerScuoleUniversita[getRandomInt(0, contenutiPerScuoleUniversita.length - 1)];
+            break;
+          default:
+            nuovoContenutoCasuale = null;
+        }
+  
+        
+        const isRisultatiAttualiArray = Array.isArray(risultatiAttuali);
+  
+        
+        const risultati = isRisultatiAttualiArray ? risultatiAttuali : [];
+  
+        
+        const risultatoDuplicato = risultati.some(
+          (risultato) => risultato && nuovoContenutoCasuale && risultato.id === nuovoContenutoCasuale.id
+        );
+  
+        
+        if (risultatoDuplicato) {
+          selezionareContenutoCasuale();
+        } else {
+          setContenutoCasuale(nuovoContenutoCasuale);
+        }
+      };
+  
+      selezionareContenutoCasuale();
+    }, [sezioneAttiva, risultatiAttuali]);
+  
+    return (
+      <div>
+        {contenutoCasuale && (
+          <>
+            <p><img className="logo-img" src={contenutoCasuale.logo} alt={contenutoCasuale.nome} /></p>
+            <p>{contenutoCasuale.nome}</p>
+            <p>Follower: {contenutoCasuale.follower}</p>
+          </>
+        )}
+      </div>
+    );
   };
-
-  const contenutoCasuale = selezionareContenutoCasuale();
-
-  return (
-    <div>
-      {contenutoCasuale && (
-        <>
-          
-          <p><img className="logo-img" src={contenutoCasuale.logo} alt={contenutoCasuale.nome} /></p>
-          <p>{contenutoCasuale.nome}</p>
-          <p>Follower: {contenutoCasuale.follower}</p>
-        </>
-      )}
-    </div>
-  );
-};
-
-export default InteressiUtente;
+  
+  export default InteressiUtente;
+  
+  

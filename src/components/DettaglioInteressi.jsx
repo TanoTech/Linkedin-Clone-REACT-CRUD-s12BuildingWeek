@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
+import InteressiUtente from "./InteressiUtente";
 
 const DettaglioInteressi = () => {
   const location = useLocation();
@@ -101,9 +102,21 @@ const DettaglioInteressi = () => {
           </div>
         </Card.Header>
         <Card.Body className="text-center">
-          {renderRisultati().map((risultato) => (
-            <p key={risultato.id}>{risultato.titolo}</p>
-          ))}
+          <Row>
+            <Col>
+              <InteressiUtente sezioneAttiva={sezioneAttiva} />
+            </Col>
+            <Col>
+              <InteressiUtente sezioneAttiva={sezioneAttiva} />
+            </Col>
+          </Row>
+          <Row>
+            {renderRisultati().map((risultato) => (
+              <Col key={risultato.id}>
+                <p>{risultato.titolo}</p>
+              </Col>
+            ))}
+          </Row>
         </Card.Body>
       </Card>
     </Container>
