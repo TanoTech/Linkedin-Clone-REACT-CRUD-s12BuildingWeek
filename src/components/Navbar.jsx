@@ -80,7 +80,7 @@ const NavbarTop = () => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                        <Link to='/home'> <FaHome className='navIcon' /> Home </Link>
+                        <Link to='/'> <FaHome className='navIcon' /> Home </Link>
                         <Nav.Link href="#"><FaNetworkWired className='navIcon' /> My Network </Nav.Link>
                         <Link to='/jobs' ><FaBriefcase className='navIcon' /> Jobs </Link>
                         <Nav.Link href="#"><FaEnvelope className='navIcon' /> Messaging</Nav.Link>
