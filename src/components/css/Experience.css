@@ -1,3 +1,17 @@
+.ShowExperience {
+    padding: 0;
+}
+
+.RoleEx {
+    margin-bottom: 0;
+}
+
+.ShowExperience li {
+    list-style-type: none;
+    margin-bottom: 1em;
+}
+
+
 #ExperienceTitle {
     font-size: 1.7em !important;
     text-align: left !important;
@@ -16,4 +30,21 @@
 #LinkCondivisioneModifiche:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.DateEx, .LocationEx {
+    margin-bottom: 0;
+    color: lightslategray
+}
+
+.DescEx {
+    margin-top: 1em;
+}
+
+.DeleteEx {
+    background-color: #0a66c2;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    padding: 0.2em 0.7em;
 }

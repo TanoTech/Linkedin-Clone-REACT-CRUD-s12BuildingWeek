@@ -17,8 +17,9 @@ const Experience = ({ data }) => {
     frequency: null,
     startDate: null,
     endDate: null,
+    locType: null,
     description: "",
-    area: "",
+    location: "",
   });
 
   useEffect(() => {
@@ -83,8 +84,9 @@ const Experience = ({ data }) => {
           frequency: null,
           startDate: null,
           endDate: null,
+          locType: null,
           description: "",
-          area: "",
+          location: "",
         });
         setMostraForm(false);
       })
@@ -120,7 +122,8 @@ const Experience = ({ data }) => {
       startDate: newExperience.startDate,
       endDate: newExperience.endDate,
       description: newExperience.description,
-      area: newExperience.area,
+      location: newExperience.location,
+      locType: newExperience.locType,
     };
 
     axios
@@ -152,7 +155,8 @@ const Experience = ({ data }) => {
           startDate: null,
           endDate: null,
           description: "",
-          area: "",
+          location: "",
+          locType: "",
         });
       })
       .catch((error) => {
@@ -176,39 +180,44 @@ const Experience = ({ data }) => {
 
       <div id="Experience-Conteiner" className="d-flex mb-5">
         <div>
-          <img
-            src="https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188798/epicodeschool_logo?e=1714003200&v=beta&t=02cZOkAFfrcsqE3vMctwQcElNrMnInX4NwQFmaTF1M8"
-            alt="logo"
-            id="logo-formation"
-          />
-        </div>
-        <div>
-          <ul>
+          <ul className="ShowExperience">
             {experiences.map((experience) => (
               <li key={experience._id}>
-                <h2>{experience.role}</h2>
-                <div>
-                  <span>{experience.company}</span> ·{" "}
-                  <span>
-                    {experience.frequency && experience.frequency.value}
-                  </span>
-                </div>
+                <div className="d-flex justify-content">
+                  <img
+                    src="https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188798/epicodeschool_logo?e=1714003200&v=beta&t=02cZOkAFfrcsqE3vMctwQcElNrMnInX4NwQFmaTF1M8"
+                    alt="logo"
+                    id="logo-formationEx"
+                  />
 
-                <p>Area: {experience.area}</p>
-                <p>Descrizione: {experience.description}</p>
-                <p>
-                  Data di Inizio:{" "}
-                  {format(new Date(experience.startDate), "dd/MM/yyyy")}
-                </p>
-                <p>
-                  Data di Fine:{" "}
-                  {experience.endDate
-                    ? format(new Date(experience.endDate), "dd/MM/yyyy")
-                    : "In corso"}
-                </p>
-                <button onClick={() => handleDeleteExperience(experience._id)}>
-                  Delete Experience
-                </button>
+                  <div>
+                    <h2 className="RoleEx">{experience.role}</h2>
+                    <span className="CompanyEx">
+                      {experience.company}
+                    </span> · <span className="FrequencyEx">Full Time</span>
+                    <p className="DateEx">
+                      {" "}
+                      {format(
+                        new Date(experience.startDate),
+                        "dd/MM/yyyy"
+                      )} -{" "}
+                      {experience.endDate
+                        ? format(new Date(experience.endDate), "dd/MM/yyyy")
+                        : "In corso"}
+                    </p>
+                    <p className="LocationEx">
+                      {/*experience.location*/} Rome ·{/*experience.locType*/}{" "}
+                      Hybrid
+                    </p>
+                    <p className="DescEx">{experience.description}</p>
+                    <button
+                      className="DeleteEx"
+                      onClick={() => handleDeleteExperience(experience._id)}
+                    >
+                      Delete Experience
+                    </button>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
@@ -239,7 +248,7 @@ const Experience = ({ data }) => {
         ))}
               </ul>*/}
       {mostraForm && (
-        <Modal show={mostraForm} onHide={() => setMostraForm(false)}>
+        <Modal size="lg" show={mostraForm} onHide={() => setMostraForm(false)}>
           <Modal.Header closeButton>
             <Modal.Title className="fs-6">Add Experience</Modal.Title>
           </Modal.Header>
@@ -307,6 +316,33 @@ const Experience = ({ data }) => {
               </Row>
 
               <Row className="pb-4">
+                <label>Location*</label>
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Ex: London, UK"
+                  onChange={handleInputChange}
+                  value={newExperience.location}
+                />
+              </Row>
+
+              <Row className="pb-4">
+                <label>Location type*</label>
+                <Form.Select
+                  name="locType"
+                  onChange={handleInputChange}
+                  value={
+                    newExperience.locType ? newExperience.locType.value : ""
+                  }
+                >
+                  <option value="">Select Frequency</option>
+                  <option value="Full Time">On Site</option>
+                  <option value="Part Time">Hybrid</option>
+                  <option value="Self Employed">Remote</option>
+                </Form.Select>
+              </Row>
+
+              <Row className="pb-4">
                 <label>Start Date*</label>
                 <DatePicker
                   selected={newExperience.startDate}
@@ -317,7 +353,7 @@ const Experience = ({ data }) => {
               </Row>
 
               <Row className="pb-4">
-                <label>End Date*</label>
+                <label>End Date</label>
                 <DatePicker
                   selected={newExperience.endDate}
                   onChange={(date) => handleDateChange(date, "endDate")}
@@ -334,17 +370,6 @@ const Experience = ({ data }) => {
                   placeholder="Describe your job..."
                   onChange={handleInputChange}
                   value={newExperience.description}
-                />
-              </Row>
-
-              <Row className="pb-4">
-                <label>Area*</label>
-                <input
-                  type="text"
-                  name="area"
-                  placeholder="Area"
-                  onChange={handleInputChange}
-                  value={newExperience.area}
                 />
               </Row>
             </div>
