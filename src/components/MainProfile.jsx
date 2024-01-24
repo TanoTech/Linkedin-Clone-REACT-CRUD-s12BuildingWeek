@@ -34,21 +34,17 @@ const MainProfile = ({ data }) => {
     } // funzione per settare l'immagine caricata
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
+    const userID = '65ae3f5d600be100183a869c';
+    // https://striveschool-api.herokuapp.com/api/profile/%7BuserId%7D/picture
+
     const handleUpload = async () => {
         try {
             const formData = new FormData();
-            formData.append('name', data.name);
-            formData.append('surname', data.surname);
-            formData.append('email', data.email);
-            formData.append('username', data.username);
-            formData.append('bio', data.bio);
-            formData.append('title', data.title);
-            formData.append('area', data.area);
-            formData.append('image', selectedPhoto);
+            formData.append('profile', selectedPhoto);
 
-            // PUT
-            const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
-                method: 'PUT',
+            // POST
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/%7${userID}%7D/picture`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
