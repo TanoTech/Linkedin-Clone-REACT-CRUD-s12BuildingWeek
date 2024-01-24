@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import {format} from 'date-fns';
-import { Container } from "react-bootstrap";
 
 const Experience = ({ data }) => {
     const [experiences, setExperiences] = useState([]);
