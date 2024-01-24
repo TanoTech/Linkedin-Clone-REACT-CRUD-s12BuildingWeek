@@ -69,11 +69,11 @@ const MainProfile = ({ data }) => {
 
     return (
         <>
-            <Container className="my-2">
+            <Container className="my-4 bg-white rounded border border-solid">
 
                 <Row>
-                    <Col>
-                        <img src={urlCopertina} alt="Cover image" className="rounded-top" style={{ width: '100%' }} />
+                    <Col className="p-0">
+                        <img src={urlCopertina} alt="Cover image" className="rounded-top " style={{ width: '100%' }} />
                         {/* icona matita con position relative o absolute */}
                     </Col>
 
@@ -93,8 +93,8 @@ const MainProfile = ({ data }) => {
                         <Col md={7}>
                             <h1 className="mb-0">{data.name} {data.surname}</h1>
                             <p className="mb-1">{data.title}</p>
-                            <p className="mb-1">{data.area} • {data.email} • <span className="text-primary fw-bold">Contact info</span></p>
-                            <p className="mb-3 text-primary fw-bold">{randomNumber} connection</p> {/* Link */}
+                            <p className="mb-1">{data.area} • {data.email} • <span className="text-primary fw-bold HoverBluScritte">Contact info</span></p>
+                            <p className="mb-3 text-primary fw-bold HoverBluScritte">{randomNumber} connection</p> {/* Link */}
 
                             <Row className="my-3">
                                 <Col>
@@ -113,7 +113,7 @@ const MainProfile = ({ data }) => {
 
                                         <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button> {/* deve aprirsi un modale */}
 
-                                        <DropdownButton variant="primary" className="pe-3 me-2 rounded-pill fw-bold custom-dropdown-button" id="dropdown-basic-button" title="More">
+                                        <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button" id="dropdown-basic-button" title="More">
                                             <Dropdown.Item href="#/action-1">
                                                 <p className="mb-0">Send profile in a message</p>
                                             </Dropdown.Item>
@@ -136,7 +136,7 @@ const MainProfile = ({ data }) => {
                         <Col md={4} className="text-center d-none d-md-block "> {/* Ti riporta alla sezione Istruzione */}
                             <div className="d-flex justify-content-center align-items-center">
                                 <img src={urlLogo} width={45} alt="" />
-                                <p className="mb-0 fw-bold">Epicode</p>
+                                <p className="mb-0 fw-bold HoverBluScritte">Epicode</p>
                             </div>
                         </Col>
                     </Row>
@@ -146,7 +146,7 @@ const MainProfile = ({ data }) => {
                             {/* icona matita con position relative o absolute */}
                             <p className="mt-3 mb-0 fw-bold">Open to work</p>
                             <p className="mb-0">Web Developer, Front-End and Back-End roles</p>
-                            <p className="mb-3 text-primary fw-bold">Show details</p> {/* Apre un modale (Job reference) */}
+                            <p className="mb-3 text-primary fw-bold HoverBluScritte">Show details</p> {/* Apre un modale (Job reference) */}
                         </Col>
                     </Row>
                 </Container>

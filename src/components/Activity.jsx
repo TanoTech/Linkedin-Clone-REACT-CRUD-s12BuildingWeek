@@ -49,13 +49,13 @@ const Activity = ({ data }) => {
 
   return (
     <>
-      <Container className='containerActivity rounded mb-4'>
+      <Container className='border border-solid rounded mb-4 bg-white'>
         <Row className="d-flex flex-column edit-section mt-2" id="round-corners">
           <Col className="d-flex flex-column mt-3">
             <div className="d-flex justify-content-between me-4">
               <div>
                 <p id="left-side-headers" className="mb-0 fw-bold fs-4">Activity</p>
-                <p className="followers fw-bold text-primary">5 followers</p>
+                <p className="followers fw-bold text-primary HoverBluScritte">5 followers</p>
               </div>
               <div className="ml-auto me-3">
                 <Button variant="outline-primary rounded-pill me-3 " id="main-buttons" onClick={handleCreatePost}>

@@ -1,5 +1,5 @@
 .MayKnow {
-    width: 50%;
+    width: 17rem;
 }
 
 .MayKnowContent {
@@ -18,8 +18,8 @@
 }
 
 .MayKnowImg {
-    width: 3.2em;
-    height: 3.2em;
+    width: 4em;
+    height: auto;
     border-radius: 100%;
     margin-left: 0;
     margin-right: 0.3em;
@@ -36,16 +36,16 @@
 
 .MayKnowBtn {
     border-radius: 50px;
-    border: 2px solid #414141;
-    padding: 0 0.6em;
+    border: 1px solid #414141;
+    padding: 0em 0.6em;
     color: #414141;
     background-color: initial;
 }
 
 .MayKnowBtn:hover {
-    border: 3px solid #414141;
+    border: 2px solid #414141;
     box-sizing: border-box;
-    background-color: lightgrey;
+    background-color: rgb(236, 236, 236);
 }
 
 .bi-person-fill-add {
@@ -58,13 +58,13 @@
 }
 
 .MayKnowShow {
-    text-align: center;
     color: #414141;
     font-weight: 600;
 }
 
 .MayKnowShow:hover {
-    background-color: lightgrey;
+    cursor: pointer;
+    background-color: rgb(236, 236, 236);
 }
 
 .MayKnowIcon {
