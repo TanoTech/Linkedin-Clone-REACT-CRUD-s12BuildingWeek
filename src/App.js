@@ -10,6 +10,7 @@ import { Container } from "react-bootstrap";
 import './App.css';
 import Jobs from "./components/Jobs";
 import News from "./components/News";
+import YourComponent from "./components/Prova";
 
 function App() {
     return (
