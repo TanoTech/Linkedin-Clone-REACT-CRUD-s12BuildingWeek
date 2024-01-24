@@ -3,22 +3,15 @@ import { ProfileContext } from '../redux/contexts/ProfileContext';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner, Container } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
-import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const NavbarTop = () => {
-    const { profile, performSearch } = useContext(ProfileContext);
+    const { profile, performSearch, searchResults } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
     const userProfileImg = profile ? profile.image : '';
 
     useEffect(() => {
-        if (!searchTerm.trim()) {
-            setSearchResults([]);
-            return;
-        }
 
         const timerId = setTimeout(() => {
             performSearch(searchTerm);
@@ -43,17 +36,17 @@ const NavbarTop = () => {
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </InputGroup>
-                    {searchResults.length > 0 && (
-                        <div className="search-results-container">
-                            {searchResults.map((otherProfile) => (
-                                <div key={otherProfile._id} className="search-result-item">
-                                    <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
-                                    {otherProfile.name} {otherProfile.surname}
-                                </div>
-                            ))} 
-                        </div>
-                    )}
                 </Form>
+                {searchTerm.length > 0 && searchResults.length > 0 && (
+                    <div className="search-results-container">
+                        {searchResults.map((otherProfile) => (
+                            <div key={otherProfile._id} className="search-result-item">
+                                <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
+                                {`${otherProfile.name} ${otherProfile.surname}`} { }
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
@@ -62,7 +55,7 @@ const NavbarTop = () => {
                         <Nav.Link href="#"><FaBriefcase className='navIcon' /> <>Jobs</> </Nav.Link>
                         <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaging</></Nav.Link>
                         <Nav.Link href="#"><FaBell className='navIcon' /> <>Notifications</> </Nav.Link>
-                        <NavDropdown  title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
+                        <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
