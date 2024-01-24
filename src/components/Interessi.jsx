@@ -24,7 +24,7 @@ const Interessi = () => {
       case 'newsletter':
         return contenutiPerNewsletter;
       case 'scuole-universita':
-        return contenutiPerScuoleUniversita;
+        return contenutiPerScuoleUniversita; 
       default:
         return [];
     }

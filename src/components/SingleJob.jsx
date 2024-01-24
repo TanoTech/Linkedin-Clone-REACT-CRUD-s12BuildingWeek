@@ -1,27 +1,33 @@
-import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Card, Button } from 'react-bootstrap';
+import JobDetails from './JobDetails'; // Assicurati che il percorso sia corretto
 
-const SingleJob = () => {
-    const { jobId } = useParams();
-    const { currentJob, fetchJobDetail } = useContext(ProfileContext);
+const SingleJob = ({ job }) => {
+    const [modalShow, setModalShow] = useState(false);
 
-    useEffect(() => {
-        fetchJobDetail(jobId);
-    }, [jobId, fetchJobDetail]);
-
-    if (!currentJob) {
-        return <div>Caricamento...</div>;
-    }
+    const handleModalClose = () => setModalShow(false);
+    const handleModalShow = () => setModalShow(true);
 
     return (
-        <Container className="job-item">
-            <h3>{currentJob.company_name}</h3>
-            <p>{currentJob.title}</p>
-            <p>{currentJob.job_type}</p>
-            <div dangerouslySetInnerHTML={{ __html: currentJob.description }} />
-        </Container>
+        <Card className="job-item">
+            <Card.Body>
+                <Card.Title>{job.title}</Card.Title>
+                <Card.Text>
+                    {job.company_name}
+                </Card.Text>
+                <Card.Text>
+                    {job.candidate_required_location}
+                </Card.Text>
+                <Button  onClick={handleModalShow}>
+                    See details
+                </Button>
+                <JobDetails
+                    show={modalShow}
+                    handleClose={handleModalClose}
+                    description={job.description}
+                />
+            </Card.Body>
+        </Card>
     );
 };
 
