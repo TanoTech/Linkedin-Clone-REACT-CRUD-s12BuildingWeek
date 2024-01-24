@@ -113,7 +113,7 @@ const MainProfile = ({ data }) => {
 
                                         <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button> {/* deve aprirsi un modale */}
 
-                                        <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button" id="dropdown-basic-button" title="More">
+                                        <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button dropdown-basic-button" id="dropdown-basic-button" title="More">
                                             <Dropdown.Item href="#/action-1">
                                                 <p className="mb-0">Send profile in a message</p>
                                             </Dropdown.Item>
