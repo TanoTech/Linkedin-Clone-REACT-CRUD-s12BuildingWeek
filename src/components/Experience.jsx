@@ -1,47 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Container, Modal, Col, Row, Form, Button } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { AiOutlinePlus } from "react-icons/ai";
+import { GoPencil } from "react-icons/go";
+import DatePicker from "react-datepicker";
+import { format } from "date-fns";
+import "./css/Experience.css";
 
 const Experience = ({ data }) => {
-   /*  const [mostraForm, setMostraForm] = useState(false); */
-    const [experiences, setExperiences] = useState([]);
-    const [newExperience, setNewExperience] = useState({
-        role: '',
-        company: '',
-        startDate: null,
-        endDate: null,
-        description: '',
-        area: '',
-    });
-
-   /*  setMostraForm(false) */
-
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
-
-    useEffect(() => {
-        axios.get(`https://striveschool-api.herokuapp.com/api/profile/${data}/experiences`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            }
-        })
-            .then((response) => {
-                setExperiences(response.data);
-            })
-            .catch((error) => {
-                console.error('Errore nella richiesta GET:', error);
-            });
-    }, []);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewExperience((prevExperience) => ({
-            ...prevExperience,
-            [name]: value,
-        }));
-    };
-
+  const [mostraForm, setMostraForm] = useState(false);
+  const [experiences, setExperiences] = useState([]);
+  const [newExperience, setNewExperience] = useState({
+    role: "",
+    company: "",
+    frequency: null,
+    startDate: null,
+    endDate: null,
+    description: "",
+    area: "",
+  });
 
   useEffect(() => {
     setMostraForm(false);
@@ -66,7 +44,7 @@ const Experience = ({ data }) => {
       .catch((error) => {
         console.error("Errore nella richiesta GET:", error);
       });
-  }, [experiences]);
+  }, [data, token]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -97,17 +75,18 @@ const Experience = ({ data }) => {
       .then((response) => {
         setExperiences((prevExperiences) => [
           ...prevExperiences,
-          response.data,
+          { ...response.data, _id: response.data._id },
         ]);
         setNewExperience({
           role: "",
           company: "",
-          frequency: "",
+          frequency: null,
           startDate: null,
           endDate: null,
           description: "",
           area: "",
         });
+        setMostraForm(false);
       })
       .catch((error) => {
         console.error("Errore nella richiesta POST:", error);
@@ -144,46 +123,27 @@ const Experience = ({ data }) => {
       area: newExperience.area,
     };
 
-    const handleEditExperience = (expId) => {
-        const updatedExperience = {
-            role: newExperience.role,
-            company: newExperience.company,
-            startDate: newExperience.startDate,
-            endDate: newExperience.endDate,
-            description: newExperience.description,
-            area: newExperience.area,
-        };
-
-        axios.put(`https://striveschool-api.herokuapp.com/api/profile/${data}/experiences/${expId}`, updatedExperience, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
+    axios
+      .put(
+        `https://striveschool-api.herokuapp.com/api/profile/${data}/experiences/${expId}`,
+        updatedExperience,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        setExperiences((prevExperiences) => {
+          const updatedExperiences = prevExperiences.map((exp) => {
+            if (exp._id === expId) {
+              return response.data;
+            } else {
+              return exp;
             }
-        })
-            .then((response) => {
-                setExperiences((prevExperiences) => {
-                    const updatedExperiences = prevExperiences.map((exp) => {
-                        if (exp._id === expId) {
-                            return response.data;
-                        } else {
-                            return exp;
-                        }
-                    });
-                    return updatedExperiences;
-                });
-
-                setNewExperience({
-                    role: '',
-                    company: '',
-                    startDate: null,
-                    endDate: null,
-                    description: '',
-                    area: '',
-                });
-            })
-            .catch((error) => {
-                console.error('Errore nella richiesta PUT:', error);
-            });
-    };
+          });
+          return updatedExperiences;
+        });
 
         setNewExperience({
           role: "",
@@ -227,7 +187,13 @@ const Experience = ({ data }) => {
             {experiences.map((experience) => (
               <li key={experience._id}>
                 <h2>{experience.role}</h2>
-                <p><div>{experience.company} · {experience.frequency}</div></p> 
+                <div>
+                  <span>{experience.company}</span> ·{" "}
+                  <span>
+                    {experience.frequency && experience.frequency.value}
+                  </span>
+                </div>
+
                 <p>Area: {experience.area}</p>
                 <p>Descrizione: {experience.description}</p>
                 <p>
@@ -313,8 +279,11 @@ const Experience = ({ data }) => {
                 <Form.Select
                   name="frequency"
                   onChange={handleInputChange}
-                  value={newExperience.frequency}
+                  value={
+                    newExperience.frequency ? newExperience.frequency.value : ""
+                  }
                 >
+                  <option value="">Select Frequency</option>
                   <option value="Full Time">Full Time</option>
                   <option value="Part Time">Part Time</option>
                   <option value="Self Employed">Self Employed</option>
