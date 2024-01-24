@@ -8,7 +8,6 @@ import Activity from './Activity';
 import { Spinner } from 'react-bootstrap';
 import Experience from './Experience';
 
-
 const UserProfile = () => {
     const { profile, setProfile} = useContext(ProfileContext);
 
