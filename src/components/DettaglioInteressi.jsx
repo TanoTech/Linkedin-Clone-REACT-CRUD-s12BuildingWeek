@@ -4,25 +4,17 @@ import { Container, Card, Row, Col } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
 import InteressiUtente from "./InteressiUtente";
 
+import {
+  contenutiPerAziende,
+  contenutiPerNewsletter,
+  contenutiPerScuoleUniversita,
+} from "./InteressiUtente";
+
 const DettaglioInteressi = () => {
   const location = useLocation();
   const sezioneAttivaInURL = location.pathname.split("/")[2];
 
-  const risultatiPerAziende = [
-    { id: 1, titolo: "Result A1" },
-    { id: 2, titolo: "Result A2" },
-  ];
-
-  const risultatiPerNewsletter = [
-    { id: 1, titolo: "Result N1" },
-    { id: 2, titolo: "Result N2" },
-  ];
-
-  const risultatiPerScuoleUniversita = [
-    { id: 1, titolo: "Result SU1" },
-    { id: 2, titolo: "Result SU2" },
-  ];
-
+  
   const [sezioneAttiva, setSezioneAttiva] = useState(
     sezioneAttivaInURL || "aziende"
   );
@@ -34,11 +26,11 @@ const DettaglioInteressi = () => {
   const renderRisultati = () => {
     switch (sezioneAttiva) {
       case "aziende":
-        return risultatiPerAziende;
+        return contenutiPerAziende;
       case "newsletter":
-        return risultatiPerNewsletter;
+        return contenutiPerNewsletter;
       case "scuole-universita":
-        return risultatiPerScuoleUniversita;
+        return contenutiPerScuoleUniversita;
       default:
         return [];
     }
@@ -104,18 +96,11 @@ const DettaglioInteressi = () => {
         <Card.Body className="text-center">
           <Row>
             <Col>
-              <InteressiUtente sezioneAttiva={sezioneAttiva} />
+              <InteressiUtente
+                sezioneAttiva={sezioneAttiva}
+                risultatiAttuali={renderRisultati()}
+              />
             </Col>
-            <Col>
-              <InteressiUtente sezioneAttiva={sezioneAttiva} />
-            </Col>
-          </Row>
-          <Row>
-            {renderRisultati().map((risultato) => (
-              <Col key={risultato.id}>
-                <p>{risultato.titolo}</p>
-              </Col>
-            ))}
           </Row>
         </Card.Body>
       </Card>

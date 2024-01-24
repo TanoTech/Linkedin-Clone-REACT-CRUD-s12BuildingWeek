@@ -13,20 +13,14 @@
     height: 15em;
 }
 
-.modalPic {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 .modalIcons {
     font-size: 130%;
     cursor: pointer;
 }
 
-/* Rimuove la freccetta dai dropdown menu */
+/* Rimuove la freccetta dai dropdown menu SOLO dai bottoni blu 'OPEN TO' e 'MORE' */
 
-.dropdown-toggle::after{
+.blueButton > .dropdown-toggle::after{
     display: none !important;
 }
 

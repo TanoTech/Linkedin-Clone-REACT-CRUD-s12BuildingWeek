@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Col, Row } from "react-bootstrap";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const contenutiPerAziende = [
+export const contenutiPerAziende = [
     { id: 1, logo: 'https://www.svgrepo.com/show/349454/microsoft.svg', nome: 'Microsoft', follower: 100000 },
     { id: 2, logo: 'https://upload.wikimedia.org/wikipedia/commons/archive/c/c1/20230822192910%21Google_%22G%22_logo.svg', nome: 'Google', follower: 90000 },
     { id: 3, logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Logo_Apple.inc.gif', nome: 'Apple', follower: 80000 },
@@ -19,13 +20,13 @@ const contenutiPerAziende = [
     { id: 12, logo: 'https://www.svgrepo.com/show/303303/oracle-6-logo.svg', nome: 'Oracle', follower: 35000 },
 ];
 
-const contenutiPerNewsletter = [
+export const contenutiPerNewsletter = [
     'Contenuto N1',
     'Contenuto N2',
     'Contenuto N3',
 ];
 
-const contenutiPerScuoleUniversita = [
+export const contenutiPerScuoleUniversita = [
     {
         id: 1,
         logo: 'https://seeklogo.com/images/P/Politecnico_di_Milano-logo-CE81376DCF-seeklogo.com.png',
@@ -119,61 +120,59 @@ const contenutiPerScuoleUniversita = [
       },
 ];
 
+
+
+
 const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
-    const [contenutoCasuale, setContenutoCasuale] = useState(null);
-  
-    useEffect(() => {
-      const selezionareContenutoCasuale = () => {
-        let nuovoContenutoCasuale;
-        switch (sezioneAttiva) {
-          case 'aziende':
-            nuovoContenutoCasuale = contenutiPerAziende[getRandomInt(0, contenutiPerAziende.length - 1)];
-            break;
-          case 'newsletter':
-            nuovoContenutoCasuale = contenutiPerNewsletter[getRandomInt(0, contenutiPerNewsletter.length - 1)];
-            break;
-          case 'scuole-universita':
-            nuovoContenutoCasuale = contenutiPerScuoleUniversita[getRandomInt(0, contenutiPerScuoleUniversita.length - 1)];
-            break;
-          default:
-            nuovoContenutoCasuale = null;
-        }
-  
-        
-        const isRisultatiAttualiArray = Array.isArray(risultatiAttuali);
-  
-        
-        const risultati = isRisultatiAttualiArray ? risultatiAttuali : [];
-  
-        
-        const risultatoDuplicato = risultati.some(
-          (risultato) => risultato && nuovoContenutoCasuale && risultato.id === nuovoContenutoCasuale.id
-        );
-  
-        
-        if (risultatoDuplicato) {
-          selezionareContenutoCasuale();
-        } else {
-          setContenutoCasuale(nuovoContenutoCasuale);
-        }
-      };
-  
-      selezionareContenutoCasuale();
-    }, [sezioneAttiva, risultatiAttuali]);
-  
-    return (
-      <div>
-        {contenutoCasuale && (
-          <>
-            <p><img className="logo-img" src={contenutoCasuale.logo} alt={contenutoCasuale.nome} /></p>
-            <p>{contenutoCasuale.nome}</p>
-            <p>Follower: {contenutoCasuale.follower}</p>
-          </>
-        )}
-      </div>
-    );
+  const [listaRisultati, setListaRisultati] = useState(risultatiAttuali);
+
+
+
+  useEffect(() => {
+    // Aggiorna la lista dei risultati quando le props cambiano
+    setListaRisultati(risultatiAttuali);
+  }, [risultatiAttuali]);
+
+  const handleSmettiDiSeguire = (id) => {
+    // Filtra la lista rimuovendo l'elemento con l'id specifico
+    const nuovaLista = listaRisultati.filter((contenuto) => contenuto.id !== id);
+    setListaRisultati(nuovaLista);
   };
-  
-  export default InteressiUtente;
+
+  return (
+    <Row>
+      <Col>
+        {listaRisultati.map((contenutoCasuale, index) => (
+          <div key={contenutoCasuale.id}>
+            <p>
+              <img
+                className="logo-img"
+                src={contenutoCasuale.logo}
+                alt={contenutoCasuale.nome}
+              />
+            </p>
+            <p>{contenutoCasuale.nome}</p>
+            {contenutoCasuale.follower && (
+              <p>
+                Follower: {contenutoCasuale.follower}
+                <Button
+                  variant="light"
+                  className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
+                  onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
+                >
+                  Unfollow
+                </Button>
+              </p>
+            )}
+            {index < listaRisultati.length - 1 && <hr />}
+          </div>
+        ))}
+      </Col>
+    </Row>
+  );
+};
+
+export default InteressiUtente;
+
   
   

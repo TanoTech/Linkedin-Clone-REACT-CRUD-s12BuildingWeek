@@ -8,7 +8,9 @@ export const ProfileProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const [getAllPeople, setGetAllPeople] = useState ([]);
+    const [jobResults, setJobResults] = useState([]); 
 
+    //campo di ricerca
     const performSearch = useCallback(async (searchTerm) => {
         try {
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/?search=${searchTerm}`, {
@@ -32,6 +34,8 @@ export const ProfileProvider = ({ children }) => {
             console.error('Errore: ', error);
         }
     }, []);
+
+    //prende tutti gli utenti registrati
     const fetchUsers = useCallback(async () => {
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
@@ -53,17 +57,18 @@ export const ProfileProvider = ({ children }) => {
         }
     }, []);
 
+    //prende i lavori 
     const fetchJobs = useCallback(async ({ query, limit }) => {
         try {
             let url = 'https://strive-benchmark.herokuapp.com/api/jobs?';
             if (query) {
                 url += `search=${query}&`;
             }
-
+    
             if (limit) {
                 url += `limit=${limit}&`;
             }
-            
+    
             const response = await fetch(url, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -76,17 +81,37 @@ export const ProfileProvider = ({ children }) => {
             }
     
             const result = await response.json();
-            const jobs = result.data; 
+            const jobs = result.data;
+            setJobResults(jobs);
             console.log('Ecco gli annunci di lavoro trovati:', jobs);
-            return jobs; 
         } catch (error) {
             console.error('Errore: ', error);
-            return []; 
+        }
+    }, []);
+
+    const fetchNews = useCallback(async () => {
+        try {
+            const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=30&title_contains=Job'
+            , {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error('Errore nel recupero delle notizie');
+            }
+    
+            const news = await response.json();
+            console.log('Ecco le notizie:', news);
+            return news;
+        } catch (error) {
+            console.error('Errore: ', error);
         }
     }, []);
 
     return (
-        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, fetchJobs }}>
+        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, jobResults, fetchJobs, fetchNews }}>
             {children}
         </ProfileContext.Provider>
     );

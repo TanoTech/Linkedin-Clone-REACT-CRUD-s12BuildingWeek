@@ -1,15 +1,19 @@
 import { useEffect, useContext } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import MainProfile from './MainProfile';
 import Formation from './Formation';
 import Interessi from './Interessi';
 import Activity from './Activity';
-import { Spinner } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import Experience from './Experience';
+import MayKnow from './MayKnow';
+import News from './News';
+import Footer from './Footer';
 
 const UserProfile = () => {
-    const { profile, setProfile} = useContext(ProfileContext);
+    const { profile, setProfile } = useContext(ProfileContext);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -30,17 +34,29 @@ const UserProfile = () => {
         fetchProfile();
     }, [setProfile]);
     if (!profile) {
-        return  <Spinner></Spinner>;
+        return <Spinner></Spinner>;
     }
 
     return (
-        <div>
-            <MainProfile data={profile} />
-            <Activity data={profile} />
-            <Experience data={profile._id} />
-            <Formation />
-            <Interessi />
-        </div>
+        <>
+            <main className='d-flex '>
+                <Container>
+                    <MainProfile data={profile} />
+                    <Activity data={profile} />
+                    <Experience data={profile._id} />
+                    <Formation />
+                    <Interessi />
+                </Container>
+                <section>
+                    {" "}
+                    <MayKnow/>
+                    <News/>
+                </section>
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </>
     );
 };
 

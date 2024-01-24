@@ -5,11 +5,15 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa";
 import { SlPicture } from "react-icons/sl";
 import { FaEye } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
+import { BiFileBlank } from "react-icons/bi";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+import { BsArrow90DegRight } from "react-icons/bs";
 import { useState } from "react";
 
-const urlCopertina = 'https://media.licdn.com/dms/image/D4D16AQHXjrGnp73BDw/profile-displaybackgroundimage-shrink_350_1400/0/1703176761319?e=1711584000&v=beta&t=vSMa8fJw-CuYIZZ2daNp7bIpS1RqGN4PI9Z7JMrYz80' // test da rimuovere successivamente
+const urlCopertina = 'https://leratomonareng.co.za/wp-content/uploads/2021/03/192adf06PCF91kCYu1nPLQg.jpeg' // statico
 
-const urlLogo = 'https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg' // test da rimuovere successivamente
+const urlLogo = 'https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg' // logo statico di epicode
 
 const randomNumber = Math.floor(Math.random() * (500 - 50 + 1)) + 50 // numero random da 50 a 500
 
@@ -27,26 +31,32 @@ const MainProfile = ({ data }) => {
     const handleShowModalPhoto = () => setShowModalPhoto(true); // apertura modale AddPhoto
     const handleCloseModalPhoto = () => setShowModalPhoto(false); // chiusura modale AddPhoto
 
+    const [showModalEdit, setShowModalEdit] = useState(false); // stato aper/chius Modale Edit intro
+    const handleShowModalEdit = () => setShowModalEdit(true);
+    const handleCloseModalEdit = () => setShowModalEdit(false);
+
     const [selectedPhoto, setSelectedPhoto] = useState(null); // stato della photo caricata
-    const handlePhotoChange = (e) => {
+    const handlePhotoChange = (e) => { //funzione per settare l'immagine caricata
         const photo = e.target.files[0];
         setSelectedPhoto(photo)
-    } // funzione per settare l'immagine caricata
+    }
+
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
     const userID = '65ae3f5d600be100183a869c';
-    // https://striveschool-api.herokuapp.com/api/profile/%7BuserId%7D/picture
 
+    // fetch POST per caricare un'immagine del profilo
     const handleUpload = async () => {
         try {
+            // creo un oggetto FormData
             const formData = new FormData();
             formData.append('profile', selectedPhoto);
 
             // POST
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/%7${userID}%7D/picture`, {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userID}/picture`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+
                     'Authorization': `Bearer ${token}`,
                 },
                 body: formData,
@@ -67,36 +77,44 @@ const MainProfile = ({ data }) => {
         <>
             <Container className="my-4 bg-white rounded border border-solid">
 
+                {/* immagine copertina */}
                 <Row>
                     <Col className="p-0">
-                        <img src={urlCopertina} alt="Cover image" className="rounded-top " style={{ width: '100%' }} />
+                        <img src={urlCopertina} alt="Cover image" className="rounded-top m-0 p-0" style={{ width: '100%' }} />
                         {/* icona matita con position relative o absolute */}
                     </Col>
-
                 </Row>
 
+                {/* immagine del profilo */}
                 <div style={{ height: '0em' }}>
-                    <img src={data.image} alt="Profile picture" id="profilePic" className="rounded-circle border border-light border-4" onClick={handleShowModalPic} /> {/* deve aprirsi un modale */}
-
+                    <img src={data.image} alt="Profile picture" id="profilePic" className="rounded-circle border border-light border-4" onClick={handleShowModalPic} />
                 </div>
 
                 <Container className="mt-0 p-3">
+
+                    {/* icona penna */}
                     <div className="d-flex justify-content-end">
-                        <span className="penna"><HiOutlinePencil /></span> {/* ho usato la stessa classe di Matteo qui */}
+                        <span onClick={handleShowModalEdit} className="penna"><HiOutlinePencil /></span>
+                        {/* ho usato la stessa classe CSS di Matteo/Activity */}
                     </div>
 
                     <Row>
+
+                        {/* Blocco con le informazioni: Nome,cognome, etc... */}
                         <Col md={7}>
                             <h1 className="mb-0">{data.name} {data.surname}</h1>
                             <p className="mb-1">{data.title}</p>
                             <p className="mb-1">{data.area} • {data.email} • <span className="text-primary fw-bold HoverBluScritte">Contact info</span></p>
-                            <p className="mb-3 text-primary fw-bold HoverBluScritte">{randomNumber} connection</p> {/* Link */}
+                            <p className="mb-3 text-primary fw-bold HoverBluScritte">{randomNumber} connection</p>
 
                             <Row className="my-3">
+
+                                {/* Blocco con i 3 bottoni */}
                                 <Col>
                                     <div className="d-flex">
 
-                                        <DropdownButton variant="primary" className="me-2 rounded-pill fw-bold custom-dropdown-button" id="dropdown-basic-button" title="Open to">
+                                        {/* Primo bottone */}
+                                        <DropdownButton variant="primary" className="me-2 rounded-pill fw-bold custom-dropdown-button blueButton" id="dropdown-basic-button" title="Open to">
                                             <Dropdown.Item href="#/action-1">
                                                 <p className="mb-0 fw-bold">Hiring</p>
                                                 <p className="mb-0">share that you're hiring and attract qualified candidates</p>
@@ -107,19 +125,25 @@ const MainProfile = ({ data }) => {
                                             </Dropdown.Item>
                                         </DropdownButton>
 
-                                        <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button> {/* deve aprirsi un modale */}
+                                        {/* Secondo Bottone */}
+                                        <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button>
 
-                                        <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button dropdown-basic-button" id="dropdown-basic-button" title="More">
-                                            <Dropdown.Item href="#/action-1">
+                                        {/* Terzo Bottone */}
+                                        <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button dropdown-basic-button blueButton" id="dropdown-basic-button" title="More">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-1">
+                                                <BsArrow90DegRight className="me-1" />
                                                 <p className="mb-0">Send profile in a message</p>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-2">
+                                                <FiDownload className="me-1" />
                                                 <p className="mb-0">Save to Pdf</p>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-3">
+                                                <BiFileBlank className="me-1" />
                                                 <p className="mb-0">Build a resume</p>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-4">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-4">
+                                                <BsFillInfoSquareFill className="me-1" />
                                                 <p className="mb-0">About this profile</p>
                                             </Dropdown.Item>
                                         </DropdownButton>
@@ -129,14 +153,17 @@ const MainProfile = ({ data }) => {
                             </Row>
                         </Col>
 
-                        <Col md={4} className="text-center d-none d-md-block "> {/* Ti riporta alla sezione Istruzione */}
-                            <div className="d-flex justify-content-center align-items-center">
+                        {/* Blocco Istruzione/Formazione */}
+                        <Col md={4} className="text-center d-none d-md-block ">
+                            {/* Ti riporta alla sezione Istruzione */}
+                            <a href="#SonContainer-Formation" className="d-flex justify-content-center align-items-center">
                                 <img src={urlLogo} width={45} alt="" />
                                 <p className="mb-0 fw-bold HoverBluScritte">Epicode</p>
-                            </div>
+                            </a>
                         </Col>
                     </Row>
 
+                    {/* Blocco Open to work */}
                     <Row className="ms-0">
                         <Col md={7} className="bg-light rounded"> {/* Apre un modale (Job reference) */}
                             {/* icona matita con position relative o absolute */}
@@ -149,9 +176,8 @@ const MainProfile = ({ data }) => {
 
             </Container>
 
-            {/* Modale foto profilo */}
-
-            <Modal show={showModalPic} onHide={handleCloseModalPic} dialogClassName="modalPic">
+            {/* ----------Modale foto profilo---------- */}
+            <Modal show={showModalPic} onHide={handleCloseModalPic}>
                 <Modal.Header closeButton>
                     <Modal.Title >Profile photo</Modal.Title>
                 </Modal.Header>
@@ -192,7 +218,7 @@ const MainProfile = ({ data }) => {
                 </Modal.Footer>
             </Modal>
 
-            {/* Modale Add to profile */}
+            {/* ----------Modale Add to profile---------- */}
             <Modal show={showModalProfile} onHide={handleCloseModalProfile}>
 
                 <Modal.Header closeButton>
@@ -260,15 +286,18 @@ const MainProfile = ({ data }) => {
 
             </Modal>
 
-            {/* Modale per la modifica della foto */}
-
+            {/* ----------Modale per la modifica della foto---------- */}
             <Modal show={showModalPhoto} onHide={handleCloseModalPhoto}>
                 <Modal.Header closeButton>
                     <Modal.Title>Change Photo</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
-                    <Form encType='multipart/form-data'>
+                    <div className="d-flex justify-content-center my-5">
+                        <img src={data.image} alt="Profile picture" id="profilePicModal" className="profilePic rounded-circle" />
+                    </div>
+
+                    <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Choose a photo</Form.Label>
                             <Form.Control type="file" name="" id="" onChange={handlePhotoChange} />
@@ -277,10 +306,96 @@ const MainProfile = ({ data }) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModalPhoto}>
+                    <Button variant="secondary" onClick={() => { setShowModalPhoto(false); setShowModalPic(false); }}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleUpload}>
+                    <Button variant="primary" onClick={() => { handleUpload(); setShowModalPhoto(false); setShowModalPic(false); }}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* ----------Modale per l'editing dell'intro---------- */}
+            <Modal show={showModalEdit} onHide={handleCloseModalEdit}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Intro</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <Container>
+                        <p>*Indicates required</p>
+
+                        <Row className="pb-4">
+                            <label className="text-left">First Name*</label>
+                            <input
+                                type="text"
+                                value={data.name}
+                                // ancora da gestire onChange={(e) => setData({ ...data, name: e.target.value })}
+                                className="InputForm "
+                                required
+                            />
+                        </Row>
+
+                        <Row className="pb-4">
+                            <label className="text-left">Last Name*</label>
+                            <input
+                                type="text"
+                                value={data.surname}
+                                // ancora da gestire onChange={(e) => setData({ ...data, surname: e.target.value })}
+                                className="InputForm"
+                                required
+                            />
+                        </Row>
+
+                        <Row className="pb-4">
+                            <label className="text-left">Additional name</label>
+                            <input
+                                type="text"
+                                className="InputForm"
+                            />
+                        </Row>
+
+                        <p className="mb-0">Name pronunciation</p>
+                        <div className="pb-4 d-flex align-items-center">
+                            <BsFillInfoSquareFill className="me-2" />
+                            <p className="mb-0">This can only be added using our mobile app</p>
+                        </div>
+
+                        <Row>
+                            <label className="text-left">Pronouns</label>
+                            <DropdownButton
+                                className="DropdownButton"
+                                title={"Please Select"}
+                            // (selectedPronoun) => setData({ ...data, pronoun: selectedPronoun })
+                            >
+                                <Dropdown.Item eventKey="She/her">She/her</Dropdown.Item>
+                                <Dropdown.Item eventKey="He/him">He/him</Dropdown.Item>
+                                <Dropdown.Item eventKey="They/them">They/them</Dropdown.Item>
+                                <Dropdown.Item eventKey="Custom">Custom</Dropdown.Item>
+                            </DropdownButton>
+                        </Row>
+
+                        <p>Let others know how to refer to you.</p>
+                        <p>Learn more about <span className="text-primary fw-bold">gender pronouns.</span></p>
+
+                        <Row className="pb-4">
+                            <label className="text-left">Headline*</label>
+                            <textarea
+                                row={2}
+                                type="text"
+                                value={data.title}
+                                className="InputForm"
+                                required
+                            />
+                        </Row>
+                    </Container>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModalEdit}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseModalEdit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

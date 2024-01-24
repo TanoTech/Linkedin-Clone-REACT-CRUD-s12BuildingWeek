@@ -4,6 +4,12 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import InteressiUtente from "./InteressiUtente";
 
+import {
+  contenutiPerAziende,
+  contenutiPerNewsletter,
+  contenutiPerScuoleUniversita,
+} from "./InteressiUtente";
+
 const Interessi = () => {
   const [sezioneAttiva, setSezioneAttiva] = useState("aziende");
 
@@ -11,10 +17,21 @@ const Interessi = () => {
     setSezioneAttiva(sezione);
   };
 
-  
+  const getContenutiBySezione = (sezioneAttiva) => {
+    switch (sezioneAttiva) {
+      case 'aziende':
+        return contenutiPerAziende;
+      case 'newsletter':
+        return contenutiPerNewsletter;
+      case 'scuole-universita':
+        return contenutiPerScuoleUniversita;
+      default:
+        return [];
+    }
+  };
 
   return (
-    <Container className="my-4 p-0">
+    <Container className="mt-3 mb-3">
       <Card>
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div><h5>Interests</h5></div>
@@ -71,10 +88,7 @@ const Interessi = () => {
         <Card.Body className="text-center">
           <Row>
             <Col>
-              <InteressiUtente sezioneAttiva={sezioneAttiva} />
-            </Col>
-            <Col>
-              <InteressiUtente sezioneAttiva={sezioneAttiva} />
+              <InteressiUtente sezioneAttiva={sezioneAttiva} risultatiAttuali={getContenutiBySezione(sezioneAttiva)} />
             </Col>
           </Row>
         </Card.Body>
