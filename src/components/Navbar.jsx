@@ -89,7 +89,7 @@ const NavbarTop = () => {
                     </Nav>
                     <NavDropdown title={'For Business'}>
                     </NavDropdown>
-                    <NavLink>Try Premium for free</NavLink>
+                    <NavLink id='PremiumLink'>Try Premium for free</NavLink>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
