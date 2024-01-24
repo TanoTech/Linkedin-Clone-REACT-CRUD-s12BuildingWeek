@@ -363,21 +363,19 @@ const MainProfile = ({ data }) => {
 
                         <Row>
                             <label className="text-left">Pronouns</label>
-                            <Dropdown > {/* onSelect={(selectedPronoun) => setData({ ...data, pronoun: selectedPronoun })} */}
-                                <Dropdown.Toggle id="pronoun-dropdown">
-                                    {data.pronoun || "Please select"}
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item eventKey="She/her">She/her</Dropdown.Item>
-                                    <Dropdown.Item eventKey="He/him">He/him</Dropdown.Item>
-                                    <Dropdown.Item eventKey="They/them">They/them</Dropdown.Item>
-                                    <Dropdown.Item eventKey="Custom">Custom</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            <DropdownButton
+                                className="DropdownButton"
+                                title={"Please Select"}
+                            // (selectedPronoun) => setData({ ...data, pronoun: selectedPronoun })
+                            >
+                                <Dropdown.Item eventKey="She/her">She/her</Dropdown.Item>
+                                <Dropdown.Item eventKey="He/him">He/him</Dropdown.Item>
+                                <Dropdown.Item eventKey="They/them">They/them</Dropdown.Item>
+                                <Dropdown.Item eventKey="Custom">Custom</Dropdown.Item>
+                            </DropdownButton>
                         </Row>
 
-                        <p className="mb-0">Let others know how to refer to you.</p>
+                        <p>Let others know how to refer to you.</p>
                         <p>Learn more about <span className="text-primary fw-bold">gender pronouns.</span></p>
 
                         <Row className="pb-4">
