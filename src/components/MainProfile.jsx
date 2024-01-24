@@ -5,9 +5,13 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa";
 import { SlPicture } from "react-icons/sl";
 import { FaEye } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
+import { BiFileBlank } from "react-icons/bi";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+import { BsArrow90DegRight } from "react-icons/bs";
 import { useState } from "react";
 
-const urlCopertina = 'https://media.licdn.com/dms/image/D4D16AQHXjrGnp73BDw/profile-displaybackgroundimage-shrink_350_1400/0/1703176761319?e=1711584000&v=beta&t=vSMa8fJw-CuYIZZ2daNp7bIpS1RqGN4PI9Z7JMrYz80' // test da rimuovere successivamente
+const urlCopertina = 'https://leratomonareng.co.za/wp-content/uploads/2021/03/192adf06PCF91kCYu1nPLQg.jpeg' // test da rimuovere successivamente
 
 const urlLogo = 'https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg' // test da rimuovere successivamente
 
@@ -43,7 +47,7 @@ const MainProfile = ({ data }) => {
             formData.append('profile', selectedPhoto);
 
             // POST
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/%7${userID}%7D/picture`, {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userID}/picture`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,16 +114,20 @@ const MainProfile = ({ data }) => {
                                         <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button> {/* deve aprirsi un modale */}
 
                                         <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button dropdown-basic-button" id="dropdown-basic-button" title="More">
-                                            <Dropdown.Item href="#/action-1">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-1">
+                                                <BsArrow90DegRight className="me-1" />
                                                 <p className="mb-0">Send profile in a message</p>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-2">
+                                                <FiDownload className="me-1" />
                                                 <p className="mb-0">Save to Pdf</p>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-3">
+                                                <BiFileBlank className="me-1" />
                                                 <p className="mb-0">Build a resume</p>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-4">
+                                            <Dropdown.Item className="d-flex align-items-center" href="#/action-4">
+                                                <BsFillInfoSquareFill className="me-1" />
                                                 <p className="mb-0">About this profile</p>
                                             </Dropdown.Item>
                                         </DropdownButton>
@@ -151,7 +159,7 @@ const MainProfile = ({ data }) => {
 
             {/* Modale foto profilo */}
 
-            <Modal show={showModalPic} onHide={handleCloseModalPic} dialogClassName="modalPic">
+            <Modal show={showModalPic} onHide={handleCloseModalPic}>
                 <Modal.Header closeButton>
                     <Modal.Title >Profile photo</Modal.Title>
                 </Modal.Header>
@@ -268,6 +276,10 @@ const MainProfile = ({ data }) => {
                 </Modal.Header>
                 <Modal.Body>
 
+                    <div className="d-flex justify-content-center my-5">
+                        <img src={data.image} alt="Profile picture" id="profilePicModal" className="profilePic rounded-circle" />
+                    </div>
+
                     <Form encType='multipart/form-data'>
                         <Form.Group className="mb-3">
                             <Form.Label>Choose a photo</Form.Label>
@@ -277,7 +289,7 @@ const MainProfile = ({ data }) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModalPhoto}>
+                    <Button variant="secondary" onClick={() => { setShowModalPhoto(false); setShowModalPic(false); }}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleUpload}>
