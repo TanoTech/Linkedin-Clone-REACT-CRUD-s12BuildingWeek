@@ -10,7 +10,7 @@ import { Container } from "react-bootstrap";
 import './App.css';
 import Jobs from "./components/Jobs";
 import News from "./components/News";
-import YourComponent from "./components/Prova";
+import Home from "./components/Home";
 
 function App() {
     return (
@@ -19,27 +19,21 @@ function App() {
                 <header>
                     <NavbarTop />
                 </header>
-                <Container>
-                    <div className="App">
+                <Container className="App">
                         <main>
                             <div>
                                 <Routes>
+                                    <Route path="/" element={<Home />} />
                                     <Route path="/user-profile" element={<UserProfile />} />
+                                    <Route path="/jobs" element={<Jobs />} />
                                     <Route
                                         path="/risultati/:sezione"
                                         element={<DettaglioInteressi />}
                                     />
                                 </Routes>
                             </div>
-                            <section>
-                                {" "}
-                                <MayKnow />
-                                <News />
-                            </section>
                         </main>
-                    </div>
                 </Container>
-                <Footer />
             </Router>
         </ProfileProvider>
     );

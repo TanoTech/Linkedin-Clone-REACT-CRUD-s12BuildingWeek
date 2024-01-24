@@ -7,6 +7,9 @@ import Interessi from './Interessi';
 import Activity from './Activity';
 import { Spinner } from 'react-bootstrap';
 import Experience from './Experience';
+import MayKnow from './MayKnow';
+import News from './News';
+import Footer from './Footer';
 
 const UserProfile = () => {
     const { profile, setProfile} = useContext(ProfileContext);
@@ -34,13 +37,19 @@ const UserProfile = () => {
     }
 
     return (
-        <div>
+        <>
             <MainProfile data={profile} />
             <Activity data={profile} />
             <Experience data={profile._id} />
             <Formation />
             <Interessi />
-        </div>
+            <section>
+            {" "}
+            <MayKnow />
+            <News />
+            </section>
+            <Footer />
+        </>
     );
 };
 
