@@ -55,7 +55,7 @@ const MainProfile = ({ data }) => {
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userID}/picture`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    
                     'Authorization': `Bearer ${token}`,
                 },
                 body: formData,
@@ -283,7 +283,7 @@ const MainProfile = ({ data }) => {
                         <img src={data.image} alt="Profile picture" id="profilePicModal" className="profilePic rounded-circle" />
                     </div>
 
-                    <Form encType='multipart/form-data'>
+                    <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Choose a photo</Form.Label>
                             <Form.Control type="file" name="" id="" onChange={handlePhotoChange} />
@@ -351,8 +351,8 @@ const MainProfile = ({ data }) => {
 
                     <Row className="p-1">
                         <label className="text-left">Pronouns</label>
-                        <Dropdown >
-                            <Dropdown.Toggle variant="light" id="pronoun-dropdown">
+                        <Dropdown > {/* onSelect={(selectedPronoun) => setData({ ...data, pronoun: selectedPronoun })} */}
+                            <Dropdown.Toggle id="pronoun-dropdown">
                                 {data.pronoun || "Please select"}
                             </Dropdown.Toggle>
 
