@@ -17,7 +17,7 @@ const Jobs = () => {
                 setError(err.message);
             }
         };
-    
+        
         fetchJobData();
     }, [fetchJobs]);
 
