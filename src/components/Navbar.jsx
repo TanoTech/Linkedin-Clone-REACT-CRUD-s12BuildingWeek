@@ -59,7 +59,7 @@ const NavbarTop = () => {
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
-                                    <div>
+                                    <div className=''>
                                         <p>{userProfileName}</p>
                                         <p>{userProfileTitle}</p>
                                         <Link to='/user-profile'><Button className='btn btn-primary'>View Profile</Button></Link>

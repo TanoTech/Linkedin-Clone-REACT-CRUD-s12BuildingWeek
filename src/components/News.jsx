@@ -32,9 +32,9 @@ const News = () => {
             </div>
             {newsItems.map((news, index) => (
                 <div key={index} className='d-flex border-bottom p-3'>
-                    <img className='img-fluid my-2 align-self-center col-1' style={{width:'6.5em', height:'5em'}} src={news.image_url} alt={news.title} />
-                    <Container className='align-self-center col-20'>
-                        <h3 id='TitoloNews' className='fs-5 m-0 '>{news.title}</h3>
+                    <img className='img-fluid my-2 align-self-center col-1' style={{width:'6.5em', height:'5em', cursor:'pointer'}} src={news.image_url} alt={news.title} />
+                    <Container className='align-self-center HoverBluScritte col-20'>
+                        <h3 id='TitoloNews' className='fs-5 m-0'>{news.title}</h3>
                         <p className='fs-6 m-0'>{news.news_site}</p>
                     </Container>
                 </div>
