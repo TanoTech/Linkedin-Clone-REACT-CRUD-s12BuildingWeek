@@ -8,17 +8,16 @@ import Activity from './Activity';
 import Experience from './Experience';
 import Footer from './Footer';
 import { Spinner } from 'react-bootstrap';
+import MayKnow from './MayKnow';
+import News from './News';
 
 const UserDetail = () => {
-    const { userId } = useParams(); 
+    const { userId } = useParams();
     const { getAllPeople } = useContext(ProfileContext);
-
     const selectedUser = getAllPeople.find(user => user._id === userId);
-
     if (!selectedUser) {
         return <Spinner></Spinner>;
     }
-
     return (
         <>
             <main>
@@ -27,6 +26,11 @@ const UserDetail = () => {
                 <Experience data={selectedUser.id} />
                 <Formation />
                 <Interessi />
+                <section>
+                    {" "}
+                    <MayKnow />
+                    <News />
+                </section>
             </main>
             <footer>
                 <Footer />
