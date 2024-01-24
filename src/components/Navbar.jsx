@@ -50,9 +50,9 @@ const NavbarTop = () => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                        <Nav.Link href="#"><FaHome className='navIcon' /><>Home</></Nav.Link>
+                        <Link to='/home'> <FaHome className='navIcon' /><>Home</></Link>
                         <Nav.Link href="#"><FaNetworkWired className='navIcon' /> <>My Network</> </Nav.Link>
-                        <Nav.Link href="#"><FaBriefcase className='navIcon' /> <>Jobs</> </Nav.Link>
+                        <Link to='/jobs' ><FaBriefcase className='navIcon' /> <>Jobs</> </Link>
                         <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaging</></Nav.Link>
                         <Nav.Link href="#"><FaBell className='navIcon' /> <>Notifications</> </Nav.Link>
                         <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
