@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Col, Row } from "react-bootstrap";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -119,51 +120,55 @@ export const contenutiPerScuoleUniversita = [
       },
 ];
 
+
+
+
 const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
-  const [contenutiCasuali, setContenutiCasuali] = useState([]);
+  const [listaRisultati, setListaRisultati] = useState(risultatiAttuali);
+
+
 
   useEffect(() => {
-    const selezionareContenutiCasuali = () => {
-      let nuoviContenutiCasuali;
+    // Aggiorna la lista dei risultati quando le props cambiano
+    setListaRisultati(risultatiAttuali);
+  }, [risultatiAttuali]);
 
-      const risultatiArray = risultatiAttuali || []; // Usa un array vuoto se risultatiAttuali è undefined
-      
-      switch (sezioneAttiva) {
-        case 'aziende':
-          nuoviContenutiCasuali = risultatiArray.length > 0
-            ? risultatiArray
-            : [contenutiPerAziende[getRandomInt(0, contenutiPerAziende.length - 1)]];
-          break;
-        case 'newsletter':
-          nuoviContenutiCasuali = risultatiArray.length > 0
-            ? risultatiArray
-            : [contenutiPerNewsletter[getRandomInt(0, contenutiPerNewsletter.length - 1)]];
-          break;
-        case 'scuole-universita':
-          nuoviContenutiCasuali = risultatiArray.length > 0
-            ? risultatiArray
-            : [contenutiPerScuoleUniversita[getRandomInt(0, contenutiPerScuoleUniversita.length - 1)]];
-          break;
-        default:
-          nuoviContenutiCasuali = [];
-      }
-
-      setContenutiCasuali(nuoviContenutiCasuali);
-    };
-
-    selezionareContenutiCasuali();
-  }, [sezioneAttiva, risultatiAttuali]);
+  const handleSmettiDiSeguire = (id) => {
+    // Filtra la lista rimuovendo l'elemento con l'id specifico
+    const nuovaLista = listaRisultati.filter((contenuto) => contenuto.id !== id);
+    setListaRisultati(nuovaLista);
+  };
 
   return (
-    <div>
-      {contenutiCasuali.map((contenutoCasuale) => (
-        <div key={contenutoCasuale.id}>
-          <p><img className="logo-img" src={contenutoCasuale.logo} alt={contenutoCasuale.nome} /></p>
-          <p>{contenutoCasuale.nome}</p>
-          {contenutoCasuale.follower && <p>Follower: {contenutoCasuale.follower}</p>}
-        </div>
-      ))}
-    </div>
+    <Row>
+      <Col>
+        {listaRisultati.map((contenutoCasuale, index) => (
+          <div key={contenutoCasuale.id}>
+            <p>
+              <img
+                className="logo-img"
+                src={contenutoCasuale.logo}
+                alt={contenutoCasuale.nome}
+              />
+            </p>
+            <p>{contenutoCasuale.nome}</p>
+            {contenutoCasuale.follower && (
+              <p>
+                Follower: {contenutoCasuale.follower}
+                <Button
+                  variant="light"
+                  className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
+                  onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
+                >
+                  Unfollow
+                </Button>
+              </p>
+            )}
+            {index < listaRisultati.length - 1 && <hr />}
+          </div>
+        ))}
+      </Col>
+    </Row>
   );
 };
 
