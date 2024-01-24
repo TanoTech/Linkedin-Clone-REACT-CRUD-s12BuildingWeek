@@ -46,7 +46,7 @@ const NavbarTop = () => {
     return (
         <Navbar bg="light" expand="lg" className='MyNavBar'>
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand>
                     <Link to='/'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>
                 </Navbar.Brand>
                 <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
@@ -81,10 +81,10 @@ const NavbarTop = () => {
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
                         <Link to='/'> <FaHome className='navIcon' /> Home </Link>
-                        <Nav.Link href="#"><FaNetworkWired className='navIcon' /> My Network </Nav.Link>
+                        <Nav.Link ><FaNetworkWired className='navIcon' /> My Network </Nav.Link>
                         <Link to='/jobs' ><FaBriefcase className='navIcon' /> Jobs </Link>
-                        <Nav.Link href="#"><FaEnvelope className='navIcon' /> Messaging</Nav.Link>
-                        <Nav.Link href="#"><FaBell className='navIcon' /> Notifications </Nav.Link>
+                        <Nav.Link > <FaEnvelope className='navIcon' /> Messaging</Nav.Link>
+                        <Nav.Link > <FaBell className='navIcon' /> Notifications </Nav.Link>
                         <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
