@@ -7,19 +7,34 @@ const ImageUploader = ({ onSelectImage }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
-  };
+    const files = e.target.files;
+
+    if (files && files.length > 0) {
+      const file = files[0];
+      setSelectedImage(file);
+    }
+  }
 
   const handleImageSelection = () => {
     onSelectImage(selectedImage);
     setShowModal(false);
   };
 
+
+  const imageUrls = [
+    './assets/imgPost/img1.jpeg',
+    './assets/imgPost/img2.jpg',
+    './assets/imgPost/img3.jpg',
+    './assets/imgPost/img4.jpg',
+    './assets/imgPost/img5.jpg',
+    './assets/imgPost/img6.jpg'
+  ];
+
+
   return (
     <div>
       <Button variant="link" onClick={() => setShowModal(true)}>
-      <TbPhoto className='fs-4' alt="PhotoPicker" />
+        <TbPhoto className='fs-4' alt="PhotoPicker" />
       </Button>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -30,8 +45,14 @@ const ImageUploader = ({ onSelectImage }) => {
         <Modal.Body>
           <Form>
             <Form.Group controlId="imageInput">
-              <Form.Label>Select Image</Form.Label>
-              <Form.Control type="file" onChange={handleImageChange} accept="image/*" />
+              <Form.Control as="select" onChange={handleImageChange}>
+                <option value="">Select an Image</option>
+                {imageUrls.map((imageUrl, index) => (
+                  <option key={index} value={imageUrl}>
+                    {imageUrl}
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
           </Form>
         </Modal.Body>
