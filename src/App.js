@@ -6,9 +6,9 @@ import MayKnow from "./components/MayKnow";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ProfileProvider } from "./redux/contexts/ProfileContext";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
+import { ProfileProvider } from './redux/contexts/ProfileContext';
+import './App.css';
 
 function App() {
   return (
@@ -36,9 +36,7 @@ function App() {
             </main>
           </div>
         </Container>
-        <footer>
           <Footer />
-        </footer>
       </Router>
     </ProfileProvider>
   );
