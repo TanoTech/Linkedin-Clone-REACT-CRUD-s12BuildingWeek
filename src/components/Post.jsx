@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Col, Row, Button, Modal, Form } from 'react-bootstrap';
 import { HiOutlinePencil } from 'react-icons/hi2';
-import { FaTrash } from 'react-icons/fa'; 
+import { FaTrash } from 'react-icons/fa';
 
-const Post = ({ postDetails, handleLikeClick, handleEditClick, handleDeleteClick , data }) => {
+const Post = ({ postDetails, handleLikeClick, handleEditClick, handleDeleteClick, data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleDeleteModalClose = () => {
@@ -15,18 +15,18 @@ const Post = ({ postDetails, handleLikeClick, handleEditClick, handleDeleteClick
   };
 
   const handleDeleteConfirmed = () => {
-    handleDeleteClick(); 
+    handleDeleteClick();
     handleDeleteModalClose();
   };
 
   return (
     <Col className="mb-2">
-           <p className="minutes">
-              <span id="activity-user">
-                <strong>{data.name} {data.surname} </strong> reposted this
-              </span>{' '}
-              • 2 min
-            </p>
+      <p className="minutes">
+        <span id="activity-user">
+          <strong>{data.name} {data.surname} </strong> reposted this
+        </span>{' '}
+        • 2 min
+      </p>
       <Row className="px-0">
         <Col md={2} className="pr-0">
           <img
@@ -36,7 +36,7 @@ const Post = ({ postDetails, handleLikeClick, handleEditClick, handleDeleteClick
             style={{ width: '9rem' }}
           />
         </Col>
-        
+
         <Col className="test ms-4 me-5 mt-3">
           <p>{postDetails.text}</p>
         </Col>
