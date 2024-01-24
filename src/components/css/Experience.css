@@ -1,0 +1,19 @@
+#ExperienceTitle {
+    font-size: 1.7em !important;
+    text-align: left !important;
+    margin: 0.5rem 0.3rem !important;
+}
+
+#CondivisioneModificheEx {
+    padding: 1rem 2rem;
+    background-color: #edf3f8;
+}
+
+#LinkCondivisioneModificheEX {
+    color: #0a66c2;
+}
+
+#LinkCondivisioneModifiche:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
