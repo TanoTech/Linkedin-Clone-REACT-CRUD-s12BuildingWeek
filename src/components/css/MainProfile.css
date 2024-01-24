@@ -18,9 +18,9 @@
     cursor: pointer;
 }
 
-/* Rimuove la freccetta dai dropdown menu */
+/* Rimuove la freccetta dai dropdown menu SOLO dai bottoni blu 'OPEN TO' e 'MORE' */
 
-.dropdown-toggle::after{
+.blueButton > .dropdown-toggle::after{
     display: none !important;
 }
 
