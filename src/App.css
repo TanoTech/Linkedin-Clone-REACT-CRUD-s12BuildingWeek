@@ -21,7 +21,7 @@ main {
   };
 }
 
-#root {
+#root, body{
   background-color: #F4F2EE;
 }
 
