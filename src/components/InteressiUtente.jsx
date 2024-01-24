@@ -4,7 +4,7 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const contenutiPerAziende = [
+export const contenutiPerAziende = [
     { id: 1, logo: 'https://www.svgrepo.com/show/349454/microsoft.svg', nome: 'Microsoft', follower: 100000 },
     { id: 2, logo: 'https://upload.wikimedia.org/wikipedia/commons/archive/c/c1/20230822192910%21Google_%22G%22_logo.svg', nome: 'Google', follower: 90000 },
     { id: 3, logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Logo_Apple.inc.gif', nome: 'Apple', follower: 80000 },
@@ -19,13 +19,13 @@ const contenutiPerAziende = [
     { id: 12, logo: 'https://www.svgrepo.com/show/303303/oracle-6-logo.svg', nome: 'Oracle', follower: 35000 },
 ];
 
-const contenutiPerNewsletter = [
+export const contenutiPerNewsletter = [
     'Contenuto N1',
     'Contenuto N2',
     'Contenuto N3',
 ];
 
-const contenutiPerScuoleUniversita = [
+export const contenutiPerScuoleUniversita = [
     {
         id: 1,
         logo: 'https://seeklogo.com/images/P/Politecnico_di_Milano-logo-CE81376DCF-seeklogo.com.png',
@@ -120,60 +120,54 @@ const contenutiPerScuoleUniversita = [
 ];
 
 const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
-    const [contenutoCasuale, setContenutoCasuale] = useState(null);
-  
-    useEffect(() => {
-      const selezionareContenutoCasuale = () => {
-        let nuovoContenutoCasuale;
-        switch (sezioneAttiva) {
-          case 'aziende':
-            nuovoContenutoCasuale = contenutiPerAziende[getRandomInt(0, contenutiPerAziende.length - 1)];
-            break;
-          case 'newsletter':
-            nuovoContenutoCasuale = contenutiPerNewsletter[getRandomInt(0, contenutiPerNewsletter.length - 1)];
-            break;
-          case 'scuole-universita':
-            nuovoContenutoCasuale = contenutiPerScuoleUniversita[getRandomInt(0, contenutiPerScuoleUniversita.length - 1)];
-            break;
-          default:
-            nuovoContenutoCasuale = null;
-        }
-  
-        
-        const isRisultatiAttualiArray = Array.isArray(risultatiAttuali);
-  
-        
-        const risultati = isRisultatiAttualiArray ? risultatiAttuali : [];
-  
-        
-        const risultatoDuplicato = risultati.some(
-          (risultato) => risultato && nuovoContenutoCasuale && risultato.id === nuovoContenutoCasuale.id
-        );
-  
-        
-        if (risultatoDuplicato) {
-          selezionareContenutoCasuale();
-        } else {
-          setContenutoCasuale(nuovoContenutoCasuale);
-        }
-      };
-  
-      selezionareContenutoCasuale();
-    }, [sezioneAttiva, risultatiAttuali]);
-  
-    return (
-      <div>
-        {contenutoCasuale && (
-          <>
-            <p><img className="logo-img" src={contenutoCasuale.logo} alt={contenutoCasuale.nome} /></p>
-            <p>{contenutoCasuale.nome}</p>
-            <p>Follower: {contenutoCasuale.follower}</p>
-          </>
-        )}
-      </div>
-    );
-  };
-  
-  export default InteressiUtente;
+  const [contenutiCasuali, setContenutiCasuali] = useState([]);
+
+  useEffect(() => {
+    const selezionareContenutiCasuali = () => {
+      let nuoviContenutiCasuali;
+
+      const risultatiArray = risultatiAttuali || []; // Usa un array vuoto se risultatiAttuali è undefined
+      
+      switch (sezioneAttiva) {
+        case 'aziende':
+          nuoviContenutiCasuali = risultatiArray.length > 0
+            ? risultatiArray
+            : [contenutiPerAziende[getRandomInt(0, contenutiPerAziende.length - 1)]];
+          break;
+        case 'newsletter':
+          nuoviContenutiCasuali = risultatiArray.length > 0
+            ? risultatiArray
+            : [contenutiPerNewsletter[getRandomInt(0, contenutiPerNewsletter.length - 1)]];
+          break;
+        case 'scuole-universita':
+          nuoviContenutiCasuali = risultatiArray.length > 0
+            ? risultatiArray
+            : [contenutiPerScuoleUniversita[getRandomInt(0, contenutiPerScuoleUniversita.length - 1)]];
+          break;
+        default:
+          nuoviContenutiCasuali = [];
+      }
+
+      setContenutiCasuali(nuoviContenutiCasuali);
+    };
+
+    selezionareContenutiCasuali();
+  }, [sezioneAttiva, risultatiAttuali]);
+
+  return (
+    <div>
+      {contenutiCasuali.map((contenutoCasuale) => (
+        <div key={contenutoCasuale.id}>
+          <p><img className="logo-img" src={contenutoCasuale.logo} alt={contenutoCasuale.nome} /></p>
+          <p>{contenutoCasuale.nome}</p>
+          {contenutoCasuale.follower && <p>Follower: {contenutoCasuale.follower}</p>}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default InteressiUtente;
+
   
   
