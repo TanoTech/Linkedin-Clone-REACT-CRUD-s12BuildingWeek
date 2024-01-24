@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap'; 
 
 const JobDetails = ({ description, show, handleClose }) => {
     return (
