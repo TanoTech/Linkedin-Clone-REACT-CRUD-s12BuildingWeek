@@ -4,9 +4,9 @@
 @import './components/css/Interessi.css';
 @import './components/css/MainProfile.css';
 @import './components/css/MayKnow.css';
-@import './components/css/navbar.css';
 @import 'react-datepicker/dist/react-datepicker.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import './components/css/navbar.css';
 
 * {
   font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

@@ -1,48 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ProfileContext } from "../redux/contexts/ProfileContext";
-import { Link } from "react-router-dom";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  NavDropdown,
-  Image,
-  InputGroup,
-  NavLink,
-  Spinner,
-  Container,
-} from "react-bootstrap";
-import {
-  FaHome,
-  FaNetworkWired,
-  FaBriefcase,
-  FaEnvelope,
-  FaBell,
-  FaSearch,
-} from "react-icons/fa";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+import React, { useState, useEffect, useContext } from 'react';
+import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner, Container } from 'react-bootstrap';
+import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 
 const NavbarTop = () => {
-  const { profile, performSearch } = useContext(ProfileContext);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const userProfileName = profile ? (
-    `${profile.name} ${profile.surname}`
-  ) : (
-    <Spinner></Spinner>
-  );
-  const userProfileTitle = profile ? profile.title : "";
-  const userProfileImg = profile ? profile.image : "";
+    const { profile, performSearch, searchResults } = useContext(ProfileContext);
+    const [searchTerm, setSearchTerm] = useState('');
+    const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
+    const userProfileTitle = profile ? profile.title : '';
+    const userProfileImg = profile ? profile.image : '';
 
-  useEffect(() => {
-    if (!searchTerm.trim()) {
-      setSearchResults([]);
-      return;
-    }
+    useEffect(() => {
+
 
     const timerId = setTimeout(() => {
       performSearch(searchTerm);
@@ -51,6 +21,7 @@ const NavbarTop = () => {
     return () => clearTimeout(timerId);
   }, [searchTerm, profile, performSearch]);
 
+  
   return (
     <Navbar bg="light" expand="lg" className="MyNavBar ">
       <Container>
@@ -165,6 +136,5 @@ const NavbarTop = () => {
       </Container>
     </Navbar>
   );
-};
 
 export default NavbarTop;
