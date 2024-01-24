@@ -64,12 +64,13 @@ const Activity = ({ data }) => {
 
   const renderPosts = () => {
     return posts.map((post, index) => (
-      <Post
+      <Post 
         key={index}
         postDetails={post}
         handleLikeClick={() => handleLikeClick(index)}
         handleEditClick={() => handleEditClick(index)}
         handleDeleteClick={() => handleDeleteClick(index)}
+        data={data}
       />
     ));
   };
@@ -175,10 +176,12 @@ const Activity = ({ data }) => {
                 onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
               />
               <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
-              <ImageUploader onSelectImage={handleSelectImage} />
-              <MdCalendarMonth className=' me-3 fs-4' />
-              <BsBriefcase className=' me-3 fs-4' />
-              <IoMdPodium className=' fs-4'/>
+             <div className='d-flex align-items-center '>
+                <ImageUploader onSelectImage={handleSelectImage} />
+                <MdCalendarMonth className=' me-3 fs-4' />
+                <BsBriefcase className=' me-3 fs-4' />
+                <IoMdPodium className=' fs-4'/>
+             </div>
             </Form.Group>
             <hr />
             <div className='d-flex justify-content-end align-items-center'>
