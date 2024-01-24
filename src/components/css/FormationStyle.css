@@ -1,11 +1,5 @@
 /* CONTENITORE GENERALE */
-#SonContainer-Formation {
-    width: auto;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.375rem;
-    border: rgb(227, 227, 227) solid 1px;
-}
+
 
 #SonContainer-Formation h2 {
     font-size: 1.7em;

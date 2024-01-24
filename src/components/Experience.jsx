@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 
 import {format} from 'date-fns';
+import { Container } from "react-bootstrap";
 
 const Experience = ({ data }) => {
     const [experiences, setExperiences] = useState([]);
@@ -125,7 +126,7 @@ const Experience = ({ data }) => {
     };
 
     return (
-        <Container>
+        <Container className='bg-white mb-4 p-3 rounded border vorde-solid'>
             <h1>Esperienze Lavorative</h1>
             <ul>
                 {experiences.map((experience) => (
