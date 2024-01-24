@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import JobDetails from './JobDetails'; // Assicurati che il percorso sia corretto
+import JobDetails from './JobDetails'; 
 
 const SingleJob = ({ job }) => {
     const [modalShow, setModalShow] = useState(false);
