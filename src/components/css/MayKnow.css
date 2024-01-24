@@ -1,4 +1,4 @@
-.MayKnow {
+.SideSections {
     width: 17rem !important;
 }
 
@@ -50,16 +50,6 @@
 
 .MayKnowName, .MayKnowJob, .MayKnowImg {
     cursor: pointer;
-}
-
-.MayKnowShow {
-    color: #414141;
-    font-weight: 600;
-}
-
-.MayKnowShow:hover {
-    cursor: pointer;
-    background-color: rgb(236, 236, 236);
 }
 
 .MayKnowIcon {

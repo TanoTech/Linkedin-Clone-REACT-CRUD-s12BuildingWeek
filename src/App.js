@@ -5,7 +5,7 @@ import DettaglioInteressi from "./components/DettaglioInteressi";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ProfileProvider } from "./redux/contexts/ProfileContext";
 import { Container } from "react-bootstrap";
-import './App.css';
+import "./App.css";
 import Jobs from "./components/Jobs";
 import Home from "./components/Home";
 import UserDetail from "./components/UserDetails";

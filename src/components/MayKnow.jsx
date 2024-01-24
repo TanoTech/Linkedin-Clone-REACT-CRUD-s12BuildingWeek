@@ -20,7 +20,7 @@ const MayKnow = () => {
     }, [getAllPeople]);
 
     return (
-        <Container className='MayKnow bg-white mt-4 p-0 rounded border border-solid'>
+        <Container className='SideSections bg-white mt-4 p-0 rounded border border-solid'>
             <h2 className='MayKnowTitle p-2'>People you may know</h2>
 
             {randomPeople.map(person => (
@@ -34,7 +34,7 @@ const MayKnow = () => {
                 </div>
             ))}
 
-            <Container className='p-2 fs-5 text-center MayKnowShow'>Show all</Container>
+            <Container className='p-2 fs-5 text-center ButtonSideSections'>Show all</Container>
         </Container>
     );
 }

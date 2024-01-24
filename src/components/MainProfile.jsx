@@ -78,7 +78,7 @@ const MainProfile = ({ data }) => {
 
                 <Row>
                     <Col className="p-0">
-                        <img src={urlCopertina} alt="Cover image" className="rounded-top " style={{ width: '100%' }} />
+                        <img src={urlCopertina} alt="Cover image" className="rounded-top m-0 p-0" style={{ width: '100%' }} />
                         {/* icona matita con position relative o absolute */}
                     </Col>
 
