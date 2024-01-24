@@ -31,11 +31,16 @@ const MainProfile = ({ data }) => {
     const handleShowModalPhoto = () => setShowModalPhoto(true); // apertura modale AddPhoto
     const handleCloseModalPhoto = () => setShowModalPhoto(false); // chiusura modale AddPhoto
 
+    const [showModalEdit, setShowModalEdit] = useState(false); // stato aper/chius Modale Edit intro
+    const handleShowModalEdit = () => setShowModalEdit(true);
+    const handleCloseModalEdit = () => setShowModalEdit(false);
+
     const [selectedPhoto, setSelectedPhoto] = useState(null); // stato della photo caricata
     const handlePhotoChange = (e) => {
         const photo = e.target.files[0];
         setSelectedPhoto(photo)
     } // funzione per settare l'immagine caricata
+
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
     const userID = '65ae3f5d600be100183a869c';
@@ -86,7 +91,7 @@ const MainProfile = ({ data }) => {
 
                 <Container className="mt-0 p-3">
                     <div className="d-flex justify-content-end">
-                        <span className="penna"><HiOutlinePencil /></span> {/* ho usato la stessa classe di Matteo qui */}
+                        <span onClick={handleShowModalEdit} className="penna"><HiOutlinePencil /></span> {/* ho usato la stessa classe di Matteo qui */}
                     </div>
 
                     <Row>
@@ -138,10 +143,10 @@ const MainProfile = ({ data }) => {
                         </Col>
 
                         <Col md={4} className="text-center d-none d-md-block "> {/* Ti riporta alla sezione Istruzione */}
-                            <div className="d-flex justify-content-center align-items-center">
+                            <a href="#SonContainer-Formation" className="d-flex justify-content-center align-items-center">
                                 <img src={urlLogo} width={45} alt="" />
                                 <p className="mb-0 fw-bold HoverBluScritte">Epicode</p>
-                            </div>
+                            </a>
                         </Col>
                     </Row>
 
@@ -158,7 +163,6 @@ const MainProfile = ({ data }) => {
             </Container>
 
             {/* Modale foto profilo */}
-
             <Modal show={showModalPic} onHide={handleCloseModalPic}>
                 <Modal.Header closeButton>
                     <Modal.Title >Profile photo</Modal.Title>
@@ -269,7 +273,6 @@ const MainProfile = ({ data }) => {
             </Modal>
 
             {/* Modale per la modifica della foto */}
-
             <Modal show={showModalPhoto} onHide={handleCloseModalPhoto}>
                 <Modal.Header closeButton>
                     <Modal.Title>Change Photo</Modal.Title>
@@ -294,6 +297,84 @@ const MainProfile = ({ data }) => {
                     </Button>
                     <Button variant="primary" onClick={handleUpload}>
                         Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* Modale per l'editing dell'intro */}
+            <Modal show={showModalEdit} onHide={handleCloseModalEdit}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Intro</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <p>* Indicates required</p>
+
+                    <Row className="p-1">
+                        <label className="text-left">First Name *</label>
+                        <input
+                            type="text"
+                            value={data.name}
+                            // ancora da gestire onChange={(e) => setData({ ...data, name: e.target.value })}
+                            placeholder=""
+                            className="InputForm"
+                            required
+                        />
+                    </Row>
+
+                    <Row className="p-1">
+                        <label className="text-left">Last Name *</label>
+                        <input
+                            type="text"
+                            value={data.surname}
+                            // ancora da gestire onChange={(e) => setData({ ...data, name: e.target.value })}
+                            placeholder=""
+                            className="InputForm"
+                            required
+                        />
+                    </Row>
+
+                    <Row className="p-1">
+                        <label className="text-left">Last Name *</label>
+                        <input
+                            type="text"
+                            value=""
+                            // ancora da gestire onChange={(e) => setData({ ...data, name: e.target.value })}
+                            placeholder="Additional name"
+                            className="InputForm"
+                            required
+                        />
+                    </Row>
+
+                    <p>Name pronunciation</p>
+                    <p>This can only be added using our mobile app</p> {/* devo inserire una icona */}
+
+                    <Row className="p-1">
+                        <label className="text-left">Pronouns</label>
+                        <Dropdown >
+                            <Dropdown.Toggle variant="light" id="pronoun-dropdown">
+                                {data.pronoun || "Please select"}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item eventKey="She/her">She/her</Dropdown.Item>
+                                <Dropdown.Item eventKey="He/him">He/him</Dropdown.Item>
+                                <Dropdown.Item eventKey="They/them">They/them</Dropdown.Item>
+                                <Dropdown.Item eventKey="Custom">Custom</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </Row>
+
+
+
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModalEdit}>
+                        Chiudi
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseModalEdit}>
+                        Salva modifiche
                     </Button>
                 </Modal.Footer>
             </Modal>
