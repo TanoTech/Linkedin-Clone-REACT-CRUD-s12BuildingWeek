@@ -39,11 +39,11 @@ const NavbarTop = () => {
                 {searchTerm.length > 0 && searchResults.length > 0 && (
                     <div className="search-results-container">
                         {searchResults.slice(0, 6).map((otherProfile) => (
-                            <div key={otherProfile._id} className="search-result-item">
+                            <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item">
                                 <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
                                 {`${otherProfile.name} ${otherProfile.surname}`}
                                 <p>{otherProfile.title}</p>
-                            </div>
+                            </Link>
                         ))}
                         {jobResults.map((job) => (
                             <div key={job._id} className="search-result-item">
@@ -56,7 +56,7 @@ const NavbarTop = () => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                        <Link to='/home'> <FaHome className='navIcon' /><>Home</></Link>
+                        <Link to='/home'> <FaHome className='navIcon' /> <>Home</> </Link>
                         <Nav.Link href="#"><FaNetworkWired className='navIcon' /> <>My Network</> </Nav.Link>
                         <Link to='/jobs' ><FaBriefcase className='navIcon' /> <>Jobs</> </Link>
                         <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaging</></Nav.Link>
