@@ -66,7 +66,7 @@ const NavbarTop = () => {
                             <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item" onClick={() => setShowSearchResults(false)}>
                                 <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
                                 {`${otherProfile.name} ${otherProfile.surname}`}
-                                <p>{otherProfile.title}</p>
+                                <span>{otherProfile.title}</span> 
                             </Link>
                         ))}
                         {jobResults.map((job) => (
