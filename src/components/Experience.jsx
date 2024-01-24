@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container } from 'react-bootstrap';
+import { Container, Modal, Col, Row, Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import {format} from 'date-fns';
+import { format } from 'date-fns';
 
 const Experience = ({ data }) => {
-    const [mostraForm, setMostraForm] = useState(false);
+   /*  const [mostraForm, setMostraForm] = useState(false); */
     const [experiences, setExperiences] = useState([]);
     const [newExperience, setNewExperience] = useState({
         role: '',
@@ -16,8 +16,8 @@ const Experience = ({ data }) => {
         area: '',
     });
 
-    setMostraForm(false)
-    
+   /*  setMostraForm(false) */
+
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
     useEffect(() => {
@@ -94,36 +94,36 @@ const Experience = ({ data }) => {
             description: newExperience.description,
             area: newExperience.area,
         };
-    
+
         axios.put(`https://striveschool-api.herokuapp.com/api/profile/${data}/experiences/${expId}`, updatedExperience, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
         })
-        .then((response) => {
-            setExperiences((prevExperiences) => {
-                const updatedExperiences = prevExperiences.map((exp) => {
-                    if (exp._id === expId) {
-                        return response.data;
-                    } else {
-                        return exp;
-                    }
+            .then((response) => {
+                setExperiences((prevExperiences) => {
+                    const updatedExperiences = prevExperiences.map((exp) => {
+                        if (exp._id === expId) {
+                            return response.data;
+                        } else {
+                            return exp;
+                        }
+                    });
+                    return updatedExperiences;
                 });
-                return updatedExperiences;
+
+                setNewExperience({
+                    role: '',
+                    company: '',
+                    startDate: null,
+                    endDate: null,
+                    description: '',
+                    area: '',
+                });
+            })
+            .catch((error) => {
+                console.error('Errore nella richiesta PUT:', error);
             });
-    
-            setNewExperience({
-                role: '',
-                company: '',
-                startDate: null,
-                endDate: null,
-                description: '',
-                area: '',
-            });
-        })
-        .catch((error) => {
-            console.error('Errore nella richiesta PUT:', error);
-        });
     };
 
     return (
@@ -167,83 +167,80 @@ const Experience = ({ data }) => {
     );
 };
 
-export default Experience;
 
-
-
-
-
-
-<Modal show={mostraForm} onHide={() => setMostraForm(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title className="fs-6">
-              Add Experience
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body id="modal">
-              <Row id="CondivisioneModificheEx">
-                <Col className="p-0 m-0">
-                  <h2 className="p-0 fs-6">Notify network</h2>
-                  <p className="m-0">
-                  Turn on to notify your network of key profile changes (such as new education) and work anniversaries. Learn more about
+{/* <Modal show={mostraForm} onHide={() => setMostraForm(false)}>
+    <Modal.Header closeButton>
+        <Modal.Title className="fs-6">
+            Add Experience
+        </Modal.Title>
+    </Modal.Header>
+    <Modal.Body id="modal">
+        <Row id="CondivisioneModificheEx">
+            <Col className="p-0 m-0">
+                <h2 className="p-0 fs-6">Notify network</h2>
+                <p className="m-0">
+                    Turn on to notify your network of key profile changes (such as new education) and work anniversaries. Learn more about
                     <span id="LinkCondivisioneModificheEX">
-                    sharing profile changes.
+                        sharing profile changes.
                     </span>
-                  </p>
-                </Col>
-                <Col className="col-2 align-self-center p-0 m-0">
-                  <Form>
+                </p>
+            </Col>
+            <Col className="col-2 align-self-center p-0 m-0">
+                <Form>
                     <Form.Check type="switch" className="ms-3" id="MyToggleEx" />
-                  </Form>
-                </Col>
-              </Row>
+                </Form>
+            </Col>
+        </Row>
 
-              <div className="p-4">
-                <Row className="pb-4">
-                  <label className="text-left">Title*</label>
-                  <input type="text" name="role" placeholder="Ex: retail sales manager" onChange={handleInputChange} value={newExperience.role} />
-                </Row>
+        <div className="p-4">
+            <Row className="pb-4">
+                <label className="text-left">Title*</label>
+                <input type="text" name="role" placeholder="Ex: retail sales manager" onChange={handleInputChange} value={newExperience.role} />
+            </Row>
 
-                <Row className="pb-4">
-                  <label>Company name*</label>
-                  <input type="text" name="company" placeholder="Ex: Microsoft" onChange={handleInputChange} value={newExperience.company} />
-                </Row>
+            <Row className="pb-4">
+                <label>Company name*</label>
+                <input type="text" name="company" placeholder="Ex: Microsoft" onChange={handleInputChange} value={newExperience.company} />
+            </Row>
 
-                <Row className="pb-4">
-                  <label>Start Date*</label>
-                  <DatePicker
+            <Row className="pb-4">
+                <label>Start Date*</label>
+                <DatePicker
                     selected={newExperience.startDate}
                     onChange={(date) => handleDateChange(date, "startDate")}
                     dateFormat="yyyy-MM-dd"
                     placeholderText="Start Date"
                 />
-                </Row>
+            </Row>
 
-                <Row className="pb-4">
-                  <label>End Date*</label>
-                  <DatePicker
+            <Row className="pb-4">
+                <label>End Date*</label>
+                <DatePicker
                     selected={newExperience.endDate}
                     onChange={(date) => handleDateChange(date, "endDate")}
                     dateFormat="yyyy-MM-dd"
                     placeholderText="End Date"
                 />
-                </Row>            
+            </Row>
 
-                <Row className="pb-4">
-                  <label>Description</label>
-                  <input type="text" name="description" placeholder="Describe your job..." onChange={handleInputChange} value={newExperience.description} />
-                </Row>        
-                
+            <Row className="pb-4">
+                <label>Description</label>
+                <input type="text" name="description" placeholder="Describe your job..." onChange={handleInputChange} value={newExperience.description} />
+            </Row>
 
-                <Row className="pb-4">
-                  <label>Employment type*</label>
-                  <input type="text" name="area" placeholder="Area" onChange={handleInputChange} value={newExperience.area} />
-                </Row>
-            </div>
-            </Modal.Body>
-            <Container className="my-3" id="ButtonConteiner">
-              <Button id="ButtonSave" onClick={aggiungiEsperienzaFormazione}>
-                Save
-              </Button>
-            </Container>
-          </Modal>
+
+            <Row className="pb-4">
+                <label>Employment type*</label>
+                <input type="text" name="area" placeholder="Area" onChange={handleInputChange} value={newExperience.area} />
+            </Row>
+        </div>
+    </Modal.Body>
+    <Container className="my-3" id="ButtonConteiner">
+        <Button id="ButtonSave" onClick={aggiungiEsperienzaFormazione}>
+            Save
+        </Button>
+    </Container>
+</Modal> */}
+
+
+export default Experience;
