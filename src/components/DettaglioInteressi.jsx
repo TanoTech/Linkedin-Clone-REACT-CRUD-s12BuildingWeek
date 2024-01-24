@@ -99,6 +99,7 @@ const DettaglioInteressi = () => {
               <InteressiUtente
                 sezioneAttiva={sezioneAttiva}
                 risultatiAttuali={renderRisultati()}
+                showUnfollowButton={true}
               />
             </Col>
           </Row>
