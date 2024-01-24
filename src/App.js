@@ -9,6 +9,7 @@ import { ProfileProvider } from "./redux/contexts/ProfileContext";
 import { Container } from "react-bootstrap";
 import './App.css';
 import Jobs from "./components/Jobs";
+import News from "./components/News";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                             <section>
                                 {" "}
                                 <MayKnow />
+                                <News />
                             </section>
                         </main>
                     </div>
