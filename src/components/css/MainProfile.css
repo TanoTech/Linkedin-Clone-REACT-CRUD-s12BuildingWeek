@@ -30,6 +30,12 @@
     display: none !important;
 }
 
+/* bottoni */
+
+#dropdown-basic-button {
+    border-radius: 30px;
+}
+
 /* adatta la foto del profilo */
 
 @media screen and (max-width: 576px) {
