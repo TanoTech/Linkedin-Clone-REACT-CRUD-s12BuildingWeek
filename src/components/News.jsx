@@ -25,18 +25,21 @@ const News = () => {
     }, [fetchNews]);
 
     return (
-        <Container>
-            <div className='d-flex'>
-                <img className='img-fluid' style={{width:'3em'}} src="./assets/logo/linkedinLogo.png" alt="" />
-                <h4>LEARNING</h4>
+        <Container className='bg-white rounded border border-solid mt-3 SideSections p-0'>
+            <div className='d-flex mt-3 mx-3'>
+                <img className='img-fluid' style={{width:'1.5em'}} src="./assets/logo/linkedinLogo.png" alt="" />
+                <h2 className='fs-5 align-self-center ms-2 m-0'>LEARNING</h2>
             </div>
             {newsItems.map((news, index) => (
-                <div key={index}>
-                    <img className='img-fluid' src={news.image_url} alt={news.title} />
-                    <h5>{news.title}</h5>
-                    <p>{news.news_site}</p>
+                <div key={index} className='d-flex border-bottom p-3'>
+                    <img className='img-fluid my-2 align-self-center col-1' style={{width:'6.5em', height:'5em'}} src={news.image_url} alt={news.title} />
+                    <Container className='align-self-center col-20'>
+                        <h3 id='TitoloNews' className='fs-5 m-0 '>{news.title}</h3>
+                        <p className='fs-6 m-0'>{news.news_site}</p>
+                    </Container>
                 </div>
             ))}
+            <Container className='fs-5 py-2 px-0 text-center ButtonSideSections'>Show More</Container>
         </Container>
     );
 };

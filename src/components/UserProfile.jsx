@@ -1,11 +1,12 @@
 import { useEffect, useContext } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import MainProfile from './MainProfile';
 import Formation from './Formation';
 import Interessi from './Interessi';
 import Activity from './Activity';
-import { Spinner } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import Experience from './Experience';
 import MayKnow from './MayKnow';
 import News from './News';
@@ -38,16 +39,18 @@ const UserProfile = () => {
 
     return (
         <>
-            <main>
-                <MainProfile data={profile} />
-                <Activity data={profile} />
-                <Experience data={profile._id} />
-                <Formation />
-                <Interessi />
+            <main className='d-flex '>
+                <Container>
+                    <MainProfile data={profile} />
+                    <Activity data={profile} />
+                    <Experience data={profile._id} />
+                    <Formation />
+                    <Interessi />
+                </Container>
                 <section>
                     {" "}
-                    <MayKnow />
-                    <News />
+                    <MayKnow/>
+                    <News/>
                 </section>
             </main>
             <footer>
