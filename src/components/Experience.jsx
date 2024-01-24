@@ -159,6 +159,7 @@ const Experience = ({ data }) => {
                 <input type="text" name="area" placeholder="Area" onChange={handleInputChange} value={newExperience.area} />
                 <button onClick={handleAddExperience}>Aggiungi</button>
             </div>
+            <div></div>
         </Container>
     );
 };
