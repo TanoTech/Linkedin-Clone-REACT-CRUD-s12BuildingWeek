@@ -9,8 +9,8 @@ const ProfileSummary = () => {
     const userProfileImg = profile ? profile.image : '';
 
     return (
-        <Container>
-            <div></div>
+        <Container className="bg-white border border-solid rounded mt-3" id="ContainerSummary">
+            <div ></div>
             <>
                 <img className='img-fluid dropImg' style={{ width: '8em' }} src={userProfileImg} alt="foto profilo utente" />
                 <p>{userProfileName}</p>

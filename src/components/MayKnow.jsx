@@ -20,7 +20,7 @@ const MayKnow = () => {
     }, [getAllPeople]);
 
     return (
-        <Container className='SideSections bg-white mt-4 p-0 rounded border border-solid'>
+        <Container className='SideSections bg-white mt-2 p-0 rounded border border-solid'>
             <h2 className='MayKnowTitle p-2'>People you may know</h2>
             {randomPeople.map(person => (
                 <div key={person._id} className='MayKnowContent px-3'>

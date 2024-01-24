@@ -1,0 +1,23 @@
+/* PROFILE-SUMMARY */
+
+#ContainerSummary {
+    width: 14rem;
+}
+
+/* SEE-MORE */
+
+.LinkSeeMore {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #0c73da;
+    cursor: pointer;
+}
+
+.LinkSeeMore:hover {
+    text-decoration: underline;
+}
+
+.ButtonSeeMore:hover {
+    background-color: rgb(236, 236, 236);
+    cursor: pointer;
+}

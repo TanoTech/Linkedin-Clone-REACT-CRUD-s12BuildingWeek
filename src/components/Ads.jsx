@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap"
 
 const Ads = () => {
     return (
-        <Container className="adsContainer">
+        <Container className="adsContainer border border-solid rounded">
             <p>Ads...</p>
         </Container>
     )

@@ -9,6 +9,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import './components/css/navbar.css';
 @import './components/css/ads.css';
+@import './components/css/Home.css';
 
 /* GENERALE */
 
@@ -57,4 +58,9 @@ main {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.ParagraphProfileLanguage {
+  font-size: 0.85em;
+  color: rgb(0 0 0 / 60%);
 }
