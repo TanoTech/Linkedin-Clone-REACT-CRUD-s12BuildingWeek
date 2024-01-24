@@ -1,0 +1,9 @@
+.adsContainer {
+    margin-top: 1.2em;
+    background-image: url('/public/assets/ads/adsMerenda.png');
+    background-size: 100%; 
+    background-repeat: no-repeat;
+    color: white;
+    width: 20em;
+    height: 11.5em;
+}

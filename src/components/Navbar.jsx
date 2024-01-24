@@ -7,7 +7,7 @@ import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } fro
 const NavbarTop = () => {
     const { profile, performSearch, searchResults, fetchJobs, jobResults } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
-    const [showSearchResults, setShowSearchResults] = useState(false); 
+    const [showSearchResults, setShowSearchResults] = useState(false);
     const searchResultsRef = useRef(null);
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
@@ -26,7 +26,7 @@ const NavbarTop = () => {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (searchResultsRef.current && !searchResultsRef.current.contains(event.target)) {
-                setShowSearchResults(false); 
+                setShowSearchResults(false);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
@@ -39,7 +39,7 @@ const NavbarTop = () => {
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
         if (e.target.value.trim() !== '') {
-            setShowSearchResults(true); 
+            setShowSearchResults(true);
         }
     };
 
@@ -70,10 +70,10 @@ const NavbarTop = () => {
                             </Link>
                         ))}
                         {jobResults.map((job) => (
-                            <div key={job._id} className="search-result-item" onClick={() => setShowSearchResults(false)}>
+                            <Link to={`/jobs/${job._id}`} key={job._id} className="search-result-item" onClick={() => setShowSearchResults(false)}>
                                 <p>{job.title}</p>
                                 <p>{job.company}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 )}

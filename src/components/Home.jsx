@@ -1,9 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useContext} from 'react';
+import { ProfileContext } from '../redux/contexts/ProfileContext';
 import axios from 'axios';
+import { Container } from 'react-bootstrap';
+import CreatePost from './CreatePost';
+import GetPost from './GetPost';
+import Ads from './Ads';
+import FooterHome from './FooterHome';
+import ProfileSummary from './ProfileSummary';
+import SeeMore from './SeeMore';
+
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
     const [newPostText, setNewPostText] = useState('');
+    const {profile} = useContext(ProfileContext);
 
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFmOTQyMmJkNWQxMjAwMTg5MGQ0M2QiLCJpYXQiOjE3MDYwMDU1MzksImV4cCI6MTcwNzIxNTEzOX0.FCMdZrjjRxkJ279ok18O8GpY0L5AughCi-lX6jUDQPg';
 
@@ -21,7 +31,7 @@ const Home = () => {
             console.error("Errore nel recupero dei post:", error);
         }
     };
-
+    
     const createPost = async (event) => {
         event.preventDefault();
         try {
@@ -37,22 +47,25 @@ const Home = () => {
     };
 
     return (
-        <div>
-            <h1>Post</h1>
-            <form onSubmit={createPost}>
-                <textarea
-                    value={newPostText}
-                    onChange={(e) => setNewPostText(e.target.value)}
-                    placeholder="Scrivi qui il tuo post..."
+        <main>
+            <Container>
+                <section>
+                    <ProfileSummary />
+                    <SeeMore />
+                </section>
+                <CreatePost
+                    newPostText={newPostText}
+                    setNewPostText={setNewPostText}
+                    createPost={createPost}
+                    posts={posts}
                 />
-                <button type="submit">Invia Post</button>
-            </form>
-            {posts.map(post => (
-                <div key={post._id}>
-                    <p>{post.text}</p>
-                </div>
-            ))}
-        </div>
+                <GetPost posts={posts} /> 
+            </Container>
+            <section>
+                <Ads />
+                <FooterHome />
+            </section>
+        </main>
     );
 };
 
