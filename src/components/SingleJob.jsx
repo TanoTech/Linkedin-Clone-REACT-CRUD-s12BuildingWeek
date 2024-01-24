@@ -9,7 +9,7 @@ const SingleJob = ({ job }) => {
     const handleModalShow = () => setModalShow(true);
 
     return (
-        <Card className="job-item">
+        <Card>
             <Card.Body>
                 <Card.Title>{job.title}</Card.Title>
                 <Card.Text>

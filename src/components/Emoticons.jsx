@@ -14,9 +14,9 @@ const EmoticonPicker = ({ onSelectEmoticon }) => {
         '🌍', '🚁', '🚤', '🎲', '🍀', '💡',
         '👾', '🧡', '💯', '🔥', '✨', '🍭',
         '💩', '🐷'
-      ];
-      
-      
+    ];
+
+
     const [showModal, setShowModal] = useState(false);
 
     const handleEmoticonClick = (emoticon) => {
