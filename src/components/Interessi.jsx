@@ -34,7 +34,9 @@ const Interessi = () => {
     <Container className="mt-3 mb-3">
       <Card>
         <Card.Header style={{ textAlign: "left", background: "white" }}>
-          <div><h5>Interests</h5></div>
+          <div>
+            <h5>Interests</h5>
+          </div>
           <div className="d-flex flex-row mt-2">
             <a
               href="#aziende"
@@ -87,9 +89,11 @@ const Interessi = () => {
         </Card.Header>
         <Card.Body className="text-center">
           <Row>
-            <Col>
-              <InteressiUtente sezioneAttiva={sezioneAttiva} risultatiAttuali={getContenutiBySezione(sezioneAttiva)} />
-            </Col>
+            {getContenutiBySezione(sezioneAttiva).slice(0, 2).map((contenuto, index) => (
+              <Col key={index}>
+                <InteressiUtente sezioneAttiva={sezioneAttiva} risultatiAttuali={[contenuto]} showUnfollowButton={false} />
+              </Col>
+            ))}
           </Row>
         </Card.Body>
         <Card.Footer className="bg-white text-center">
@@ -108,3 +112,4 @@ const Interessi = () => {
 };
 
 export default Interessi;
+
