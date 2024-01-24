@@ -25,14 +25,14 @@ const Footer = () => {
   }, []);
 
   return (
-      <Container>
-        <Container fluid id='FooterVariation'>
+      <Container className='FooterVariation'>
+        <Container fluid>
           <Row>
-            <Col className='FooterCol'>
+            <Col className='FooterCol p-0 m-0'>
               <a href="#">About</a>
               <a href="#">Community Guidelines</a>
               <Dropdown>
-                <Dropdown.Toggle className='FooterPrivacy' variant="link" id="dropdown-basic" onClick={handlePrivacyClick}>
+                <Dropdown.Toggle className='FooterPrivacy' variant="link" onClick={handlePrivacyClick}>
                   <span>Privacy & Terms</span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu show={isDropdownVisible}>
@@ -47,21 +47,21 @@ const Footer = () => {
               <a href="#">Safety Center</a>
             </Col>
   
-            <Col className='FooterCol'>
+            <Col className='FooterCol p-0 m-0'>
               <a href="#">Accessibility</a>
               <a href="#">Careers</a>
               <a href="#">Ad Choices</a>
               <a href="#">Mobile</a>
             </Col>
   
-            <Col className='FooterCol'>
+            <Col className='FooterCol p-0 m-0'>
               <a href="#">Talent Solutions</a>
               <a href="#">Marketing Solutions</a>
               <a href="#">Advertising</a>
               <a href="#">Small Business</a>
             </Col>
   
-            <Col>
+            <Col className='FooterCol p-0 m-0'>
               <div className='FooterSpecial'>
                 <i className="bi bi-question-circle-fill"></i>
                 <div className='FooterQst'>

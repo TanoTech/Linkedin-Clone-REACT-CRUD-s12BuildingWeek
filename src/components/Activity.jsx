@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Container, Modal, Form, ModalBody, } from 'react-bootstrap';
+import { Row, Col, Button, Container, Modal, Form } from 'react-bootstrap';
 import { HiOutlinePencil } from 'react-icons/hi2';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import EmoticonPicker from '../components/Emoticons';
-import { FaRegClock } from "react-icons/fa6";
 import ImageUploader from '../components/ImageUploader';
 import { MdCalendarMonth } from "react-icons/md";
 import { BsBriefcase } from "react-icons/bs";
 import { IoMdPodium } from "react-icons/io";
+import { FaRegClock } from "react-icons/fa6";
 
-
+import Post from './Post';
 
 const Activity = ({ data }) => {
   const [postDetailsCounts, setPostDetailsCounts] = useState({
@@ -23,11 +23,12 @@ const Activity = ({ data }) => {
     name: '',
     text: '',
   });
+  const [posts, setPosts] = useState([]);
 
-  const handleLikeClick = (postId) => {
+  const handleLikeClick = (index) => {
     setPostDetailsCounts((prevCounts) => ({
       ...prevCounts,
-      [postId]: prevCounts[postId] + 1,
+      [index]: prevCounts[index] + 1,
     }));
   };
 
@@ -40,11 +41,37 @@ const Activity = ({ data }) => {
   };
 
   const handlePublishPost = () => {
-    console.log('Dettagli del post:', postDetails);
+    setPosts([...posts, postDetails]);
     setShowModal(false);
   };
+
   const handleSelectEmoticon = (selectedEmoticon) => {
     setPostDetails({ ...postDetails, text: postDetails.text + selectedEmoticon });
+  };
+
+  const handleSelectImage = (selectedImage) => {
+    setPostDetails({ ...postDetails, image: selectedImage });
+  };
+
+  const handleEditClick = (index) => {
+  };
+
+  const handleDeleteClick = (index) => {
+    const updatedPosts = [...posts];
+    updatedPosts.splice(index, 1);
+    setPosts(updatedPosts);
+  };
+
+  const renderPosts = () => {
+    return posts.map((post, index) => (
+      <Post
+        key={index}
+        postDetails={post}
+        handleLikeClick={() => handleLikeClick(index)}
+        handleEditClick={() => handleEditClick(index)}
+        handleDeleteClick={() => handleDeleteClick(index)}
+      />
+    ));
   };
 
   return (
@@ -117,6 +144,7 @@ const Activity = ({ data }) => {
             <p className="post-details">{36 + postDetailsCounts.post3}</p>
           </Col>
           <hr className='divider mt-2'></hr>
+          {renderPosts()}
           <Col className="d-flex justify-content-center">
             <p className="arrow me-2 fs-5">Show all posts</p>
             <span className="arrow">
@@ -126,18 +154,16 @@ const Activity = ({ data }) => {
         </Row>
       </Container>
 
-       {/* Modale crea post */}
-       <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title className='fs-5 d-flex'>
             <img className='rounded-circle me-3' src={data.image} width={'13%'}/>
             <div className='d-flex flex-column'>
-            {data.name} {data.surname} 
-            <p className='postModal'>Post to Anyone</p>
+              {data.name} {data.surname} 
+              <p className='postModal'>Post to Anyone</p>
             </div>
           </Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="postText">
@@ -148,17 +174,13 @@ const Activity = ({ data }) => {
                 value={postDetails.text}
                 onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
               />
-               <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
-
-               <div className='d-flex align-items-center logos'>
-                 <ImageUploader onSelectEmoticon={handleSelectEmoticon} />
-                 <MdCalendarMonth className=' me-3 fs-4' />
-                 <BsBriefcase className=' me-3 fs-4' />
-                 <IoMdPodium className=' fs-4'/>
-               </div>
+              <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
+              <ImageUploader onSelectImage={handleSelectImage} />
+              <MdCalendarMonth className=' me-3 fs-4' />
+              <BsBriefcase className=' me-3 fs-4' />
+              <IoMdPodium className=' fs-4'/>
             </Form.Group>
             <hr />
-            
             <div className='d-flex justify-content-end align-items-center'>
               <FaRegClock className='clock fs-5 me-3'></FaRegClock>
               <Button className='rounded-pill ps-3 pe-3' onClick={handlePublishPost}>

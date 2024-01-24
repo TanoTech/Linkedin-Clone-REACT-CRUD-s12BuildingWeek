@@ -216,7 +216,6 @@ const Formation = () => {
                       </Dropdown.Item>
                     </DropdownButton>
 
-                    {/* Aggiungi un DropdownButton per l'anno */}
                     <DropdownButton
                       className="DropdownButton"
                       title={dataInizioAnno || "Year"}

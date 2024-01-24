@@ -13,12 +13,6 @@
     height: 15em;
 }
 
-.modalPic {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 .modalIcons {
     font-size: 130%;
     cursor: pointer;

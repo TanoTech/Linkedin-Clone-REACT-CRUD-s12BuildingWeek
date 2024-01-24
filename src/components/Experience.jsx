@@ -1,25 +1,47 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { AiOutlinePlus } from "react-icons/ai";
-import { GoPencil } from "react-icons/go";
-import DatePicker from "react-datepicker";
-import { format } from "date-fns";
-import "./css/Experience.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Container, Modal, Col, Row, Form, Button } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import { format } from 'date-fns';
 
 const Experience = ({ data }) => {
-  const [mostraForm, setMostraForm] = useState(false);
-  const [experiences, setExperiences] = useState([]);
-  const [newExperience, setNewExperience] = useState({
-    role: "",
-    company: "",
-    frequency: null,
-    startDate: null,
-    endDate: null,
-    description: "",
-    area: "",
-  });
+   /*  const [mostraForm, setMostraForm] = useState(false); */
+    const [experiences, setExperiences] = useState([]);
+    const [newExperience, setNewExperience] = useState({
+        role: '',
+        company: '',
+        startDate: null,
+        endDate: null,
+        description: '',
+        area: '',
+    });
+
+   /*  setMostraForm(false) */
+
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
+
+    useEffect(() => {
+        axios.get(`https://striveschool-api.herokuapp.com/api/profile/${data}/experiences`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+            .then((response) => {
+                setExperiences(response.data);
+            })
+            .catch((error) => {
+                console.error('Errore nella richiesta GET:', error);
+            });
+    }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewExperience((prevExperience) => ({
+            ...prevExperience,
+            [name]: value,
+        }));
+    };
+
 
   useEffect(() => {
     setMostraForm(false);
@@ -122,27 +144,46 @@ const Experience = ({ data }) => {
       area: newExperience.area,
     };
 
-    axios
-      .put(
-        `https://striveschool-api.herokuapp.com/api/profile/${data}/experiences/${expId}`,
-        updatedExperience,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {
-        setExperiences((prevExperiences) => {
-          const updatedExperiences = prevExperiences.map((exp) => {
-            if (exp._id === expId) {
-              return response.data;
-            } else {
-              return exp;
+    const handleEditExperience = (expId) => {
+        const updatedExperience = {
+            role: newExperience.role,
+            company: newExperience.company,
+            startDate: newExperience.startDate,
+            endDate: newExperience.endDate,
+            description: newExperience.description,
+            area: newExperience.area,
+        };
+
+        axios.put(`https://striveschool-api.herokuapp.com/api/profile/${data}/experiences/${expId}`, updatedExperience, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
             }
-          });
-          return updatedExperiences;
-        });
+        })
+            .then((response) => {
+                setExperiences((prevExperiences) => {
+                    const updatedExperiences = prevExperiences.map((exp) => {
+                        if (exp._id === expId) {
+                            return response.data;
+                        } else {
+                            return exp;
+                        }
+                    });
+                    return updatedExperiences;
+                });
+
+                setNewExperience({
+                    role: '',
+                    company: '',
+                    startDate: null,
+                    endDate: null,
+                    description: '',
+                    area: '',
+                });
+            })
+            .catch((error) => {
+                console.error('Errore nella richiesta PUT:', error);
+            });
+    };
 
         setNewExperience({
           role: "",
