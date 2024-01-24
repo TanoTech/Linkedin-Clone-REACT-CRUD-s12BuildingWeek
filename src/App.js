@@ -8,37 +8,38 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ProfileProvider } from "./redux/contexts/ProfileContext";
 import { Container } from "react-bootstrap";
 import './App.css';
+import Jobs from "./components/Jobs";
 
 function App() {
-  return (
-    <ProfileProvider>
-      <Router>
-        <header>
-          <NavbarTop />
-        </header>
-        <Container>
-          <div className="App">
-            <main>
-              <div>
-                <Routes>
-                  <Route path="/user-profile" element={<UserProfile />} />
-                  <Route
-                    path="/risultati/:sezione"
-                    element={<DettaglioInteressi />}
-                  />
-                </Routes>
-              </div>
-              <section>
-                {" "}
-                <MayKnow />
-              </section>
-            </main>
-          </div>
-        </Container>
-          <Footer />
-      </Router>
-    </ProfileProvider>
-  );
+    return (
+        <ProfileProvider>
+            <Router>
+                <header>
+                    <NavbarTop />
+                </header>
+                <Container>
+                    <div className="App">
+                        <main>
+                            <div>
+                                <Routes>
+                                    <Route path="/user-profile" element={<UserProfile />} />
+                                    <Route
+                                        path="/risultati/:sezione"
+                                        element={<DettaglioInteressi />}
+                                    />
+                                </Routes>
+                            </div>
+                            <section>
+                                {" "}
+                                <MayKnow />
+                            </section>
+                        </main>
+                    </div>
+                </Container>
+                <Footer />
+            </Router>
+        </ProfileProvider>
+    );
 }
 
 export default App;

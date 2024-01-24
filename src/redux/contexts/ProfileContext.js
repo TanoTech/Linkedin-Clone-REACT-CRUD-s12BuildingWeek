@@ -53,8 +53,40 @@ export const ProfileProvider = ({ children }) => {
         }
     }, []);
 
+    const fetchJobs = useCallback(async ({ query, limit }) => {
+        try {
+            let url = 'https://strive-benchmark.herokuapp.com/api/jobs?';
+            if (query) {
+                url += `search=${query}&`;
+            }
+
+            if (limit) {
+                url += `limit=${limit}&`;
+            }
+            
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error('Errore nella richiesta dei lavori');
+            }
+    
+            const result = await response.json();
+            const jobs = result.data; 
+            console.log('Ecco gli annunci di lavoro trovati:', jobs);
+            return jobs; 
+        } catch (error) {
+            console.error('Errore: ', error);
+            return []; 
+        }
+    }, []);
+
     return (
-        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers }}>
+        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, fetchJobs }}>
             {children}
         </ProfileContext.Provider>
     );
