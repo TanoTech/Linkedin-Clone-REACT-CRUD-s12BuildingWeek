@@ -11,6 +11,9 @@ import Experience from './Experience';
 import MayKnow from './MayKnow';
 import News from './News';
 import Footer from './Footer';
+import ProfileLanguage from './ProfileLanguage';
+import OtherProfileConsulted from './OtherProfileConsulted';
+import Ads from './Ads';
 
 const UserProfile = () => {
     const { profile, setProfile } = useContext(ProfileContext);
@@ -49,8 +52,12 @@ const UserProfile = () => {
                 </Container>
                 <section>
                     {" "}
+                    <ProfileLanguage data={profile} />
+                    <Ads />
+                    <OtherProfileConsulted />
                     <MayKnow/>
                     <News/>
+                    <Ads />
                 </section>
             </main>
             <footer>

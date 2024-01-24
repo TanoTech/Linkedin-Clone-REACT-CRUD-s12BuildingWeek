@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { Container } from 'react-bootstrap';
+import SingleJob from './SingleJob';
 
 const Jobs = () => {
     const { jobResults, fetchJobs } = useContext(ProfileContext);
@@ -14,23 +16,16 @@ const Jobs = () => {
     const jobs = jobResults;
 
     return (
-        <div>
+        <Container>
             <h2>Jobs offers:</h2>
-            {error && <p>Si è verificato un errore: {error}</p>}
-            {!jobs.length ? <p>Caricamento in corso...</p> : (
-                <ul>
-                    {jobs.map(job => (
-                        <li key={job._id}> 
-                            <h3>{job.company_name}</h3>
-                            <p>{job.title}</p>
-                            <p>{job.job_type}</p>
-                            <div dangerouslySetInnerHTML={{ __html: job.description }} />
-                        </li>
-                    ))}
-                </ul>
-            )}
-            {!jobs.length && !error && <p>Nessuna offerta di lavoro trovata.</p>}
-        </div>
+            <ul>
+                {jobs.map(job => (
+                    <li key={job._id}>
+                        <SingleJob job={job} />
+                    </li>
+                ))}
+            </ul>
+        </Container>
     );
 }
 

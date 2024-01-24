@@ -9,27 +9,29 @@ import "./App.css";
 import Jobs from "./components/Jobs";
 import Home from "./components/Home";
 import UserDetail from "./components/UserDetails";
+import SingleJob from "./components/SingleJob";
 
 function App() {
     return (
         <ProfileProvider>
             <Router>
                 <Container className="App">
-                        <>
+                    <>
                         <header>
-                    <NavbarTop />
-                </header>
-                                <Routes>
-                                    <Route path="/" element={<Home />} />
-                                    <Route path="/user-profile" element={<UserProfile />} />
-                                    <Route path="/jobs" element={<Jobs />} />
-                                    <Route path="/user/:userId" element={<UserDetail />} />
-                                    <Route
-                                        path="/risultati/:sezione"
-                                        element={<DettaglioInteressi />}
-                                    />
-                                </Routes>
-                            </>
+                            <NavbarTop />
+                        </header>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/user-profile" element={<UserProfile />} />
+                            <Route path="/user/:userId" element={<UserDetail />} />
+                            <Route path="/jobs" element={<Jobs />} />
+                            <Route path="/jobs/:jobId" element={<SingleJob />} />
+                            <Route
+                                path="/risultati/:sezione"
+                                element={<DettaglioInteressi />}
+                            />
+                        </Routes>
+                    </>
                 </Container>
             </Router>
         </ProfileProvider>
