@@ -8,6 +8,7 @@ export const ProfileProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const [getAllPeople, setGetAllPeople] = useState ([]);
+    const [jobResults, setJobResults] = useState([]); 
 
     //campo di ricerca
     const performSearch = useCallback(async (searchTerm) => {
@@ -63,11 +64,11 @@ export const ProfileProvider = ({ children }) => {
             if (query) {
                 url += `search=${query}&`;
             }
-
+    
             if (limit) {
                 url += `limit=${limit}&`;
             }
-
+    
             const response = await fetch(url, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -80,11 +81,11 @@ export const ProfileProvider = ({ children }) => {
             }
     
             const result = await response.json();
-            const jobs = result.data; 
+            const jobs = result.data;
+            setJobResults(jobs);
             console.log('Ecco gli annunci di lavoro trovati:', jobs);
         } catch (error) {
             console.error('Errore: ', error);
-
         }
     }, []);
 
@@ -110,7 +111,7 @@ export const ProfileProvider = ({ children }) => {
     }, []);
 
     return (
-        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, fetchJobs, fetchNews }}>
+        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, jobResults, fetchJobs, fetchNews }}>
             {children}
         </ProfileContext.Provider>
     );
