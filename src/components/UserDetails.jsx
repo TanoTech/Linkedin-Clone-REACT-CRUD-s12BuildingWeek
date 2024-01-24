@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import "../App.css";
 import { ProfileContext } from '../redux/contexts/ProfileContext';
 import MainProfile from './MainProfile';
 import Formation from './Formation';
@@ -8,6 +9,7 @@ import Activity from './Activity';
 import Experience from './Experience';
 import Footer from './Footer';
 import { Spinner } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const UserDetail = () => {
     const { userId } = useParams(); 
@@ -21,7 +23,7 @@ const UserDetail = () => {
 
     return (
         <>
-            <main>
+            <main className='d-flex flex-column'>
                 <MainProfile data={selectedUser} />
                 <Activity data={selectedUser} />
                 <Experience data={selectedUser.id} />
