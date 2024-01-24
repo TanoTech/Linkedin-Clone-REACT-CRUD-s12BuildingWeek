@@ -123,18 +123,16 @@ export const contenutiPerScuoleUniversita = [
 
 
 
-const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
+const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }) => {
   const [listaRisultati, setListaRisultati] = useState(risultatiAttuali);
 
-
-
   useEffect(() => {
-    // Aggiorna la lista dei risultati quando le props cambiano
+    
     setListaRisultati(risultatiAttuali);
   }, [risultatiAttuali]);
 
   const handleSmettiDiSeguire = (id) => {
-    // Filtra la lista rimuovendo l'elemento con l'id specifico
+    
     const nuovaLista = listaRisultati.filter((contenuto) => contenuto.id !== id);
     setListaRisultati(nuovaLista);
   };
@@ -154,15 +152,18 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
             <p>{contenutoCasuale.nome}</p>
             {contenutoCasuale.follower && (
               <p>
-                Follower: {contenutoCasuale.follower}
-                <Button
-                  variant="light"
-                  className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
-                  onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
-                >
-                  Unfollow
-                </Button>
-              </p>
+  Follower: {contenutoCasuale.follower} {'   '}
+  {showUnfollowButton && (
+    <Button
+      variant="light"
+      className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
+      onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
+    >
+      Unfollow
+    </Button>
+  )}
+</p>
+
             )}
             {index < listaRisultati.length - 1 && <hr />}
           </div>
@@ -171,6 +172,7 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali }) => {
     </Row>
   );
 };
+
 
 export default InteressiUtente;
 
