@@ -5,21 +5,20 @@ import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup,
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 
 const NavbarTop = () => {
-    const { profile, performSearch, searchResults } = useContext(ProfileContext);
+    const { profile, performSearch, searchResults, fetchJobs, jobResults } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
     const userProfileImg = profile ? profile.image : '';
-
     useEffect(() => {
-
         const timerId = setTimeout(() => {
             performSearch(searchTerm);
+            if (searchTerm.trim() !== '') {
+                fetchJobs({ query: searchTerm, limit: 10 });
+            }
         }, 500);
-
         return () => clearTimeout(timerId);
-    }, [searchTerm, profile, performSearch]);
-
+    }, [searchTerm, profile, performSearch, fetchJobs]);
     return (
         <Navbar bg="light" expand="lg" className='MyNavBar '>
             <Container>
@@ -39,10 +38,17 @@ const NavbarTop = () => {
                 </Form>
                 {searchTerm.length > 0 && searchResults.length > 0 && (
                     <div className="search-results-container">
-                        {searchResults.map((otherProfile) => (
-                            <div key={otherProfile._id} className="search-result-item">
+                        {searchResults.slice(0, 6).map((otherProfile) => (
+                            <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item">
                                 <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
-                                {`${otherProfile.name} ${otherProfile.surname}`} { }
+                                {`${otherProfile.name} ${otherProfile.surname}`}
+                                <p>{otherProfile.title}</p>
+                            </Link>
+                        ))}
+                        {jobResults.map((job) => (
+                            <div key={job._id} className="search-result-item">
+                                <p>{job.title}</p>
+                                <p>{job.company}</p>
                             </div>
                         ))}
                     </div>
@@ -50,7 +56,7 @@ const NavbarTop = () => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                        <Link to='/home'> <FaHome className='navIcon' /><>Home</></Link>
+                        <Link to='/home'> <FaHome className='navIcon' /> <>Home</> </Link>
                         <Nav.Link href="#"><FaNetworkWired className='navIcon' /> <>My Network</> </Nav.Link>
                         <Link to='/jobs' ><FaBriefcase className='navIcon' /> <>Jobs</> </Link>
                         <Nav.Link href="#"><FaEnvelope className='navIcon' /> <>Messaging</></Nav.Link>

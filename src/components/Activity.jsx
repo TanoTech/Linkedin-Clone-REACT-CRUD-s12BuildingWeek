@@ -8,7 +8,6 @@ import { MdCalendarMonth } from "react-icons/md";
 import { BsBriefcase } from "react-icons/bs";
 import { IoMdPodium } from "react-icons/io";
 import { FaRegClock } from "react-icons/fa6";
-
 import Post from './Post';
 
 const Activity = ({ data }) => {
@@ -64,7 +63,7 @@ const Activity = ({ data }) => {
 
   const renderPosts = () => {
     return posts.map((post, index) => (
-      <Post 
+      <Post
         key={index}
         postDetails={post}
         handleLikeClick={() => handleLikeClick(index)}
@@ -158,9 +157,9 @@ const Activity = ({ data }) => {
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title className='fs-5 d-flex'>
-            <img className='rounded-circle me-3' src={data.image} width={'13%'}/>
+            <img className='rounded-circle me-3' src={data.image} width={'13%'} />
             <div className='d-flex flex-column'>
-              {data.name} {data.surname} 
+              {data.name} {data.surname}
               <p className='postModal'>Post to Anyone</p>
             </div>
           </Modal.Title>
@@ -176,12 +175,12 @@ const Activity = ({ data }) => {
                 onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
               />
               <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
-             <div className='d-flex align-items-center '>
+              <div className='d-flex align-items-center '>
                 <ImageUploader onSelectImage={handleSelectImage} />
                 <MdCalendarMonth className=' me-3 fs-4' />
                 <BsBriefcase className=' me-3 fs-4' />
-                <IoMdPodium className=' fs-4'/>
-             </div>
+                <IoMdPodium className=' fs-4' />
+              </div>
             </Form.Group>
             <hr />
             <div className='d-flex justify-content-end align-items-center'>

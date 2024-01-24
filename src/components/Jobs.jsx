@@ -27,7 +27,7 @@ const Jobs = () => {
             {error && <p>Si è verificato un errore: {error}</p>}
             <ul>
                 {jobs.map(job => (
-                    <li key={job.id}>
+                    <li key={job.title}>
                         <h3>{job.title}</h3>
                         <p>{job.description}</p>
                     </li>
