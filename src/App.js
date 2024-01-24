@@ -16,12 +16,11 @@ function App() {
     return (
         <ProfileProvider>
             <Router>
-                <header>
+                <Container className="App">
+                        <>
+                        <header>
                     <NavbarTop />
                 </header>
-                <Container className="App">
-                        <main>
-                            <div>
                                 <Routes>
                                     <Route path="/" element={<Home />} />
                                     <Route path="/user-profile" element={<UserProfile />} />
@@ -31,8 +30,8 @@ function App() {
                                         element={<DettaglioInteressi />}
                                     />
                                 </Routes>
-                            </div>
-                        </main>
+                            </>
+                        
                 </Container>
             </Router>
         </ProfileProvider>

@@ -12,7 +12,7 @@ import News from './News';
 import Footer from './Footer';
 
 const UserProfile = () => {
-    const { profile, setProfile} = useContext(ProfileContext);
+    const { profile, setProfile } = useContext(ProfileContext);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -33,22 +33,26 @@ const UserProfile = () => {
         fetchProfile();
     }, [setProfile]);
     if (!profile) {
-        return  <Spinner></Spinner>;
+        return <Spinner></Spinner>;
     }
 
     return (
         <>
-            <MainProfile data={profile} />
-            <Activity data={profile} />
-            <Experience data={profile._id} />
-            <Formation />
-            <Interessi />
-            <section>
-            {" "}
-            <MayKnow />
-            <News />
-            </section>
-            <Footer />
+            <main>
+                <MainProfile data={profile} />
+                <Activity data={profile} />
+                <Experience data={profile._id} />
+                <Formation />
+                <Interessi />
+                <section>
+                    {" "}
+                    <MayKnow />
+                    <News />
+                </section>
+            </main>
+            <footer>
+                <Footer />
+            </footer>
         </>
     );
 };
