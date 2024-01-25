@@ -260,7 +260,148 @@ const Experience = ({ data }) => {
             <Modal.Title className="fs-5">Add Experience</Modal.Title>
           </Modal.Header>
           <Modal.Body id="modal">
-            {/* ... (rest of your modal content) ... */}
+            <Row id="CondivisioneModificheEx">
+              <Col className="p-0 m-0">
+                <h2 className="p-0 fs-6">Notify network</h2>
+                <p className="m-0">
+                  Turn on to notify your network of key profile changes (such as
+                  new education) and work anniversaries. Learn more about
+                  <span id="LinkCondivisioneModificheEX">
+                    sharing profile changes.
+                  </span>
+                </p>
+              </Col>
+              <Col className="col-2 align-self-center p-0 m-0">
+                <Form>
+                  <Form.Check type="switch" className="ms-3" id="MyToggleEx" />
+                </Form>
+              </Col>
+            </Row>
+
+            <Row >
+              <p className="requiredWarningEx">* indicates required</p>
+            </Row>
+
+            <div className="p-4">
+              <Row className="pb-4 pl-2">
+                <label className="text-left inputLabelEx">Title*</label>
+                <input
+                className="inputModalEx"
+                  type="text"
+                  name="role"
+                  placeholder="Ex: retail sales manager"
+                  onChange={handleInputChange}
+                  value={newExperience.role}
+                  required
+                />
+              </Row>
+
+              <Row className="pb-4">
+                <label className="inputLabelEx">Employment type*</label>
+                <Form.Select
+                  name="frequency"
+                  onChange={handleInputChange}
+                  value={
+                    newExperience.frequency ? newExperience.frequency.value : ""
+                  }
+                >
+                  <option value="">Select Frequency</option>
+                  <option value="Full Time">Full Time</option>
+                  <option value="Part Time">Part Time</option>
+                  <option value="Self Employed">Self Employed</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Apprenticeship">Apprenticeship</option>
+                  <option value="Seasonal">Seasonal</option>
+                </Form.Select>
+              </Row>
+
+              <Row className="pb-4">
+                <label className="inputLabelEx">Company name*</label>
+                <input
+                className="inputModalEx"
+                  type="text"
+                  name="company"
+                  placeholder="Ex: Microsoft"
+                  onChange={handleInputChange}
+                  value={newExperience.company}
+                  required
+                />
+              </Row>
+
+              <Row className="pb-4">
+                <label className="inputLabelEx">Location</label>
+                <input
+                className="inputModalEx"
+                  type="text"
+                  name="area"
+                  placeholder="Ex: London, UK"
+                  onChange={handleInputChange}
+                  value={newExperience.area}
+                  required
+                />
+              </Row>
+
+              <Row className="pb-4">
+                <label className="inputLabelEx">Location type</label>
+                <Form.Select
+                  name="locType"
+                  onChange={handleInputChange}
+                  value={
+                    newExperience.locType ? newExperience.locType.value : ""
+                  }
+                >
+                  <option value="">Select Frequency</option>
+                  <option value="Full Time">On Site</option>
+                  <option value="Part Time">Hybrid</option>
+                  <option value="Self Employed">Remote</option>
+                </Form.Select>
+              </Row>
+
+              <div className="dateWrapperEx">
+                <Row className="pb-4">
+                  <label className="inputLabelEx">Start Date*</label>
+                  <DatePicker
+                  className="inputModalEx"
+                    selected={newExperience.startDate}
+                    onChange={(date) => handleDateChange(date, "startDate")}
+                    dateFormat="yyyy-MM-dd"
+                    placeholderText="Start Date"
+                    required
+                  />
+                </Row>
+  
+                <Row className="pb-4">
+                  <label className="inputLabelEx">End Date</label>
+                  <DatePicker
+                  className="inputModalEx"
+                    selected={newExperience.endDate}
+                    onChange={(date) => handleDateChange(date, "endDate")}
+                    dateFormat="yyyy-MM-dd"
+                    placeholderText="End Date"
+                    required
+                  />
+                </Row>
+              </div>
+
+              <Row>
+                <p className="endWarningEx">If you are still working there, leave "End Date" field empty</p>
+              </Row>
+
+
+              <Row className="pb-4">
+                <label className="inputLabelEx">Description*</label>
+                <input
+                className="inputDescEx"
+                  type="text"
+                  name="description"
+                  placeholder="Describe your job..."
+                  onChange={handleInputChange}
+                  value={newExperience.description}
+                />
+              </Row>
+            </div>
           </Modal.Body>
           <div className="endBtnWrapper">
             <button
