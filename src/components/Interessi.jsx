@@ -32,7 +32,7 @@ const Interessi = () => {
 
   return (
     <Container className="mt-3 mb-3 p-0 borded border-solid">
-      <Card className="border border-none">
+      <Card className="border border-none ms-0">
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
             <h5>Interests</h5>

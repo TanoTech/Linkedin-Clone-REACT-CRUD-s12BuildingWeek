@@ -43,10 +43,11 @@ const MainProfile = ({ data }) => {
 
     const [firstName, setFirstName] = useState(data.name); // stati per gestire la modifica del profilo
     const [lastName, setLastName] = useState(data.surname);
+    const [email, setEmail] = useState(data.email);
+    const [title, setTitle] = useState(data.title);
+    const [area, setArea] = useState(data.area);
 
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
-
-    const userID = '65ae3f5d600be100183a869c';
 
     // fetch POST per caricare un'immagine del profilo
     const handleUpload = async () => {
@@ -56,7 +57,7 @@ const MainProfile = ({ data }) => {
             formData.append('profile', selectedPhoto);
 
             // POST
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userID}/picture`, {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/{userID}/picture`, {
                 method: 'POST',
                 headers: {
 
@@ -89,6 +90,9 @@ const MainProfile = ({ data }) => {
                 body: JSON.stringify({
                     name: firstName,
                     surname: lastName,
+                    title: title,
+                    email: email,
+                    area: area,
                 }),
             });
 
@@ -112,7 +116,7 @@ const MainProfile = ({ data }) => {
 
                 {/* immagine copertina */}
                 <Row>
-                    <Col className="p-0">
+                    <Col className="p-0 m-0">
                         <img src={urlCopertina} alt="Cover image" className="rounded-top m-0 p-0" style={{ width: '100%' }} />
                         {/* icona matita con position relative o absolute */}
                     </Col>
@@ -258,7 +262,7 @@ const MainProfile = ({ data }) => {
                     <Modal.Title>Add to profile</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body style={{ height: '38em', overflowY: 'auto' }}>
                     <Accordion defaultActiveKey="0" flush>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header><p className="fw-bold mb-0">Core</p></Accordion.Header>
@@ -353,13 +357,17 @@ const MainProfile = ({ data }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Intro</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ height: '30em', overflowY: 'auto' }}>
 
                     <Container>
-                        <p>*Indicates required</p>
+
+                        <Row>
+                            <p className="p-0">*Indicates required</p>
+                        </Row>
+
 
                         <Row className="pb-4">
-                            <label className="text-left">First Name*</label>
+                            <label className="text-left p-0">First Name*</label>
                             <input
                                 type="text"
                                 value={firstName}
@@ -370,7 +378,7 @@ const MainProfile = ({ data }) => {
                         </Row>
 
                         <Row className="pb-4">
-                            <label className="text-left">Last Name*</label>
+                            <label className="text-left p-0">Last Name*</label>
                             <input
                                 type="text"
                                 value={lastName}
@@ -381,42 +389,72 @@ const MainProfile = ({ data }) => {
                         </Row>
 
                         <Row className="pb-4">
-                            <label className="text-left">Additional name</label>
+                            <label className="text-left p-0">Additional name</label>
                             <input
                                 type="text"
                                 className="InputForm"
                             />
                         </Row>
 
-                        <p className="mb-0">Name pronunciation</p>
-                        <div className="pb-4 d-flex align-items-center">
-                            <BsFillInfoSquareFill className="me-2" />
-                            <p className="mb-0">This can only be added using our mobile app</p>
-                        </div>
-
                         <Row>
-                            <label className="text-left">Pronouns</label>
-                            <DropdownButton
-                                className="DropdownButton"
-                                title={"Please Select"}
-                            // (selectedPronoun) => setData({ ...data, pronoun: selectedPronoun })
-                            >
-                                <Dropdown.Item eventKey="She/her">She/her</Dropdown.Item>
-                                <Dropdown.Item eventKey="He/him">He/him</Dropdown.Item>
-                                <Dropdown.Item eventKey="They/them">They/them</Dropdown.Item>
-                                <Dropdown.Item eventKey="Custom">Custom</Dropdown.Item>
-                            </DropdownButton>
+                            <p className="mb-0 p-0">Name pronunciation</p>
                         </Row>
 
-                        <p>Let others know how to refer to you.</p>
-                        <p>Learn more about <span className="text-primary fw-bold">gender pronouns.</span></p>
+                        <Row>
+                            <div className="pb-4 p-0 d-flex align-items-center">
+                                <BsFillInfoSquareFill className="me-2" />
+                                <p className="mb-0">This can only be added using our mobile app</p>
+                            </div>
+                        </Row>
+
+                        <Row>
+                            <label className="p-0">Pronouns</label>
+                            <Form.Select name="pronouns">
+                                <option value="">Select Pronouns</option>
+                                <option value="She/her">She/her</option>
+                                <option value="He/him">He/him</option>
+                                <option value="They/them">They/them</option>
+                                <option value="Custom">Custom</option>
+                            </Form.Select>
+                        </Row>
+
+                        <Row>
+                            <p className="m-0 p-0">Let others know how to refer to you.</p>
+                        </Row>
+
+                        <Row>
+                            <p className="ms-0 p-0">Learn more about <span className="text-primary fw-bold">gender pronouns.</span></p>
+                        </Row>
 
                         <Row className="pb-4">
-                            <label className="text-left">Headline*</label>
+                            <label className="text-left p-0">Headline*</label>
                             <textarea
                                 row={2}
                                 type="text"
-                                value={data.title}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                className="InputForm"
+                                required
+                            />
+                        </Row>
+
+                        <Row className="pb-4">
+                            <label className="text-left p-0">Email*</label>
+                            <input
+                                type="text"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="InputForm"
+                                required
+                            />
+                        </Row>
+
+                        <Row className="pb-4">
+                            <label className="text-left p-0">Area*</label>
+                            <input
+                                type="text"
+                                value={area}
+                                onChange={(e) => setArea(e.target.value)}
                                 className="InputForm"
                                 required
                             />
@@ -425,11 +463,8 @@ const MainProfile = ({ data }) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModalEdit}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={() => { updateProfile(); setShowModalEdit(false); }}>
-                        Save Changes
+                    <Button variant="primary" className="me-2 rounded-pill custom-dropdown-button blueButton" onClick={() => { updateProfile(); setShowModalEdit(false); }}>
+                        Save
                     </Button>
                 </Modal.Footer>
             </Modal>
