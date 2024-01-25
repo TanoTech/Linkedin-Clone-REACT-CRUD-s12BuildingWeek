@@ -4,6 +4,14 @@
     width: 14rem;
 }
 
+#ContainerSummary img {
+    width: 4em;
+}
+
+#Section1Summary .Style1Summary {
+    color: rgb(0 0 0 / 60%);
+}
+
 /* SEE-MORE */
 
 .LinkSeeMore {
