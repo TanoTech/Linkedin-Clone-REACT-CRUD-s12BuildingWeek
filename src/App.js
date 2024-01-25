@@ -14,7 +14,7 @@ import "./App.css";
 
 function App() {
     const [isLoginVisible, setLoginVisibility] = useState(true);
-    
+
     const handleLogout = () => {
         setLoginVisibility(true);
     };
@@ -22,10 +22,10 @@ function App() {
     return (
         <ProfileProvider>
             <Router>
-            {isLoginVisible && <Login />}
-                        <header>
-                            <NavbarTop onLogout={handleLogout} />
-                        </header>
+                {isLoginVisible && <Login />}
+                <header>
+                    <NavbarTop onLogout={handleLogout} />
+                </header>
                 <Container className="App">
                     <>
                         <Routes>

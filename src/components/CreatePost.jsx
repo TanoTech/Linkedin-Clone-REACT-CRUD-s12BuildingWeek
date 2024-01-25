@@ -19,11 +19,6 @@ const CreatePost = ({ newPostText, setNewPostText, createPost, posts }) => {
                 />
                 <button type="submit">Invia Post</button>
             </form>
-            {posts.map(data => (
-                <div key={data._id}>
-                    <p>{data.text}</p>
-                </div>
-            ))}
         </div>
     );
 };
