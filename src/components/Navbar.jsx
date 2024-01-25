@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner, Container } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 
-const NavbarTop = ({onLogout}) => {
+const NavbarTop = () => {
     const { profile, performSearch, searchResults, fetchJobs, jobResults } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [showSearchResults, setShowSearchResults] = useState(false); 
@@ -12,6 +12,7 @@ const NavbarTop = ({onLogout}) => {
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
     const userProfileImg = profile ? profile.image : '';
+    const navigate = useNavigate();
 
     useEffect(() => {
         const timerId = setTimeout(() => {
@@ -41,10 +42,6 @@ const NavbarTop = ({onLogout}) => {
         if (e.target.value.trim() !== '') {
             setShowSearchResults(true); 
         }
-    };
-
-    const handleSignOut = () => {
-        onLogout();
     };
 
     return (
@@ -84,18 +81,20 @@ const NavbarTop = ({onLogout}) => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                    <div className='d-flex flex-column align-self-center LinkHover'>
+                    <div className='d-flex xflex-column align-self-center LinkHover'>
                         <FaHome className='align-self-center StyleLinkIconNav'/>
-                        <Link to='/' className='StyleLinkIconNav'> Home </Link>
+                        <Link to='/home' className='StyleLinkIconNav'> Home </Link>
                     </div>
-                        <Nav.Link href="#"><FaNetworkWired /> My Network </Nav.Link>
+                        <Nav.Link ><FaNetworkWired /> My Network </Nav.Link>
                         <div className='d-flex flex-column align-self-center LinkHover'>
                             <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
                             <Link to='/jobs' className='StyleLinkIconNav'> Jobs </Link>
                         </div>
-                        <Nav.Link href="#"><FaEnvelope /> Messaging</Nav.Link>
-                        <Nav.Link href="#"><FaBell /> Notifications </Nav.Link>
-                        <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /></span>} >
+                        
+                        <Nav.Link ><FaEnvelope /> Messaging</Nav.Link>
+                        <Nav.Link ><FaBell /> Notifications </Nav.Link>
+                        <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
+
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
@@ -117,7 +116,8 @@ const NavbarTop = ({onLogout}) => {
                             <NavDropdown.Item>Post & Activity</NavDropdown.Item>
                             <NavDropdown.Item>Job Posting Account</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item><button onClick={handleSignOut}>Sign Out</button></NavDropdown.Item>
+                            <Link to='/'>Sign Out</Link>
+
                         </NavDropdown>
                     </Nav>
                     <NavDropdown title={'For Business'}>
