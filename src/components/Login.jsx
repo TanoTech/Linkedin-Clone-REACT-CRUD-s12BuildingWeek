@@ -1,11 +1,13 @@
+import React, { useEffect, useContext, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { useContext, useState } from 'react';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
 import { useNavigate } from 'react-router-dom';
+import { ProfileContext } from '../redux/contexts/ProfileContext';
 
-const Login = () => {
+const Login = ({ setShowNavbar }) => {
     const { setSelectedToken } = useContext(ProfileContext);
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     const tokens = {
         "gaetanoN@epicode.it": {
@@ -28,8 +30,12 @@ const Login = () => {
         }
     };
 
-    const [email, setEmail] = useState("");
-    const [error, setError] = useState("");
+    useEffect(() => {
+        setShowNavbar(false);
+        return () => {
+            setShowNavbar(true);
+        };
+    }, [setShowNavbar]);
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);

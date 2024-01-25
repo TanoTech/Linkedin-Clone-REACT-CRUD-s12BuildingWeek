@@ -9,7 +9,6 @@ import FooterHome from './FooterHome';
 import ProfileSummary from './ProfileSummary';
 import SeeMore from './SeeMore';
 import LinkedinNews from './LinkedinNews';
-import ErrorComponent from './ErrorComponent';
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -53,34 +52,28 @@ const Home = () => {
 
     return (
         <main>
-            {error && <ErrorComponent error={error} />}
-            {!error && (
-                <Container className='d-flex'>
-                    <section className='me-3'>
-                        <ProfileSummary />
-                        <SeeMore />
-                    </section>
-    
-                    <div>
-                        <CreatePost
-                            newPostText={newPostText}
-                            setNewPostText={setNewPostText}
-                            createPost={createPost}
-                            posts={posts}
-                        />
-                        <GetPost posts={posts} />
-                    </div>
-                </Container>
-            )}
-            {!error && (
-                <section>
-                    <LinkedinNews />
-                    <Ads />
-                    <FooterHome />
+            <Container className='d-flex'>
+                <section className='me-3'>
+                    <ProfileSummary />
+                    <SeeMore />
                 </section>
-            )}
+                <div>
+                    <CreatePost
+                        newPostText={newPostText}
+                        setNewPostText={setNewPostText}
+                        createPost={createPost}
+                        posts={posts}
+                    />
+                    <GetPost posts={posts} />
+                </div>
+            </Container>
+            <section>
+                <LinkedinNews />
+                <Ads />
+                <FooterHome />
+            </section>
         </main>
     );
-            }    
+}
 
 export default Home;
