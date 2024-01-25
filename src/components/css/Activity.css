@@ -50,3 +50,9 @@
 .logos{
     cursor: pointer;
 }
+.trash{
+    cursor: pointer;
+    margin-right: 2.6rem;
+    color: rgb(147, 6, 6);
+    font-size: 90%;
+}

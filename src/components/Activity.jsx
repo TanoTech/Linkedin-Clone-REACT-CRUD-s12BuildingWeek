@@ -143,7 +143,7 @@ const Activity = ({ data }) => {
             />
             <p className="post-details">{36 + postDetailsCounts.post3}</p>
           </Col>
-          <hr className='divider mt-2'></hr>
+          
           {renderPosts()}
           <Col className="d-flex justify-content-center">
             <p className="arrow me-2 fs-5">Show all posts</p>

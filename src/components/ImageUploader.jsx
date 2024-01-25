@@ -22,12 +22,12 @@ const ImageUploader = ({ onSelectImage }) => {
 
 
   const imageUrls = [
-    './assets/imgPost/img1.jpeg',
-    './assets/imgPost/img2.jpg',
-    './assets/imgPost/img3.jpg',
-    './assets/imgPost/img4.jpg',
-    './assets/imgPost/img5.jpg',
-    './assets/imgPost/img6.jpg'
+    '/assets/imgPost/img1.jpeg',
+    '/assets/imgPost/img2.jpg',
+    '/assets/imgPost/img3.jpg',
+    '/assets/imgPost/img4.jpg',
+    '/assets/imgPost/img5.jpg',
+    '/assets/imgPost/img6.jpg',
   ];
 
 
