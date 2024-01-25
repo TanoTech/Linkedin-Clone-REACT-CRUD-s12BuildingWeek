@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import NavbarTop from "./components/Navbar";
 import UserProfile from "./components/UserProfile";
 import DettaglioInteressi from "./components/DettaglioInteressi";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ProfileProvider } from "./redux/contexts/ProfileContext";
 import { Container } from "react-bootstrap";
-import "./App.css";
 import Jobs from "./components/Jobs";
 import Home from "./components/Home";
 import UserDetail from "./components/UserDetails";
 import SingleJob from "./components/SingleJob";
+import Login from "./components/Login";
+import "./App.css";
 
 function App() {
+    const [isLoginVisible, setLoginVisibility] = useState(true);
+    
+    const handleLogout = () => {
+        setLoginVisibility(true);
+    };
+
     return (
         <ProfileProvider>
             <Router>
                 <Container className="App">
                     <>
+                        {isLoginVisible && <Login />}
                         <header>
-                            <NavbarTop />
+                            <NavbarTop onLogout={handleLogout} />
                         </header>
                         <Routes>
                             <Route path="/" element={<Home />} />

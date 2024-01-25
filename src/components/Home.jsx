@@ -13,8 +13,7 @@ import LinkedinNews from './LinkedinNews';
 const Home = () => {
     const [posts, setPosts] = useState([]);
     const [newPostText, setNewPostText] = useState('');
-
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
+    const {selectedToken} = useContext(ProfileContext)
 
     useEffect(() => {
         fetchPosts();
@@ -23,7 +22,7 @@ const Home = () => {
     const fetchPosts = async () => {
         try {
             const response = await axios.get('https://striveschool-api.herokuapp.com/api/posts/', {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${selectedToken}` }
             });
             setPosts(response.data);
         } catch (error) {
@@ -36,7 +35,7 @@ const Home = () => {
         try {
             await axios.post('https://striveschool-api.herokuapp.com/api/posts/',
                 { text: newPostText },
-                { headers: { Authorization: `Bearer ${token}` } }
+                { headers: { Authorization: `Bearer ${selectedToken}` } }
             );
             setNewPostText('');
             fetchPosts();

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner, Container } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 
-const NavbarTop = () => {
+const NavbarTop = ({onLogout}) => {
     const { profile, performSearch, searchResults, fetchJobs, jobResults } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [showSearchResults, setShowSearchResults] = useState(false); 
@@ -41,6 +41,10 @@ const NavbarTop = () => {
         if (e.target.value.trim() !== '') {
             setShowSearchResults(true); 
         }
+    };
+
+    const handleSignOut = () => {
+        onLogout();
     };
 
     return (
@@ -113,7 +117,7 @@ const NavbarTop = () => {
                             <NavDropdown.Item>Post & Activity</NavDropdown.Item>
                             <NavDropdown.Item>Job Posting Account</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item>Sign out</NavDropdown.Item>
+                            <NavDropdown.Item><button onClick={handleSignOut}>Sign Out</button></NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <NavDropdown title={'For Business'}>
