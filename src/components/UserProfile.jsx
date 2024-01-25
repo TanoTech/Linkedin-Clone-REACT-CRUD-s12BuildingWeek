@@ -13,7 +13,6 @@ import Footer from './Footer';
 import ProfileLanguage from './ProfileLanguage';
 import OtherProfileConsulted from './OtherProfileConsulted';
 import Ads from './Ads';
-import ErrorComponent from './ErrorComponent';
 
 const UserProfile = () => {
     const { profile, setProfile, selectedToken } = useContext(ProfileContext);
@@ -27,7 +26,6 @@ const UserProfile = () => {
                 setLoading(false);
                 return;
             }
-
             const endpoint = 'https://striveschool-api.herokuapp.com/api/profile/me';
             try {
                 const response = await axios.get(endpoint, {
@@ -45,7 +43,6 @@ const UserProfile = () => {
                 setLoading(false);
             }
         };
-
         fetchProfile();
     }, [setProfile, selectedToken]);
 
@@ -53,31 +50,25 @@ const UserProfile = () => {
         return <Spinner animation="border" />;
     }
 
-    if (error) {
-        return <ErrorComponent />;
-    }
-
     return (
         <>
-            {error ? <ErrorComponent error={error} /> : (
-                <main className='d-flex '>
-                    <Container>
-                        <MainProfile data={profile} />
-                        <Activity data={profile} />
-                        <Experience data={profile._id} />
-                        <Formation />
-                        <Interessi />
-                    </Container>
-                    <section>
-                        <ProfileLanguage data={profile} />
-                        <Ads />
-                        <OtherProfileConsulted />
-                        <MayKnow />
-                        <News />
-                        <Ads />
-                    </section>
-                </main>
-            )}
+            <main className='d-flex '>
+                <Container>
+                    <MainProfile data={profile} />
+                    <Activity data={profile} />
+                    <Experience data={profile._id} />
+                    <Formation />
+                    <Interessi />
+                </Container>
+                <section>
+                    <ProfileLanguage data={profile} />
+                    <Ads />
+                    <OtherProfileConsulted />
+                    <MayKnow />
+                    <News />
+                    <Ads />
+                </section>
+            </main>
             <footer>
                 <Footer />
             </footer>

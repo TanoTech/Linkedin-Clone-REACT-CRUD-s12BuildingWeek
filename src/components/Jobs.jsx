@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap';
 import SingleJob from './SingleJob';
 import Ads from './Ads'
 import FooterHome from './FooterHome'
-import ErrorComponent from './ErrorComponent';
 
 const Jobs = () => {
     const { jobResults, fetchJobs, selectedToken } = useContext(ProfileContext);
@@ -23,9 +22,6 @@ const Jobs = () => {
 
     return (
         <main>
-            {error ? (
-                <ErrorComponent error={error} />
-            ) : (
                 <Container className='mt-4'>
                     {jobResults.map(job => (
                         <div className='mb-4' key={job._id}>
@@ -33,13 +29,10 @@ const Jobs = () => {
                         </div>
                     ))}
                 </Container>
-            )}
-            {!error && (
                 <section className='mt-3'>
                     <Ads />
                     <FooterHome />
                 </section>
-            )}
         </main>
     );
 }
