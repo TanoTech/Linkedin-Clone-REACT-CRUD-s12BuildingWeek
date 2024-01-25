@@ -13,7 +13,7 @@ const SeeMore = () => {
         <p className="LinkSeeMore mx-0 my-2">Followed Hashtags</p>
       </Container>
       <Container className="text-center py-2 m-0 ButtonSeeMore">
-       See more
+        See more
       </Container>
     </Container>
   );

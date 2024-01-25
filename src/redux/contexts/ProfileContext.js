@@ -94,7 +94,7 @@ export const ProfileProvider = ({ children }) => {
 
     const fetchNews = useCallback(async () => {
         try {
-            const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=30&title_contains=Job'
+            const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=50&title_contains=tech'
             , {
                 headers: {
                     'Content-Type': 'application/json'
