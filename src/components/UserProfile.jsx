@@ -1,6 +1,5 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
-import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import MainProfile from './MainProfile';
 import Formation from './Formation';
@@ -16,28 +15,45 @@ import OtherProfileConsulted from './OtherProfileConsulted';
 import Ads from './Ads';
 
 const UserProfile = () => {
-    const { profile, setProfile } = useContext(ProfileContext);
+    const { profile, setProfile, selectedToken } = useContext(ProfileContext);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const fetchProfile = async () => {
+            if (!selectedToken) {
+                setError('Token non disponibile.');
+                setLoading(false);
+                return;
+            }
+
             const endpoint = 'https://striveschool-api.herokuapp.com/api/profile/me';
-            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
             try {
                 const response = await axios.get(endpoint, {
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${selectedToken}`
                     }
                 });
+                console.log('Dati ricevuti', response.data)
                 setProfile(response.data);
-                console.log(response.data)
-            } catch (error) {
-                console.error('Errore nella richiesta:', error);
+                setError('');
+            } catch (err) {
+                console.error('Errore nella richiesta:', err);
+                setError('Errore nel caricamento del profilo.');
+            } finally {
+                setLoading(false);
             }
         };
+
         fetchProfile();
-    }, [setProfile]);
-    if (!profile) {
-        return <Spinner></Spinner>;
+    }, [setProfile, selectedToken]);
+
+    if (loading) {
+        return <Spinner animation="border" />;
+    }
+
+    if (error) {
+        return <div>Errore: {error}</div>;
     }
 
     return (
@@ -51,7 +67,6 @@ const UserProfile = () => {
                     <Interessi />
                 </Container>
                 <section>
-                    {" "}
                     <ProfileLanguage data={profile} />
                     <Ads />
                     <OtherProfileConsulted />
