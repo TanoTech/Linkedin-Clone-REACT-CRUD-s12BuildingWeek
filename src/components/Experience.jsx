@@ -27,7 +27,6 @@ const Experience = ({ data }) => {
     setMostraForm(false);
   }, []);
 
-
   useEffect(() => {
     axios
       .get(
