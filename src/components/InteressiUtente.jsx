@@ -19,9 +19,9 @@ export const contenutiPerAziende = [
 ];
 
 export const contenutiPerNewsletter = [
-    'Contenuto N1',
-    'Contenuto N2',
-    'Contenuto N3',
+  { id: 1, nome: 'Contenuto N1' },
+  { id: 2, nome: 'Contenuto N2' },
+  { id: 3, nome: 'Contenuto N3' },
 ];
 
 export const contenutiPerScuoleUniversita = [
@@ -135,14 +135,19 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
       <Col>
         {listaRisultati.map((contenutoCasuale, index) => (
           <div key={contenutoCasuale.id}>
-            <p>
-              <img
-                className="logo-img"
-                src={contenutoCasuale.logo}
-                alt={contenutoCasuale.nome}
-              />
-            </p>
+            
+            {contenutoCasuale.logo && (
+              <p>
+                <img
+                  className="logo-img"
+                  src={contenutoCasuale.logo}
+                  alt={contenutoCasuale.nome}
+                />
+              </p>
+            )}
+            
             <p>{contenutoCasuale.nome}</p>
+            
             {contenutoCasuale.follower && (
               <p>
                 Follower: {contenutoCasuale.follower}{' '}
@@ -158,6 +163,7 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
                 )}
               </p>
             )}
+            
             {index < listaRisultati.length - 1 && <hr />}
           </div>
         ))}
