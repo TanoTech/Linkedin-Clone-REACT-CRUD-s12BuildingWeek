@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col, Form, Modal } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
+import { ProfileContext } from "../redux/contexts/ProfileContext";
 import "./css/Experience.css";
 
 const Experience = ({ data }) => {
+  const {selectedToken} = useContext(ProfileContext)
   const [mostraForm, setMostraForm] = useState(false);
   const [experiences, setExperiences] = useState([]);
   const [newExperience, setNewExperience] = useState({
@@ -26,8 +27,6 @@ const Experience = ({ data }) => {
     setMostraForm(false);
   }, []);
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o";
 
   useEffect(() => {
     axios
@@ -35,7 +34,7 @@ const Experience = ({ data }) => {
         `https://striveschool-api.herokuapp.com/api/profile/${data}/experiences`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${selectedToken}`,
           },
         }
       )
