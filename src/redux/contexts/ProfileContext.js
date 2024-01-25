@@ -10,7 +10,6 @@ export const ProfileProvider = ({ children }) => {
     const [currentJob, setCurrentJob] = useState(null);
     const [selectedToken, setSelectedToken] = useState("");
 
-
     const performSearch = useCallback(async (searchTerm) => {
         if (!selectedToken) return;
 
