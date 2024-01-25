@@ -48,7 +48,7 @@ const NavbarTop = ({onLogout}) => {
     };
 
     return (
-        <Navbar bg="light" expand="lg" className='MyNavBar'>
+        <Navbar expand="lg" className='MyNavBar m-0 bg-white border-bottom'>
             <Container>
                 <Navbar.Brand href="#home">
                     <Link to='/'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>

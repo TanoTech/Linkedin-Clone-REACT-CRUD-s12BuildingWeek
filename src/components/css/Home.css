@@ -56,6 +56,17 @@
 }
 
 
+#Section4Summary {
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(0 0 0 / 60%);
+}
+
+#Section4Summary:hover {
+    background-color: rgb(236, 236, 236);
+}
+
 
 /* SEE-MORE */
 
