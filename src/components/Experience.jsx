@@ -406,7 +406,7 @@ const Experience = ({ data }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" className="me-2 rounded-pill custom-dropdown-button blueButton" onClick={handleSaveEditExperience}>
-            Save Changes
+            Save
           </Button>
         </Modal.Footer>
 
