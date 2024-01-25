@@ -6,17 +6,22 @@ import Ads from './Ads'
 import FooterHome from './FooterHome'
 
 const Jobs = () => {
-    const { jobResults, fetchJobs } = useContext(ProfileContext);
+    const { jobResults, fetchJobs, selectedToken } = useContext(ProfileContext);
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        if (!selectedToken) {
+            setError('Ciao');
+            return;
+        }
+
         fetchJobs({ query: 'developer', limit: 200 }).catch(err => {
             setError(err.message);
         });
     }, [fetchJobs]);
 
     return (
-            <main >
+        <main>
                 <Container className='mt-4'>
                     {jobResults.map(job => (
                         <div className='mb-4' key={job._id}>
@@ -25,10 +30,10 @@ const Jobs = () => {
                     ))}
                 </Container>
                 <section className='mt-3'>
-                    <Ads/>
+                    <Ads />
                     <FooterHome />
                 </section>
-            </main>
+        </main>
     );
 }
 

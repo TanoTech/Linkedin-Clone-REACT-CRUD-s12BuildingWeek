@@ -22,11 +22,10 @@ const UserProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             if (!selectedToken) {
-                setError('Token non disponibile.');
+                setError('Ciao');
                 setLoading(false);
                 return;
             }
-
             const endpoint = 'https://striveschool-api.herokuapp.com/api/profile/me';
             try {
                 const response = await axios.get(endpoint, {
@@ -44,16 +43,11 @@ const UserProfile = () => {
                 setLoading(false);
             }
         };
-
         fetchProfile();
     }, [setProfile, selectedToken]);
 
     if (loading) {
         return <Spinner animation="border" />;
-    }
-
-    if (error) {
-        return <div>Errore: {error}</div>;
     }
 
     return (
@@ -70,8 +64,8 @@ const UserProfile = () => {
                     <ProfileLanguage data={profile} />
                     <Ads />
                     <OtherProfileConsulted />
-                    <MayKnow/>
-                    <News/>
+                    <MayKnow />
+                    <News />
                     <Ads />
                 </section>
             </main>

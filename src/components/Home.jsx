@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext} from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
@@ -13,9 +13,15 @@ import LinkedinNews from './LinkedinNews';
 const Home = () => {
     const [posts, setPosts] = useState([]);
     const [newPostText, setNewPostText] = useState('');
-    const {selectedToken} = useContext(ProfileContext)
+    const { selectedToken } = useContext(ProfileContext)
+    const [error, setError] = useState('');
 
     useEffect(() => {
+        if (!selectedToken) {
+            setError('Ciao');
+            return;
+        }
+
         fetchPosts();
     }, []);
 
@@ -29,7 +35,7 @@ const Home = () => {
             console.error("Errore nel recupero dei post:", error);
         }
     };
-    
+
     const createPost = async (event) => {
         event.preventDefault();
         try {
@@ -51,7 +57,6 @@ const Home = () => {
                     <ProfileSummary />
                     <SeeMore />
                 </section>
-
                     <div className='m-0 p-0'>
                         <CreatePost 
                             newPostText={newPostText}
@@ -61,6 +66,7 @@ const Home = () => {
                         />
                         <GetPost posts={posts} /> 
                     </div>
+
             </Container>
             <section>
                 <LinkedinNews />
@@ -69,6 +75,6 @@ const Home = () => {
             </section>
         </main>
     );
-};
+}
 
 export default Home;

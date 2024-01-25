@@ -6,17 +6,19 @@ import MainProfile from "./MainProfile";
 import Formation from "./Formation";
 import Interessi from "./Interessi";
 import Activity from "./Activity";
-import Experience from "./Experience";
 import Footer from "./Footer";
 import { Spinner } from "react-bootstrap";
 import OtherProfileConsulted from "./OtherProfileConsulted";
 import OnThisPage from "./OnThisPage";
 import Ads from "./Ads";
+import Experience from "./Experience";
 
 const UserDetail = () => {
   const { userId } = useParams();
   const { getAllPeople } = useContext(ProfileContext);
+  
   const selectedUser = getAllPeople.find((user) => user._id === userId);
+
   if (!selectedUser) {
     return <Spinner></Spinner>;
   }
@@ -29,7 +31,7 @@ const UserDetail = () => {
         <div className="d-flex flex-column">
           <MainProfile data={selectedUser} />
           <Activity data={selectedUser} />
-          <Experience data={selectedUser.id} />
+          <Experience data={selectedUser._id} />
           <Formation />
           <Interessi />
         </div>
