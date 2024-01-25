@@ -127,7 +127,7 @@ const MainProfile = ({ data }) => {
                     <img src={data.image} alt="Profile picture" id="profilePic" className="rounded-circle border border-light border-4" onClick={handleShowModalPic} />
                 </div>
 
-                <Container className="mt-0 p-3">
+                <Container className="mt-0 py-3">
 
                     {/* icona penna */}
                     <div className="d-flex justify-content-end">
@@ -235,7 +235,7 @@ const MainProfile = ({ data }) => {
                             Edit
                         </Button>
 
-                        <Button variant="primary" className="d-flex flex-column align-items-center me-2" onClick={handleShowModalPhoto}>
+                        <Button variant="primary" className="d-flex flex-column align-items-center me-2" onClick={()=>{handleShowModalPhoto(); setShowModalPic(false)}}>
                             <FaCamera className="modalIcons text-white" />
                             Add photo
                         </Button>
@@ -256,17 +256,17 @@ const MainProfile = ({ data }) => {
             </Modal>
 
             {/* ----------Modale Add to profile---------- */}
-            <Modal show={showModalProfile} onHide={handleCloseModalProfile}>
+            <Modal className="ms-0" show={showModalProfile} onHide={handleCloseModalProfile}>
 
                 <Modal.Header closeButton>
                     <Modal.Title>Add to profile</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body style={{ height: '38em', overflowY: 'auto' }}>
-                    <Accordion defaultActiveKey="0" flush>
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header><p className="fw-bold mb-0">Core</p></Accordion.Header>
-                            <Accordion.Body>
+                <Modal.Body className="ms-0" style={{ height: '38em', overflowY: 'auto' }}>
+                    <Accordion className="ms-0" defaultActiveKey="0" flush>
+                        <Accordion.Item className="ms-0" eventKey="0">
+                            <Accordion.Header className="ms-0"><p className="fw-bold mb-0">Core</p></Accordion.Header>
+                            <Accordion.Body className="ms-0">
                                 <p>Start with the basics. Filling out these sections will help you be discovered by recruiters and people you may know</p>
                                 <hr />
                                 <p>Add about</p>
@@ -280,9 +280,9 @@ const MainProfile = ({ data }) => {
                                 <p>Add skills</p>
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item eventKey="1">
+                        <Accordion.Item className="ms-0" eventKey="1">
                             <Accordion.Header><p className="fw-bold mb-0">Recommended</p></Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Body className="ms-0">
                                 <p>Completing these sections will increase your credibility and give you access to more opportunities</p>
                                 <hr />
                                 <p>Add featured</p>
@@ -296,7 +296,7 @@ const MainProfile = ({ data }) => {
                                 <p>Add recommendations</p>
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item eventKey="2">
+                        <Accordion.Item className="ms-0" eventKey="2">
                             <Accordion.Header><p className="fw-bold mb-0">Additional</p></Accordion.Header>
                             <Accordion.Body>
                                 <p>Add even more personality to your profile. These sections will help you grow your network and build more relationships.</p>
