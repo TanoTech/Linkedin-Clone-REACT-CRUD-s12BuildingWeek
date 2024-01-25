@@ -36,7 +36,10 @@ const ProfileSummary = () => {
                     <p className="m-0 Style3Summary">Boost your career with exclusive tools</p>
                     <p className="m-0" id="TryPremium">Try Premium for 0 EUR</p>
                 </Container>
-                <p>My items</p>
+                <Container className="p-0 d-flex p-2" id="Section4Summary">
+                    <IoBookmark className="align-self-center me-2 mx-0"/>
+                    <p className="m-0 text-center">My items</p>
+                </Container>
             </>
         </Container>
     )

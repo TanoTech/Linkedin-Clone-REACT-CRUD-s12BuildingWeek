@@ -15,11 +15,11 @@ function App() {
     return (
         <ProfileProvider>
             <Router>
+            <header>
+                <NavbarTop />
+            </header>
                 <Container className="App">
                     <>
-                        <header>
-                            <NavbarTop />
-                        </header>
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/user-profile" element={<UserProfile />} />
