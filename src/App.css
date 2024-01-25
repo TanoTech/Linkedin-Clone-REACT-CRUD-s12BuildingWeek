@@ -12,6 +12,7 @@
 @import './components/css/jobs.css';
 @import './components/css/GetPost.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "./components/css/CreatePost.css";
 
 
 * {
