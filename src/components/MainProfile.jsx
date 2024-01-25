@@ -49,8 +49,6 @@ const MainProfile = ({ data }) => {
 
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
-    const userID = '65ae3f5d600be100183a869c';
-
     // fetch POST per caricare un'immagine del profilo
     const handleUpload = async () => {
         try {
@@ -59,7 +57,7 @@ const MainProfile = ({ data }) => {
             formData.append('profile', selectedPhoto);
 
             // POST
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userID}/picture`, {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/{userID}/picture`, {
                 method: 'POST',
                 headers: {
 
