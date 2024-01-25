@@ -78,6 +78,28 @@ export const ProfileProvider = ({ children }) => {
         }
     }, [selectedToken]);
 
+    const fetchUserProfile = useCallback(async (userId) => {
+        if (!selectedToken || !userId) return;
+    
+        try {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}`, {
+                headers: {
+                    'Authorization': `Bearer ${selectedToken}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error('Errore nel recupero del profilo utente');
+            }
+    
+            const userProfile = await response.json();
+            return userProfile;
+        } catch (error) {
+            console.error('Errore: ', error);
+        }
+    }, [selectedToken]);
+
     const fetchNews = useCallback(async () => {
 
         try {
@@ -111,7 +133,8 @@ export const ProfileProvider = ({ children }) => {
             fetchNews,
             currentJob,
             selectedToken,
-            setSelectedToken
+            setSelectedToken,
+            fetchUserProfile
         }}>
             {children}
         </ProfileContext.Provider>
