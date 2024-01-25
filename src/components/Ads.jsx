@@ -4,6 +4,12 @@ import { Container } from "react-bootstrap";
 const Ads = () => {
     const backgroundImages = [
         '/assets/ads/adsMerenda.png',
+        '/assets/ads/antonio.png',
+        '/assets/ads/gaePhone.png',
+        '/assets/ads/mc.png',
+        '/assets/ads/profumiandrea.png',
+        '/assets/ads/profumo.png',
+        '/assets/ads/treno.png'
 
     ];
 

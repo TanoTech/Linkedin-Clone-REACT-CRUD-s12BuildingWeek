@@ -37,7 +37,7 @@ const Post = ({ postDetails, handleEditClick, handleDeleteClick, data }) => {
           <span id="activity-user">
             <strong>{data.name} {data.surname} </strong> reposted this
           </span>{' '}
-          • 2 min
+          • now
         </p>
         <FaTrash className=" trash" onClick={handleDeleteModalShow} />
       </div>
@@ -47,7 +47,7 @@ const Post = ({ postDetails, handleEditClick, handleDeleteClick, data }) => {
             className="rounded"
             src={postDetails.image}
             alt="img"
-            style={{ width: '9rem' }}
+            style={{ width: '10rem' }}
           />
         </Col>
         <Col className="test ms-4 me-5 mt-3">
