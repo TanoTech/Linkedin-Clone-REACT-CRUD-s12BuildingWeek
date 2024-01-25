@@ -41,6 +41,9 @@ const MainProfile = ({ data }) => {
         setSelectedPhoto(photo)
     }
 
+    const [firstName, setFirstName] = useState(data.name); // stati per gestire la modifica del profilo
+    const [lastName, setLastName] = useState(data.surname);
+
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
     const userID = '65ae3f5d600be100183a869c';
@@ -64,13 +67,43 @@ const MainProfile = ({ data }) => {
 
             if (response.ok) {
                 console.log('Immagine caricata con successo');
+                alert('Immagine caricata con successo');
             } else {
                 console.error('Errore durante il caricamento dell\'immagine');
+                alert('Errore durante il caricamento dell\'immagine');
             }
         } catch (error) {
             console.error('Errore durante la richiesta PUT:', error);
         }
     };
+
+    // fetch PUT per modificare il profilo utente
+    const updateProfile = async () => {
+        try {
+            const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    name: firstName,
+                    surname: lastName,
+                }),
+            });
+
+            if (response.ok) {
+                console.log('Profilo aggiornato con successo');
+                alert('Profilo aggiornato con successo');
+            } else {
+                console.log('Errore durante l\'aggiornamento del profilo:', response.statusText);
+                alert('Errore durante l\'aggiornamento del profilo');
+            }
+        } catch (error) {
+            console.error('Errore durante la richiesta PUT:', error);
+        }
+    };
+
 
 
     return (
@@ -329,8 +362,8 @@ const MainProfile = ({ data }) => {
                             <label className="text-left">First Name*</label>
                             <input
                                 type="text"
-                                value={data.name}
-                                // ancora da gestire onChange={(e) => setData({ ...data, name: e.target.value })}
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
                                 className="InputForm "
                                 required
                             />
@@ -340,8 +373,8 @@ const MainProfile = ({ data }) => {
                             <label className="text-left">Last Name*</label>
                             <input
                                 type="text"
-                                value={data.surname}
-                                // ancora da gestire onChange={(e) => setData({ ...data, surname: e.target.value })}
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
                                 className="InputForm"
                                 required
                             />
@@ -395,7 +428,7 @@ const MainProfile = ({ data }) => {
                     <Button variant="secondary" onClick={handleCloseModalEdit}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleCloseModalEdit}>
+                    <Button variant="primary" onClick={() => { updateProfile(); setShowModalEdit(false); }}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
