@@ -74,7 +74,7 @@
 }
 
 .inputLabelEx {
-    padding-left: 0;
+    padding: 0 !important;
     font-size: 1.1em;
     margin-bottom: 0.3em;
 }
@@ -87,17 +87,26 @@
 }
 
 .dateWrapperEx {
+    padding: 0;
+    margin: 0;
     display: flex !important;
-    margin-left: 0;
 }
 
 .endBtnWrapper {
     display: flex !important;
     justify-content: flex-end;
+    border-top: 1px solid lightgrey;
+    position: sticky;
+    padding: 1.2em;
+    padding-right: 1.4em;
 }
 
 .saveExperience {
 background-color: #0a66c2;
 color: white;
-margin-left: 5em;
+padding: 0.4em;
+border-radius: 50px;
+width: 5em;
+    text-align: center;
+    border: inherit;
 }
