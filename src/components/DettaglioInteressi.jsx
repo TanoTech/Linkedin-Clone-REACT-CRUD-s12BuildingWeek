@@ -14,7 +14,6 @@ const DettaglioInteressi = () => {
   const location = useLocation();
   const sezioneAttivaInURL = location.pathname.split("/")[2];
 
-  
   const [sezioneAttiva, setSezioneAttiva] = useState(
     sezioneAttivaInURL || "aziende"
   );

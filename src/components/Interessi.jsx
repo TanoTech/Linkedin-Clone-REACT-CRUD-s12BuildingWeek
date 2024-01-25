@@ -11,7 +11,6 @@ import {
 } from "./InteressiUtente";
 
 const shuffleArray = (array) => {
-  
   const shuffledArray = array.slice();
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -29,14 +28,27 @@ const Interessi = () => {
 
   const getContenutiBySezione = (sezioneAttiva) => {
     switch (sezioneAttiva) {
-      case 'aziende':
+      case "aziende":
         return shuffleArray(contenutiPerAziende);
-      case 'newsletter':
+      case "newsletter":
         return shuffleArray(contenutiPerNewsletter);
-      case 'scuole-universita':
-        return shuffleArray(contenutiPerScuoleUniversita); 
+      case "scuole-universita":
+        return shuffleArray(contenutiPerScuoleUniversita);
       default:
         return [];
+    }
+  };
+
+  const translateSectionName = (section) => {
+    switch (section) {
+      case "aziende":
+        return "Companies";
+      case "newsletter":
+        return "Newsletters";
+      case "scuole-universita":
+        return "Schools & Universities";
+      default:
+        return "";
     }
   };
 
@@ -75,7 +87,7 @@ const Interessi = () => {
                 textDecoration: "none",
               }}
             >
-              Newsletter
+              Newsletters
             </a>
             <a
               href="#scuole-universita"
@@ -93,17 +105,23 @@ const Interessi = () => {
                 textDecoration: "none",
               }}
             >
-              Schools
+              Schools & Universities
             </a>
           </div>
         </Card.Header>
         <Card.Body className="text-center">
           <Row>
-            {getContenutiBySezione(sezioneAttiva).slice(0, 2).map((contenuto, index) => (
-              <Col key={index}>
-                <InteressiUtente sezioneAttiva={sezioneAttiva} risultatiAttuali={[contenuto]} showUnfollowButton={false} />
-              </Col>
-            ))}
+            {getContenutiBySezione(sezioneAttiva)
+              .slice(0, 2)
+              .map((contenuto, index) => (
+                <Col key={index}>
+                  <InteressiUtente
+                    sezioneAttiva={sezioneAttiva}
+                    risultatiAttuali={[contenuto]}
+                    showUnfollowButton={false}
+                  />
+                </Col>
+              ))}
           </Row>
         </Card.Body>
         <Card.Footer className="bg-white text-center">
@@ -111,9 +129,7 @@ const Interessi = () => {
             to={`/risultati/${sezioneAttiva.toLowerCase()}`}
             className="footer-link"
           >
-            Mostra tutte le{" "}
-            {sezioneAttiva.charAt(0).toUpperCase() + sezioneAttiva.slice(1)}{" "}
-            <FaArrowRight />
+            Show all {translateSectionName(sezioneAttiva)} <FaArrowRight />
           </Link>
         </Card.Footer>
       </Card>
