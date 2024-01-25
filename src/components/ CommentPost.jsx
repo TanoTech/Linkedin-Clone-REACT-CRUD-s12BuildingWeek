@@ -58,6 +58,14 @@ const CommentPost = ({ postId }) => {
 
     return (
         <div>
+            <div>
+                <textarea
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                    placeholder="Add a comment"
+                />
+                <button onClick={submitComment}>Send</button>
+            </div>
             {comments.length > 0 ? (
                 comments.map((comment) => (
                     <div key={comment._id}>
@@ -68,14 +76,6 @@ const CommentPost = ({ postId }) => {
             ) : (
                 <p>No comments yet</p>
             )}
-            <div>
-                <textarea
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    placeholder="Add a comment"
-                />
-                <button onClick={submitComment}>Send</button>
-            </div>
         </div>
     );
 };
