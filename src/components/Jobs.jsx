@@ -19,7 +19,7 @@ const Jobs = () => {
             <main >
                 <Container className='mt-4'>
                     {jobResults.map(job => (
-                        <div key={job._id}>
+                        <div className='mb-4' key={job._id}>
                             <SingleJob job={job} />
                         </div>
                     ))}
