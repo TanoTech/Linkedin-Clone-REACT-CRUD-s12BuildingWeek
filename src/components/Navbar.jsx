@@ -66,7 +66,7 @@ const NavbarTop = () => {
                             <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item" onClick={() => setShowSearchResults(false)}>
                                 <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
                                 {`${otherProfile.name} ${otherProfile.surname}`}
-                                <p>{otherProfile.title}</p>
+                                <span>{otherProfile.title}</span> 
                             </Link>
                         ))}
                         {jobResults.map((job) => (
@@ -80,11 +80,17 @@ const NavbarTop = () => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                        <Link to='/'> <FaHome className='navIcon' /> Home </Link>
-                        <Nav.Link href="#"><FaNetworkWired className='navIcon' /> My Network </Nav.Link>
-                        <Link to='/jobs' ><FaBriefcase className='navIcon' /> Jobs </Link>
-                        <Nav.Link href="#"><FaEnvelope className='navIcon' /> Messaging</Nav.Link>
-                        <Nav.Link href="#"><FaBell className='navIcon' /> Notifications </Nav.Link>
+                    <div className='d-flex flex-column align-self-center LinkHover'>
+                        <FaHome className='align-self-center StyleLinkIconNav'/>
+                        <Link to='/' className='StyleLinkIconNav'> Home </Link>
+                    </div>
+                        <Nav.Link href="#"><FaNetworkWired /> My Network </Nav.Link>
+                        <div className='d-flex flex-column align-self-center LinkHover'>
+                            <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
+                            <Link to='/jobs' className='StyleLinkIconNav'> Jobs </Link>
+                        </div>
+                        <Nav.Link href="#"><FaEnvelope /> Messaging</Nav.Link>
+                        <Nav.Link href="#"><FaBell /> Notifications </Nav.Link>
                         <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>

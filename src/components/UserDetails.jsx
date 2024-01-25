@@ -9,8 +9,9 @@ import Activity from './Activity';
 import Experience from './Experience';
 import Footer from './Footer';
 import { Spinner } from 'react-bootstrap';
-import MayKnow from './MayKnow';
-import News from './News';
+import OtherProfileConsulted from './OtherProfileConsulted';
+import OnThisPage from './OnThisPage';
+import Ads from './Ads';
 
 const UserDetail = () => {
     const { userId } = useParams();
@@ -22,6 +23,9 @@ const UserDetail = () => {
     return (
         <>
             <main className='d-flex flex-column'>
+                <section>
+                    <OnThisPage />
+                </section>
                 <MainProfile data={selectedUser} />
                 <Activity data={selectedUser} />
                 <Experience data={selectedUser.id} />
@@ -29,8 +33,8 @@ const UserDetail = () => {
                 <Interessi />
                 <section>
                     {" "}
-                    <MayKnow />
-                    <News />
+                    <OtherProfileConsulted />
+                    <Ads />
                 </section>
             </main>
             <footer>

@@ -118,10 +118,6 @@ export const contenutiPerScuoleUniversita = [
       },
 ];
 
-
-
-
-
 const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }) => {
   const [listaRisultati, setListaRisultati] = useState(risultatiAttuali);
 
@@ -171,6 +167,3 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
 };
 
 export default InteressiUtente;
-
-  
-  

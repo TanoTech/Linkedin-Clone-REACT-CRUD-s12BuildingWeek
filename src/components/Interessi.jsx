@@ -24,15 +24,15 @@ const Interessi = () => {
       case 'newsletter':
         return contenutiPerNewsletter;
       case 'scuole-universita':
-        return contenutiPerScuoleUniversita;
+        return contenutiPerScuoleUniversita; 
       default:
         return [];
     }
   };
 
   return (
-    <Container className="mt-3 mb-3">
-      <Card>
+    <Container className="mt-3 mb-3 p-0 borded border-solid">
+      <Card className="border border-none">
         <Card.Header style={{ textAlign: "left", background: "white" }}>
           <div>
             <h5>Interests</h5>

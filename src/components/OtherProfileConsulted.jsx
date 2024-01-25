@@ -3,8 +3,7 @@ import { ProfileContext } from '../redux/contexts/ProfileContext';
 import 'bootstrap-icons/font/bootstrap-icons.css'; 
 import { Container } from 'react-bootstrap';
 
-
-const MayKnow = () => {
+const OtherProfileConsulted = () => {
     const { getAllPeople, fetchUsers } = useContext(ProfileContext);
     const [randomPeople, setRandomPeople] = useState([]);
 
@@ -15,13 +14,13 @@ const MayKnow = () => {
     useEffect(() => {
         if (getAllPeople.length > 0) {
             const shuffled = [...getAllPeople].sort(() => 0.5 - Math.random());
-            setRandomPeople(shuffled.slice(0, 6));
+            setRandomPeople(shuffled.slice(0, 3));
         }
     }, [getAllPeople]);
 
     return (
         <Container className='SideSections bg-white mt-2 p-0 rounded border border-solid'>
-            <h2 className='MayKnowTitle p-2'>People you may know</h2>
+            <h2 className='MayKnowTitle p-2'> Other profile consulted </h2>
             {randomPeople.map(person => (
                 <div key={person._id} className='MayKnowContent px-3'>
                     <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
@@ -37,4 +36,4 @@ const MayKnow = () => {
     );
 }
 
-export default MayKnow;
+export default OtherProfileConsulted;

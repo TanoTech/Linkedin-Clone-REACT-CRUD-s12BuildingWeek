@@ -25,7 +25,7 @@ const News = () => {
     }, [fetchNews]);
 
     return (
-        <Container className='bg-white rounded border border-solid mt-3 SideSections p-0'>
+        <Container className='bg-white rounded border border-solid mt-2 SideSections p-0'>
             <div className='d-flex mt-3 mx-3'>
                 <img className='img-fluid' style={{width:'1.5em'}} src="./assets/logo/linkedinLogo.png" alt="" />
                 <h2 className='fs-5 align-self-center ms-2 m-0'>LEARNING</h2>

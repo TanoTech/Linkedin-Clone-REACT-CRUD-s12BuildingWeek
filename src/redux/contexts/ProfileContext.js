@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from 'react';
+import { createContext, useState, useCallback } from 'react';
 
 export const ProfileContext = createContext();
 
@@ -9,6 +9,7 @@ export const ProfileProvider = ({ children }) => {
     const [searchResults, setSearchResults] = useState([]);
     const [getAllPeople, setGetAllPeople] = useState ([]);
     const [jobResults, setJobResults] = useState([]); 
+    const [currentJob, setCurrentJob] = useState(null);
 
     //campo di ricerca
     const performSearch = useCallback(async (searchTerm) => {
@@ -89,6 +90,8 @@ export const ProfileProvider = ({ children }) => {
         }
     }, []);
 
+    //prende le notizie 
+
     const fetchNews = useCallback(async () => {
         try {
             const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=30&title_contains=Job'
@@ -111,7 +114,7 @@ export const ProfileProvider = ({ children }) => {
     }, []);
 
     return (
-        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, jobResults, fetchJobs, fetchNews }}>
+        <ProfileContext.Provider value={{ profile, setProfile, searchResults, performSearch, getAllPeople, fetchUsers, jobResults, fetchJobs, fetchNews, currentJob }}>
             {children}
         </ProfileContext.Provider>
     );
