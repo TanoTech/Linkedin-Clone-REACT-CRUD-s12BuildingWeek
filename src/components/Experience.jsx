@@ -209,10 +209,16 @@ const Experience = ({ data }) => {
                     </p>
                     <p className="DescEx">{experience.description}</p>
                     <button
+                      className="DeleteEx me-2" //mantengo la stessa classe dell'altro bottone usato da vitale
+                      //onClick={() => handleDeleteExperience(experience._id)}
+                    >
+                      Edit
+                    </button>
+                    <button
                       className="DeleteEx"
                       onClick={() => handleDeleteExperience(experience._id)}
                     >
-                      Delete Experience
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -221,30 +227,7 @@ const Experience = ({ data }) => {
           </ul>
         </div>
       </div>
-      {/*<ul>
-        {experiences.map((experience) => (
-          <li key={experience._id}>
-            <h2>
-              {experience.role} at {experience.company}
-            </h2>
-            <p>Area: {experience.area}</p>
-            <p>Descrizione: {experience.description}</p>
-            <p>
-              Data di Inizio:{" "}
-              {format(new Date(experience.startDate), "dd/MM/yyyy")}
-            </p>
-            <p>
-              Data di Fine:{" "}
-              {experience.endDate
-                ? format(new Date(experience.endDate), "dd/MM/yyyy")
-                : "In corso"}
-            </p>
-            <button onClick={() => handleDeleteExperience(experience._id)}>
-              Elimina
-            </button>
-          </li>
-        ))}
-              </ul>*/}
+     
       {mostraForm && (
         <Modal size="lg" show={mostraForm} onHide={() => setMostraForm(false)}>
           <Modal.Header closeButton>
@@ -401,27 +384,7 @@ const Experience = ({ data }) => {
           </div>
         </Modal>
       )}
-      {/*<h2>Aggiungi una Nuova Esperienza</h2>
-            <div>
-                <input type="text" name="role" placeholder="Ruolo" onChange={handleInputChange} value={newExperience.role} />
-                <input type="text" name="company" placeholder="Azienda" onChange={handleInputChange} value={newExperience.company} />
-                <DatePicker
-                    selected={newExperience.startDate}
-                    onChange={(date) => handleDateChange(date, "startDate")}
-                    dateFormat="yyyy-MM-dd"
-                    placeholderText="Data di Inizio"
-                />
-                <DatePicker
-                    selected={newExperience.endDate}
-                    onChange={(date) => handleDateChange(date, "endDate")}
-                    dateFormat="yyyy-MM-dd"
-                    placeholderText="Data di Fine"
-                />
-                <input type="text" name="description" placeholder="Descrizione" onChange={handleInputChange} value={newExperience.description} />
-                <input type="text" name="area" placeholder="Area" onChange={handleInputChange} value={newExperience.area} />
-                <button onClick={handleAddExperience}>Aggiungi</button>
-                </div> */}
-      <div></div>
+      
     </Container>
   );
 };
