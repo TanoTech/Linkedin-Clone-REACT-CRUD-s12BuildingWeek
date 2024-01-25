@@ -18,18 +18,19 @@ export const contenutiPerAziende = [
 
 
 export const contenutiPerNewsletter = [
-  { id: 1, logo: 'https://media.licdn.com/dms/image/D5612AQGqmBhn8r7WxA/series-logo_image-shrink_200_200/0/1675038234107?e=1711584000&v=beta&t=PVj69WnXXQaxJmb5N-wX01HhANGizJrfrDLNcwyfZvI', nome: 'The AI Beat Newsletter', follower: 100000 },
-  { id: 2, logo: 'https://www.deeplearning.ai/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fdlai-batch-logo.a60dbb9f.png&w=640&q=75', nome: 'The Batch Newsletter', follower: 90000 },
-  { id: 3, logo: 'https://media.licdn.com/dms/image/D4E12AQGo8rcbTy2D6Q/series-logo_image-shrink_300_300/0/1664871180519?e=1711584000&v=beta&t=9oqaXac17wYOZdjQpnTm-aLfKrXwIv_q9Qs6Dlh5ylU', nome: 'Future Tech Trends Nnewsletter', follower: 80000 },
-  { id: 4, logo: 'https://media.licdn.com/dms/image/C4E12AQH8iziPpGsDaA/series-logo_image-shrink_200_200/0/1587706616360?e=1711584000&v=beta&t=LsJv53G2mn2Y0PsYCr2Pz91QrJCwTIKcjGd6T9Er3iQ', nome: 'Artificial Intelligence Newsletter', follower: 75000 },
-  { id: 5, logo: 'https://media.licdn.com/dms/image/D4E12AQHaGtGMmpELsQ/series-logo_image-shrink_200_200/0/1668522853330?e=1711584000&v=beta&t=5-CwQgCQ4OiU3CTvKMqCNsb8hKxhbMn0p_ZgyLpRKVQ', nome: 'What\'s Next in Tech Newsletter', follower: 70000 },
-  { id: 6, logo: 'https://media.licdn.com/dms/image/D4D12AQHlkbr-3oxaww/series-logo_image-shrink_300_300/0/1679072350240?e=1711584000&v=beta&t=N7KPypkCOB_lWegJgnGXHledr9R_Z3ohGW-f0sDU0Dk', nome: 'This Week in Web3 Nwesletter', follower: 65000 },
-  { id: 7, logo: 'https://media.licdn.com/dms/image/D4D12AQFmRXRKs8dkVw/series-logo_image-shrink_300_300/0/1660028206984?e=1711584000&v=beta&t=PPw76DyU9aNOqwjusxjFL8ES36aSUCrgRIFKnlP9xLc', nome: 'Emerging Technologies Newsletter', follower: 60000 },
-  { id: 8, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F45f42171-5503-474f-a231-b2f03a8bc031_1280x354.png', nome: 'La newsletter settimanale sui nuovi trend e le novità legate al mondo dell\'innovazione, della tecnologia e del business.', follower: 55000 },
-  { id: 9, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff7fdaea5-82dd-4531-8ef6-05586645b4ea_1100x220.png', nome: 'Zio, La newsletter che cerca di capire cosa fanno i teenager di oggi quando fissano i loro telefoni.', follower: 50000 },
-  { id: 10, logo: 'https://travellairs.it/wp-content/uploads/2024/01/logo-completo-nero-travellairs-2-768x256.png', nome: 'Travellaris, uno dei piú conosciuti ed apprezzati blog di viaggi del panorama italiano.', follower: 45000 },
-  { id: 11, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4e2d3e4-4bcb-4ac8-aca4-7f8466a55971_1279x853.png', nome: 'Vincos Newsletter, ogni settimana riflessioni di Marketing e Tecnologia.', follower: 40000 },
-  { id: 12, logo: 'https://www.svgrepo.com/show/303303/oracle-6-logo.svg', nome: 'Oracle', follower: 35000 },
+  { id: 1, logo: 'https://media.licdn.com/dms/image/D5612AQGqmBhn8r7WxA/series-logo_image-shrink_200_200/0/1675038234107?e=1711584000&v=beta&t=PVj69WnXXQaxJmb5N-wX01HhANGizJrfrDLNcwyfZvI', nome: 'The AI Beat Newsletter', follower: 22300, link: 'https://www.linkedin.com/newsletters/7025619738558926848/' },
+  { id: 2, logo: 'https://www.deeplearning.ai/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fdlai-batch-logo.a60dbb9f.png&w=640&q=75', nome: 'The Batch Newsletter', follower: 17450, link: 'https://www.deeplearning.ai/the-batch/' },
+  { id: 3, logo: 'https://media.licdn.com/dms/image/D4E12AQGo8rcbTy2D6Q/series-logo_image-shrink_300_300/0/1664871180519?e=1711584000&v=beta&t=9oqaXac17wYOZdjQpnTm-aLfKrXwIv_q9Qs6Dlh5ylU', nome: 'Future Tech Trends Nnewsletter', follower: 21000, link: 'https://www.linkedin.com/newsletters/6511122508790394880/' },
+  { id: 4, logo: 'https://media.licdn.com/dms/image/C4E12AQH8iziPpGsDaA/series-logo_image-shrink_200_200/0/1587706616360?e=1711584000&v=beta&t=LsJv53G2mn2Y0PsYCr2Pz91QrJCwTIKcjGd6T9Er3iQ', nome: 'Artificial Intelligence Newsletter', follower: 28430, link: 'https://www.linkedin.com/newsletters/artificial-intelligence-6598352935271358464/' },
+  { id: 5, logo: 'https://media.licdn.com/dms/image/D4E12AQHaGtGMmpELsQ/series-logo_image-shrink_200_200/0/1668522853330?e=1711584000&v=beta&t=5-CwQgCQ4OiU3CTvKMqCNsb8hKxhbMn0p_ZgyLpRKVQ', nome: 'What\'s Next in Tech Newsletter', follower: 31290, link: 'https://www.linkedin.com/newsletters/what-s-next-in-tech-6998292087490101249/' },
+  { id: 6, logo: 'https://media.licdn.com/dms/image/D4D12AQHlkbr-3oxaww/series-logo_image-shrink_300_300/0/1679072350240?e=1711584000&v=beta&t=N7KPypkCOB_lWegJgnGXHledr9R_Z3ohGW-f0sDU0Dk', nome: 'This Week in Web3 Nwesletter', follower: 11300, link: 'https://www.linkedin.com/newsletters/7042539921454043136/' },
+  { id: 7, logo: 'https://media.licdn.com/dms/image/D4D12AQFmRXRKs8dkVw/series-logo_image-shrink_300_300/0/1660028206984?e=1711584000&v=beta&t=PPw76DyU9aNOqwjusxjFL8ES36aSUCrgRIFKnlP9xLc', nome: 'Emerging Technologies Newsletter', follower: 14260, link: 'https://www.linkedin.com/newsletters/emerging-technologies-6962662970698948608/' },
+  { id: 8, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F45f42171-5503-474f-a231-b2f03a8bc031_1280x354.png', nome: 'La newsletter settimanale sui nuovi trend e le novità legate al mondo dell\'innovazione, della tecnologia e del business.', follower: 7510, link: 'https://technicismi.substack.com/' },
+  { id: 9, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff7fdaea5-82dd-4531-8ef6-05586645b4ea_1100x220.png', nome: 'Zio, La newsletter che cerca di capire cosa fanno i teenager di oggi quando fissano i loro telefoni.', follower: 26410, link: 'https://zio.substack.com/' },
+  { id: 10, logo: 'https://travellairs.it/wp-content/uploads/2024/01/logo-completo-nero-travellairs-2-768x256.png', nome: 'Travellaris, uno dei piú conosciuti ed apprezzati blog di viaggi del panorama italiano.', follower: 45000, link: 'https://travellairs.it/' },
+  { id: 11, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fa4e2d3e4-4bcb-4ac8-aca4-7f8466a55971_1279x853.png', nome: 'Vincos Newsletter, ogni settimana riflessioni di Marketing e Tecnologia.', follower: 16280, link: 'https://vincos.substack.com/' },
+  { id: 12, logo: 'https://substackcdn.com/image/fetch/w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F68ce07df-2f2a-4c91-bec2-4b519763b967_1280x960.png', nome: 'Guerre di Rete, News e analisi su cybersicurezza, privacy, Rete e politica.', follower: 28650, link: 'https://guerredirete.substack.com/' },
+
 ];
 
 export const contenutiPerScuoleUniversita = [
@@ -143,7 +144,7 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
       <Col>
         {listaRisultati.map((contenutoCasuale, index) => (
           <div key={contenutoCasuale.id}>
-            
+  
             {contenutoCasuale.logo && (
               <p>
                 <img
@@ -153,9 +154,15 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
                 />
               </p>
             )}
-            
+  
             <p>{contenutoCasuale.nome}</p>
-            
+  
+            {contenutoCasuale.link && ( // Aggiunto controllo se il link è presente
+              <p>
+                Link: <a href={contenutoCasuale.link} target="_blank" rel="noopener noreferrer">{contenutoCasuale.link}</a>
+              </p>
+            )}
+  
             {contenutoCasuale.follower && (
               <p>
                 Follower: {contenutoCasuale.follower}{' '}
@@ -171,7 +178,7 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
                 )}
               </p>
             )}
-            
+  
             {index < listaRisultati.length - 1 && <hr />}
           </div>
         ))}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -10,6 +10,16 @@ import {
   contenutiPerScuoleUniversita,
 } from "./InteressiUtente";
 
+const shuffleArray = (array) => {
+  
+  const shuffledArray = array.slice();
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
+
 const Interessi = () => {
   const [sezioneAttiva, setSezioneAttiva] = useState("aziende");
 
@@ -20,11 +30,11 @@ const Interessi = () => {
   const getContenutiBySezione = (sezioneAttiva) => {
     switch (sezioneAttiva) {
       case 'aziende':
-        return contenutiPerAziende;
+        return shuffleArray(contenutiPerAziende);
       case 'newsletter':
-        return contenutiPerNewsletter;
+        return shuffleArray(contenutiPerNewsletter);
       case 'scuole-universita':
-        return contenutiPerScuoleUniversita; 
+        return shuffleArray(contenutiPerScuoleUniversita); 
       default:
         return [];
     }
@@ -112,4 +122,3 @@ const Interessi = () => {
 };
 
 export default Interessi;
-
