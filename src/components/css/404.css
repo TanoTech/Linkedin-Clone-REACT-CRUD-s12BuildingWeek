@@ -1,0 +1,13 @@
+.box404 {
+    background-image: url('/public/assets/404/matrix.gif');
+    background-repeat: repeat;
+    height: 100svh;
+    width: 100svw;
+    h1{
+        color: white;
+        font-size: 5rem
+    };
+    a{
+        margin: 1rem;
+    };
+}

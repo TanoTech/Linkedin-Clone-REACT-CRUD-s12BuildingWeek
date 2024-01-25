@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import UserDetail from "./components/UserDetails";
 import SingleJob from "./components/SingleJob";
 import Login from "./components/Login";
+import Error404 from './components/Error404'
 import "./App.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                                 path="/risultati/:sezione"
                                 element={<DettaglioInteressi />}
                             />
+                            <Route path="*" element={<Error404 /> } />
                         </Routes>
                     </>
                 </Container>
