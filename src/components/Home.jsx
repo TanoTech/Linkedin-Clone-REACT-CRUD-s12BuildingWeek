@@ -51,6 +51,7 @@ const Home = () => {
                     <ProfileSummary />
                     <SeeMore />
                 </section>
+
                     <div>
                         <CreatePost
                             newPostText={newPostText}
