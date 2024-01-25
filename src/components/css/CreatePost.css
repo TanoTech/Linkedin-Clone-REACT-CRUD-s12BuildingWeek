@@ -39,6 +39,13 @@
     margin-top: 1em;
 }
 
+#buttonImgPost  {
+    color: black !important;
+    background:none !important;
+    border: none !important;
+    
+}
+
 #ButtonPost {
     color: black;
     background:none;
@@ -76,3 +83,20 @@
     background-color: rgb(236, 236, 236) !important;
     transition: 0.1s;
 }
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Select some files';
+
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  
