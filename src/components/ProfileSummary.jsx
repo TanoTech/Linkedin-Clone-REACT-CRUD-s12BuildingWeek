@@ -9,13 +9,18 @@ const ProfileSummary = () => {
     const userProfileImg = profile ? profile.image : '';
 
     return (
-        <Container>
-            <div></div>
+        <Container className="bg-white border border-solid rounded mt-3" id="ContainerSummary">
+            <div>
+                
+            </div>
             <>
-                <img className='img-fluid dropImg' style={{ width: '8em' }} src={userProfileImg} alt="foto profilo utente" />
-                <p>{userProfileName}</p>
-                <p>{userProfileTitle}</p>
-                <hr />
+                <Container className="p-0 text-center border-bottom" id="Section1Summary">
+                    <img className='img-fluid dropImg mt-4 mx-0' src={userProfileImg} alt="foto profilo utente" />
+                    <div className="mt-3 mx-0">
+                        <p className="text-center m-0 fw-bold">{userProfileName}</p>
+                        <p className="text-center m-0 Style1Summary">{userProfileTitle}</p>
+                    </div>
+                </Container>
                 <p>Expand your network</p>
                 <hr />
                 <p>Boost your career with exclusive tools</p>

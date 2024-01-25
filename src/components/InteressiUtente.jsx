@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -138,38 +138,38 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
   };
 
   return (
-    <Row>
-      <Col>
-        {listaRisultati.map((contenutoCasuale, index) => (
-          <div key={contenutoCasuale.id}>
-            <p>
-              <img
-                className="logo-img"
-                src={contenutoCasuale.logo}
-                alt={contenutoCasuale.nome}
-              />
-            </p>
-            <p>{contenutoCasuale.nome}</p>
-            {contenutoCasuale.follower && (
+      <Row >
+        <Col>
+          {listaRisultati.map((contenutoCasuale, index) => (
+            <div key={contenutoCasuale.id}>
               <p>
-  Follower: {contenutoCasuale.follower} {'   '}
-  {showUnfollowButton && (
-    <Button
-      variant="light"
-      className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
-      onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
-    >
-      Unfollow
-    </Button>
-  )}
-</p>
-
-            )}
-            {index < listaRisultati.length - 1 && <hr />}
-          </div>
-        ))}
-      </Col>
-    </Row>
+                <img
+                  className="logo-img"
+                  src={contenutoCasuale.logo}
+                  alt={contenutoCasuale.nome}
+                />
+              </p>
+              <p>{contenutoCasuale.nome}</p>
+              {contenutoCasuale.follower && (
+                <p>
+    Follower: {contenutoCasuale.follower} {'   '}
+    {showUnfollowButton && (
+      <Button
+        variant="light"
+        className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
+        onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
+      >
+        Unfollow
+      </Button>
+    )}
+  </p>
+  
+              )}
+              {index < listaRisultati.length - 1 && <hr />}
+            </div>
+          ))}
+        </Col>
+      </Row>
   );
 };
 

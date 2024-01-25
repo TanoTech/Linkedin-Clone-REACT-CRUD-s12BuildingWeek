@@ -7,7 +7,7 @@ import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } fro
 const NavbarTop = () => {
     const { profile, performSearch, searchResults, fetchJobs, jobResults } = useContext(ProfileContext);
     const [searchTerm, setSearchTerm] = useState('');
-    const [showSearchResults, setShowSearchResults] = useState(false);
+    const [showSearchResults, setShowSearchResults] = useState(false); 
     const searchResultsRef = useRef(null);
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
@@ -26,7 +26,7 @@ const NavbarTop = () => {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (searchResultsRef.current && !searchResultsRef.current.contains(event.target)) {
-                setShowSearchResults(false);
+                setShowSearchResults(false); 
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
@@ -39,14 +39,14 @@ const NavbarTop = () => {
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
         if (e.target.value.trim() !== '') {
-            setShowSearchResults(true);
+            setShowSearchResults(true); 
         }
     };
 
     return (
         <Navbar bg="light" expand="lg" className='MyNavBar'>
             <Container>
-                <Navbar.Brand>
+                <Navbar.Brand href="#home">
                     <Link to='/'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>
                 </Navbar.Brand>
                 <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
@@ -70,21 +70,27 @@ const NavbarTop = () => {
                             </Link>
                         ))}
                         {jobResults.map((job) => (
-                            <Link to={`/jobs/${job._id}`} key={job._id} className="search-result-item" onClick={() => setShowSearchResults(false)}>
+                            <div key={job._id} className="search-result-item" onClick={() => setShowSearchResults(false)}>
                                 <p>{job.title}</p>
                                 <p>{job.company}</p>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 )}
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
-                        <Link to='/'> <FaHome className='navIcon' /> Home </Link>
-                        <Nav.Link ><FaNetworkWired className='navIcon' /> My Network </Nav.Link>
-                        <Link to='/jobs' ><FaBriefcase className='navIcon' /> Jobs </Link>
-                        <Nav.Link > <FaEnvelope className='navIcon' /> Messaging</Nav.Link>
-                        <Nav.Link > <FaBell className='navIcon' /> Notifications </Nav.Link>
+                    <div className='d-flex flex-column align-self-center LinkHover'>
+                        <FaHome className='align-self-center StyleLinkIconNav'/>
+                        <Link to='/' className='StyleLinkIconNav'> Home </Link>
+                    </div>
+                        <Nav.Link href="#"><FaNetworkWired /> My Network </Nav.Link>
+                        <div className='d-flex flex-column align-self-center LinkHover'>
+                            <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
+                            <Link to='/jobs' className='StyleLinkIconNav'> Jobs </Link>
+                        </div>
+                        <Nav.Link href="#"><FaEnvelope /> Messaging</Nav.Link>
+                        <Nav.Link href="#"><FaBell /> Notifications </Nav.Link>
                         <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
