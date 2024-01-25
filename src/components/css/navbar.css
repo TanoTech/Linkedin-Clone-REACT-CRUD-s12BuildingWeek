@@ -1,130 +1,133 @@
 .MyNavBar {
-    height: 3.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 3.7rem;
 }
 
 .navbar-brand {
-    img {
-        width: 36px;
-    }
+  img {
+    width: 36px;
+  }
 }
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-item {
-    height: 1rem;
+  height: 1rem;
 
-    div>img {
-        width: 60px;
-        margin: 1em;
-    }
+  div > img {
+    width: 60px;
+    margin: 1em;
+  }
 }
 
 .navIcon {
-    display: flex;
+  display: flex;
 }
 
 .nav-link {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
 }
 
 .navbar-nav-scroll {
-    margin: 0em 1em;
-    border-right: 0.12em solid rgb(198, 198, 198);
+  margin: 0em 1em;
+  border-right: 0.12em solid rgb(198, 198, 198);
 }
 
 .navBtn {
-    background-color: transparent !important;
-    border: none !important;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 button svg {
-    color: black;
+  color: black;
 }
 
 .form-control {
-    border: none !important;
-    background-color: transparent !important;
+  border: none !important;
+  background-color: transparent !important;
 }
 
 .input-group {
-    background-color: rgb(235, 233, 233) !important;
-    border: black;
+  background-color: rgb(235, 233, 233) !important;
+  border: black;
 }
 
 .search-results-container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-top: none;
-    z-index: 1000;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+  z-index: 1000;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-result-item {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .search-result-item img {
-    margin-right: 10px;
-    border-radius: 50%;
-    width: 2em;
-    height: 2em;
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
 }
 
 .search-result-item:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
-
 .dropImg {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 a.dropdown-toggle.nav-link::after {
-    display: none !important;
+  display: none !important;
 }
 
-
 #MenuDropDown {
-    width: 20rem;
-    
+  width: 20rem;
 }
 
 #PremiumLink {
-    font-size: 0.75em;
-    margin: 0em 0em 1.3em 2em;
-    color: #915907;
-    text-decoration: underline;
+  font-size: 0.75em;
+  margin: 0em 0em 1.3em 2em;
+  color: #915907;
+  text-decoration: underline;
 }
 
 #PremiumLink:hover {
-    color: #6f4507;
-    
+  color: #6f4507;
 }
 
 #Business {
-    color: rgb(0 0 0 / 65%);
+  color: rgb(0 0 0 / 65%);
 }
 
 #Business:hover {
-    color: rgb(0 0 0 / 100%);
+  color: rgb(0 0 0 / 100%);
 }
 
+.StyleLinkIconNav {
+  color: #575757;
+  text-decoration: none;
+}
+
+.StyleLinkIconNav:hover {
+  color: black;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}

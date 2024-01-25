@@ -46,11 +46,10 @@ const ImageUploader = ({ onSelectImage }) => {
           <Form>
             <Form.Group controlId="imageInput">
               <Form.Control as="select" onChange={handleImageChange}>
-                <option value="">Select an Image</option>
-                {imageUrls.map((imageUrl, index) => (
-                  <option key={index} value={imageUrl}>
-                    {imageUrl}
-                  </option>
+              {imageUrls.map(image => (
+                    <div key={image.value} onClick={() => handleImageSelection(image.value)}>
+                        <img src={image.src} alt={`Immagine ${image.value}`} />
+                    </div>
                 ))}
               </Form.Control>
             </Form.Group>

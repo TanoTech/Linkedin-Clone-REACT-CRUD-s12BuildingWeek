@@ -8,7 +8,7 @@ import Ads from './Ads';
 import FooterHome from './FooterHome';
 import ProfileSummary from './ProfileSummary';
 import SeeMore from './SeeMore';
-
+import LinkedinNews from './LinkedinNews';
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -47,7 +47,7 @@ const Home = () => {
 
     return (
         <main>
-            <Container>
+            <Container className='d-flex'>
                 <section>
                     <ProfileSummary />
                     <SeeMore />
@@ -61,6 +61,7 @@ const Home = () => {
                 <GetPost posts={posts} /> 
             </Container>
             <section>
+                <LinkedinNews />
                 <Ads />
                 <FooterHome />
             </section>

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Col, Row } from "react-bootstrap";
 
-const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+
 
 export const contenutiPerAziende = [
     { id: 1, logo: 'https://www.svgrepo.com/show/349454/microsoft.svg', nome: 'Microsoft', follower: 100000 },
@@ -120,19 +118,14 @@ export const contenutiPerScuoleUniversita = [
       },
 ];
 
-
-
-
 const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }) => {
   const [listaRisultati, setListaRisultati] = useState(risultatiAttuali);
 
   useEffect(() => {
-    
     setListaRisultati(risultatiAttuali);
   }, [risultatiAttuali]);
 
   const handleSmettiDiSeguire = (id) => {
-    
     const nuovaLista = listaRisultati.filter((contenuto) => contenuto.id !== id);
     setListaRisultati(nuovaLista);
   };
@@ -152,18 +145,18 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
             <p>{contenutoCasuale.nome}</p>
             {contenutoCasuale.follower && (
               <p>
-  Follower: {contenutoCasuale.follower} {'   '}
-  {showUnfollowButton && (
-    <Button
-      variant="light"
-      className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
-      onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
-    >
-      Unfollow
-    </Button>
-  )}
-</p>
-
+                Follower: {contenutoCasuale.follower}{' '}
+                {showUnfollowButton && (
+                  <Button
+                    key={`unfollow-${contenutoCasuale.id}`}
+                    variant="light"
+                    className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold"
+                    onClick={() => handleSmettiDiSeguire(contenutoCasuale.id)}
+                  >
+                    Unfollow
+                  </Button>
+                )}
+              </p>
             )}
             {index < listaRisultati.length - 1 && <hr />}
           </div>
@@ -173,8 +166,4 @@ const InteressiUtente = ({ sezioneAttiva, risultatiAttuali, showUnfollowButton }
   );
 };
 
-
 export default InteressiUtente;
-
-  
-  
