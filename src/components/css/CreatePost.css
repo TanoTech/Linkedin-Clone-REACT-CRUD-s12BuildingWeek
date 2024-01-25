@@ -1,8 +1,59 @@
 .createPostWrapper {
-    margin-left: 1.5rem;
     background-color: white;
-    margin-top: 1rem;
+    margin-top: 1em;
     border-radius: 5px;
     border: 1px solid lightgray;
     width: 45%;
+}
+
+.ProfileImgPost {
+    cursor: pointer;
+    margin-right: 1rem;
+    border-radius: 100%;
+    width: 3em;
+}
+
+.searchBarPost {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.iconWrapperPost {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
+    align-items: flex-start;
+
+}
+
+.iconWrapperPost input{
+    border: 1px solid lightgray;
+    border-radius: 50px;
+    padding: 0.6em;
+    width: 25em;
+}
+
+.iconWrapperPost button {
+    border-radius: 50px;
+    background-color: #0a66c2;
+    color: white;
+    border: inherit;
+    
+}
+
+.singleIconWrapperPost {
+    display: flex;
+}
+
+.mediaIcon {
+    color: #0a66c2;
+}
+
+.calendarIcon {
+    color: orange;
+}
+
+.writeIcon {
+    color: orangered;
 }
