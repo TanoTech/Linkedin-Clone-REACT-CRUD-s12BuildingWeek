@@ -1,0 +1,8 @@
+.createPostWrapper {
+    margin-left: 1.5rem;
+    background-color: white;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    width: 45%;
+}
