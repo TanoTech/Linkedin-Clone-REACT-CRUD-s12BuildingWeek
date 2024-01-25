@@ -9,7 +9,6 @@
     #TitleSingleJob{
         text-decoration: underline;
     }
-    
 }
 
 #TitleSingleJob {
@@ -28,5 +27,12 @@
 
 #ButtonDetailsJob {
     font-weight: 600;
+}
+
+/* JOBDETAILS */
+
+#ContentDetails {
+    max-height: 45rem;
+    overflow-y: scroll;
 }
 
