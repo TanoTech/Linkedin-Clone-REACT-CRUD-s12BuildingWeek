@@ -43,7 +43,7 @@ const Experience = ({ data }) => {
       .catch((error) => {
         console.error("Errore nella richiesta GET:", error);
       });
-  }, [data, token]);
+  }, [data, selectedToken]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,7 +67,7 @@ const Experience = ({ data }) => {
         newExperience,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${selectedToken}`,
           },
         }
       )
@@ -99,7 +99,7 @@ const Experience = ({ data }) => {
         `https://striveschool-api.herokuapp.com/api/profile/${data}/experiences/${expId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${selectedToken}`,
           },
         }
       )
@@ -130,7 +130,7 @@ const Experience = ({ data }) => {
         updatedExperience,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${selectedToken}`,
           },
         }
       )
