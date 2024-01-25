@@ -21,7 +21,7 @@ const OtherProfileConsulted = () => {
 
     return (
         <Container className='SideSections bg-white mt-2 p-0 rounded border border-solid'>
-            <h2 className='MayKnowTitle p-2'> Other profile consulted </h2>
+            <h2 className='MayKnowTitle p-2 '> Other profile consulted </h2>
             {randomPeople.map(person => (
                 <Link to={`/user/${person._id}`}>
                 <div key={person._id} className='MayKnowContent px-3'>

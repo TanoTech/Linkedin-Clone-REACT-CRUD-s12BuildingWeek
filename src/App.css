@@ -87,3 +87,31 @@ main {
   cursor: pointer;
   text-decoration: underline;
 }
+
+a:-webkit-any-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+.MayKnowImg{
+  height: 3em !important;
+  width: 3em !important;
+}
+.MayKnowContent{
+  padding-top: 0;
+}
+.MayKnowTitle{
+  font-size: 90%;
+  margin-top: 1em;
+}
+.MayKnowName {
+  font-size: 90%;
+}
+.MayKnowColumn p {
+  font-size: 80%;
+  margin-top: 0.4em;
+  margin-bottom: 0.5em;
+}
+.MayKnowBtn{
+  font-size: 110%;
+}
