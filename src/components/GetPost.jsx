@@ -3,14 +3,21 @@ import React from 'react';
 const GetPost = ({ posts }) => {
     console.log(posts);
     return (
-        <div>
+        <div 
+        style={{width: '80em'}}
+        className='commentWrapperGetPost'>
             {posts.map(data => (
                 <div key={data._id}>
-                    {data.image ? <img 
-                    style={{width: '2rem' }}
+                    {data.image ? <img
+                    style={{width: '20em'}}
+                    className='imgGetPost' 
                     src={data.image} alt="post picture" /> : ''}
-                    <p>{data.username}</p>
-                    <p>{data.text}</p>
+                    <p 
+                    style={{width: '20em'}}
+                    className='commentGetPost'>{data.username}</p>
+                    <p 
+                    style={{width: '20em'}}
+                    className='commentGetPost'>{data.text}</p>
                 </div>
             ))}
         </div>
