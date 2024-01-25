@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
 import { Container } from 'react-bootstrap';
 import SingleJob from './SingleJob';
+import Ads from './Ads'
+import FooterHome from './FooterHome'
 
 const Jobs = () => {
     const { jobResults, fetchJobs } = useContext(ProfileContext);
@@ -14,16 +16,22 @@ const Jobs = () => {
     }, [fetchJobs]);
 
     return (
-        <>
-            <h2>Jobs offers:</h2>
-            <Container>
-                {jobResults.map(job => (
-                    <div key={job._id}>
-                        <SingleJob job={job} />
-                    </div>
-                ))}
-            </Container>
-        </>
+        <div className='d-flex'>
+            <main >
+                <Container >
+                    <h2>Jobs offers:</h2>
+                    {jobResults.map(job => (
+                        <div key={job._id}>
+                            <SingleJob job={job} />
+                        </div>
+                    ))}
+                </Container>
+            </main>
+            <footer>
+                <Ads />
+                <FooterHome />
+            </footer>
+        </div>
     );
 }
 
