@@ -1,5 +1,4 @@
 import { Container, Row, Col, Button, Modal, Accordion, Dropdown, DropdownButton, Form } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css'; // fogli css di bootstrap da spostare in futuro
 import { HiOutlinePencil } from "react-icons/hi2";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaCamera } from "react-icons/fa";
@@ -9,7 +8,8 @@ import { FiDownload } from "react-icons/fi";
 import { BiFileBlank } from "react-icons/bi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { BsArrow90DegRight } from "react-icons/bs";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ProfileContext } from "../redux/contexts/ProfileContext";
 
 const urlCopertina = 'https://leratomonareng.co.za/wp-content/uploads/2021/03/192adf06PCF91kCYu1nPLQg.jpeg' // statico
 
@@ -18,6 +18,7 @@ const urlLogo = 'https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epic
 const randomNumber = Math.floor(Math.random() * (500 - 50 + 1)) + 50 // numero random da 50 a 500
 
 const MainProfile = ({ data }) => {
+    const  { selectedToken }= useContext(ProfileContext)
 
     const [showModalPic, setShowModalPic] = useState(false); //stato apertura/chiusura Modale profilePic
     const handleShowModalPic = () => setShowModalPic(true); // apertura modale profilePic
@@ -47,9 +48,8 @@ const MainProfile = ({ data }) => {
     const [title, setTitle] = useState(data.title);
     const [area, setArea] = useState(data.area);
 
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlM2Y1ZDYwMGJlMTAwMTgzYTg2OWMiLCJpYXQiOjE3MDU5MTgzMDEsImV4cCI6MTcwNzEyNzkwMX0.oC8mhZ_YldjX2-Ab-I6p9knSGsc-L2IlVxX95iBN73o';
 
-    // fetch POST per caricare un'immagine del profilo
+    // POST per caricare un'immagine del profilo
     const handleUpload = async () => {
         try {
             // creo un oggetto FormData
@@ -61,7 +61,7 @@ const MainProfile = ({ data }) => {
                 method: 'POST',
                 headers: {
 
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${selectedToken}`,
                 },
                 body: formData,
             });
@@ -78,14 +78,14 @@ const MainProfile = ({ data }) => {
         }
     };
 
-    // fetch PUT per modificare il profilo utente
+    // PUT per modificare il profilo utente
     const updateProfile = async () => {
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${selectedToken}`,
                 },
                 body: JSON.stringify({
                     name: firstName,
