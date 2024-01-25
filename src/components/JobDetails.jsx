@@ -7,7 +7,7 @@ const JobDetails = ({ description, show, handleClose }) => {
             <Modal.Header closeButton>
                 <Modal.Title>Job details</Modal.Title>
             </Modal.Header>
-            <Modal.Body dangerouslySetInnerHTML={{ __html: description }}></Modal.Body>
+            <Modal.Body id='ContentDetails' dangerouslySetInnerHTML={{ __html: description }}></Modal.Body>
             <Modal.Footer>
                 <Button onClick={handleClose}>
                     Close

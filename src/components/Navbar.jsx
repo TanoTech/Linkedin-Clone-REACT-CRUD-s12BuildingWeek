@@ -95,11 +95,11 @@ const NavbarTop = ({onLogout}) => {
                         </div>
                         <Nav.Link href="#"><FaEnvelope /> Messaging</Nav.Link>
                         <Nav.Link href="#"><FaBell /> Notifications </Nav.Link>
-                        <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /> Me </span>} >
+                        <NavDropdown title={<span className='d-flex flex-column'> <Image src={userProfileImg} roundedCircle width="30" height="30" className=" navIcon" alt="Profilo" /></span>} >
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
-                                    <div className=''>
+                                    <div>
                                         <p>{userProfileName}</p>
                                         <p>{userProfileTitle}</p>
                                         <Link to='/user-profile'><Button className='btn btn-primary'>View Profile</Button></Link>
