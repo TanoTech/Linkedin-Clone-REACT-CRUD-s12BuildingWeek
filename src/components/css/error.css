@@ -1,0 +1,15 @@
+.errorBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p{
+        text-align: center;
+        font-size: 6rem;
+        font-weight: bold;
+    };
+    a{
+        height: 10rem;
+        margin: 2rem;
+    }
+}

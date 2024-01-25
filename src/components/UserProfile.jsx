@@ -13,6 +13,7 @@ import Footer from './Footer';
 import ProfileLanguage from './ProfileLanguage';
 import OtherProfileConsulted from './OtherProfileConsulted';
 import Ads from './Ads';
+import ErrorComponent from './ErrorComponent';
 
 const UserProfile = () => {
     const { profile, setProfile, selectedToken } = useContext(ProfileContext);
@@ -22,7 +23,7 @@ const UserProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             if (!selectedToken) {
-                setError('Token non disponibile.');
+                setError('Ciao');
                 setLoading(false);
                 return;
             }
@@ -53,28 +54,30 @@ const UserProfile = () => {
     }
 
     if (error) {
-        return <div>Errore: {error}</div>;
+        return <ErrorComponent />;
     }
 
     return (
         <>
-            <main className='d-flex '>
-                <Container>
-                    <MainProfile data={profile} />
-                    <Activity data={profile} />
-                    <Experience data={profile._id} />
-                    <Formation />
-                    <Interessi />
-                </Container>
-                <section>
-                    <ProfileLanguage data={profile} />
-                    <Ads />
-                    <OtherProfileConsulted />
-                    <MayKnow/>
-                    <News/>
-                    <Ads />
-                </section>
-            </main>
+            {error ? <ErrorComponent error={error} /> : (
+                <main className='d-flex '>
+                    <Container>
+                        <MainProfile data={profile} />
+                        <Activity data={profile} />
+                        <Experience data={profile._id} />
+                        <Formation />
+                        <Interessi />
+                    </Container>
+                    <section>
+                        <ProfileLanguage data={profile} />
+                        <Ads />
+                        <OtherProfileConsulted />
+                        <MayKnow />
+                        <News />
+                        <Ads />
+                    </section>
+                </main>
+            )}
             <footer>
                 <Footer />
             </footer>

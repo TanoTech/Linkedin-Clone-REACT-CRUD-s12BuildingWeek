@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavbarTop from "./components/Navbar";
 import UserProfile from "./components/UserProfile";
 import DettaglioInteressi from "./components/DettaglioInteressi";
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ProfileProvider } from "./redux/contexts/ProfileContext";
 import { Container } from "react-bootstrap";
 import Jobs from "./components/Jobs";
@@ -13,17 +13,18 @@ import Login from "./components/Login";
 import "./App.css";
 
 function App() {
+    const [showNavbar, setShowNavbar] = useState(true);
+
     return (
         <ProfileProvider>
             <Router>
-            
                 <header>
-                    <NavbarTop />
+                    {showNavbar && <NavbarTop />}
                 </header>
                 <Container className="App">
                     <>
                         <Routes>
-                            <Route path="/" element={<Login />} /> 
+                            <Route path="/" element={<Login setShowNavbar={setShowNavbar} />} />
                             <Route path="/home" element={<Home />} />
                             <Route path="/user-profile" element={<UserProfile />} />
                             <Route path="/user/:userId" element={<UserDetail />} />
