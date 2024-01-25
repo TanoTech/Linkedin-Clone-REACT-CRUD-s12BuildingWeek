@@ -465,11 +465,8 @@ const MainProfile = ({ data }) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModalEdit}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={() => { updateProfile(); setShowModalEdit(false); }}>
-                        Save Changes
+                    <Button variant="primary" className="me-2 rounded-pill custom-dropdown-button blueButton" onClick={() => { updateProfile(); setShowModalEdit(false); }}>
+                        Save
                     </Button>
                 </Modal.Footer>
             </Modal>
