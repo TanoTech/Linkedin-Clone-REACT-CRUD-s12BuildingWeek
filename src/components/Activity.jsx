@@ -79,7 +79,7 @@ const Activity = ({ data }) => {
       <Container className='border border-solid rounded mb-4 bg-white'>
         <Row className="d-flex flex-column edit-section mt-2" id="round-corners">
           <Col className="d-flex flex-column mt-3">
-            <div className="d-flex justify-content-between me-4">
+            <div className="d-flex justify-content-between">
               <div>
                 <p id="left-side-headers" className="mb-0 fw-bold fs-4">Activity</p>
                 <p className="followers fw-bold text-primary HoverBluScritte">5 followers</p>
