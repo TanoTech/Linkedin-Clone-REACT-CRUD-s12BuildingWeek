@@ -20,8 +20,12 @@ header {
 
   div > img {
     width: 60px;
+    height: 60px;
     margin: 1em;
   }
+}
+.nav-item a{
+  padding-top: 0.1em;
 }
 
 .navIcon {
@@ -98,6 +102,10 @@ button svg {
 a.dropdown-toggle.nav-link::after {
   display: none !important;
 }
+.dropdown-menu{
+  margin-top: 2rem !important;
+  margin-left: 0.8rem;
+}
 
 #MenuDropDown {
   width: 20rem;
@@ -131,4 +139,11 @@ a.dropdown-toggle.nav-link::after {
   color: black;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
+}
+.Business{
+  font-size: 80%;
+}
+.LinkTest{
+  font-size: 80%;
+  color: #575757;
 }
