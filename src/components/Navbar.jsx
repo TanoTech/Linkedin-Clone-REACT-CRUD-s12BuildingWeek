@@ -102,19 +102,17 @@ const NavbarTop = () => {
                 <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
                     <Nav navbarScroll>
                         <div className='d-flex flex-column align-self-center LinkHover'>
-                            <FaHome className='align-self-center' />
-                            <Link to='/home' className='LinkTest'> Home </Link>
+                            <Link to='/home' className='LinkTest d-flex flex-column justify-content-center align-items-center'> <FaHome className='align-self-center' />
+                                Home </Link>
                         </div>
-                        <Nav.Link ><FaNetworkWired /> <span className='LinkTest'>My Network </span></Nav.Link>
-                        <div className='d-flex flex-column align-self-center LinkHover'>
-                            <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
-                            <Link to='/jobs' className=' LinkTest'> Jobs </Link>
+                            <Link className='d-flex flex-column justify-content-center align-items-center'><FaNetworkWired /> <span className='LinkTest'>My Network </span></Link>
+                            <div className='d-flex flex-column align-self-center LinkHover'>
+                            <Link to='/jobs' className=' LinkTest d-flex flex-column justify-content-center align-items-center'>  <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
+                                Jobs </Link>
                         </div>
-
-                        <Nav.Link ><FaEnvelope /> <span className='LinkTest'>Messaging</span></Nav.Link>
-                        <Nav.Link ><FaBell /> <span className='LinkTest'>Notifications</span> </Nav.Link>
+                            <Link className='d-flex flex-column justify-content-center align-items-center' ><FaEnvelope /> <span className='LinkTest'>Messaging</span></Link>
+                            <Link className='d-flex flex-column justify-content-center align-items-center'><FaBell /> <span className='LinkTest'>Notifications</span> </Link>
                         <NavDropdown title={<span className='d-flex flex-column align-items-center LinkTest'> <Image src={userProfileImg} roundedCircle width="25" height="25" className=" navIcon" alt="Profilo" /> Me </span>} >
-
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
