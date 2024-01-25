@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext'; 
 import 'bootstrap-icons/font/bootstrap-icons.css'; 
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const OtherProfileConsulted = () => {
     const { getAllPeople, fetchUsers } = useContext(ProfileContext);
@@ -22,6 +23,7 @@ const OtherProfileConsulted = () => {
         <Container className='SideSections bg-white mt-2 p-0 rounded border border-solid'>
             <h2 className='MayKnowTitle p-2'> Other profile consulted </h2>
             {randomPeople.map(person => (
+                <Link to={`/user/${person._id}`}>
                 <div key={person._id} className='MayKnowContent px-3'>
                     <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                     <div className='MayKnowColumn'>
@@ -30,6 +32,7 @@ const OtherProfileConsulted = () => {
                         <button className='MayKnowBtn'><i className="bi bi-person-plus-fill MayKnowIcon"></i>Connect</button>
                     </div>
                 </div>
+                </Link>
             ))}
             <Container className='p-2 fs-5 text-center ButtonSideSections'>Show all</Container>
         </Container>
