@@ -17,16 +17,15 @@ const Jobs = () => {
 
     return (
             <main >
-                <Container >
-                    <h2>Jobs offers:</h2>
+                <Container className='mt-4'>
                     {jobResults.map(job => (
                         <div key={job._id}>
                             <SingleJob job={job} />
                         </div>
                     ))}
                 </Container>
-                <section>
-                    <Ads />
+                <section className='mt-3'>
+                    <Ads/>
                     <FooterHome />
                 </section>
             </main>

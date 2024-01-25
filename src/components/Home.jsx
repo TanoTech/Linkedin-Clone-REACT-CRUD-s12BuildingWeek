@@ -48,7 +48,7 @@ const Home = () => {
     return (
         <main>
             <Container className='d-flex'>
-                <section>
+                <section className='me-3'>
                     <ProfileSummary />
                     <SeeMore />
                 </section>

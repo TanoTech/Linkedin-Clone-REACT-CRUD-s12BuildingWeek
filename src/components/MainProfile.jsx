@@ -112,7 +112,7 @@ const MainProfile = ({ data }) => {
 
     return (
         <>
-            <Container className="my-4 bg-white rounded border border-solid">
+            <Container className="mt-3 mb-4 bg-white rounded border border-solid">
 
                 {/* immagine copertina */}
                 <Row>
