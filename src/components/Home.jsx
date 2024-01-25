@@ -62,20 +62,23 @@ const Home = () => {
     };
 
     return (
-        <main>
+        <main >
             <Container className='d-flex'>
                 <section className='me-3'>
                     <ProfileSummary />
                     <SeeMore />
                 </section>
-                <div>
-                    <CreatePost
-                        newPostText={newPostText}
-                        setNewPostText={setNewPostText}
-                        createPost={createPost}
-                    />
-                    <GetPost posts={posts} />
-                </div>
+
+                    <div className='m-0 p-0'>
+                        <CreatePost 
+                            newPostText={newPostText}
+                            setNewPostText={setNewPostText}
+                            createPost={createPost}
+                        />
+                        <GetPost posts={posts} /> 
+                    </div>
+
+
             </Container>
             <section>
                 <LinkedinNews />

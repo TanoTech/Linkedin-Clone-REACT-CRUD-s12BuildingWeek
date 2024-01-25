@@ -1,11 +1,49 @@
-.commentWrapperGetPost {
-    width: 5rem;
+#ProfilePicPost{
+    width: 3em;
+    height: 3em;
+    border-radius: 5em;
+    cursor: pointer;
 }
 
-.imgGetPost {
-    width: 5rem;
+#NamePost {
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
 }
 
-.commentGetPost {
-    width: 5rem;
+#NamePost:hover {
+    text-decoration: underline;
+    color: #0c73da;
+}
+
+#DatePost {
+    cursor: pointer;
+    font-size: 0.8em;
+    color: rgb(0 0 0 / 60%)
+}
+
+#FollowPost {
+    font-weight: 600;
+    cursor: pointer;
+    color: #0c73da;
+}
+
+#FollowPost:hover {
+    background-color: #0c73da24;
+    transition: 0.1s;
+}
+
+#imgPost {
+    width: 100%;
+}
+
+.IconAndTextPost {
+    font-size: 1.25em;
+    width: 100%;
+}
+
+.IconAndTextPost:hover {
+    cursor: pointer;
+    background-color: rgb(236, 236, 236) !important;
+    transition: 0.1s;
 }
