@@ -51,13 +51,15 @@ const Home = () => {
                     <ProfileSummary />
                     <SeeMore />
                 </section>
-                <CreatePost
-                    newPostText={newPostText}
-                    setNewPostText={setNewPostText}
-                    createPost={createPost}
-                    posts={posts}
-                />
-                <GetPost posts={posts} /> 
+                    <div>
+                        <CreatePost
+                            newPostText={newPostText}
+                            setNewPostText={setNewPostText}
+                            createPost={createPost}
+                            posts={posts}
+                        />
+                        <GetPost posts={posts} /> 
+                    </div>
             </Container>
             <section>
                 <LinkedinNews />

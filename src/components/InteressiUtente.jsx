@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import { Button, Col, Row } from "react-bootstrap";
-
-
 
 export const contenutiPerAziende = [
     { id: 1, logo: 'https://www.svgrepo.com/show/349454/microsoft.svg', nome: 'Microsoft', follower: 100000 },
@@ -17,6 +15,7 @@ export const contenutiPerAziende = [
     { id: 11, logo: 'https://www.brandforum.it/wp-content/uploads/2022/02/brandforum_logo_tales_intel_inside.png', nome: 'Intel', follower: 40000 },
     { id: 12, logo: 'https://www.svgrepo.com/show/303303/oracle-6-logo.svg', nome: 'Oracle', follower: 35000 },
 ];
+
 
 export const contenutiPerNewsletter = [
   { id: 1, nome: 'Contenuto N1' },

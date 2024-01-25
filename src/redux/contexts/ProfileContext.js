@@ -5,14 +5,14 @@ export const ProfileContext = createContext();
 export const ProfileProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
-    const [getAllPeople, setGetAllPeople] = useState ([]);
-    const [jobResults, setJobResults] = useState([]); 
+    const [getAllPeople, setGetAllPeople] = useState([]);
+    const [jobResults, setJobResults] = useState([]);
     const [currentJob, setCurrentJob] = useState(null);
     const [selectedToken, setSelectedToken] = useState("");
 
-    
+
     const performSearch = useCallback(async (searchTerm) => {
-        if (!selectedToken) return; 
+        if (!selectedToken) return;
 
         try {
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/?search=${searchTerm}`, {
@@ -27,14 +27,14 @@ export const ProfileProvider = ({ children }) => {
             }
 
             const profiles = await response.json();
-            setSearchResults(profiles); 
+            setSearchResults(profiles);
         } catch (error) {
             console.error('Errore: ', error);
         }
-    }, [selectedToken]); 
+    }, [selectedToken]);
 
     const fetchUsers = useCallback(async () => {
-        if (!selectedToken) return; 
+        if (!selectedToken) return;
 
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
@@ -73,7 +73,7 @@ export const ProfileProvider = ({ children }) => {
             }
 
             const result = await response.json();
-            setJobResults(result.data); 
+            setJobResults(result.data);
         } catch (error) {
             console.error('Errore: ', error);
         }
@@ -100,19 +100,19 @@ export const ProfileProvider = ({ children }) => {
     }, []);
 
     return (
-        <ProfileContext.Provider value={{ 
-            profile, 
-            setProfile, 
-            searchResults, 
-            performSearch, 
-            getAllPeople, 
-            fetchUsers, 
-            jobResults, 
-            fetchJobs, 
-            fetchNews, 
-            currentJob, 
-            selectedToken, 
-            setSelectedToken 
+        <ProfileContext.Provider value={{
+            profile,
+            setProfile,
+            searchResults,
+            performSearch,
+            getAllPeople,
+            fetchUsers,
+            jobResults,
+            fetchJobs,
+            fetchNews,
+            currentJob,
+            selectedToken,
+            setSelectedToken
         }}>
             {children}
         </ProfileContext.Provider>
