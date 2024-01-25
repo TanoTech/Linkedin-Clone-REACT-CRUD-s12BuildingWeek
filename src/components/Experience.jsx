@@ -19,7 +19,7 @@ const Experience = ({ data }) => {
     endDate: null,
     locType: null,
     description: "",
-    location: "",
+    area: "",
   });
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const Experience = ({ data }) => {
           endDate: null,
           locType: null,
           description: "",
-          location: "",
+          area: "",
         });
         setMostraForm(false);
       })
@@ -122,7 +122,7 @@ const Experience = ({ data }) => {
       startDate: newExperience.startDate,
       endDate: newExperience.endDate,
       description: newExperience.description,
-      location: newExperience.location,
+      area: newExperience.area,
       locType: newExperience.locType,
     };
 
@@ -155,7 +155,7 @@ const Experience = ({ data }) => {
           startDate: null,
           endDate: null,
           description: "",
-          location: "",
+          area: "",
           locType: "",
         });
       })
@@ -206,7 +206,7 @@ const Experience = ({ data }) => {
                         : "Present"}
                     </p>
                     <p className="LocationEx">
-                      {/*experience.location*/} Rome ·{/*experience.locType*/}{" "}
+                      {/*experience.location*/} {experience.area} · {/*experience.locType*/}{" "}
                       Hybrid
                     </p>
                     <p className="DescEx">{experience.description}</p>
@@ -328,10 +328,10 @@ const Experience = ({ data }) => {
                 <input
                 className="inputModalEx"
                   type="text"
-                  name="location"
+                  name="area"
                   placeholder="Ex: London, UK"
                   onChange={handleInputChange}
-                  value={newExperience.location}
+                  value={newExperience.area}
                   required
                 />
               </Row>
@@ -384,7 +384,7 @@ const Experience = ({ data }) => {
 
 
               <Row className="pb-4">
-                <label className="inputLabelEx">Description</label>
+                <label className="inputLabelEx">Description*</label>
                 <input
                 className="inputDescEx"
                   type="text"
