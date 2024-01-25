@@ -1,7 +1,16 @@
+import "./css/CreatePost.css";
+import { Container } from "react-bootstrap"
+import { useContext } from "react"
+import { ProfileContext } from "../redux/contexts/ProfileContext"
+
 const CreatePost = ({ newPostText, setNewPostText, createPost, posts }) => {
+    const { profile } = useContext(ProfileContext)
+    const userProfileName = profile ? `${profile.name} ${profile.surname}` : ''
+    const userProfileTitle = profile ? profile.title : '';
+    const userProfileImg = profile ? profile.image : '';
+
     return (
-        <div>
-            <h1>Create Post</h1>
+        <div className="createPostWrapper">
             <form onSubmit={createPost}>
                 <textarea
                     value={newPostText}
