@@ -47,8 +47,8 @@ const NavbarTop = () => {
     return (
         <Navbar expand="lg" className='MyNavBar m-0 bg-white border-bottom'>
             <Container>
-                <Navbar.Brand href="#home">
-                    <Link to='/'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>
+                <Navbar.Brand >
+                    <Link to='/home'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>
                 </Navbar.Brand>
                 <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
                     <InputGroup>
@@ -117,7 +117,6 @@ const NavbarTop = () => {
                             <NavDropdown.Item>Job Posting Account</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <Link to='/'>Sign Out</Link>
-
                         </NavDropdown>
                     </Nav>
                     <NavDropdown title={'For Business'}>
