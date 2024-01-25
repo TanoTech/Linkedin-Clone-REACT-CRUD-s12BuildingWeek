@@ -26,11 +26,12 @@ const Jobs = () => {
                         </div>
                     ))}
                 </Container>
+                <section>
+                    <Ads />
+                    <FooterHome />
+                </section>
             </main>
-            <footer>
-                <Ads />
-                <FooterHome />
-            </footer>
+                
         </div>
     );
 }
