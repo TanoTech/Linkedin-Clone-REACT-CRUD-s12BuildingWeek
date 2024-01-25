@@ -1,0 +1,32 @@
+/* SINGLEJOB */
+
+#CardJob {
+    min-height: 10em;
+}
+
+#CardJob:hover {
+    cursor: pointer;
+    #TitleSingleJob{
+        text-decoration: underline;
+    }
+    
+}
+
+#TitleSingleJob {
+    color: #0a66c2;
+}
+
+#CompanyName {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+#LocationJob {
+    font-size: 0.85em;
+    color: rgb(0 0 0 / 60%);
+}
+
+#ButtonDetailsJob {
+    font-weight: 600;
+}
+
