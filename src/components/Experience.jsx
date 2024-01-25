@@ -191,7 +191,7 @@ const Experience = ({ data }) => {
                   />
 
                   <div>
-                    <h2 className="RoleEx">{experience.role}</h2>
+                    <h2 className="RoleEx fs-4">{experience.role}</h2>
                     <span className="CompanyEx">
                       {experience.company}
                     </span> · <span className="FrequencyEx">Full Time</span>
@@ -203,7 +203,7 @@ const Experience = ({ data }) => {
                       )} -{" "}
                       {experience.endDate
                         ? format(new Date(experience.endDate), "dd/MM/yyyy")
-                        : "In corso"}
+                        : "Present"}
                     </p>
                     <p className="LocationEx">
                       {/*experience.location*/} Rome ·{/*experience.locType*/}{" "}
@@ -250,7 +250,7 @@ const Experience = ({ data }) => {
       {mostraForm && (
         <Modal size="lg" show={mostraForm} onHide={() => setMostraForm(false)}>
           <Modal.Header closeButton>
-            <Modal.Title className="fs-6">Add Experience</Modal.Title>
+            <Modal.Title className="fs-5">Add Experience</Modal.Title>
           </Modal.Header>
           <Modal.Body id="modal">
             <Row id="CondivisioneModificheEx">
@@ -271,20 +271,26 @@ const Experience = ({ data }) => {
               </Col>
             </Row>
 
+            <Row >
+              <p className="requiredWarningEx">* indicates required</p>
+            </Row>
+
             <div className="p-4">
-              <Row className="pb-4">
-                <label className="text-left">Title*</label>
+              <Row className="pb-4 pl-2">
+                <label className="text-left inputLabelEx">Title*</label>
                 <input
+                className="inputModalEx"
                   type="text"
                   name="role"
                   placeholder="Ex: retail sales manager"
                   onChange={handleInputChange}
                   value={newExperience.role}
+                  required
                 />
               </Row>
 
               <Row className="pb-4">
-                <label>Employment type*</label>
+                <label className="inputLabelEx">Employment type*</label>
                 <Form.Select
                   name="frequency"
                   onChange={handleInputChange}
@@ -305,29 +311,33 @@ const Experience = ({ data }) => {
               </Row>
 
               <Row className="pb-4">
-                <label>Company name*</label>
+                <label className="inputLabelEx">Company name*</label>
                 <input
+                className="inputModalEx"
                   type="text"
                   name="company"
                   placeholder="Ex: Microsoft"
                   onChange={handleInputChange}
                   value={newExperience.company}
+                  required
                 />
               </Row>
 
               <Row className="pb-4">
-                <label>Location*</label>
+                <label className="inputLabelEx">Location</label>
                 <input
+                className="inputModalEx"
                   type="text"
                   name="location"
                   placeholder="Ex: London, UK"
                   onChange={handleInputChange}
                   value={newExperience.location}
+                  required
                 />
               </Row>
 
               <Row className="pb-4">
-                <label>Location type*</label>
+                <label className="inputLabelEx">Location type</label>
                 <Form.Select
                   name="locType"
                   onChange={handleInputChange}
@@ -342,29 +352,41 @@ const Experience = ({ data }) => {
                 </Form.Select>
               </Row>
 
-              <Row className="pb-4">
-                <label>Start Date*</label>
-                <DatePicker
-                  selected={newExperience.startDate}
-                  onChange={(date) => handleDateChange(date, "startDate")}
-                  dateFormat="yyyy-MM-dd"
-                  placeholderText="Start Date"
-                />
+              <div className="dateWrapperEx">
+                <Row className="pb-4">
+                  <label className="inputLabelEx">Start Date*</label>
+                  <DatePicker
+                  className="inputModalEx"
+                    selected={newExperience.startDate}
+                    onChange={(date) => handleDateChange(date, "startDate")}
+                    dateFormat="yyyy-MM-dd"
+                    placeholderText="Start Date"
+                    required
+                  />
+                </Row>
+  
+                <Row className="pb-4">
+                  <label className="inputLabelEx">End Date</label>
+                  <DatePicker
+                  className="inputModalEx"
+                    selected={newExperience.endDate}
+                    onChange={(date) => handleDateChange(date, "endDate")}
+                    dateFormat="yyyy-MM-dd"
+                    placeholderText="End Date"
+                    required
+                  />
+                </Row>
+              </div>
+
+              <Row>
+                <p className="endWarningEx">If you are still working there, leave "End Date" field empty</p>
               </Row>
 
-              <Row className="pb-4">
-                <label>End Date</label>
-                <DatePicker
-                  selected={newExperience.endDate}
-                  onChange={(date) => handleDateChange(date, "endDate")}
-                  dateFormat="yyyy-MM-dd"
-                  placeholderText="End Date"
-                />
-              </Row>
 
               <Row className="pb-4">
-                <label>Description</label>
+                <label className="inputLabelEx">Description</label>
                 <input
+                className="inputDescEx"
                   type="text"
                   name="description"
                   placeholder="Describe your job..."
@@ -374,7 +396,11 @@ const Experience = ({ data }) => {
               </Row>
             </div>
           </Modal.Body>
-          <button onClick={handleAddExperience}>Aggiungi</button>
+          <div className="endBtnWrapper">
+            <button 
+            className="saveExperience"
+            onClick={handleAddExperience}>Save</button>
+          </div>
         </Modal>
       )}
       {/*<h2>Aggiungi una Nuova Esperienza</h2>
