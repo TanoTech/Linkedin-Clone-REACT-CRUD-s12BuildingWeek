@@ -16,7 +16,6 @@ const Jobs = () => {
     }, [fetchJobs]);
 
     return (
-        <div className='d-flex'>
             <main >
                 <Container >
                     <h2>Jobs offers:</h2>
@@ -31,8 +30,6 @@ const Jobs = () => {
                     <FooterHome />
                 </section>
             </main>
-                
-        </div>
     );
 }
 
