@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const { setSelectedToken } = useContext(ProfileContext);
     const navigate = useNavigate();
-    const [isComponentVisible, setComponentVisibility] = useState(true);
 
     const tokens = {
         "gaetanoN@epicode.it": {
@@ -48,12 +47,9 @@ const Login = () => {
         } else {
             setError("Email non valida o token non trovato");
         }
-
-        setComponentVisibility(false);
     };
 
     return (
-        isComponentVisible && (
             <Container fluid className='d-flex'>
                 <Row className="justify-content-center align-items-center min-vh-100">
                     <Col md={6} className="p-4">
@@ -61,14 +57,13 @@ const Login = () => {
                         <Form onSubmit={handleLogin}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email or phone</Form.Label>
-                                <Form.Control as="select" defaultValue="Choose..." onChange={handleEmailChange}>
-                                    <option value="">Choose...</option>
+                                <Form.Control required as="select" defaultValue="Choose..." onChange={handleEmailChange}>
+                                    <option  value="">Choose...</option>
                                     {Object.keys(tokens).map(email => (
                                         <option key={email} value={email}>{email}</option>
                                     ))}
                                 </Form.Control>
                             </Form.Group>
-                            {error && <div className="text-danger">{error}</div>}
                             <Button variant="primary" type="submit" className="mb-3">
                                 Log in
                             </Button>
@@ -78,7 +73,7 @@ const Login = () => {
                 </Row>
                 <img className='img-fluid' style={{ width: '42rem' }} src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt="LinkedIn" />
             </Container>
-        )
+        
     );    
 }
 

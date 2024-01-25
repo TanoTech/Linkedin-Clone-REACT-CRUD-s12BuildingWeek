@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner, Container } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 import { CgMenuGridR } from "react-icons/cg";
@@ -13,7 +13,8 @@ const NavbarTop = () => {
     const userProfileName = profile ? `${profile.name} ${profile.surname}` : <Spinner></Spinner>;
     const userProfileTitle = profile ? profile.title : '';
     const userProfileImg = profile ? profile.image : '';
-    const navigate = useNavigate();
+    const [filteredSearchResults, setFilteredSearchResults] = useState([]);
+    const [filteredJobResults, setFilteredJobResults] = useState([]);
 
     useEffect(() => {
         const timerId = setTimeout(() => {
@@ -39,9 +40,27 @@ const NavbarTop = () => {
     }, []);
 
     const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-        if (e.target.value.trim() !== '') {
+        const newSearchTerm = e.target.value.toLowerCase();
+        setSearchTerm(newSearchTerm);
+
+        if (newSearchTerm.trim() !== '') {
             setShowSearchResults(true);
+
+            const filteredProfiles = searchResults.filter(profile =>
+                profile.name.toLowerCase().includes(newSearchTerm) ||
+                profile.surname.toLowerCase().includes(newSearchTerm) ||
+                (profile.title && profile.title.toLowerCase().includes(newSearchTerm))
+            );
+
+            const filteredJobs = jobResults.filter(job =>
+                job.title.toLowerCase().includes(newSearchTerm) ||
+                (job.company && job.company.toLowerCase().includes(newSearchTerm))
+            );
+
+            setFilteredSearchResults(filteredProfiles);
+            setFilteredJobResults(filteredJobs);
+        } else {
+            setShowSearchResults(false);
         }
     };
 
@@ -62,16 +81,16 @@ const NavbarTop = () => {
                         />
                     </InputGroup>
                 </Form>
-                {showSearchResults && searchTerm.length > 0 && searchResults.length > 0 && (
+                {showSearchResults && searchTerm.length > 0 && (
                     <div className="search-results-container" ref={searchResultsRef}>
-                        {searchResults.slice(0, 6).map((otherProfile) => (
+                        {filteredSearchResults.length > 0 && filteredSearchResults.slice(0, 6).map((otherProfile) => (
                             <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item" onClick={() => setShowSearchResults(false)}>
                                 <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
                                 {`${otherProfile.name} ${otherProfile.surname}`}
                                 <span>{otherProfile.title}</span>
                             </Link>
                         ))}
-                        {jobResults.map((job) => (
+                        {filteredJobResults.length > 0 && filteredJobResults.map((job) => (
                             <div key={job._id} className="search-result-item" onClick={() => setShowSearchResults(false)}>
                                 <p>{job.title}</p>
                                 <p>{job.company}</p>
@@ -120,11 +139,11 @@ const NavbarTop = () => {
                             <Link to='/'>Sign Out</Link>
                         </NavDropdown>
                     </Nav>
-                   <div className='d-flex flex-column align-items-center'>
-                        <CgMenuGridR className='fs-5'/>
+                    <div className='d-flex flex-column align-items-center'>
+                        <CgMenuGridR className='fs-5' />
                         <NavDropdown className='Business' title={'For Business'}>
                         </NavDropdown>
-                   </div>
+                    </div>
                     <NavLink id='PremiumLink'>Try Premium for free</NavLink>
                 </Navbar.Collapse>
             </Container>

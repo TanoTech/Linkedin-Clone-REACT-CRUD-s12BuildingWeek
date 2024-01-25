@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext} from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { ProfileContext } from '../redux/contexts/ProfileContext';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
@@ -9,13 +9,20 @@ import FooterHome from './FooterHome';
 import ProfileSummary from './ProfileSummary';
 import SeeMore from './SeeMore';
 import LinkedinNews from './LinkedinNews';
+import ErrorComponent from './ErrorComponent';
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
     const [newPostText, setNewPostText] = useState('');
-    const {selectedToken} = useContext(ProfileContext)
+    const { selectedToken } = useContext(ProfileContext)
+    const [error, setError] = useState('');
 
     useEffect(() => {
+        if (!selectedToken) {
+            setError('Ciao');
+            return;
+        }
+
         fetchPosts();
     }, []);
 
@@ -29,7 +36,7 @@ const Home = () => {
             console.error("Errore nel recupero dei post:", error);
         }
     };
-    
+
     const createPost = async (event) => {
         event.preventDefault();
         try {
@@ -46,12 +53,14 @@ const Home = () => {
 
     return (
         <main>
-            <Container className='d-flex'>
-                <section className='me-3'>
-                    <ProfileSummary />
-                    <SeeMore />
-                </section>
-
+            {error && <ErrorComponent error={error} />}
+            {!error && (
+                <Container className='d-flex'>
+                    <section className='me-3'>
+                        <ProfileSummary />
+                        <SeeMore />
+                    </section>
+    
                     <div>
                         <CreatePost
                             newPostText={newPostText}
@@ -59,16 +68,19 @@ const Home = () => {
                             createPost={createPost}
                             posts={posts}
                         />
-                        <GetPost posts={posts} /> 
+                        <GetPost posts={posts} />
                     </div>
-            </Container>
-            <section>
-                <LinkedinNews />
-                <Ads />
-                <FooterHome />
-            </section>
+                </Container>
+            )}
+            {!error && (
+                <section>
+                    <LinkedinNews />
+                    <Ads />
+                    <FooterHome />
+                </section>
+            )}
         </main>
     );
-};
+            }    
 
 export default Home;
