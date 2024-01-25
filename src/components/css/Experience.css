@@ -52,3 +52,52 @@
     border: none;
     padding: 0.2em 0.7em;
 }
+
+#MyToggleEx, #MyToggleEx:hover {
+    width: 3.2rem !important;
+    height: 2rem !important;
+    border: 1px solid var(--transparent);
+    cursor: pointer;
+}
+
+.requiredWarningEx {
+    font-size: 0.95em;
+    margin-left: 2em;
+    margin-top: 1em !important;
+}
+
+.inputModalEx {
+    border-radius: 5px !important;
+    padding: 0.25em !important; 
+    font-size: 1.4em !important;
+    border: 1px solid lightgrey !important;
+}
+
+.inputLabelEx {
+    padding-left: 0;
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+}
+
+.inputDescEx {
+    border-radius: 5px !important;
+    padding: 1em 0.25em !important; 
+    font-size: 1.4em !important;
+    border: 1px solid lightgrey !important;
+}
+
+.dateWrapperEx {
+    display: flex !important;
+    margin-left: 0;
+}
+
+.endBtnWrapper {
+    display: flex !important;
+    justify-content: flex-end;
+}
+
+.saveExperience {
+background-color: #0a66c2;
+color: white;
+margin-left: 5em;
+}
