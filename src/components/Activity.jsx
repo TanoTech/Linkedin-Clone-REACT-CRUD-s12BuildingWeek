@@ -102,12 +102,11 @@ const Activity = ({ data }) => {
           </Col>
           <Col className="mb-2">
             <Row className="px-0">
-              <Col md={2} className="pr-0">
+              <Col md={6} lg={4} className="pr-0 mb-3 mb-md-0">
                 <img
-                  className="rounded"
+                  className="rounded img-fluid mx-auto"
                   src="https://media.licdn.com/dms/image/D4D22AQGqOfmOhlT4mg/feedshare-shrink_1280/0/1705512989810?e=1708560000&v=beta&t=rA2RQ6PTLSa69wYEvIfh8e6MCEUHP04cgB2GCjhH324"
                   alt="img"
-                  style={{ width: '9rem' }}
                 />
               </Col>
               <Col className="test ms-4 me-5 mt-3">
@@ -157,7 +156,7 @@ const Activity = ({ data }) => {
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title className='fs-5 d-flex'>
-            <img className='rounded-circle me-3' src={data.image} width={'13%'} />
+            <img className='rounded-circle me-3' src={data.image} width={'13%'} alt="user" />
             <div className='d-flex flex-column'>
               {data.name} {data.surname}
               <p className='postModal'>Post to Anyone</p>
