@@ -15,14 +15,19 @@
 - ## UserProfile: gestisce la Get del profilo personale e ha come componenti figli:
        ## MainProfile: che gestisce la modifica della foto e delle informazioni profilo, mostrando i vari dettagli dell'utente loggato.
        ## Activity: fa vedere le attività dell'utente, permette di creare il post in modo fittizio con aggiunta della foto e possibilità di mettere le reazioni.
+  
               -## Post: permette di creare i post fittizi.
+  
                         Ha due figli:  -## Emoticons: crea una lista di emoji che sono selezionabili.
-						               -## ImageUploader: che permette di caricare un immagine.
+		                       -## ImageUploader: che permette di caricare un immagine.
+  
        -## Experience: gestisce le richieste GET, PUT, DELETE e permette di aggiungere, modificare ed eliminare esperienze lavorative.
        -## Formation: fa vedere la formazione e permette di aggiungere altre esperienze formative in modo fittizio che scompaiono al refresh della pagina.
        -## Interessi: anche questo componente è statico ma abbiamo randomizzato le aziende, le scuole e le newsletter che si possono anche aprire e unfolloware sempre in locale.
+  
 	                Usa: - ## InteressiUtente: che crea staicamente aziende, newsletter e scuole.
-				         - ## DettaglioInteressi: va fuori dalla pagina utente e apre tutte le aziende, newsletter e scuole disponibili.
+                             - ## DettaglioInteressi: va fuori dalla pagina utente e apre tutte le aziende, newsletter e scuole disponibili.
+  
        -## ProfileLanguage: fa vedere lingua del profilo e formattazione url che cambia a seconda dell'utente loggato
        -## Ads: mostra random una serie di pubblicità create su misura dei componenti della repository
        -## OtherProfileConsulted: mostra in modo random degli utenti che dovrebbero essere quelli visitati di recente, ma non lo sono. Permette di connettersi alle persone col button
