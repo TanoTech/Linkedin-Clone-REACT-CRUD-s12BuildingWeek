@@ -20,7 +20,7 @@ const LinkedinNews = () => {
                 console.error('Si è verificato un errore durante il recupero delle notizie:', error);
             }
         };
-    
+
         getNews();
     }, [fetchNews]);
 
@@ -31,15 +31,15 @@ const LinkedinNews = () => {
             </div>
             {newsItems.map((news, index) => (
                 <ul key={index} className='d-flex border-bottom p-4'>
-              
-                        <li>
-                            <h3 id='TitoloNews' className='fs-6 m-0 overflow-hidden'>{news.title}</h3>
-                            <p className='fs-6 m-0'>{news.news_site}</p>
-                        </li>
+
+                    <li>
+                        <h3 id='TitoloNews' className='fs-6 m-0 overflow-hidden'>{news.title}</h3>
+                        <p className='fs-6 m-0'>{news.news_site}</p>
+                    </li>
                 </ul>
             ))}
             <Container className='text-secondary fs-6 py-2 pl-4 text-left ButtonSideSections'>Show More
-            <i class="bi bi-caret-down-fill"></i>
+                <i class="bi bi-caret-down-fill"></i>
             </Container>
         </Container>
     );
