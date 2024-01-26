@@ -170,5 +170,18 @@ a.dropdown-toggle.nav-link::after {
 .ToggleS{
   margin-left: 0.3em;
   margin-bottom: 0.7em;
- 
+  font-weight: 330;
+
+}
+.underTitle{
+  font-weight: lighter;
+  font-size: 86%;
+}
+.underTitle:hover {
+  text-decoration: underline; 
+}
+.coso{
+  color: rgb(255, 187, 0);
+  font-size: 110%;
+  margin-bottom: 0.2em;
 }
