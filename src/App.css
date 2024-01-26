@@ -68,6 +68,15 @@ main {
   text-overflow: ellipsis;
 }
 
+#TitoloNewsProfile {
+  display: block;
+  font-size: 1em !important;
+  width: 9em !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .ParagraphProfileLanguage {
   font-size: 0.85em;
   color: rgb(0 0 0 / 60%);
