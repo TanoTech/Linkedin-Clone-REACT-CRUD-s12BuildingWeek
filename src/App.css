@@ -22,6 +22,7 @@
 
 html {
   margin: 0;
+  width: 100%;
 }
 
 main {
@@ -126,4 +127,9 @@ a:-webkit-any-link {
 }
 .MayKnowBtn{
   font-size: 110%;
+}
+
+/* Header */
+header {
+  width: 100%;
 }
