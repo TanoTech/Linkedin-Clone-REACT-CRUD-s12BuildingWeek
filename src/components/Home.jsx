@@ -98,9 +98,8 @@ const Home = () => {
                         setNewPostText={setNewPostText}
                         createPost={createPost}
                     />
-                    <GetPost posts={posts} onDeletePost={deletePost} onEditPost={editPost}/>
+                    <GetPost posts={posts} onDeletePost={deletePost} onEditPost={editPost} />
                 </div>
-
 
             </Container>
             <section className='d-none d-md-block'>

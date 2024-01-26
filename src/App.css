@@ -22,6 +22,7 @@
 
 html {
   margin: 0;
+  width: 100%;
 }
 
 main {
@@ -63,6 +64,15 @@ main {
 #TitoloNews {
   display: block;
   width: 17em !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#TitoloNewsProfile {
+  display: block;
+  font-size: 1em !important;
+  width: 9em !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -117,4 +127,39 @@ a:-webkit-any-link {
 }
 .MayKnowBtn{
   font-size: 110%;
+}
+
+/* Header */
+header {
+  width: 100%;
+}
+
+/* ProfileSummary */
+
+.dropImgProfile {
+  border-radius: 100%;
+  margin-top: 1.5em;
+  height: 4em;
+  position: relative;
+  z-index: 100;
+  border: white 5px solid;
+}
+
+.bannerProfile {
+  width: 14em;
+  height: 5em;
+  position: relative;
+  z-index: 1;
+}
+
+.bannerProfile::before {
+  content: "";
+    position: absolute;
+    bottom: 8em;
+    left: 0;
+    width: 13.9em;
+    height: 3.6em;
+    background-color: lightgrey;
+    z-index: -1;
+    border-radius: 7px 7px 0 0;
 }

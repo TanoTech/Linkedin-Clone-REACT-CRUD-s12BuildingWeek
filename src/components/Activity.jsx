@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Row, Col, Button, Container, Modal, Form } from 'react-bootstrap';
-import { HiOutlinePencil } from 'react-icons/hi2';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import EmoticonPicker from '../components/Emoticons';
-import ImageUploader from '../components/ImageUploader';
+import React, { useState } from "react";
+import { Row, Col, Button, Container, Modal, Form } from "react-bootstrap";
+import { HiOutlinePencil } from "react-icons/hi2";
+import { FaArrowRightLong } from "react-icons/fa6";
+import EmoticonPicker from "../components/Emoticons";
+import ImageUploader from "../components/ImageUploader";
 import { MdCalendarMonth } from "react-icons/md";
 import { BsBriefcase } from "react-icons/bs";
 import { IoMdPodium } from "react-icons/io";
 import { FaRegClock } from "react-icons/fa6";
-import Post from './Post';
-import { useLocation } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
+import Post from "./Post";
+import { useLocation } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 const Activity = ({ data }) => {
   const [postDetailsCounts, setPostDetailsCounts] = useState({
@@ -20,9 +20,9 @@ const Activity = ({ data }) => {
   });
   const [showModal, setShowModal] = useState(false);
   const [postDetails, setPostDetails] = useState({
-    image: '',
-    name: '',
-    text: '',
+    image: "",
+    name: "",
+    text: "",
   });
   const [posts, setPosts] = useState([]);
 
@@ -47,15 +47,17 @@ const Activity = ({ data }) => {
   };
 
   const handleSelectEmoticon = (selectedEmoticon) => {
-    setPostDetails({ ...postDetails, text: postDetails.text + selectedEmoticon });
+    setPostDetails({
+      ...postDetails,
+      text: postDetails.text + selectedEmoticon,
+    });
   };
 
   const handleSelectImage = (selectedImage) => {
     setPostDetails({ ...postDetails, image: selectedImage });
   };
 
-  const handleEditClick = (index) => {
-  };
+  const handleEditClick = (index) => {};
 
   const handleDeleteClick = (index) => {
     const updatedPosts = [...posts];
@@ -77,24 +79,37 @@ const Activity = ({ data }) => {
   };
 
   const location = useLocation();
-  const isUser = location.pathname === '/user-profile'
+  const isUser = location.pathname === "/user-profile";
 
   return (
     <>
-      <Container className='border border-solid rounded mb-4 bg-white'>
-        <Row className="d-flex flex-column edit-section mt-2" id="round-corners">
+      <Container className="border border-solid rounded mb-4 bg-white">
+        <Row
+          className="d-flex flex-column edit-section mt-2"
+          id="round-corners"
+        >
           <Col className="d-flex flex-column mt-3">
             <div className="d-flex justify-content-between">
               <div>
-                <p id="left-side-headers" className="mb-0 fw-bold fs-4">Activity</p>
-                <p className="followers fw-bold text-primary HoverBluScritte">5 followers</p>
+                <p id="left-side-headers" className="mb-0 fw-bold fs-4">
+                  Activity
+                </p>
+                <p className="followers fw-bold text-primary HoverBluScritte">
+                  5 followers
+                </p>
               </div>
               {isUser && (
                 <div className="ml-auto me-3">
-                  <Button variant="outline-primary rounded-pill me-3 " id="main-buttons" onClick={handleCreatePost}>
+                  <Button
+                    variant="outline-primary rounded-pill me-3 "
+                    id="main-buttons"
+                    onClick={handleCreatePost}
+                  >
                     Create a post
                   </Button>
-                  <span className="penna"><HiOutlinePencil /></span>
+                  <span className="penna">
+                    <HiOutlinePencil />
+                  </span>
                 </div>
               )}
             </div>
@@ -102,29 +117,35 @@ const Activity = ({ data }) => {
           <Col>
             <p className="minutes">
               <span id="activity-user">
-                <strong>{data.name} {data.surname} </strong> reposted this
-              </span>{' '}
+                <strong>
+                  {data.name} {data.surname}{" "}
+                </strong>{" "}
+                reposted this
+              </span>{" "}
               • 2 min
             </p>
           </Col>
           <Col className="mb-2">
             <Row className="px-0">
-            <Col lg={4} md={6} className="pr-0 mb-3 mb-md-0">
-            <div className="img-container text-center text-md-start mx-auto mx-md-0">
-  <img
-    className="rounded img-fluid mx-auto mx-md-0"
-    src="https://media.licdn.com/dms/image/D4D22AQGqOfmOhlT4mg/feedshare-shrink_1280/0/1705512989810?e=1708560000&amp;v=beta&amp;t=rA2RQ6PTLSa69wYEvIfh8e6MCEUHP04cgB2GCjhH324"
-    alt="img"
-  />
-</div>
-</Col>
+              <Col lg={4} md={6} className="pr-0 mb-3 mb-md-0">
+                <div className="img-container text-center text-md-start mx-auto mx-md-0">
+                  <img
+                    className="rounded img-fluid mx-auto mx-md-0"
+                    src="https://media.licdn.com/dms/image/D4D22AQGqOfmOhlT4mg/feedshare-shrink_1280/0/1705512989810?e=1708560000&amp;v=beta&amp;t=rA2RQ6PTLSa69wYEvIfh8e6MCEUHP04cgB2GCjhH324"
+                    alt="img"
+                  />
+                </div>
+              </Col>
 
-<Col className="test ms-4 me-5 mt-3">
+              <Col className="test ms-4 me-5 mt-3">
                 <p>
-                  Epicode è sempre al tuo fianco❗️All'interno dei nostri corsi troverai tantissime attività formative e
-                  una community di epicoder con cui confrontarti e crescere insieme. Avrai inoltre a disposizione i nostri
-                  coach, pronti a insegnarti e guidarti in tutto il tuo percorso in Epicode sino ai colloqui per il lavoro
-                  dei tuoi sogni. Registrati gratuitamente oggi all'Open Day di giorno 31✅️
+                  Epicode è sempre al tuo fianco❗️All'interno dei nostri corsi
+                  troverai tantissime attività formative e una community di
+                  epicoder con cui confrontarti e crescere insieme. Avrai
+                  inoltre a disposizione i nostri coach, pronti a insegnarti e
+                  guidarti in tutto il tuo percorso in Epicode sino ai colloqui
+                  per il lavoro dei tuoi sogni. Registrati gratuitamente oggi
+                  all'Open Day di giorno 31✅️
                 </p>
               </Col>
             </Row>
@@ -134,21 +155,21 @@ const Activity = ({ data }) => {
               className="like me-1 ms-2"
               src="https://static.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt"
               alt="img"
-              onClick={() => handleLikeClick('post1')}
+              onClick={() => handleLikeClick("post1")}
             />
             <p className="post-details">{234 + postDetailsCounts.post1}</p>
             <img
               className="like me-1 ms-2"
               src="https://static.licdn.com/sc/h/b1dl5jk88euc7e9ri50xy5qo8"
               alt="img"
-              onClick={() => handleLikeClick('post2')}
+              onClick={() => handleLikeClick("post2")}
             />
             <p className="post-details">{27 + postDetailsCounts.post2}</p>
             <img
               className="like me-1 ms-2"
               src="https://static.licdn.com/sc/h/3wqhxqtk2l554o70ur3kessf1"
               alt="img"
-              onClick={() => handleLikeClick('post3')}
+              onClick={() => handleLikeClick("post3")}
             />
             <p className="post-details">{36 + postDetailsCounts.post3}</p>
           </Col>
@@ -165,11 +186,16 @@ const Activity = ({ data }) => {
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title className='fs-5 d-flex'>
-            <img className='rounded-circle me-3' src={data.image} width={'13%'} alt="user" />
-            <div className='d-flex flex-column'>
+          <Modal.Title className="fs-5 d-flex">
+            <img
+              className="rounded-circle me-3"
+              src={data.image}
+              width={"13%"}
+              alt="user"
+            />
+            <div className="d-flex flex-column">
               {data.name} {data.surname}
-              <p className='postModal'>Post to Anyone</p>
+              <p className="postModal">Post to Anyone</p>
             </div>
           </Modal.Title>
         </Modal.Header>
@@ -181,20 +207,25 @@ const Activity = ({ data }) => {
                 rows={5}
                 placeholder="What do you want to talk about?"
                 value={postDetails.text}
-                onChange={(e) => setPostDetails({ ...postDetails, text: e.target.value })}
+                onChange={(e) =>
+                  setPostDetails({ ...postDetails, text: e.target.value })
+                }
               />
               <EmoticonPicker onSelectEmoticon={handleSelectEmoticon} />
-              <div className='d-flex align-items-center '>
+              <div className="d-flex align-items-center ">
                 <ImageUploader onSelectImage={handleSelectImage} />
-                <MdCalendarMonth className=' me-3 fs-4' />
-                <BsBriefcase className=' me-3 fs-4' />
-                <IoMdPodium className=' fs-4' />
+                <MdCalendarMonth className=" me-3 fs-4" />
+                <BsBriefcase className=" me-3 fs-4" />
+                <IoMdPodium className=" fs-4" />
               </div>
             </Form.Group>
             <hr />
-            <div className='d-flex justify-content-end align-items-center'>
-              <FaRegClock className='clock fs-5 me-3'></FaRegClock>
-              <Button className='rounded-pill ps-3 pe-3' onClick={handlePublishPost}>
+            <div className="d-flex justify-content-end align-items-center">
+              <FaRegClock className="clock fs-5 me-3"></FaRegClock>
+              <Button
+                className="rounded-pill ps-3 pe-3"
+                onClick={handlePublishPost}
+              >
                 Post
               </Button>
             </div>
