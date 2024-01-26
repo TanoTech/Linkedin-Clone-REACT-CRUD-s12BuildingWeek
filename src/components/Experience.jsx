@@ -7,6 +7,9 @@ import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import { ProfileContext } from "../redux/contexts/ProfileContext";
 import "./css/Experience.css";
+import { HiOutlinePencil } from "react-icons/hi2";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const Experience = ({ data }) => {
   const { selectedToken } = useContext(ProfileContext);
@@ -189,6 +192,9 @@ const Experience = ({ data }) => {
       });
   };
 
+  const location = useLocation();
+  const isUser = location.pathname === '/user-profile'
+
   return (
     <Container className="bg-white mb-4 p-3 rounded border vorde-solid">
       <div className="d-flex justify-content-between">
@@ -196,19 +202,19 @@ const Experience = ({ data }) => {
           Experience
         </h2>
         <div>
-          <div id="Add-Icon" onClick={() => setMostraForm(true)}>
+          {isUser  && (<div id="Add-Icon" onClick={() => setMostraForm(true)}>
             <AiOutlinePlus className="mx-2" id="icon-1" />
             <GoPencil className="mx-2" id="icon-2" />
-          </div>
+          </div>)}
         </div>
       </div>
 
-      <div id="Experience-Conteiner" className="d-flex mb-5">
+      <div id="Experience-Conteiner" className="d-flex mb-4">
         <div>
           <ul className="ShowExperience">
             {experiences.map((experience) => (
               <li key={experience._id}>
-                <div className="d-flex justify-content">
+                <div className="d-flex mt-3">
                   <img
                     src="https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188798/epicodeschool_logo?e=1714003200&v=beta&t=02cZOkAFfrcsqE3vMctwQcElNrMnInX4NwQFmaTF1M8"
                     alt="logo"
@@ -216,7 +222,13 @@ const Experience = ({ data }) => {
                   />
 
                   <div>
-                    <h2 className="RoleEx fs-4">{experience.role}</h2>
+                    <div className="d-flex">
+                      <h2 className="RoleEx fs-4 ms-0">{experience.role}</h2>
+                      {isUser && (<div className="d-flex align-items-center ms-5" style={{ marginLeft: '5em' }}>
+                        <HiOutlinePencil className="modalIcons me-3" style={{ fontSize: '150%' }} onClick={() => handleEditExperience(experience._id)} />
+                        <FaRegTrashAlt className="modalIcons" onClick={() => handleDeleteExperience(experience._id)} />
+                      </div>)}
+                    </div>
                     <span className="CompanyEx">
                       {experience.company}
                     </span> · <span className="FrequencyEx">Full Time</span>
@@ -233,19 +245,10 @@ const Experience = ({ data }) => {
                     <p className="LocationEx">
                       {experience.area} · {experience.locType} Hybrid
                     </p>
-                    <p className="DescEx">{experience.description}</p>
-                    <button
-                      className="DeleteEx me-2"
-                      onClick={() => handleEditExperience(experience._id)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="DeleteEx"
-                      onClick={() => handleDeleteExperience(experience._id)}
-                    >
-                      Delete
-                    </button>
+                    <p className="DescEx mt-1">{experience.description}</p>
+
+
+
                   </div>
                 </div>
               </li>
@@ -286,7 +289,7 @@ const Experience = ({ data }) => {
               <Row className="pb-4 pl-2">
                 <label className="text-left inputLabelEx">Title*</label>
                 <input
-                className="inputModalEx"
+                  className="inputModalEx"
                   type="text"
                   name="role"
                   placeholder="Ex: retail sales manager"
@@ -320,7 +323,7 @@ const Experience = ({ data }) => {
               <Row className="pb-4">
                 <label className="inputLabelEx">Company name*</label>
                 <input
-                className="inputModalEx"
+                  className="inputModalEx"
                   type="text"
                   name="company"
                   placeholder="Ex: Microsoft"
@@ -333,7 +336,7 @@ const Experience = ({ data }) => {
               <Row className="pb-4">
                 <label className="inputLabelEx">Location</label>
                 <input
-                className="inputModalEx"
+                  className="inputModalEx"
                   type="text"
                   name="area"
                   placeholder="Ex: London, UK"
@@ -363,7 +366,7 @@ const Experience = ({ data }) => {
                 <Row className="pb-4">
                   <label className="inputLabelEx">Start Date*</label>
                   <DatePicker
-                  className="inputModalEx"
+                    className="inputModalEx"
                     selected={newExperience.startDate}
                     onChange={(date) => handleDateChange(date, "startDate")}
                     dateFormat="yyyy-MM-dd"
@@ -371,11 +374,11 @@ const Experience = ({ data }) => {
                     required
                   />
                 </Row>
-  
+
                 <Row className="pb-4">
                   <label className="inputLabelEx">End Date</label>
                   <DatePicker
-                  className="inputModalEx"
+                    className="inputModalEx"
                     selected={newExperience.endDate}
                     onChange={(date) => handleDateChange(date, "endDate")}
                     dateFormat="yyyy-MM-dd"
@@ -393,7 +396,7 @@ const Experience = ({ data }) => {
               <Row className="pb-4">
                 <label className="inputLabelEx">Description*</label>
                 <input
-                className="inputDescEx"
+                  className="inputDescEx"
                   type="text"
                   name="description"
                   placeholder="Describe your job..."
