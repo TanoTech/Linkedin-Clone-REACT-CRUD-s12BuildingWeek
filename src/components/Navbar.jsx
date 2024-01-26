@@ -71,15 +71,12 @@ const NavbarTop = () => {
                 <Navbar.Brand >
                     <Link to='/home'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
-                    <Nav navbarScroll>
-                        <Form className="BarSearch d-flex" onSubmit={(e) => e.preventDefault()}>
+                <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
                             <InputGroup>
                                 <Button className='navBtn'><FaSearch /></Button>
                                 <FormControl
                                     type="search"
-                                    placeholder="Search"
+                                    placeholder="Cerca"
                                     aria-label="Search"
                                     onChange={handleSearchChange}
                                 />
@@ -102,20 +99,21 @@ const NavbarTop = () => {
                                 ))}
                             </div>
                         )}
-                        <div className='d-flex align-items-center'>
-                            <div className='d-flex flex-column align-self-center LinkHover '>
-                                <Link to='/home' className='LinkTest d-flex flex-column justify-content-center align-items-center StyleLinkIconNav'> <FaHome className='align-self-center StyleLinkIconNav' />
-                                    <span className='StyleLinkIconNav'>Home</span> </Link>
-                            </div>
-                            <Link to='/my-network' className='d-flex flex-column justify-content-center align-items-center '><FaNetworkWired className='StyleLinkIconNav' /> <span className='LinkTest StyleLinkIconNav '>My Network </span></Link>
-                            <div className='d-flex flex-column align-self-center LinkHover'>
-                                <Link to='/jobs' className=' LinkTest d-flex flex-column justify-content-center align-items-center'>  <FaBriefcase className='align-self-center StyleLinkIconNav' />
-                                    <span className='StyleLinkIconNav'>Jobs</span> </Link>
-                            </div>
-                            <Link className='d-flex flex-column justify-content-center align-items-center' ><FaEnvelope className='StyleLinkIconNav' /> <span className='LinkTest StyleLinkIconNav'>Messaging</span></Link>
-                            <Link className='d-flex flex-column justify-content-center align-items-center'><FaBell className='StyleLinkIconNav' /> <span className='LinkTest StyleLinkIconNav'>Notifications</span> </Link>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
+                    <Nav navbarScroll>
+                        <div className='d-flex flex-column align-self-center LinkHover'>
+                            <Link to='/home' className='LinkTest d-flex flex-column justify-content-center align-items-center'> <FaHome className='align-self-center' />
+                                Home </Link>
                         </div>
-                        <NavDropdown title={<span className='d-flex flex-column align-items-center LinkTest'> <Image src={userProfileImg} roundedCircle width="25" height="25" className=" navIcon " alt="Profilo" /> Me </span>} >
+                        <Link to='/my-network' className='d-flex flex-column justify-content-center align-items-center'><FaNetworkWired /> <span className='LinkTest'>My Network </span></Link>
+                        <div className='d-flex flex-column align-self-center LinkHover'>
+                            <Link to='/jobs' className=' LinkTest d-flex flex-column justify-content-center align-items-center'>  <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
+                                Jobs </Link>
+                        </div>
+                        <Link className='d-flex flex-column justify-content-center align-items-center' ><FaEnvelope /> <span className='LinkTest'>Messaging</span></Link>
+                        <Link className='d-flex flex-column justify-content-center align-items-center'><FaBell /> <span className='LinkTest'>Notifications</span> </Link>
+                        <NavDropdown title={<span className='d-flex flex-column align-items-center LinkTest'> <Image src={userProfileImg} roundedCircle width="25" height="25" className=" navIcon" alt="Profilo" /> Me </span>} >
                             <div>
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
@@ -143,7 +141,7 @@ const NavbarTop = () => {
                         </NavDropdown>
                     </Nav>
                     <div className='d-flex flex-column align-items-center'>
-                        <CgMenuGridR className='fs-5 StyleLinkIconNav' />
+                        <CgMenuGridR className='fs-5' />
                         <NavDropdown className='Business' title={'For Business'}>
                         </NavDropdown>
                     </div>

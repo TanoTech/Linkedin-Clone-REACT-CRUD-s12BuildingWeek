@@ -34,5 +34,4 @@ const DettaglioFormation = ({ esperienzeFormazione, modificaEsperienzaFormazione
   );
 };
 
-
 export default DettaglioFormation;

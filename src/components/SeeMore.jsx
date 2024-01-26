@@ -19,5 +19,4 @@ const SeeMore = () => {
   );
 };
 
-
 export default SeeMore;

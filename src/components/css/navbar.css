@@ -29,6 +29,10 @@ header {
   padding-top: 0.1em;
 }
 
+.navIcon {
+  display: flex;
+}
+
 .nav-link {
   display: flex !important;
   flex-direction: column !important;
@@ -63,7 +67,7 @@ button svg {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 25%;
+  width: 26%;
   max-height: 200px;
   overflow-y: auto;
   background-color: #fff;
@@ -140,7 +144,6 @@ a.dropdown-toggle.nav-link::after {
   color: black;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
-    cursor: pointer;
 }
 
 .Business {
