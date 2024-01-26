@@ -10,6 +10,7 @@ export const ProfileProvider = ({ children }) => {
     const [currentJob, setCurrentJob] = useState(null);
     const [selectedToken, setSelectedToken] = useState("");
 
+    // fa la ricerca
     const performSearch = useCallback(async (searchTerm) => {
         if (!selectedToken) return;
 
@@ -32,6 +33,7 @@ export const ProfileProvider = ({ children }) => {
         }
     }, [selectedToken]);
 
+    //prende tutti gli utenti
     const fetchUsers = useCallback(async () => {
         if (!selectedToken) return;
 
@@ -54,6 +56,7 @@ export const ProfileProvider = ({ children }) => {
         }
     }, [selectedToken]);
 
+    //prende tutti i lavori
     const fetchJobs = useCallback(async ({ query = '', limit = '' }) => {
         if (!selectedToken) return;
 
@@ -78,9 +81,10 @@ export const ProfileProvider = ({ children }) => {
         }
     }, [selectedToken]);
 
+    // prende uno specifico profilo
     const fetchUserProfile = useCallback(async (userId) => {
         if (!selectedToken || !userId) return;
-    
+
         try {
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}`, {
                 headers: {
@@ -88,17 +92,19 @@ export const ProfileProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             });
-    
+
             if (!response.ok) {
                 throw new Error('Errore nel recupero del profilo utente');
             }
-    
+
             const userProfile = await response.json();
             return userProfile;
         } catch (error) {
             console.error('Errore: ', error);
         }
     }, [selectedToken]);
+
+    //prende le notizie 
 
     const fetchNews = useCallback(async () => {
 
@@ -122,10 +128,19 @@ export const ProfileProvider = ({ children }) => {
 
     const [myConnections, setMyConnections] = useState([]);
 
+
+    // salva le persone 
     const addConnection = useCallback((personId) => {
-        setMyConnections(prev => [...prev, personId]);
+        setMyConnections((prev) => {
+            if (prev.includes(personId)) {
+                return prev;
+            }
+            return [...prev, personId];
+        });
     }, []);
 
+    // rimuove dalle persone salvate
+    
     const removeConnection = useCallback((personId) => {
         setMyConnections(prev => prev.filter(id => id !== personId));
     }, []);
