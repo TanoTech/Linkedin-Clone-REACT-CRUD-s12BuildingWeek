@@ -1,0 +1,37 @@
+.adsContainer {
+    margin-top: .5em;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: white;
+    width: 17.1em;
+    height: 9.6em;
+    cursor: pointer;
+}
+
+.adsContainer p {
+    border: solid white 2px;
+    font-weight: 600;
+}
+
+.adsContainer p:hover {
+    background-color: rgba(160, 160, 160, 0.253);
+}
+
+.adsContainer {
+    margin-top: .5em;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: white;
+    width: 17.1em;
+    height: 9.6em;
+    cursor: pointer;
+}
+
+.adsContainer p {
+    border: solid white 2px;
+    font-weight: 600;
+}
+
+.adsContainer p:hover {
+    background-color: rgba(160, 160, 160, 0.253);
+}

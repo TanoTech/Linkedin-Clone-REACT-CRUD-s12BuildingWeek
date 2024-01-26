@@ -1,0 +1,68 @@
+#ProfilePicPost{
+    width: 3em;
+    height: 3em;
+    border-radius: 5em;
+    cursor: pointer;
+}
+
+#NamePost {
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+#NamePost:hover {
+    text-decoration: underline;
+    color: #0c73da;
+}
+
+#DatePost {
+    cursor: pointer;
+    font-size: 0.8em;
+    color: rgb(0 0 0 / 60%)
+}
+
+#FollowPost {
+    font-weight: 600;
+    cursor: pointer;
+    color: #0c73da;
+}
+
+#FollowPost:hover {
+    background-color: #0c73da24;
+    transition: 0.1s;
+}
+
+#imgPost {
+    width: 100%;
+}
+
+.IconAndTextPost {
+    font-size: 1.25em;
+    width: 100%;
+}
+
+.IconAndTextPost:hover {
+    cursor: pointer;
+    background-color: rgb(236, 236, 236) !important;
+    transition: 0.1s;
+}
+
+#AddCommentPost {
+    width: 100%;
+    border-radius: 2em;
+}
+
+#ButtonDelateComment {
+    height: 1em;
+    background: none ;
+    border: none ;
+}
+
+#ButtonDelateComment svg:hover {
+    color: rgb(255, 0, 0) !important;
+}
+
+#comment {
+    background-color: rgb(236, 236, 236)
+}
