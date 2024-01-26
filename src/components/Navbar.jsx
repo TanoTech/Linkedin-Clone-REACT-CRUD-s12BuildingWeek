@@ -89,9 +89,12 @@ const NavbarTop = () => {
                             <div className="search-results-container" ref={searchResultsRef}>
                                 {filteredSearchResults.length > 0 && filteredSearchResults.slice(0, 6).map((otherProfile) => (
                                     <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item" onClick={() => setShowSearchResults(false)}>
-                                        <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
-                                        {`${otherProfile.name} ${otherProfile.surname}`}
-                                        <span>{otherProfile.title}</span>
+                                        <FaSearch className='searchNav ms-0 me-3' />
+                                        <div>
+                                            {`${otherProfile.name} ${otherProfile.surname}`}
+                                            <span className='jobSearch ms-1'>• {otherProfile.title}</span>
+                                        </div>
+                                        <img className='img-fluid-search' src={otherProfile.image} alt='immagine profilo' />
                                     </Link>
                                 ))}
                                 {filteredJobResults.length > 0 && filteredJobResults.map((job) => (
