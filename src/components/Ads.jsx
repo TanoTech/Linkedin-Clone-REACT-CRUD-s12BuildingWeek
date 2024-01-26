@@ -30,7 +30,7 @@ const Ads = () => {
         backgroundSize: '100%',
         backgroundRepeat: 'no-repeat',
         color: 'white',
-        width: '17.1em',
+        width: '20em',
         height: '9.6em',
         cursor: 'pointer',
     };
