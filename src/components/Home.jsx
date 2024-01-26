@@ -87,7 +87,7 @@ const Home = () => {
     return (
         <main>
             <Container className='d-flex'>
-                <section className='me-3'>
+                <section className='me-3 d-none d-md-block'>
                     <ProfileSummary />
                     <SeeMore />
                 </section>
