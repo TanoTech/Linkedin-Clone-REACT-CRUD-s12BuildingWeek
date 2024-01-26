@@ -1,0 +1,62 @@
+.SideSections {
+    width: 17rem !important;
+}
+
+.MayKnowContent {
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 1.3em;
+    border-bottom: 1px solid lightgray;
+}
+
+.MayKnowTitle, .MayKnowName{
+    font-size: 1.2em;
+}
+
+.MayKnowTitle {
+    margin-bottom: 0;
+}
+
+.MayKnowImg {
+    border-radius: 100%;
+    margin-right: 0.3em;
+}
+
+.MayKnowName {
+    margin-bottom: 0;
+}
+
+
+.MayKnowBtn {
+    border-radius: 50px;
+    border: 1px solid #414141;
+    padding: 0em 0.6em;
+    color: #414141;
+    background-color: initial;
+}
+
+.MayKnowBtn:hover {
+    border: 2px solid #414141;
+    box-sizing: border-box;
+    background-color: rgb(236, 236, 236);
+}
+
+.bi-person-fill-add {
+    margin-right: 0.2em;
+    font-size: 1.25em;
+}
+
+.MayKnowName, .MayKnowJob, .MayKnowImg {
+    cursor: pointer;
+}
+
+.MayKnowIcon {
+    margin-right: 0.4em;
+}
+.MayKnowBtn{
+    padding: 0;
+    font-size: 14px !important;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}

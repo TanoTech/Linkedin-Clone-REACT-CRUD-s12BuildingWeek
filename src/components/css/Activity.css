@@ -1,0 +1,69 @@
+/* GENERALE */
+
+*{
+    text-align: left;
+    margin-left: 0.2rem;
+}
+
+#activity{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* DETTAGLIPOST */
+
+.post-details{
+    font-size: 60%;
+    margin: 0;
+    color: #00000089;
+}
+
+.minutes{
+    color: #00000089;
+    font-size: 90%;
+} 
+
+.test{
+    font-size: 90%;
+}
+
+.divider{
+    color: #00000060;
+}
+
+.postModal{
+    font-size: 70%;
+    font-weight: 400;
+}
+
+.img-container {
+    max-width: 50%;
+    overflow: hidden;
+  }
+
+/* ICONE */
+
+.logos{
+    cursor: pointer;
+}
+
+.trash{
+    cursor: pointer;
+    margin-right: 2.6rem;
+    color: rgb(147, 6, 6);
+    font-size: 90%;
+}
+
+.arrow{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.penna{
+    font-size: 160%;
+    cursor: pointer;
+}
+
+.like, .clock{
+    cursor: pointer;
+}
