@@ -4,6 +4,8 @@ import { Container, Button, Modal } from "react-bootstrap";
 import CommentPost from "./ CommentPost";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { HiOutlinePencil } from "react-icons/hi2";
 
 const EditPostModal = ({ post, onCancel, onSave }) => {
   const [editedText, setEditedText] = useState(post.text);
@@ -119,21 +121,21 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
                     <div className="m-1 ms-2 d-flex" style={{height:"3em"}}>
                       <div className="d-flex justify-content-center  rounded IconAndTextPost">
                         <button
-                          className="d-flex align-self-center m-0 px-3 fs-6"
+                          className="d-flex align-self-center m-0 px-3 fs-5"
                           style={{ background: "none", border: "none"}}
                           onClick={() => handleEditPost(post._id)}
                         >
-                          Edit
+                          <HiOutlinePencil className="m-0"/>
                         </button>
                       </div>
   
                       <div className="d-flex justify-content-center rounded IconAndTextPost">
                         <button
-                          className="d-flex align-self-center m-0 px-3 fs-6 "
+                          className="d-flex align-self-center m-0 px-3 fs-5 "
                           style={{ background: "none", border: "none" }}
                           onClick={() => onDeletePost(post._id)}
                         >
-                          Delete
+                          <FaRegTrashAlt className="m-0"/>
                         </button>
                       </div>
                     </div>
