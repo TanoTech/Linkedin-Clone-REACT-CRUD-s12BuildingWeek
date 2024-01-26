@@ -250,7 +250,7 @@ export const contenutiPerScuoleUniversita = [
   },
   {
     id: 13,
-    logo: "https://cdn.freebiesupply.com/logos/large/2x/tel-aviv-university-logo-png-transparent.png",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjY-6py8eT4A1lWw1g9J-31tIwN5veHD4yzHrTQ66VBl_NRD4MeLTn79sSwf9VgWvgBmI&usqp=CAU",
     nome: "Tel Aviv University",
     citta: "Tel Aviv",
     follower: 51000,
