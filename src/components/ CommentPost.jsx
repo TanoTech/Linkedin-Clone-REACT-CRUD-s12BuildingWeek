@@ -11,10 +11,6 @@ const CommentPost = ({ postId }) => {
         loadComments();
     }, [postId]);
 
-    console.log('postId in CommentPost:', postId);
-    console.log('comments:', comments);
-
-
     const loadComments = async () => {
         try {
             const response = await axios.get(`https://striveschool-api.herokuapp.com/api/comments/`, {
