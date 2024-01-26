@@ -27,17 +27,20 @@ const LinkedinNews = () => {
     return (
         <Container className='bg-white rounded border border-solid mt-2 SideSections p-0'>
             <div className='d-flex mt-3 mx-3'>
-                <h2 className='fs-5 align-self-center ms-2 m-0'>LinkedIn News</h2>
+                <h2 className='fs-4 align-self-center ms-2 m-0'>LinkedIn News</h2>
             </div>
             {newsItems.map((news, index) => (
-                <ul key={index} className='d-flex border-bottom p-3'>
+                <ul key={index} className='d-flex border-bottom p-4'>
+              
                         <li>
-                            <h3 id='TitoloNews' className='fs-5 m-0'>{news.title}</h3>
+                            <h3 id='TitoloNews' className='fs-6 m-0 overflow-hidden'>{news.title}</h3>
                             <p className='fs-6 m-0'>{news.news_site}</p>
                         </li>
                 </ul>
             ))}
-            <Container className='fs-5 py-2 px-0 text-center ButtonSideSections'>Show More</Container>
+            <Container className='text-secondary fs-6 py-2 pl-4 text-left ButtonSideSections'>Show More
+            <i class="bi bi-caret-down-fill"></i>
+            </Container>
         </Container>
     );
 };

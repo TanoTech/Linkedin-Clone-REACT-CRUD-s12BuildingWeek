@@ -47,7 +47,7 @@ main {
 /* SIDE-SECTION */
 
 .SideSections {
-  width: 17rem !important;
+  width: 20rem !important;
 }
 
 .ButtonSideSections {
@@ -62,7 +62,7 @@ main {
 
 #TitoloNews {
   display: block;
-  width: 55%;
+  width: 17em !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
