@@ -1,3 +1,5 @@
+/* GENERALE */
+
 .ShowExperience {
     padding: 0;
 }
@@ -8,12 +10,6 @@
 
 .ShowExperience li {
     list-style-type: none;
-    margin-bottom: 1em;
-}
-
-#logo-formationEx {
-    width: 2.8rem;
-    height: 2.8rem;
 }
 
 #ExperienceTitle {
@@ -21,6 +17,20 @@
     text-align: left !important;
     margin: 0.5rem 0.3rem !important;
 }
+
+.DateEx, .LocationEx {
+    margin-bottom: 0;
+    color: lightslategray
+}
+
+/* LOGO */
+
+#logo-formationEx {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+/* MODALE-MODIFICHE */
 
 #CondivisioneModificheEx {
     padding: 1rem 2rem;
@@ -36,23 +46,6 @@
     text-decoration: underline;
 }
 
-.DateEx, .LocationEx {
-    margin-bottom: 0;
-    color: lightslategray
-}
-
-.DescEx {
-    margin-top: 1em;
-}
-
-.DeleteEx {
-    background-color: #0a66c2;
-    color: white;
-    border-radius: 50px;
-    border: none;
-    padding: 0.2em 0.7em;
-}
-
 #MyToggleEx, #MyToggleEx:hover {
     width: 3.2rem !important;
     height: 2rem !important;
@@ -62,8 +55,7 @@
 
 .requiredWarningEx {
     font-size: 0.95em;
-    margin-left: 2em;
-    margin-top: 1em !important;
+    margin: 1em 0em 0em 2em !important;
 }
 
 .inputModalEx {
@@ -97,8 +89,7 @@
     justify-content: flex-end;
     border-top: 1px solid lightgrey;
     position: sticky;
-    padding: 1.2em;
-    padding-right: 1.4em;
+    padding: 1.2em 1.4em 1.2em 1.2em;
 }
 
 .saveExperience {
@@ -107,6 +98,6 @@ color: white;
 padding: 0.4em;
 border-radius: 50px;
 width: 5em;
-    text-align: center;
-    border: inherit;
+text-align: center;
+border: inherit;
 }
