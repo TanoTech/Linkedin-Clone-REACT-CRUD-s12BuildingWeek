@@ -113,8 +113,8 @@ const CommentPost = ({ postId }) => {
       {comments.length > 0 ? (
         comments.map((comment) => (
           <div key={comment._id}>
-            <p>{comment.comment}</p>
-            <button onClick={() => deleteComment(comment._id)}>Delete</button>
+            <p className="">{comment.comment}</p>
+            <button id="ButtonDelateComment" onClick={() => deleteComment(comment._id)}>Delete</button>
           </div>
         ))
       ) : (
