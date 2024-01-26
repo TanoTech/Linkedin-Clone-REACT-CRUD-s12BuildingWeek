@@ -6,12 +6,14 @@
     width: 36em;
 }
 
+
 .ProfileImgPost {
     cursor: pointer;
     margin-right: 1rem;
     border-radius: 100%;
     width: 3em;
 }
+
 
 .searchBarPost {
     margin-top: 0.5rem;
@@ -46,11 +48,15 @@
     
 }
 
+/* BUTTONBOTTOM */
+
+
 #ButtonPost {
     color: black;
     background:none;
     border: none;
 }
+
 
 .iconWrapperPost button:hover {
     background-color: blue;
@@ -74,6 +80,7 @@
 }
 
 
+
 .IconPlusText {
     color: rgb(0 0 0 / 60%);
     cursor: pointer;
@@ -82,6 +89,5 @@
 .IconPlusText:hover {
     background-color: rgb(236, 236, 236) !important;
     transition: 0.1s;
+
 }
-
-

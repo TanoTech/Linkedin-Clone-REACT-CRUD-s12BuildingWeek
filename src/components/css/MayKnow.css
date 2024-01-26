@@ -18,8 +18,10 @@
 }
 
 .MayKnowImg {
+
     width: 4em;
     height: 4em !important;
+
     border-radius: 100%;
     margin-right: 0.3em;
 }
@@ -55,3 +57,9 @@
 .MayKnowIcon {
     margin-right: 0.4em;
 }
+.MayKnowBtn{
+    padding: 0;
+    font-size: 14px !important;
+    width: 100px;
+    height: 30px;
+    text-align: center;
