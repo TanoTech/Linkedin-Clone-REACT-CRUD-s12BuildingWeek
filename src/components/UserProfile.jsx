@@ -52,7 +52,7 @@ const UserProfile = () => {
 
     return (
         <>
-            <main className='d-flex '>
+            <main className='d-flex'>
                 <Container>
                     <MainProfile data={profile} />
                     <Activity data={profile} />
@@ -60,7 +60,7 @@ const UserProfile = () => {
                     <Formation />
                     <Interessi />
                 </Container>
-                <section>
+                <section className='d-none d-md-block'>
                     <ProfileLanguage data={profile} />
                     <Ads />
                     <OtherProfileConsulted />
