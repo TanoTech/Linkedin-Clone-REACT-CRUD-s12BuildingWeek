@@ -102,15 +102,16 @@ const Activity = ({ data }) => {
           </Col>
           <Col className="mb-2">
             <Row className="px-0">
-            <Col md={6} lg={4} className="pr-0 mb-3 mb-md-0">
-  <div className="img-container mx-auto">
-    <img
-      className="rounded img-fluid mx-auto mb-3 me-md-0"
-      src="https://media.licdn.com/dms/image/D4D22AQGqOfmOhlT4mg/feedshare-shrink_1280/0/1705512989810?e=1708560000&v=beta&t=rA2RQ6PTLSa69wYEvIfh8e6MCEUHP04cgB2GCjhH324"
-      alt="img"
-    />
-  </div>
+            <Col lg={4} md={6} className="pr-0 mb-3 mb-md-0">
+            <div className="img-container text-center text-md-start mx-auto mx-md-0">
+  <img
+    className="rounded img-fluid mx-auto mx-md-0"
+    src="https://media.licdn.com/dms/image/D4D22AQGqOfmOhlT4mg/feedshare-shrink_1280/0/1705512989810?e=1708560000&amp;v=beta&amp;t=rA2RQ6PTLSa69wYEvIfh8e6MCEUHP04cgB2GCjhH324"
+    alt="img"
+  />
+</div>
 </Col>
+
 <Col className="test ms-4 me-5 mt-3">
                 <p>
                   Epicode è sempre al tuo fianco❗️All'interno dei nostri corsi troverai tantissime attività formative e
