@@ -101,7 +101,6 @@ const Home = () => {
                     <GetPost posts={posts} onDeletePost={deletePost} onEditPost={editPost} />
                 </div>
 
-
             </Container>
             <section className='d-none d-md-block'>
                 <LinkedinNews />
