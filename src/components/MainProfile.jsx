@@ -129,7 +129,7 @@ const MainProfile = ({ data }) => {
                     <img src={data.image} alt="Profile picture" id="profilePic" className="rounded-circle border border-light border-4" onClick={handleShowModalPic} />
                 </div>
 
-                <Container className="mt-0 py-3">
+                <Container className="mt-4 py-3">
 
                     {/* icona penna */}
                     <div className="d-flex justify-content-end">
