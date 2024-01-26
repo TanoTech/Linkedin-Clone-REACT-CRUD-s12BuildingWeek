@@ -24,14 +24,12 @@ const GetPost = ({ posts }) => {
             if (userProfile) {
               profiles[userId] = userProfile;
             } else {
-              console.log(`Nessun profilo trovato per l'ID utente: ${userId}`);
             }
           } catch (error) {
             console.error("Errore nel caricamento del profilo utente", error);
           }
         }
       }
-      console.log("Profili utente caricati:", profiles);
       setUserProfiles(profiles);
     };
     if (posts && posts.length > 0) {
@@ -42,10 +40,8 @@ const GetPost = ({ posts }) => {
 
   return (
     <Container className="m-0 p-0">
-      {postsInReverse.slice(0, 100).map((post) => {
+      {postsInReverse.slice(0, 10).map((post) => {
         const userProfile = userProfiles[post.user._id];
-        console.log("postId:", post._id);
-        console.log("userProfile:", userProfile);
         return (
           <div
             className="bg-white my-3 mx-0 py-2 rounded border border-solid"
@@ -74,48 +70,48 @@ const GetPost = ({ posts }) => {
                     </p>
                   </div>
                 </div>
-  
+
                 <div className="d-flex align-self-center rounded p-1" id="FollowPost">
-                  <FiPlus className="align-self-center m-1"/>
+                  <FiPlus className="align-self-center m-1" />
                   <p className="align-self-center m-0 me-2">Follow</p>
                 </div>
               </div>
             )}
-  
+
             <p className="mx-0 mt-1 mb-4 p-2">
               {post.text}
-            </p> 
-  
-            {post.image && <img src={post.image} alt="Post" className="m-0" id="imgPost"/>}
-  
+            </p>
+
+            {post.image && <img src={post.image} alt="Post" className="m-0" id="imgPost" />}
+
             <div className="d-flex justify-content-between align-item-center p-0 m-0">
               <div className="d-flex justify-content-center my-1 ms-3 p-3 rounded IconAndTextPost">
-                <AiOutlineLike className="m-0 me-1 align-self-center"/>
+                <AiOutlineLike className="m-0 me-1 align-self-center" />
                 <p className="d-flex align-self-center m-0">Raccomand</p>
               </div>
-  
+
               <div className="d-flex justify-content-center my-1 mx-0 p-3 rounded IconAndTextPost">
-                <FaRegCommentDots className="m-0 me-1 align-self-center"/>
+                <FaRegCommentDots className="m-0 me-1 align-self-center" />
                 <p className="d-flex align-self-center m-0">Comment</p>
               </div>
-  
+
               <div className="d-flex justify-content-center my-1 mx-0 p-3 rounded IconAndTextPost">
-                <BiRepost className="m-0 me-1 align-self-center"/>
+                <BiRepost className="m-0 me-1 align-self-center" />
                 <p className="d-flex align-self-center m-0">Share</p>
               </div>
-  
+
               <div className="d-flex justify-content-center my-1 me-3 p-3 rounded IconAndTextPost">
-                <IoIosSend className="m-0 me-1 align-self-center"/>
+                <IoIosSend className="m-0 me-1 align-self-center" />
                 <p className="d-flex align-self-center m-0">Send</p>
               </div>
             </div>
-  
+
             <CommentPost postId={post._id} />
           </div>
         );
       })}
     </Container>
-  );  
+  );
 };
 
 export default GetPost;

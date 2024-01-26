@@ -69,14 +69,14 @@ const Home = () => {
                     <SeeMore />
                 </section>
 
-                    <div className='m-0 p-0'>
-                        <CreatePost 
-                            newPostText={newPostText}
-                            setNewPostText={setNewPostText}
-                            createPost={createPost}
-                        />
-                        <GetPost posts={posts} /> 
-                    </div>
+                <div className='m-0 p-0'>
+                    <CreatePost
+                        newPostText={newPostText}
+                        setNewPostText={setNewPostText}
+                        createPost={createPost}
+                    />
+                    <GetPost posts={posts} />
+                </div>
 
 
             </Container>
