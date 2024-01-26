@@ -35,7 +35,6 @@ const MyNetwork = () => {
                     <div className='d-flex flex-wrap'>
                         {connectionDetails.length > 0 ? (
                             connectionDetails.map(connection => (
-
                                 <Card key={connection._id} style={{ width: '12em' }} className='m-1'>
                                     <Card.Img className='mt-3 border' variant="top" src={connection.image} style={{ borderRadius: '50%', width: '5em', height: '5em', margin: '0 auto' }} />
                                     <Card.Body className='mt-auto ms-0'>
@@ -47,13 +46,16 @@ const MyNetwork = () => {
                                         </Link>
                                         <Button variant="primary" onClick={() => handleRemoveConnection(connection._id)}>Remove Connection</Button>
                                     </Card.Body>
+
                                 </Card>
+
                             ))
                         ) : (
                             <p>No connections yet.</p>
                         )}
                     </div>
                 </Col>
+
                 <Col md={4}>
                     <Ads />
                     <FooterHome />
