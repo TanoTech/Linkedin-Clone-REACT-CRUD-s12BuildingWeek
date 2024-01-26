@@ -84,28 +84,6 @@ const GetPost = ({ posts }) => {
 
             {post.image && <img src={post.image} alt="Post" className="m-0" id="imgPost" />}
 
-            <div className="d-flex justify-content-between align-item-center p-0 m-0">
-              <div className="d-flex justify-content-center my-1 ms-3 p-3 rounded IconAndTextPost">
-                <AiOutlineLike className="m-0 me-1 align-self-center" />
-                <p className="d-flex align-self-center m-0">Raccomand</p>
-              </div>
-
-              <div className="d-flex justify-content-center my-1 mx-0 p-3 rounded IconAndTextPost">
-                <FaRegCommentDots className="m-0 me-1 align-self-center" />
-                <p className="d-flex align-self-center m-0">Comment</p>
-              </div>
-
-              <div className="d-flex justify-content-center my-1 mx-0 p-3 rounded IconAndTextPost">
-                <BiRepost className="m-0 me-1 align-self-center" />
-                <p className="d-flex align-self-center m-0">Share</p>
-              </div>
-
-              <div className="d-flex justify-content-center my-1 me-3 p-3 rounded IconAndTextPost">
-                <IoIosSend className="m-0 me-1 align-self-center" />
-                <p className="d-flex align-self-center m-0">Send</p>
-              </div>
-            </div>
-
             <CommentPost postId={post._id} />
           </div>
         );
