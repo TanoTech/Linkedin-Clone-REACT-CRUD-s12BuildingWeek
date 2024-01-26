@@ -4,6 +4,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { IoIosSend } from "react-icons/io";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const CommentPost = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -70,7 +71,7 @@ const CommentPost = ({ postId }) => {
   };
 
   return (
-    <div>
+    <div className="m-0">
       <div className="d-flex justify-content-between align-item-center p-0 m-0">
         <div className="d-flex justify-content-center my-1 ms-3 p-3 rounded IconAndTextPost">
           <AiOutlineLike className="m-0 me-1 align-self-center" />
@@ -99,7 +100,7 @@ const CommentPost = ({ postId }) => {
         </div>
       </div>
 
-      <div className="m-0">
+      <div className="m-0 pt-3 border-top">
 
         <div className="m-0 mt-2 mb-3 text-center searchBarPost justify-content-center">
           <input
@@ -112,13 +113,13 @@ const CommentPost = ({ postId }) => {
       </div>
       {comments.length > 0 ? (
         comments.map((comment) => (
-          <div key={comment._id}>
-            <p className="">{comment.comment}</p>
-            <button id="ButtonDelateComment" onClick={() => deleteComment(comment._id)}>Delete</button>
+          <div id="comment" className="p-2 m-3 d-flex justify-content-between " key={comment._id}>
+            <p className="m-0">{comment.comment}</p>
+            <button id="ButtonDelateComment" onClick={() => deleteComment(comment._id)}><FaRegTrashAlt className="text-danger"/></button>
           </div>
         ))
       ) : (
-        <p>No comments yet</p>
+        <p className="m-0 p-3 text-center">No comments yet</p>
       )}
     </div>
   );

@@ -52,3 +52,17 @@
     width: 100%;
     border-radius: 2em;
 }
+
+#ButtonDelateComment {
+    height: 1em;
+    background: none ;
+    border: none ;
+}
+
+#ButtonDelateComment svg:hover {
+    color: rgb(255, 0, 0) !important;
+}
+
+#comment {
+    background-color: rgb(236, 236, 236)
+}
