@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Image, InputGroup, NavLink, Spinner, Container } from 'react-bootstrap';
 import { FaHome, FaNetworkWired, FaBriefcase, FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 import { CgMenuGridR } from "react-icons/cg";
+import { TbSquareFilled } from "react-icons/tb";
 
 const NavbarTop = () => {
     const { profile, performSearch, searchResults, fetchJobs, jobResults } = useContext(ProfileContext);
@@ -126,7 +127,7 @@ const NavbarTop = () => {
                             <div className='ms-2'>
                                 <NavDropdown.Divider />
                                 <h6 >Account</h6>
-                                <NavDropdown.Item className='ps-0 underTitle'>Try Premium for free</NavDropdown.Item>
+                                <NavDropdown.Item className='ps-0 underTitle fw-normal opacity-75'> <TbSquareFilled className='coso me-1' />Try Premium for free</NavDropdown.Item>
                                 <NavDropdown.Item className='ps-0 underTitle'>Settings & Privacy</NavDropdown.Item>
                                 <NavDropdown.Item className='ps-0 underTitle'>Help</NavDropdown.Item>
                                 <NavDropdown.Item className='ps-0 underTitle'>Language</NavDropdown.Item>
@@ -135,7 +136,7 @@ const NavbarTop = () => {
                                 <NavDropdown.Item className='ps-0 underTitle'>Post & Activity</NavDropdown.Item>
                                 <NavDropdown.Item className='ps-0 underTitle'>Job Posting Account</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <Link to='/'>Sign Out</Link>
+                                <Link className='underTitle' to='/'>Sign Out</Link>
                             </div>
                         </NavDropdown>
                     </Nav>
