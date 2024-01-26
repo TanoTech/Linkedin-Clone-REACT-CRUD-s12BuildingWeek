@@ -98,7 +98,7 @@ const Home = () => {
                         setNewPostText={setNewPostText}
                         createPost={createPost}
                     />
-                    <GetPost posts={posts} onDeletePost={deletePost} onEditPost={editPost}/>
+                    <GetPost posts={posts} onDeletePost={deletePost} onEditPost={editPost} />
                 </div>
 
 
