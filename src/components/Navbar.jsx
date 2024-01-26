@@ -117,24 +117,26 @@ const NavbarTop = () => {
                                 <div className='d-flex' id='MenuDropDown'>
                                     <div><img className='img-fluid dropImg' src={userProfileImg} alt="foto profilo utente" /></div>
                                     <div>
-                                        <p>{userProfileName}</p>
-                                        <p>{userProfileTitle}</p>
+                                        <p className='ToggleN'>{userProfileName}</p>
+                                        <p className='ToggleS' >{userProfileTitle}</p>
                                     </div>
                                 </div>
                                 <Link to='/user-profile'><Button className='btn btn-primary border-primary rounded-pill fw-bold btn btn-light text-primary bottoneNav'>View Profile</Button></Link>
                             </div>
-                            <NavDropdown.Divider />
-                            <h6>Account</h6>
-                            <NavDropdown.Item>Try Premium for free</NavDropdown.Item>
-                            <NavDropdown.Item>Settings & Privacy</NavDropdown.Item>
-                            <NavDropdown.Item>Help</NavDropdown.Item>
-                            <NavDropdown.Item>Language</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <h6>Manage</h6>
-                            <NavDropdown.Item>Post & Activity</NavDropdown.Item>
-                            <NavDropdown.Item>Job Posting Account</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <Link to='/'>Sign Out</Link>
+                            <div className='ms-2'>
+                                <NavDropdown.Divider />
+                                <h6 >Account</h6>
+                                <NavDropdown.Item className='ps-0 underTitle'>Try Premium for free</NavDropdown.Item>
+                                <NavDropdown.Item className='ps-0 underTitle'>Settings & Privacy</NavDropdown.Item>
+                                <NavDropdown.Item className='ps-0 underTitle'>Help</NavDropdown.Item>
+                                <NavDropdown.Item className='ps-0 underTitle'>Language</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <h6>Manage</h6>
+                                <NavDropdown.Item className='ps-0 underTitle'>Post & Activity</NavDropdown.Item>
+                                <NavDropdown.Item className='ps-0 underTitle'>Job Posting Account</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <Link to='/'>Sign Out</Link>
+                            </div>
                         </NavDropdown>
                     </Nav>
                     <div className='d-flex flex-column align-items-center'>
