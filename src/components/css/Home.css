@@ -85,3 +85,16 @@
     background-color: rgb(236, 236, 236);
     cursor: pointer;
 }
+
+#ModalButton {
+    border: solid 1px;
+    background: none;
+}
+
+#ModalButton:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+#textPost {
+    overflow-wrap: break-word;
+}

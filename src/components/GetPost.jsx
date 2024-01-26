@@ -1,9 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProfileContext } from "../redux/contexts/ProfileContext";
-import { Container, Button, Modal } from "react-bootstrap";
+import { Container, Button, Modal, Image } from "react-bootstrap";
 import CommentPost from "./ CommentPost";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { HiOutlinePencil } from "react-icons/hi2";
+import { FaRegTrashAlt } from "react-icons/fa";
+
+const ZoomImageModal = ({ imageUrl, onClose }) => {
+  return (
+    <Modal show={true} onHide={onClose} centered>
+      <Modal.Body className="p-0 m-0">
+        <Image className="p-0 m-0" src={imageUrl} alt="Zoomed Image" fluid />
+      </Modal.Body>
+    </Modal>
+  );
+};
 
 const EditPostModal = ({ post, onCancel, onSave }) => {
   const [editedText, setEditedText] = useState(post.text);
@@ -26,9 +38,9 @@ const EditPostModal = ({ post, onCancel, onSave }) => {
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={handleSave}>
+        <button className="rounded d-flex align-self-center m-0 px-3 fs-5" id="ModalButton" onClick={handleSave}>
           Save Changes
-        </Button>
+        </button>
       </Modal.Footer>
     </Modal>
   );
@@ -40,6 +52,10 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
   const [editPostModal, setEditPostModal] = useState({
     isOpen: false,
     postId: null,
+  });
+  const [zoomImageModal, setZoomImageModal] = useState({
+    isOpen: false,
+    imageUrl: null,
   });
   const [visiblePosts, setVisiblePosts] = useState([]);
 
@@ -85,6 +101,14 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
     setEditPostModal({ isOpen: false, postId: null });
   };
 
+  const handleOpenZoomImage = (imageUrl) => {
+    setZoomImageModal({ isOpen: true, imageUrl });
+  };
+
+  const handleCloseZoomImage = () => {
+    setZoomImageModal({ isOpen: false, imageUrl: null });
+  };
+
   return (
     <Container className="m-0 p-0">
       {visiblePosts.map((post) => {
@@ -111,9 +135,9 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
                       alt="Immagine del profilo"
                     />
                   </Link>
-                  <div className="ms-2 align-items-center d-flex">
+                  <div className="ms-2 align-items-center d-flex" >
                     <div style={{ height: "5em" }}>
-                      <Link to={`/user/${post.user._id}`}>
+                      <Link  to={`/user/${post.user._id}`}>
                         <p className="m-0" id="NamePost">
                           {userProfile.name} {userProfile.surname}
                         </p>
@@ -126,11 +150,11 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
                       <div className="d-flex justify-content-center  rounded IconAndTextPost">
                         {isCurrentUser && (
                           <button
-                            className="d-flex align-self-center m-0 px-3 fs-6"
+                            className="d-flex align-self-center m-0 px-3 fs-5"
                             style={{ background: "none", border: "none" }}
                             onClick={() => handleEditPost(post._id)}
                           >
-                            Edit
+                            <HiOutlinePencil />
                           </button>
                         )}
                       </div>
@@ -138,11 +162,11 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
                       {isCurrentUser && (
                         <div className="d-flex justify-content-center rounded IconAndTextPost">
                           <button
-                            className="d-flex align-self-center m-0 px-3 fs-6 "
+                            className="d-flex align-self-center m-0 px-3 fs-5 "
                             style={{ background: "none", border: "none" }}
                             onClick={() => onDeletePost(post._id)}
                           >
-                            Delete
+                            <FaRegTrashAlt />
                           </button>
                         </div>
                       )}
@@ -160,10 +184,16 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
               </div>
             )}
 
-            <p className="mx-0 mt-1 mb-4 p-2">{post.text}</p>
+            <p className="mx-0 mt-1 mb-4 p-2" id="textPost" style={{maxWidth:"39rem"}}>{post.text}</p>
 
             {post.image && (
-              <img src={post.image} alt="Post" className="m-0" id="imgPost" />
+              <img
+                src={post.image}
+                alt="Post"
+                className="m-0"
+                id="imgPost"
+                onClick={() => handleOpenZoomImage(post.image)}
+              />
             )}
 
             <CommentPost postId={post._id} />
@@ -176,6 +206,13 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
           post={posts.find((post) => post._id === editPostModal.postId)}
           onCancel={handleCancelEdit}
           onSave={handleSaveEdit}
+        />
+      )}
+
+      {zoomImageModal.isOpen && (
+        <ZoomImageModal
+          imageUrl={zoomImageModal.imageUrl}
+          onClose={handleCloseZoomImage}
         />
       )}
     </Container>
