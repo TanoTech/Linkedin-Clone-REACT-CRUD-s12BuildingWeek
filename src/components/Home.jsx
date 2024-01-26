@@ -61,6 +61,29 @@ const Home = () => {
         }
     };
 
+    const editPost = async (postId, newText) => {
+        try {
+            await axios.put(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, 
+                { text: newText },
+                { headers: { Authorization: `Bearer ${selectedToken}` } }
+            );
+            fetchPosts();
+        } catch (error) {
+            console.error("Errore nella modifica del post:", error);
+        }
+    }
+
+    const deletePost = async (postId) => {
+        try {
+            await axios.delete(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+                headers: { Authorization: `Bearer ${selectedToken}` }
+            });
+            fetchPosts(); 
+        } catch (error) {
+            console.error("Errore nella cancellazione del post:", error);
+        }
+    };
+
     return (
         <main >
             <Container className='d-flex'>
@@ -75,7 +98,7 @@ const Home = () => {
                         setNewPostText={setNewPostText}
                         createPost={createPost}
                     />
-                    <GetPost posts={posts} />
+                    <GetPost posts={posts} onDeletePost={deletePost} onEditPost={editPost}/>
                 </div>
 
 
