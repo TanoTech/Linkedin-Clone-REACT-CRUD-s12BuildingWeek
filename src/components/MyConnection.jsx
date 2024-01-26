@@ -36,14 +36,13 @@ const MyNetwork = () => {
                         {connectionDetails.length > 0 ? (
                             connectionDetails.map(connection => (
 
-
                                 <Card key={connection._id} style={{ width: '12em' }} className='m-1'>
 
                                     <Card.Img className='mt-3 border' variant="top" src={connection.image} style={{ borderRadius: '50%', width: '5em', height: '5em', margin: '0 auto' }} />
 
                                     <Card.Body className='mt-auto ms-0'>
 
-                                        <Link to={`/user/${connection._id}`}>
+                                        <Link to={`/user/${connection._id}`} >
                                             <Card.Text style={{ height: '5em' }}>
 
                                                 <p className='fw-bold mb-0 text-center'>{connection.name} {connection.surname}</p>
@@ -56,7 +55,6 @@ const MyNetwork = () => {
                                     </Card.Body>
 
                                 </Card>
-
 
                             ))
                         ) : (
@@ -75,5 +73,3 @@ const MyNetwork = () => {
 }
 
 export default MyNetwork;
-
-//to={`/user/${connection._id}`}
