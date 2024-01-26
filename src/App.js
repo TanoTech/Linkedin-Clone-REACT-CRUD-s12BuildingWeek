@@ -11,6 +11,7 @@ import UserDetail from "./components/UserDetails";
 import SingleJob from "./components/SingleJob";
 import Login from "./components/Login";
 import Error404 from './components/Error404'
+import MyNetwork from "./components/MyConnection";
 import "./App.css";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                             <Route path="/user/:userId" element={<UserDetail />} />
                             <Route path="/jobs" element={<Jobs />} />
                             <Route path="/jobs/:jobId" element={<SingleJob />} />
+                            <Route path='/my-network' element={<MyNetwork />} />
                             <Route
                                 path="/risultati/:sezione"
                                 element={<DettaglioInteressi />}

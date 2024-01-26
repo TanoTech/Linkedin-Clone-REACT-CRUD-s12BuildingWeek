@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const MayKnow = () => {
-    const { getAllPeople, fetchUsers } = useContext(ProfileContext);
+    const { getAllPeople, fetchUsers, myConnections, addConnection, removeConnection } = useContext(ProfileContext);
     const [randomPeople, setRandomPeople] = useState([]);
 
     useEffect(() => {
@@ -19,23 +19,39 @@ const MayKnow = () => {
         }
     }, [getAllPeople]);
 
+    const handleConnectionChange = (personId) => {
+        if (myConnections.includes(personId)) {
+            removeConnection(personId);
+        } else {
+            addConnection(personId);
+        }
+    };
+
     return (
         <Container className='SideSections bg-white mt-2 p-0 rounded border border-solid'>
             <h2 className='MayKnowTitle p-2'>People you may know</h2>
             {randomPeople.map(person => (
-                <Link to={`/user/${person._id}`}>
-                    <div key={person._id} className='MayKnowContent px-3'>
+                <div className='MayKnowContent px-3' key={person._id}>
+                    <Link to={`/user/${person._id}`}>
                         <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                         <div className='MayKnowColumn'>
                             <h3 className='MayKnowName HoverBluScritte'>{person.name} {person.surname}</h3>
-                            <p >{person.title}</p>
-                            <button className='MayKnowBtn'><i className="bi bi-person-plus-fill MayKnowIcon"></i>Connect</button>
+                            <p>{person.title}</p>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                    <button className='MayKnowBtn' onClick={() => handleConnectionChange(person._id)}>
+                        {myConnections.includes(person._id) ? (
+                            <i className="bi bi-person-x-fill MayKnowIcon"></i>
+                        ) : (
+                            <i className="bi bi-person-plus-fill MayKnowIcon"></i>
+                        )}
+                        {myConnections.includes(person._id) ? 'Disconnect' : 'Connect'}
+                    </button>
+                </div>
             ))}
             <Container className='p-2 fs-5 text-center ButtonSideSections'>Show all</Container>
         </Container>
     );
 }
+
 export default MayKnow;
