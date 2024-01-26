@@ -9,7 +9,7 @@ import { BiRepost } from "react-icons/bi";
 import { IoIosSend } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const GetPost = ({ posts }) => {
+const GetPost = ({ posts, onDeletePost, onEditPost }) => {
   const { fetchUserProfile } = useContext(ProfileContext);
   const [userProfiles, setUserProfiles] = useState({});
 
@@ -68,6 +68,8 @@ const GetPost = ({ posts }) => {
                     <p className="m-0" id="DatePost">
                       {new Date(post.updatedAt).toLocaleString()}
                     </p>
+                    <button onClick={() => onEditPost(post._id)}>Modifica</button>
+                    <button onClick={() => onDeletePost(post._id)}>Cancella</button>
                   </div>
                 </div>
 
