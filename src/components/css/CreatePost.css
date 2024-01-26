@@ -84,19 +84,4 @@
     transition: 0.1s;
 }
 
-.custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .custom-file-input::before {
-    content: 'Select some files';
 
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
-  }
-  
