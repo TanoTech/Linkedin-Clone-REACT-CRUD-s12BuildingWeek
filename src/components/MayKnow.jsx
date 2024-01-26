@@ -32,21 +32,23 @@ const MayKnow = () => {
             <h2 className='MayKnowTitle p-2'>People you may know</h2>
             {randomPeople.map(person => (
                 <div className='MayKnowContent px-3' key={person._id}>
-                    <Link to={`/user/${person._id}`}>
+                    <Link className='d-flex mt-3' to={`/user/${person._id}`}>
                         <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
-                        <div className='MayKnowColumn'>
-                            <h3 className='MayKnowName HoverBluScritte'>{person.name} {person.surname}</h3>
-                            <p>{person.title}</p>
-                        </div>
+                      <div className='d-flex flex-column'>
+                            <div className='MayKnowColumn'>
+                                <h3 className='MayKnowName HoverBluScritte'>{person.name} {person.surname}</h3>
+                                <p>{person.title}</p>
+                            </div>
+                            <button className='MayKnowBtn' onClick={() => handleConnectionChange(person._id)}>
+                            {myConnections.includes(person._id) ? (
+                                <i className="bi bi-person-x-fill MayKnowIcon"></i>
+                            ) : (
+                                <i className="bi bi-person-plus-fill MayKnowIcon"></i>
+                            )}
+                            {myConnections.includes(person._id) ? 'Disconnect' : 'Connect'}
+                        </button>
+                      </div>
                     </Link>
-                    <button className='MayKnowBtn' onClick={() => handleConnectionChange(person._id)}>
-                        {myConnections.includes(person._id) ? (
-                            <i className="bi bi-person-x-fill MayKnowIcon"></i>
-                        ) : (
-                            <i className="bi bi-person-plus-fill MayKnowIcon"></i>
-                        )}
-                        {myConnections.includes(person._id) ? 'Disconnect' : 'Connect'}
-                    </button>
                 </div>
             ))}
             <Container className='p-2 fs-5 text-center ButtonSideSections'>Show all</Container>
