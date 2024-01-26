@@ -9,6 +9,8 @@ import { BsBriefcase } from "react-icons/bs";
 import { IoMdPodium } from "react-icons/io";
 import { FaRegClock } from "react-icons/fa6";
 import Post from './Post';
+import { useLocation } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 
 const Activity = ({ data }) => {
   const [postDetailsCounts, setPostDetailsCounts] = useState({
@@ -74,6 +76,9 @@ const Activity = ({ data }) => {
     ));
   };
 
+  const location = useLocation();
+  const isUser = location.pathname === '/user-profile'
+
   return (
     <>
       <Container className='border border-solid rounded mb-4 bg-white'>
@@ -84,12 +89,14 @@ const Activity = ({ data }) => {
                 <p id="left-side-headers" className="mb-0 fw-bold fs-4">Activity</p>
                 <p className="followers fw-bold text-primary HoverBluScritte">5 followers</p>
               </div>
-              <div className="ml-auto me-3">
-                <Button variant="outline-primary rounded-pill me-3 " id="main-buttons" onClick={handleCreatePost}>
-                  Create a post
-                </Button>
-                <span className="penna"><HiOutlinePencil /></span>
-              </div>
+              {isUser && (
+                <div className="ml-auto me-3">
+                  <Button variant="outline-primary rounded-pill me-3 " id="main-buttons" onClick={handleCreatePost}>
+                    Create a post
+                  </Button>
+                  <span className="penna"><HiOutlinePencil /></span>
+                </div>
+              )}
             </div>
           </Col>
           <Col>
@@ -142,7 +149,7 @@ const Activity = ({ data }) => {
             />
             <p className="post-details">{36 + postDetailsCounts.post3}</p>
           </Col>
-          
+
           {renderPosts()}
           <Col className="d-flex justify-content-center">
             <p className="arrow me-2 fs-5">Show all posts</p>

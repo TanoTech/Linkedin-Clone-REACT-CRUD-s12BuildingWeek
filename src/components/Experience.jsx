@@ -9,6 +9,7 @@ import { ProfileContext } from "../redux/contexts/ProfileContext";
 import "./css/Experience.css";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const Experience = ({ data }) => {
   const { selectedToken } = useContext(ProfileContext);
@@ -191,6 +192,9 @@ const Experience = ({ data }) => {
       });
   };
 
+  const location = useLocation();
+  const isUser = location.pathname === '/user-profile'
+
   return (
     <Container className="bg-white mb-4 p-3 rounded border vorde-solid">
       <div className="d-flex justify-content-between">
@@ -198,10 +202,10 @@ const Experience = ({ data }) => {
           Experience
         </h2>
         <div>
-          <div id="Add-Icon" onClick={() => setMostraForm(true)}>
+          {isUser  && (<div id="Add-Icon" onClick={() => setMostraForm(true)}>
             <AiOutlinePlus className="mx-2" id="icon-1" />
             <GoPencil className="mx-2" id="icon-2" />
-          </div>
+          </div>)}
         </div>
       </div>
 
@@ -220,14 +224,11 @@ const Experience = ({ data }) => {
                   <div>
                     <div className="d-flex">
                       <h2 className="RoleEx fs-4 ms-0">{experience.role}</h2>
-                      <div className="d-flex align-items-center ms-5" style={{marginLeft: '5em'}}>
-                        
-                          <HiOutlinePencil className="modalIcons me-3" style={{fontSize: '150%'}} onClick={() => handleEditExperience(experience._id)}/>
-                          <FaRegTrashAlt className="modalIcons" onClick={() => handleDeleteExperience(experience._id)} />
-                        
-                      </div>
+                      {isUser && (<div className="d-flex align-items-center ms-5" style={{ marginLeft: '5em' }}>
+                        <HiOutlinePencil className="modalIcons me-3" style={{ fontSize: '150%' }} onClick={() => handleEditExperience(experience._id)} />
+                        <FaRegTrashAlt className="modalIcons" onClick={() => handleDeleteExperience(experience._id)} />
+                      </div>)}
                     </div>
-
                     <span className="CompanyEx">
                       {experience.company}
                     </span> · <span className="FrequencyEx">Full Time</span>
@@ -246,7 +247,7 @@ const Experience = ({ data }) => {
                     </p>
                     <p className="DescEx mt-1">{experience.description}</p>
 
-                    
+
 
                   </div>
                 </div>

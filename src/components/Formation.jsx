@@ -11,8 +11,8 @@ import {
 } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
-import "./css/FormationStyle.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useLocation } from "react-router-dom";
+
 
 
 const Formation = () => {
@@ -76,16 +76,21 @@ const Formation = () => {
     setMostraForm(false);
   };
 
+  const location = useLocation();
+  const isUser = location.pathname === '/user-profile'
+
   return (
     <Container className="p-0 border border-solid rounded bg-white p-3">
       <div id="SonContainer-Formation" className="rounded">
         <div className="d-flex justify-content-between">
           <h2 className="mb-4">Formation</h2>
           <div>
-            <div id="Add-Icon" onClick={() => setMostraForm(true)}>
-              <AiOutlinePlus className="mx-2" id="icon-1" />
-              <GoPencil className="mx-2" id="icon-2" />
-            </div>
+            {isUser && (
+              <div id="Add-Icon" onClick={() => setMostraForm(true)}>
+                <AiOutlinePlus className="mx-2" id="icon-1" />
+                <GoPencil className="mx-2" id="icon-2" />
+              </div>
+            )}
           </div>
         </div>
 
@@ -103,7 +108,7 @@ const Formation = () => {
                 <h2 className="m-0 fs-4 HoverBluScritte">{esperienza.universita}</h2>
                 <h3 className="m-0 fs-6">{esperienza.titoloStudio}</h3>
                 <p className="m-0 text-secondary">
-                {`${esperienza.dataInizioMese || ""} ${esperienza.dataInizioAnno}`} - {`${esperienza.dataFineMese || ""} ${esperienza.dataFineAnno}`}
+                  {`${esperienza.dataInizioMese || ""} ${esperienza.dataInizioAnno}`} - {`${esperienza.dataFineMese || ""} ${esperienza.dataFineAnno}`}
                 </p>
                 <p className="m-0">{esperienza.corsoDiStudi}</p>
                 <p className="m-0">{esperienza.votazione}</p>
@@ -122,7 +127,7 @@ const Formation = () => {
           <Modal show={mostraForm} onHide={() => setMostraForm(false)}>
             <Modal.Header closeButton>
               <Modal.Title className="fs-6">
-              Add education
+                Add education
               </Modal.Title>
             </Modal.Header>
             <Modal.Body id="modal">
@@ -130,9 +135,9 @@ const Formation = () => {
                 <Col className="p-0 m-0">
                   <h2 className="p-0 fs-6">Notify network</h2>
                   <p className="m-0">
-                  Turn on to notify your network of key profile changes (such as new education) and work anniversaries. Learn more about
+                    Turn on to notify your network of key profile changes (such as new education) and work anniversaries. Learn more about
                     <span id="LinkCondivisioneModifiche">
-                    sharing profile changes.
+                      sharing profile changes.
                     </span>
                   </p>
                 </Col>
@@ -253,7 +258,7 @@ const Formation = () => {
 
                 <Container className="pb-4">
                   <label>End date (or expected)*</label>
-                  
+
                   <div className="d-flex justify-content-between m-0">
                     <DropdownButton
                       className="DropdownButton"

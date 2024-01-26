@@ -10,6 +10,7 @@ import { BsFillInfoSquareFill } from "react-icons/bs";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { useState, useContext } from "react";
 import { ProfileContext } from "../redux/contexts/ProfileContext";
+import { useLocation } from "react-router-dom";
 
 const urlCopertina = 'https://leratomonareng.co.za/wp-content/uploads/2021/03/192adf06PCF91kCYu1nPLQg.jpeg' // statico
 
@@ -108,7 +109,8 @@ const MainProfile = ({ data }) => {
         }
     };
 
-
+    const location = useLocation()
+    const isUser = location.pathname === '/user-profile'
 
     return (
         <>
@@ -131,12 +133,10 @@ const MainProfile = ({ data }) => {
 
                     {/* icona penna */}
                     <div className="d-flex justify-content-end">
-                        <span onClick={handleShowModalEdit} className="penna"><HiOutlinePencil /></span>
+                        {isUser && (<span onClick={handleShowModalEdit} className="penna"><HiOutlinePencil /></span>)}
                         {/* ho usato la stessa classe CSS di Matteo/Activity */}
                     </div>
-
                     <Row>
-
                         {/* Blocco con le informazioni: Nome,cognome, etc... */}
                         <Col md={7}>
                             <h1 className="mb-0">{data.name} {data.surname}</h1>
@@ -149,9 +149,8 @@ const MainProfile = ({ data }) => {
                                 {/* Blocco con i 3 bottoni */}
                                 <Col>
                                     <div className="d-flex">
-
                                         {/* Primo bottone */}
-                                        <DropdownButton variant="primary" className="me-2 rounded-pill fw-bold custom-dropdown-button blueButton" id="dropdown-basic-button" title="Open to">
+                                        {isUser && ( <DropdownButton variant="primary" className="me-2 rounded-pill fw-bold custom-dropdown-button blueButton" id="dropdown-basic-button" title="Open to">
                                             <Dropdown.Item href="#/action-1">
                                                 <p className="mb-0 fw-bold">Hiring</p>
                                                 <p className="mb-0">share that you're hiring and attract qualified candidates</p>
@@ -160,13 +159,11 @@ const MainProfile = ({ data }) => {
                                                 <p className="mb-0 fw-bold">Providing services</p>
                                                 <p className="mb-0">Showcase services you offer so new clients can discover you</p>
                                             </Dropdown.Item>
-                                        </DropdownButton>
-
+                                        </DropdownButton>)}
                                         {/* Secondo Bottone */}
-                                        <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button>
-
+                                        {isUser && ( <Button variant="light" className="ps-3 pe-3 me-2 text-primary border-primary rounded-pill fw-bold" onClick={handleShowModalProfile}>Add profile section</Button>)}
                                         {/* Terzo Bottone */}
-                                        <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button dropdown-basic-button blueButton" id="dropdown-basic-button" title="More">
+                                        {isUser && ( <DropdownButton variant="primary" className="pe-3 me-2 PillButton fw-bold custom-dropdown-button dropdown-basic-button blueButton" id="dropdown-basic-button" title="More">
                                             <Dropdown.Item className="d-flex align-items-center" href="#/action-1">
                                                 <BsArrow90DegRight className="me-1" />
                                                 <p className="mb-0">Send profile in a message</p>
@@ -183,7 +180,7 @@ const MainProfile = ({ data }) => {
                                                 <BsFillInfoSquareFill className="me-1" />
                                                 <p className="mb-0">About this profile</p>
                                             </Dropdown.Item>
-                                        </DropdownButton>
+                                        </DropdownButton>) }
 
                                     </div>
                                 </Col>
@@ -201,14 +198,14 @@ const MainProfile = ({ data }) => {
                     </Row>
 
                     {/* Blocco Open to work */}
-                    <Row className="ms-0">
+                    {isUser && ( <Row className="ms-0">
                         <Col md={7} className="bg-light rounded"> {/* Apre un modale (Job reference) */}
                             {/* icona matita con position relative o absolute */}
                             <p className="mt-3 mb-0 fw-bold">Open to work</p>
                             <p className="mb-0">Web Developer, Front-End and Back-End roles</p>
                             <p className="mb-3 text-primary fw-bold HoverBluScritte">Show details</p> {/* Apre un modale (Job reference) */}
                         </Col>
-                    </Row>
+                    </Row>)}
                 </Container>
 
             </Container>
