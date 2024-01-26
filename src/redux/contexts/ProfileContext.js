@@ -120,6 +120,16 @@ export const ProfileProvider = ({ children }) => {
         }
     }, []);
 
+    const [myConnections, setMyConnections] = useState([]);
+
+    const addConnection = useCallback((personId) => {
+        setMyConnections(prev => [...prev, personId]);
+    }, []);
+
+    const removeConnection = useCallback((personId) => {
+        setMyConnections(prev => prev.filter(id => id !== personId));
+    }, []);
+
     return (
         <ProfileContext.Provider value={{
             profile,
@@ -134,7 +144,10 @@ export const ProfileProvider = ({ children }) => {
             currentJob,
             selectedToken,
             setSelectedToken,
-            fetchUserProfile
+            fetchUserProfile,
+            myConnections,
+            addConnection,
+            removeConnection,
         }}>
             {children}
         </ProfileContext.Provider>

@@ -109,7 +109,7 @@ const NavbarTop = () => {
                             <Link to='/home' className='LinkTest d-flex flex-column justify-content-center align-items-center'> <FaHome className='align-self-center' />
                                 Home </Link>
                         </div>
-                        <Link className='d-flex flex-column justify-content-center align-items-center'><FaNetworkWired /> <span className='LinkTest'>My Network </span></Link>
+                        <Link to='/my-network' className='d-flex flex-column justify-content-center align-items-center'><FaNetworkWired /> <span className='LinkTest'>My Network </span></Link>
                         <div className='d-flex flex-column align-self-center LinkHover'>
                             <Link to='/jobs' className=' LinkTest d-flex flex-column justify-content-center align-items-center'>  <FaBriefcase className='align-self-center StyleLinkIconNav IconNavBar' />
                                 Jobs </Link>
