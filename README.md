@@ -30,13 +30,13 @@
        -## News: utilizziamo un API di news esterna che compone la sezione LinkedIn Learning.
        -## Footer: è il normale footer a piè di pagina con i vari link.
 
--## UserDetails: questo component gestisce la visualizzazione degli altri profili utente e ha come figli gli stessi component che con useLocation() fa sparire i bottoni e le sezioni di modifica prensenti su UserProfile.
+- ## UserDetails: questo component gestisce la visualizzazione degli altri profili utente e ha come figli gli stessi component che con useLocation() fa sparire i bottoni e le sezioni di modifica prensenti su UserProfile.
 
--## Jobs: questo component fa vedere le proposte di lavoro e apre un modale con i dettagli, cercando sulla navbar mostra eventuali risultati non solo sotto la searchbar ma anche nel main.
+- ## Jobs: questo component fa vedere le proposte di lavoro e apre un modale con i dettagli, cercando sulla navbar mostra eventuali risultati non solo sotto la searchbar ma anche nel main.
          Ha un figlio: ##JobDetails: Apre un modale mostrando tutti i dettagli approfonditi dell'annuncio.
--## My-Connection: mostra le persone a cui ci siamo collegati permette di poter aprire i loro profili e di poterle rimuovere.
+- ## My-Connection: mostra le persone a cui ci siamo collegati permette di poter aprire i loro profili e di poterle rimuovere.
 
--## Home: gestisce la pubblicazione dei post con immagini annesse, permette di vedere i post degli altri. Ha come figli: 
+- ## Home: gestisce la pubblicazione dei post con immagini annesse, permette di vedere i post degli altri. Ha come figli: 
        -## ProfileSummary: che da le informazioni principali dell'utente loggato.
        -## See More: è un component statico che serve per avvicinarsi al layout di LinkedIn ufficiale.
        -## CreatePost: permette di pubblicare post con immagini.
@@ -45,9 +45,9 @@
        -## LinkedinNews: sempre richiamando l'API delle news mostra un elenco random di notizie.
        -## FooterHome: è un footer sulla destra che sostituisce quello a piè di pagina presente solo su UserProfile e UserDetails
 
--## App.css ha tutti gli import dei fogli css, bootstrap ed eventuali icone e poi presenta dei cambiamenti generali per tutta la pagina, viene importato in App.js      
+- ## App.css ha tutti gli import dei fogli css, bootstrap ed eventuali icone e poi presenta dei cambiamenti generali per tutta la pagina, viene importato in App.js      
 
-## NPM INSTALLATI 
+- ## NPM INSTALLATI 
 - npm i @fortawesome/fontawesome-svg-core
 - npm i @fortawesome/free-solid-svg-icons
 - npm i @fortawesome/react-fontawesome
