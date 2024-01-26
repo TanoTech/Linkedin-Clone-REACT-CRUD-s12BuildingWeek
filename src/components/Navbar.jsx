@@ -71,10 +71,7 @@ const NavbarTop = () => {
                 <Navbar.Brand >
                     <Link to='/home'><img className='img-fluid' src="./assets/logo/linkedinLogo.png" alt="Logo" /></Link>
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
-                    <Nav navbarScroll>
-                        <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
+                <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
                             <InputGroup>
                                 <Button className='navBtn'><FaSearch /></Button>
                                 <FormControl
@@ -89,12 +86,9 @@ const NavbarTop = () => {
                             <div className="search-results-container" ref={searchResultsRef}>
                                 {filteredSearchResults.length > 0 && filteredSearchResults.slice(0, 6).map((otherProfile) => (
                                     <Link key={otherProfile._id} to={`/user/${otherProfile._id}`} className="search-result-item" onClick={() => setShowSearchResults(false)}>
-                                        <FaSearch className='searchNav ms-0 me-3' />
-                                        <div>
-                                            {`${otherProfile.name} ${otherProfile.surname}`}
-                                            <span className='jobSearch ms-1'>• {otherProfile.title}</span>
-                                        </div>
-                                        <img className='img-fluid-search' src={otherProfile.image} alt='immagine profilo' />
+                                        <img className='img-fluid' src={otherProfile.image} alt='immagine profilo' />
+                                        {`${otherProfile.name} ${otherProfile.surname}`}
+                                        <span>{otherProfile.title}</span>
                                     </Link>
                                 ))}
                                 {filteredJobResults.length > 0 && filteredJobResults.map((job) => (
@@ -105,6 +99,9 @@ const NavbarTop = () => {
                                 ))}
                             </div>
                         )}
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll" className='justify-content-center align-c'>
+                    <Nav navbarScroll>
                         <div className='d-flex flex-column align-self-center LinkHover'>
                             <Link to='/home' className='LinkTest d-flex flex-column justify-content-center align-items-center'> <FaHome className='align-self-center' />
                                 Home </Link>
@@ -148,7 +145,7 @@ const NavbarTop = () => {
                         <NavDropdown className='Business' title={'For Business'}>
                         </NavDropdown>
                     </div>
-                    <NavLink id='PremiumLink' className='text-center mt-3'>Try Premium for <br /> free</NavLink>
+                    <NavLink id='PremiumLink'>Try Premium for free</NavLink>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

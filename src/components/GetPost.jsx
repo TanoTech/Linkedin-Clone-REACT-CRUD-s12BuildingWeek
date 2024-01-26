@@ -35,17 +35,18 @@ const EditPostModal = ({ post, onCancel, onSave }) => {
 };
 
 const GetPost = ({ posts, onDeletePost, onEditPost }) => {
-  const { fetchUserProfile } = useContext(ProfileContext);
+  const { fetchUserProfile, profile } = useContext(ProfileContext);
   const [userProfiles, setUserProfiles] = useState({});
   const [editPostModal, setEditPostModal] = useState({
     isOpen: false,
     postId: null,
   });
+  const [visiblePosts, setVisiblePosts] = useState([]);
 
   useEffect(() => {
     const loadUserProfiles = async () => {
       const profiles = {};
-      for (let post of posts) {
+      for (let post of visiblePosts) {
         const userId = post.user._id;
         if (userId && !profiles[userId]) {
           try {
@@ -61,12 +62,15 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
       }
       setUserProfiles(profiles);
     };
-    if (posts && posts.length > 0) {
+    if (visiblePosts.length > 0) {
       loadUserProfiles();
     }
-  }, [posts, fetchUserProfile]);
+  }, [visiblePosts, fetchUserProfile]);
 
-  const postsInReverse = [...posts].reverse();
+  useEffect(() => {
+    const postsInReverse = [...posts].reverse().slice(0, 30);
+    setVisiblePosts(postsInReverse);
+  }, [posts]);
 
   const handleEditPost = (postId) => {
     setEditPostModal({ isOpen: true, postId });
@@ -83,8 +87,10 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
 
   return (
     <Container className="m-0 p-0">
-      {postsInReverse.slice(0, 10).map((post) => {
+      {visiblePosts.map((post) => {
         const userProfile = userProfiles[post.user._id];
+        const isCurrentUser = profile && profile._id === post.user._id;
+
         return (
           <div
             className="bg-white my-3 mx-0 py-2 rounded border border-solid"
@@ -106,8 +112,8 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
                     />
                   </Link>
                   <div className="ms-2 align-items-center d-flex">
-                    <div style={{height:"5em"}}>
-                      <Link  to={`/user/${post.user._id}`}>
+                    <div style={{ height: "5em" }}>
+                      <Link to={`/user/${post.user._id}`}>
                         <p className="m-0" id="NamePost">
                           {userProfile.name} {userProfile.surname}
                         </p>
@@ -116,26 +122,30 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
                         {new Date(post.updatedAt).toLocaleString()}
                       </p>
                     </div>
-                    <div className="m-1 ms-2 d-flex" style={{height:"3em"}}>
+                    <div className="m-1 ms-2 d-flex" style={{ height: "3em" }}>
                       <div className="d-flex justify-content-center  rounded IconAndTextPost">
-                        <button
-                          className="d-flex align-self-center m-0 px-3 fs-6"
-                          style={{ background: "none", border: "none"}}
-                          onClick={() => handleEditPost(post._id)}
-                        >
-                          Edit
-                        </button>
+                        {isCurrentUser && (
+                          <button
+                            className="d-flex align-self-center m-0 px-3 fs-6"
+                            style={{ background: "none", border: "none" }}
+                            onClick={() => handleEditPost(post._id)}
+                          >
+                            Edit
+                          </button>
+                        )}
                       </div>
-  
-                      <div className="d-flex justify-content-center rounded IconAndTextPost">
-                        <button
-                          className="d-flex align-self-center m-0 px-3 fs-6 "
-                          style={{ background: "none", border: "none" }}
-                          onClick={() => onDeletePost(post._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
+
+                      {isCurrentUser && (
+                        <div className="d-flex justify-content-center rounded IconAndTextPost">
+                          <button
+                            className="d-flex align-self-center m-0 px-3 fs-6 "
+                            style={{ background: "none", border: "none" }}
+                            onClick={() => onDeletePost(post._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
