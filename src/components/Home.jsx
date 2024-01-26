@@ -85,7 +85,7 @@ const Home = () => {
     };
 
     return (
-        <main >
+        <main>
             <Container className='d-flex'>
                 <section className='me-3'>
                     <ProfileSummary />
@@ -103,7 +103,7 @@ const Home = () => {
 
 
             </Container>
-            <section>
+            <section className='d-none d-md-block'>
                 <LinkedinNews />
                 <Ads />
                 <FooterHome />
