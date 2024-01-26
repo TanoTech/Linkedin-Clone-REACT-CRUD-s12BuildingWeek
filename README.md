@@ -3,8 +3,7 @@
 # Componenti principali
 
 - ## App.js: gestisce tutte le rotte per i component padre, e la logica di scomparsa della navbar nel component login. 
-    App.js è avvolta dal ProviderContext (ProfileContext) cosi da poter attingere a tutti i data necessari.
-    Importa App.css che ha tutte le informazioni necessarie per l'app.
+    App.js è avvolta dal ProviderContext (ProfileContext) cosi da poter attingere a tutti i data necessari. Importa App.css che ha tutte le informazioni necessarie per l'app.
 
 - ## ProfileContext.js: è il foglio che gestisce maggiorparte delle fetch che devono essere condivise da diversi component.
 
@@ -13,7 +12,7 @@
 - ## NavbarTop: La navbar viene mostrata dopo il login e permette la navigazione in tutte le sezioni presenti, la barra di ricerca trova sia utenti che offerte di lavoro e permette di cliccarci e aprirle. 
     Ha un dropdown menù con i dettagli profilo e permette il sign out per tornare alla pagina Login.
 
--## UserProfile: gestisce la Get del profilo personale e ha come componenti figli:
+- ## UserProfile: gestisce la Get del profilo personale e ha come componenti figli:
        ## MainProfile: che gestisce la modifica della foto e delle informazioni profilo, mostrando i vari dettagli dell'utente loggato.
        ## Activity: fa vedere le attività dell'utente, permette di creare il post in modo fittizio con aggiunta della foto e possibilità di mettere le reazioni.
               -## Post: permette di creare i post fittizi.
