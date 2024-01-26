@@ -119,9 +119,9 @@ const NavbarTop = () => {
                                     <div>
                                         <p>{userProfileName}</p>
                                         <p>{userProfileTitle}</p>
-                                        <Link to='/user-profile'><Button className='btn btn-primary'>View Profile</Button></Link>
                                     </div>
                                 </div>
+                                <Link to='/user-profile'><Button className='btn btn-primary border-primary rounded-pill fw-bold btn btn-light text-primary bottoneNav'>View Profile</Button></Link>
                             </div>
                             <NavDropdown.Divider />
                             <h6>Account</h6>
