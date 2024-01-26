@@ -1,4 +1,11 @@
-/* GENERALE */
+.createPostWrapper {
+    background-color: white;
+    margin-top: 1.11em;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    width: 36em;
+}
+
 
 .ProfileImgPost {
     cursor: pointer;
@@ -7,7 +14,6 @@
     width: 3em;
 }
 
-/* BARRAPOST */
 
 .searchBarPost {
     margin-top: 0.5rem;
@@ -28,12 +34,37 @@
     transition: 0.1s;
 }
 
+.iconWrapperPost {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+#buttonImgPost  {
+    color: black !important;
+    background:none !important;
+    border: none !important;
+    
+}
+
 /* BUTTONBOTTOM */
+
 
 #ButtonPost {
     color: black;
     background:none;
     border: none;
+}
+
+
+.iconWrapperPost button:hover {
+    background-color: blue;
+    border: inset;
+}
+
+.singleIconWrapperPost {
+    display: flex;
 }
 
 .mediaIcon {
@@ -48,6 +79,8 @@
     color: orangered;
 }
 
+
+
 .IconPlusText {
     color: rgb(0 0 0 / 60%);
     cursor: pointer;
@@ -56,4 +89,5 @@
 .IconPlusText:hover {
     background-color: rgb(236, 236, 236) !important;
     transition: 0.1s;
+
 }

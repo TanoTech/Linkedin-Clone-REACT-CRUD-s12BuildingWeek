@@ -18,6 +18,10 @@
 }
 
 .MayKnowImg {
+
+    width: 4em;
+    height: 4em !important;
+
     border-radius: 100%;
     margin-right: 0.3em;
 }
@@ -59,4 +63,3 @@
     width: 100px;
     height: 30px;
     text-align: center;
-}
