@@ -108,7 +108,7 @@ const Formation = () => {
                 <p className="m-0">{esperienza.corsoDiStudi}</p>
                 <p className="m-0">{esperienza.votazione}</p>
                 <p className="m-0">{esperienza.attivitaAssociative}</p>
-                <p className="experienceDivInfoLast m-0">
+                <p className="experienceDivInfoLast m-0 mt-2">
                   {esperienza.descrizione}
                 </p>
               </div>
