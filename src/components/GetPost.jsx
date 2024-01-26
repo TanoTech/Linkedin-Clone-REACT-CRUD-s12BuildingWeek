@@ -51,7 +51,7 @@ const GetPost = ({ posts, onDeletePost, onEditPost }) => {
             {userProfile && (
               <div className="d-flex justify-content-between">
                 <div className="d-flex m-0">
-                  <Link to={`/user/${post.user._id}`}>
+                  <Link className="align-self-center" to={`/user/${post.user._id}`}>
                     <img
                       className="img-fluid"
                       id="ProfilePicPost"
