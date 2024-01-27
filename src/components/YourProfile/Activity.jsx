@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Row, Col, Button, Container, Modal, Form } from "react-bootstrap";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { FaArrowRightLong } from "react-icons/fa6";
-import EmoticonPicker from "../components/Emoticons";
-import ImageUploader from "../components/ImageUploader";
+import EmoticonPicker from "../Global/Emoticons";
+import ImageUploader from "./ImageUploader";
 import { MdCalendarMonth } from "react-icons/md";
 import { BsBriefcase } from "react-icons/bs";
 import { IoMdPodium } from "react-icons/io";
 import { FaRegClock } from "react-icons/fa6";
-import Post from "./Post";
+import Post from "../Home/Post";
 import { useLocation } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 

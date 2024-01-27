@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
+import { Container, Modal } from "react-bootstrap";
 import { GoPencil } from "react-icons/go";
 
 const DettaglioFormation = ({ esperienzeFormazione, modificaEsperienzaFormazione }) => {

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import { ProfileContext } from '../../redux/contexts/ProfileContext'; 
+import 'bootstrap-icons/font/bootstrap-icons.css'; 
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const MayKnow = () => {
+const OtherProfileConsulted = () => {
     const { getAllPeople, fetchUsers, myConnections, addConnection, removeConnection } = useContext(ProfileContext);
     const [randomPeople, setRandomPeople] = useState([]);
 
@@ -15,7 +15,7 @@ const MayKnow = () => {
     useEffect(() => {
         if (getAllPeople.length > 0) {
             const shuffled = [...getAllPeople].sort(() => 0.5 - Math.random());
-            setRandomPeople(shuffled.slice(0, 6));
+            setRandomPeople(shuffled.slice(0, 3));
         }
     }, [getAllPeople]);
 
@@ -29,9 +29,9 @@ const MayKnow = () => {
 
     return (
         <Container className='SideSections bg-white mt-2 p-0 rounded border border-solid'>
-            <h2 className='MayKnowTitle p-2'>People you may know</h2>
+            <h2 className='MayKnowTitle p-2 '> Other profile consulted </h2>
             {randomPeople.map(person => (
-                <div className='MayKnowContent px-3' key={person._id}>
+                <div key={person._id} className='MayKnowContent px-3'>
                     <Link to={`/user/${person._id}`}>
                         <img className='MayKnowImg img-fluid' src={person.image} alt="profile picture" />
                         <div className='MayKnowColumn'>
@@ -39,7 +39,9 @@ const MayKnow = () => {
                             <p>{person.title}</p>
                         </div>
                     </Link>
-                    <button className='MayKnowBtn' onClick={() => handleConnectionChange(person._id)}>
+                    <button 
+                        className='MayKnowBtn'
+                        onClick={() => handleConnectionChange(person._id)}>
                         {myConnections.includes(person._id) ? (
                             <i className="bi bi-person-x-fill MayKnowIcon"></i>
                         ) : (
@@ -54,4 +56,4 @@ const MayKnow = () => {
     );
 }
 
-export default MayKnow;
+export default OtherProfileConsulted;

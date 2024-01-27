@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { ProfileContext } from '../../redux/contexts/ProfileContext';
 import CreatePost from './CreatePost';
 import GetPost from './GetPost';
-import Ads from './Ads';
+import Ads from '../Global/Ads';
 import FooterHome from './FooterHome';
 import ProfileSummary from './ProfileSummary';
-import SeeMore from './SeeMore';
+import SeeMore from '../YourProfile/SeeMore';
 import LinkedinNews from './LinkedinNews';
 
 const Home = () => {

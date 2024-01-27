@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap"
 import { useContext } from "react"
-import { ProfileContext } from "../redux/contexts/ProfileContext"
+import { ProfileContext } from "../../redux/contexts/ProfileContext"
 import { TypeUnderline } from "react-bootstrap-icons"
 import { IoBookmark } from "react-icons/io5";
 

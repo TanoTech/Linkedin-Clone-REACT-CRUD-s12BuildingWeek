@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { ProfileContext } from '../../redux/contexts/ProfileContext';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
-import Ads from './Ads';
 import { Link } from 'react-router-dom';
-import FooterHome from './FooterHome';
+import FooterHome from '../Home/FooterHome';
+import Ads from '../Global/Ads';
 
 const MyNetwork = () => {
     const { myConnections, fetchUserProfile, removeConnection } = useContext(ProfileContext);

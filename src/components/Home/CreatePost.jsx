@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Container } from "react-bootstrap";
 import { IoSend } from "react-icons/io5";
-import { ProfileContext } from "../redux/contexts/ProfileContext";
+import { ProfileContext } from "../../redux/contexts/ProfileContext";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./css/CreatePost.css";
+import "../css/CreatePost.css";
 
 const CreatePost = ({ newPostText, setNewPostText, createPost }) => {
     const { profile } = useContext(ProfileContext);

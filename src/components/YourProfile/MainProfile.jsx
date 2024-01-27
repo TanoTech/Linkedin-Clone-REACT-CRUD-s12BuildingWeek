@@ -9,7 +9,7 @@ import { BiFileBlank } from "react-icons/bi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { useState, useContext } from "react";
-import { ProfileContext } from "../redux/contexts/ProfileContext";
+import { ProfileContext } from "../../redux/contexts/ProfileContext";
 import { useLocation } from "react-router-dom";
 
 const urlCopertina = 'https://leratomonareng.co.za/wp-content/uploads/2021/03/192adf06PCF91kCYu1nPLQg.jpeg' // statico

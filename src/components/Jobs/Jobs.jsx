@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { ProfileContext } from '../../redux/contexts/ProfileContext';
 import { Container } from 'react-bootstrap';
 import SingleJob from './SingleJob';
-import Ads from './Ads'
-import FooterHome from './FooterHome'
+import Ads from '../Global/Ads'
+import FooterHome from '../Home/FooterHome'
 
 const Jobs = () => {
     const { jobResults, fetchJobs, selectedToken } = useContext(ProfileContext);

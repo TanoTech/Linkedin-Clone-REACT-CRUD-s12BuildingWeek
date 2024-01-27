@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from 'react';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { ProfileContext } from '../../redux/contexts/ProfileContext';
 import axios from 'axios';
 import MainProfile from './MainProfile';
 import Formation from './Formation';
@@ -12,7 +12,7 @@ import News from './News';
 import Footer from './Footer';
 import ProfileLanguage from './ProfileLanguage';
 import OtherProfileConsulted from './OtherProfileConsulted';
-import Ads from './Ads';
+import Ads from '../Global/Ads';
 
 const UserProfile = () => {
     const { profile, setProfile, selectedToken } = useContext(ProfileContext);

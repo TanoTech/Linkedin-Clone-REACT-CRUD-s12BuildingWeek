@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ProfileContext } from "../redux/contexts/ProfileContext";
+import { ProfileContext } from "../../redux/contexts/ProfileContext";
 import MainProfile from "./MainProfile";
 import Formation from "./Formation";
 import Interessi from "./Interessi";
@@ -8,8 +8,8 @@ import Activity from "./Activity";
 import Footer from "./Footer";
 import { Spinner } from "react-bootstrap";
 import OtherProfileConsulted from "./OtherProfileConsulted";
-import OnThisPage from "./OnThisPage";
-import Ads from "./Ads";
+import OnThisPage from "../Jobs/OnThisPage";
+import Ads from "../Global/Ads";
 import Experience from "./Experience";
 
 const UserDetail = () => {

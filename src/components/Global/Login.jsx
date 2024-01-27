@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ProfileContext } from '../redux/contexts/ProfileContext';
+import { ProfileContext } from '../../redux/contexts/ProfileContext';
 
 const Login = ({ setShowNavbar }) => {
     const { setSelectedToken } = useContext(ProfileContext);

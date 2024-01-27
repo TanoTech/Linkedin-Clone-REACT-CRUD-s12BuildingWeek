@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ProfileContext } from "../redux/contexts/ProfileContext";
-import { Container, Button, Modal, Image } from "react-bootstrap";
-import CommentPost from "./ CommentPost";
+import { ProfileContext } from "../../redux/contexts/ProfileContext";
+import { Container, Modal, Image } from "react-bootstrap";
+import CommentPost from "../Home/ CommentPost";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi2";

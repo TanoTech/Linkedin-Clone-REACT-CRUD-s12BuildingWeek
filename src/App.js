@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import NavbarTop from "./components/Navbar";
-import UserProfile from "./components/UserProfile";
-import DettaglioInteressi from "./components/DettaglioInteressi";
+import NavbarTop from "./components/Global/Navbar";
+import UserProfile from "./components/YourProfile/UserProfile";
+import DettaglioInteressi from "./components/YourProfile/DettaglioInteressi";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ProfileProvider } from "./redux/contexts/ProfileContext";
 import { Container } from "react-bootstrap";
-import Jobs from "./components/Jobs";
-import Home from "./components/Home";
-import UserDetail from "./components/UserDetails";
-import SingleJob from "./components/SingleJob";
-import Login from "./components/Login";
-import Error404 from './components/Error404'
-import MyNetwork from "./components/MyConnection";
+import Jobs from "./components/Jobs/Jobs";
+import Home from "./components/Home/Home";
+import UserDetail from "./components/YourProfile/UserDetails";
+import SingleJob from "./components/Jobs/SingleJob";
+import Login from "./components/Global/Login";
+import Error404 from './components/Global/Error404'
+import MyNetwork from "./components/Connection/MyConnection";
 import "./App.css";
 
 function App() {
