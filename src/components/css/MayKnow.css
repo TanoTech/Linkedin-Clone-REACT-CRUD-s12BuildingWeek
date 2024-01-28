@@ -1,57 +1,32 @@
-.SideSections {
-    width: 17rem !important;
-}
-
+/* GENERALE */
 .MayKnowContent {
-    display: flex;
-    padding-top: 1em;
-    padding-bottom: 1.3em;
-    border-bottom: 1px solid lightgray;
-}
-
-.MayKnowTitle, .MayKnowName{
-    font-size: 1.2em;
-}
-
-.MayKnowTitle {
-    margin-bottom: 0;
-}
-
-.MayKnowImg {
-    width: 4em;
-    height: 4em !important;
+  display: flex;
+  padding: 1em 0em 1.3em 0em;
+  border-bottom: 1px solid lightgray;
+  .MayKnowImg {
     border-radius: 100%;
-    margin-right: 0.3em;
-}
-
-.MayKnowName {
-    margin-bottom: 0;
-}
-
-
-.MayKnowBtn {
+  }
+  .MayKnowBtn {
     border-radius: 50px;
     border: 1px solid #414141;
     padding: 0em 0.6em;
     color: #414141;
     background-color: initial;
-}
-
-.MayKnowBtn:hover {
+  }
+  .MayKnowBtn:hover {
     border: 2px solid #414141;
     box-sizing: border-box;
     background-color: rgb(236, 236, 236);
-}
+  }
+  .MayKnowTitle {
+    margin-bottom: 0;
+  }
 
-.bi-person-fill-add {
-    margin-right: 0.2em;
-    font-size: 1.25em;
-}
+  .MayKnowName {
+    margin-bottom: 0;
+  }
 
-.MayKnowName, .MayKnowJob, .MayKnowImg {
-    cursor: pointer;
-}
-
-.MayKnowIcon {
+  .MayKnowIcon {
     margin-right: 0.4em;
+  }
 }

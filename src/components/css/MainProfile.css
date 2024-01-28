@@ -1,3 +1,4 @@
+/* GENERALE */
 #profilePic {
     width: 10em;
     height: 10em;
@@ -7,7 +8,6 @@
 }
 
 /* Modali */
-
 #profilePicModal {
     width: 15em;
     height: 15em;
@@ -19,19 +19,16 @@
 }
 
 /* Rimuove la freccetta dai dropdown menu SOLO dai bottoni blu 'OPEN TO' e 'MORE' */
-
 .blueButton > .dropdown-toggle::after{
     display: none !important;
 }
 
 /* bottoni */
-
 #dropdown-basic-button {
     border-radius: 30px;
 }
 
 /* adatta la foto del profilo */
-
 @media screen and (max-width: 576px) {
     #profilePic {
         width: 6em;

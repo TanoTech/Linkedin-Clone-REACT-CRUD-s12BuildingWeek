@@ -1,19 +1,20 @@
+/* GENERALE */
 .ShowExperience {
     padding: 0;
-}
-
-.RoleEx {
-    margin-bottom: 0;
-}
-
-.ShowExperience li {
-    list-style-type: none;
-    margin-bottom: 1em;
-}
-
-#logo-formationEx {
-    width: 2.8rem;
-    height: 2.8rem;
+    .RoleEx {
+        margin-bottom: 0;
+    }
+     li {
+        list-style-type: none;
+    }
+    #logo-formationEx {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    .DateEx, .LocationEx {
+        margin-bottom: 0;
+        color: lightslategray
+    } 
 }
 
 #ExperienceTitle {
@@ -22,48 +23,29 @@
     margin: 0.5rem 0.3rem !important;
 }
 
+/* MODALE */
 #CondivisioneModificheEx {
     padding: 1rem 2rem;
     background-color: #edf3f8;
-}
-
-#LinkCondivisioneModificheEX {
-    color: #0a66c2;
-}
-
-#LinkCondivisioneModifiche:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.DateEx, .LocationEx {
-    margin-bottom: 0;
-    color: lightslategray
-}
-
-.DescEx {
-    margin-top: 1em;
-}
-
-.DeleteEx {
-    background-color: #0a66c2;
-    color: white;
-    border-radius: 50px;
-    border: none;
-    padding: 0.2em 0.7em;
-}
-
-#MyToggleEx, #MyToggleEx:hover {
-    width: 3.2rem !important;
-    height: 2rem !important;
-    border: 1px solid var(--transparent);
-    cursor: pointer;
+    #LinkCondivisioneModificheEX {
+        color: #0a66c2;
+    }
+    span:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #MyToggleEx, #MyToggleEx:hover {
+        width: 3.2rem !important;
+        height: 2rem !important;
+        border: 1px solid var(--transparent);
+        cursor: pointer;
+    }
+    
 }
 
 .requiredWarningEx {
     font-size: 0.95em;
-    margin-left: 2em;
-    margin-top: 1em !important;
+    margin: 1em 0em 0em 2em !important;
 }
 
 .inputModalEx {
@@ -80,33 +62,29 @@
 }
 
 .inputDescEx {
-    border-radius: 5px !important;
-    padding: 1em 0.25em !important; 
-    font-size: 1.4em !important;
-    border: 1px solid lightgrey !important;
+    border-radius: 5px;
+    padding: 1em ; 
+    font-size: 1.4em;
+    border: 1px solid lightgrey;
 }
 
 .dateWrapperEx {
-    padding: 0;
-    margin: 0;
-    display: flex !important;
+    display: flex;
 }
 
 .endBtnWrapper {
-    display: flex !important;
+    display: flex;
     justify-content: flex-end;
     border-top: 1px solid lightgrey;
-    position: sticky;
-    padding: 1.2em;
-    padding-right: 1.4em;
+    padding: 1.2em 1.4em 1.2em 1.2em;
+    .saveExperience {
+        background-color: #0a66c2;
+        color: white;
+        padding: 0.4em;
+        border-radius: 50px;
+        width: 5em;
+            text-align: center;
+            border: inherit;
+        }
 }
 
-.saveExperience {
-background-color: #0a66c2;
-color: white;
-padding: 0.4em;
-border-radius: 50px;
-width: 5em;
-    text-align: center;
-    border: inherit;
-}

@@ -1,49 +1,14 @@
-.active-link {
-  color: forestgreen;
-}
-
-.active-link:hover {
-  text-decoration: none;
-}
-
+/* GENERALE */
 .underline {
   border-bottom: 0.3svh solid forestgreen;
   padding-bottom: 2svh;
   margin-bottom: -1.2svh;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.black-link {
-  color: black;
-}
-
-.black-link:hover {
-  text-decoration: none;
-}
-
 .grassetto {
   font-weight: bold;
 }
 
-.footer-link {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-link:hover {
-  color: #000;
-}
-
-.footer-link:visited {
-  color: #000;
-}
-
 .logo-img {
-  width: 100%;
-  height: auto;
-  max-width: 10svh;
+  max-width: 5vw;
 }
