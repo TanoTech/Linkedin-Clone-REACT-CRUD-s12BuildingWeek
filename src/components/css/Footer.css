@@ -49,3 +49,8 @@
     margin: 0em;
   }
 }
+a:-webkit-any-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
