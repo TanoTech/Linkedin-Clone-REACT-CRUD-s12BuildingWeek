@@ -43,7 +43,6 @@ body {
 }
 
 /* SIDE-SECTION */
-
 .SideSections {
   width: 20rem;
   .ButtonSideSections {
@@ -65,27 +64,16 @@ body {
     color: rgb(0 0 0 / 60%);
   }
   .MayKnowImg {
-    height: 3em !important;
-    width: 3em !important;
-  }
-  .MayKnowContent {
-    padding-top: 0;
+    height: 3.5em !important;
+    width: 3.5em !important;
   }
   .MayKnowTitle {
-    font-size: 90%;
-    margin-top: 1em;
+    font-size: 95%;
   }
   .MayKnowName {
     font-size: 90%;
   }
-  .MayKnowColumn p {
-    font-size: 80%;
-    margin-top: 0.4em;
-    margin-bottom: 0.5em;
-  }
-  .MayKnowBtn {
-    font-size: 110%;
-  }
+
 }
 
 #OnThisPageParagraph {

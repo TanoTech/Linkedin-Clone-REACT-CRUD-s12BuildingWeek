@@ -16,7 +16,6 @@ const EmoticonPicker = ({ onSelectEmoticon }) => {
         '💩', '🐷'
     ];
 
-
     const [showModal, setShowModal] = useState(false);
 
     const handleEmoticonClick = (emoticon) => {
@@ -29,7 +28,6 @@ const EmoticonPicker = ({ onSelectEmoticon }) => {
             <Button variant="link" onClick={() => setShowModal(true)}>
                 <FaRegFaceSmile size={20} alt="Emoticon Picker" />
             </Button>
-
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>

@@ -79,7 +79,6 @@ const Login = ({ setShowNavbar }) => {
                 </Row>
                 <img className='img-fluid' style={{ width: '42rem' }} src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt="LinkedIn" />
             </Container>
-        
     );    
 }
 

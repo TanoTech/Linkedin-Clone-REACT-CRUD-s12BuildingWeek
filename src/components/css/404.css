@@ -5,13 +5,8 @@
   height: 100svh;
   width: 100svw;
   h1 {
-    color: white;
     font-size: 5rem;
-    margin-top: 2rem;
     animation: blinkAndMove 3s infinite;
-  }
-  a {
-    margin: 1rem;
   }
 }
 

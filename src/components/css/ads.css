@@ -1,16 +1,5 @@
 /* GENERALE */
 .adsContainer {
-  margin-top: 0.5em;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  color: white;
-  width: 17.1em;
-  height: 9.6em;
-  cursor: pointer;
-  p {
-    border: solid white 2px;
-    font-weight: 600;
-  }
   p:hover {
     background-color: rgba(160, 160, 160, 0.253);
   }
